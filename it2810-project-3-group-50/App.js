@@ -1,13 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
-export default class App extends React.Component {
-  render() {
+import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
+
+export default class App extends Component {
+  render () {
+    const strength = {key: 'strength', color: 'red', selectedDotColor: 'blue'}
+    const interval = {key: 'intervall', color: 'blue', selectedDotColor: 'blue'}
+    const calestethic = {key: 'calestethic', color: 'green'}
+
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <Calendar
+        />
+
       </View>
-    );
+    )
   }
 }
 
@@ -16,6 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    justifyContent: 'center'
+  }
+})
