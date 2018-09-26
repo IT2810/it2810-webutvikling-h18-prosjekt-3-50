@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
+import CalendarView from './components/CalendarView.js'
 
 export default class App extends Component {
   render () {
-    const strength = {key: 'strength', color: 'red', selectedDotColor: 'blue'}
-    const interval = {key: 'intervall', color: 'blue', selectedDotColor: 'blue'}
-    const calestethic = {key: 'calestethic', color: 'green'}
-
     return (
       <View style={styles.container}>
-        <Calendar
-        />
-
+        <CalendarView />
       </View>
     )
   }
