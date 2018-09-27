@@ -21,7 +21,6 @@ class CalendarView extends Component {
         <Calendar
           markingType={'multi-dot'}
           onDayLongPress={(day) => { console.log('selected day', day) }}
-
         />
       </View>
     )
