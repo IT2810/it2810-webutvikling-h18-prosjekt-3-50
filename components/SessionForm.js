@@ -21,7 +21,7 @@ class SessionForm extends Component {
   }
 
   render () {
-    //const { navigate } = this.props.navigation
+    const { navigate } = this.props.navigation
 
     return (
       <Container>
@@ -31,20 +31,21 @@ class SessionForm extends Component {
           </Text>
         </Header>
 
-        <AddExercise />
-
         <Button
           primary 
-          onPress={this._onAddExercise}
+          onPress={() => navigate('AddExercise')}
         >
           <Text> ADD EXERCISE </Text>
         </Button>
 
         <Button
           success
+          large
+          block
+          onPress={() => navigate('Home')}
         >
 
-          <Text> SAVE </Text>
+          <Text> SAVE SESSION </Text>
         </Button>
       </Container>
     )
