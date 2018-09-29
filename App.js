@@ -5,6 +5,7 @@ import { StyleSheet, Text, SafeAreaView } from 'react-native'
 
 import CalendarView from './components/CalendarView.js'
 import SessionForm from './components/SessionForm.js'
+import AddExercise from './components/AddExercise.js'
 
 import  { Button, Container, Header, Icon} from 'native-base'
 
@@ -46,7 +47,8 @@ export default class App extends Component {
 const RootStack = createStackNavigator(
   {
     Home: { screen: Home },
-    SessionForm: { screen: SessionForm }
+    SessionForm: { screen: SessionForm },
+    AddExercise: { screen: AddExercise}
   },
   {
     initialRouteName: 'Home'

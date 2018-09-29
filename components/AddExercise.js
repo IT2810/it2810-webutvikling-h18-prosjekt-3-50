@@ -4,11 +4,10 @@ import { View, Text, StyleSheet } from 'react-native'
 
 class AddExercise extends Component {
   static navigationOptions = {
-    title: 'SessionForm'
+    title: 'AddExercise'
   }
   
   render() {
-
 
     return (
       <Container>
