@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Modal } from 'react-native'
 
-import  { Button, Container, DatePicker, Form, Header, Icon, Input, Item, Label} from 'native-base'
+import  { Button, Container, Content, DatePicker, Form, Header, Icon, Input, Item, Label, List, ListItem, H1, H2} from 'native-base'
 
 import AddExercise from './AddExercise.js'
+import ExerciseListEl from './ExerciseListEl.js'
 
 class SessionForm extends Component {
   static navigationOptions = {
@@ -13,15 +14,21 @@ class SessionForm extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      date: this.props.date | null
+      date: this.props.date | null,
+      modalVisible: false
     }
 
     this.setDate = this.setDate.bind(this)
+    this.setModalVisible = this.setModalVisible.bind(this)
   }
 
 
   setDate(newDate) {
-    this.setState({ date: newDate })
+    //this.setState({ date: newDate })
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible}) 
   }
 
   render () {
@@ -29,43 +36,63 @@ class SessionForm extends Component {
 
     return (
       <Container>
-        <Header>
-          <Text>
-            Plan session
-          </Text>
-        </Header>
-        <Form>
-          <Item floatingLabel>
-            <Label> Name </Label>
-            <Input />
-          </Item>
+        <Content>
+          <Form>
+            <Item floatingLabel>
+              <Label> Name </Label>
+              <Input />
+            </Item>
 
+            <Item>
+              <Label> Date </Label>
+              <DatePicker
+                androidMode={"default"}
+                placeHolderText="Select date"
+                onDateChange={this.setDate}
+              />
+            </Item>
 
-          <Container style={styles.inline}>
-            <Text> Date: </Text>
-            <DatePicker
-              androidMode={"default"}
-              placeHolderText="Select date"
-              onDateChange={this.setDate}
-            />
-          </Container>
-        </Form>
-        <Button
-          primary 
-          onPress={() => navigate('AddExercise')}
-        >
-          <Text> ADD EXERCISE </Text>
-        </Button>
+            <List>
+              <ListItem itemHeader first>
+                <H2>Exercises</H2>
+              </ListItem>
+              <ExerciseListEl exercise="Squat" />
+              <ExerciseListEl exercise="Benchpress" />
+              <ExerciseListEl exercise="Pullup" />
+              <ExerciseListEl exercise="Row" />
+            </List>
+          </Form>
+          <Button
+            primary
+            large
+            block
+            onPress={this.setModalVisible(true)}
+          >
+            <Text> ADD EXERCISE </Text>
+          </Button>
 
-        <Button
-          success
-          large
-          block
-          onPress={() => navigate('Home')}
-        >
+          <Button
+            success
+            large
+            block
+            onPress={() => navigate('Home')}
+          >
 
-          <Text> SAVE SESSION </Text>
-        </Button>
+            <Text> SAVE SESSION </Text>
+          </Button>
+          <Modal
+            visible={true}
+            onRequestClose={() => {}}
+          >
+
+            <AddExercise />
+            <Button 
+              onPress={this.setModalVisible(false)}
+            >
+              <Text> Drop </Text>
+            </Button>
+          </Modal>
+        </Content>
       </Container>
     )
   }
