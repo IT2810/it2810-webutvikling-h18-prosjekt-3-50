@@ -3,16 +3,22 @@ import { Container, Header, Content, Form, Item, Input, Button, Label, Card, Car
 import { View, Text, StyleSheet } from 'react-native'
 
 class AddExercise extends Component {
-  static navigationOptions = {
-    title: 'AddExercise'
+  constructor(props, context) {
+    super(props, context)
+
+
+    this.addExercise = this.addExercise.bind(this)
+  }
+
+  addExercise() {
+    // TODO
   }
   
   render() {
 
     return (
-      <Container>
-        <Content>
-          <Form>
+      <View>
+        <Form>
             <Item floatingLabel>
               <Label> Name </Label>
               <Input/>
@@ -35,7 +41,7 @@ class AddExercise extends Component {
                   <Input />
                 </Item>
 
-                
+
                 <Item floatingLabel style={{width: 50}}>
                   <Label> kg </Label>
                   <Input />
@@ -46,6 +52,7 @@ class AddExercise extends Component {
             <Container style={styles.row}>
               <Button
                 primary
+                onPress={this.addExercise}
               >
                 <Text> Add exercise </Text>
               </Button>
@@ -56,8 +63,7 @@ class AddExercise extends Component {
               </Button>
             </Container>
           </Form>
-        </Content>
-      </Container>
+        </View>
     )
   }
 }
