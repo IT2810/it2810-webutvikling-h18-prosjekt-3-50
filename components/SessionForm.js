@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-import  { Button, Container, Header, Icon} from 'native-base'
+import  { Button, Container, DatePicker, Form, Header, Icon, Input, Item, Label} from 'native-base'
 
 import AddExercise from './AddExercise.js'
 
@@ -12,12 +12,16 @@ class SessionForm extends Component {
 
   constructor(props, context) {
     super(props, context)
+    this.state = {
+      date: this.props.date | null
+    }
 
-    this._onAddExercise = this._onAddExercise.bind(this)
+    this.setDate = this.setDate.bind(this)
   }
 
-  _onAddExercise() {
-    navigate('AddExercise')
+
+  setDate(newDate) {
+    this.setState({ date: newDate })
   }
 
   render () {
@@ -30,7 +34,22 @@ class SessionForm extends Component {
             Plan session
           </Text>
         </Header>
+        <Form>
+          <Item floatingLabel>
+            <Label> Name </Label>
+            <Input />
+          </Item>
 
+
+          <Container style={styles.inline}>
+            <Text> Date: </Text>
+            <DatePicker
+              androidMode={"default"}
+              placeHolderText="Select date"
+              onDateChange={this.setDate}
+            />
+          </Container>
+        </Form>
         <Button
           primary 
           onPress={() => navigate('AddExercise')}
@@ -55,5 +74,10 @@ class SessionForm extends Component {
 export default SessionForm
 
 const styles = StyleSheet.create ({
+  inline: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row'  
+  }
   
 })

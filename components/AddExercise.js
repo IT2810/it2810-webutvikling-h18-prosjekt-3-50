@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Header, Content, Form, Item, Input, Button} from 'native-base';
+import { Container, Header, Content, Form, Item, Input, Button, Label, Card, CardItem, Row} from 'native-base';
 import { View, Text, StyleSheet } from 'react-native'
 
 class AddExercise extends Component {
@@ -11,27 +11,50 @@ class AddExercise extends Component {
 
     return (
       <Container>
-        <Header />
         <Content>
           <Form>
-            <Item>
-              <Input placeholder="Exercise"/>
+            <Item floatingLabel>
+              <Label> Name </Label>
+              <Input/>
             </Item>
 
-            <Item>
-              <Input placeholder="Nr. reps"/>
-            </Item>
+            <Text>
+              Sets
+            </Text>
+            
+            <Card style={{flex: 0, flexWrap: 'wrap'}}>
+              <CardItem>
+                <Item floatingLabel style={{width: 50}}>
+                  <Label> sets </Label>
+                  <Input />
+                </Item>
 
-            <Item>
-              <Input placeholder="Nr. sets"/>
-            </Item>
+                <Text> x </Text>
+                <Item floatingLabel style={{width: 50}}>
+                  <Label> reps </Label>
+                  <Input />
+                </Item>
 
-            <Button>
-              <Text> Add exercise </Text>
-            </Button>
-            <Button>
-              <Text> Cancel </Text>
-            </Button>
+                
+                <Item floatingLabel style={{width: 50}}>
+                  <Label> kg </Label>
+                  <Input />
+                </Item>
+              </CardItem>
+            </Card>
+
+            <Container style={styles.row}>
+              <Button
+                primary
+              >
+                <Text> Add exercise </Text>
+              </Button>
+              <Button
+                light
+              >
+                <Text> Cancel </Text>
+              </Button>
+            </Container>
           </Form>
         </Content>
       </Container>
@@ -42,6 +65,11 @@ class AddExercise extends Component {
 export default AddExercise
 
 const styles = StyleSheet.create ({
+
+  row: {
+    display: 'flex',
+    flexDirection: 'row' 
+  }
 
 
 })
