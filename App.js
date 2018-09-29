@@ -4,22 +4,51 @@ import store from './store'
 import { StyleSheet, Text, SafeAreaView } from 'react-native'
 
 import CalendarView from './components/CalendarView.js'
+import SessionForm from './components/SessionForm.js'
 
-export default class App extends Component {
-  render () {
+import  { Button, Container, Header, Icon} from 'native-base'
+
+import { createStackNavigator } from 'react-navigation'
+
+class Home extends Component {
+  static navigationOptions = {
+    title: 'Home'
+  }
+
+  render() {
+    const { navigate } = this.props.navigation
+
     return (
       <Provider store={store}>
         <SafeAreaView style={styles.container}>
           <CalendarView />
+          <Button 
+            primary
+            large
+            block
+            onPress={() => this.props.navigation.navigate('SessionForm')}
+          >
+            
+            <Text> ADD SESSION </Text>
+          </Button>
         </SafeAreaView>
       </Provider>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+export default class App extends Component {
+  render() {
+    return <RootStack />
   }
-})
+}
+
+const RootStack = createStackNavigator(
+  {
+    Home: { screen: Home },
+    SessionForm: { screen: SessionForm }
+  },
+  {
+    initialRouteName: 'Home'
+  }
+)
