@@ -57,7 +57,7 @@ const RootStack = createStackNavigator(
     AddExercise: { screen: AddExercise}
   },
   {
-    initialRouteName: 'AddExercise',
+    initialRouteName: 'SessionForm',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#5BC1F2'
