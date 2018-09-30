@@ -15,10 +15,13 @@ class SessionForm extends Component {
     super(props, context)
     this.state = {
       date: this.props.date | null,
+      name: null,
+      exercises: null
     }
 
     this.setDate = this.setDate.bind(this)
     this.saveSession = this.saveSession.bind(this)
+    this.validateSession = this.validateSession.bind(this)
   }
 
 
@@ -27,7 +30,33 @@ class SessionForm extends Component {
   }
 
   saveSession() {
-    // TODO save in state with redux
+    if (this.validateSession()) {
+      // TODO save in state with redux
+    }
+  }
+
+  validateSession() {
+    if (this.state.name != null) {
+      if (this.state.date != null) {
+        this.showToast('You have to add a date')
+        return false
+      }
+      else if (this.state.exercises != null) {
+        this.showToast('You have to add minimum 1 exercise')
+        return false
+      }
+      return true
+    }
+    this.showToast('You have to give the exercise a name')
+    return false
+  }
+
+  showToast(text) {
+    Toast.show({
+      type: 'danger',
+      duration: 3000,
+      text: text
+    })
   }
 
   render () {
@@ -39,7 +68,10 @@ class SessionForm extends Component {
           <Form>
             <Item floatingLabel>
               <Label> Name </Label>
-              <Input />
+              <Input 
+                onChangeText={(name) => this.setState({name})}
+                value={this.state.name}
+              />
             </Item>
 
             <Item>
@@ -47,7 +79,8 @@ class SessionForm extends Component {
               <DatePicker
                 androidMode={"default"}
                 placeHolderText="Select date"
-                onDateChange={this.setDate}
+                onDateChange={(date) => this.setDate({date})}
+                value={this.state.date}
               />
             </Item>
 
