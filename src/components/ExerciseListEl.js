@@ -1,9 +1,24 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 
-import { Button, ListItem, Left, Right, Body } from 'native-base'
+import { Button, View, Text, ListItem, Left, Right, Body, Toast } from 'native-base'
 
 class ExerciseListEl extends Component {
+
+  constructor(props, context) {
+    super(props, context)
+
+    this.delete = this.delete.bind(this)
+  }
+
+  delete() {
+    // TODO: delete from state
+    Toast.show({
+      type: 'warning',
+      duration: 3000,
+      text: 'Deleted exercise'
+    })
+  }
 
   render () {
     return (
@@ -21,10 +36,10 @@ class ExerciseListEl extends Component {
         </Body>
         <Right>
           <Button
-            transparent
-            onPress={() => {}}
+            error
+            onPress={this.delete}
           >
-            <Text> Delete </Text>
+            <Text> X </Text>
           </Button>
         </Right>
       </ListItem>
