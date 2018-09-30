@@ -8,9 +8,6 @@ export default (variables = variable) => {
     flex: 1,
     height: Platform.OS === "ios" ? deviceHeight : deviceHeight - 20,
     backgroundColor: variables.containerBgColor,
-
-    /* Added */
-    padding: 10
   };
 
   return theme;
