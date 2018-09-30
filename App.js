@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-import CalendarView from './components/CalendarView.js'
-import SessionForm from './components/SessionForm.js'
-import AddExercise from './components/AddExercise.js'
+import CalendarView from './src/components/CalendarView.js'
+import SessionForm from './src/components/SessionForm.js'
+import AddExercise from './src/components/AddExercise.js'
 
 import  { Button, Container, Header, Icon, StyleProvider, Root} from 'native-base'
 import getTheme from './native-base-theme/components'
 import material from './native-base-theme/variables/material'
-
 
 import { createStackNavigator } from 'react-navigation'
 
