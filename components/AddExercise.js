@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Container, Header, Content, Form, Item, Input, Button, Label, Card, CardItem, Toast, H3, H4, Row} from 'native-base';
-import { Text, StyleSheet, TextInput } from 'react-native'
+import { View, Text, Container, Header, Content, Form, Item, Input, Button, Label, Card, CardItem, Toast, H3, H4, Row} from 'native-base';
+import { StyleSheet } from 'react-native'
 
 class AddExercise extends Component {
   static navigationOptions = {
