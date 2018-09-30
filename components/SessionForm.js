@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Modal } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 import  { Button, Container, Content, DatePicker, Form, Header, Icon, Input, Item, Label, List, ListItem, H1, H2} from 'native-base'
 
@@ -15,20 +15,19 @@ class SessionForm extends Component {
     super(props, context)
     this.state = {
       date: this.props.date | null,
-      modalVisible: false
     }
 
     this.setDate = this.setDate.bind(this)
-    this.setModalVisible = this.setModalVisible.bind(this)
+    this.saveSession = this.saveSession.bind(this)
   }
 
 
   setDate(newDate) {
-    //this.setState({ date: newDate })
+    this.setState({ date: newDate })
   }
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible}) 
+  saveSession() {
+    // TODO save in state with redux
   }
 
   render () {
@@ -66,7 +65,7 @@ class SessionForm extends Component {
             primary
             large
             block
-            onPress={this.setModalVisible(true)}
+            onPress={() => navigate('AddExercise')}
           >
             <Text> ADD EXERCISE </Text>
           </Button>
@@ -80,18 +79,7 @@ class SessionForm extends Component {
 
             <Text> SAVE SESSION </Text>
           </Button>
-          <Modal
-            visible={true}
-            onRequestClose={() => {}}
-          >
-
-            <AddExercise />
-            <Button 
-              onPress={this.setModalVisible(false)}
-            >
-              <Text> Drop </Text>
-            </Button>
-          </Modal>
+          
         </Content>
       </Container>
     )
