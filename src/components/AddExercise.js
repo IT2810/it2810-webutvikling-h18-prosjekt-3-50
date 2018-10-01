@@ -57,7 +57,6 @@ class AddExercise extends Component {
     return (
       <Container>
         <Content padder>
-          <Text> {this.state.name } </Text>
           <View padder>
             <Item floatingLabel>
               <Label> Name </Label>
