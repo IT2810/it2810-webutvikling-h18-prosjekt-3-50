@@ -125,6 +125,7 @@ class AddExercise extends Component {
               primary
               flat
               block
+              testID={"addExerciseButton"}
               onPress={this.addExercise}
             >
               <Text> Add exercise </Text>

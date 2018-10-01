@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 
 import React from 'react'
 import { shallow } from 'enzyme'
@@ -11,4 +14,10 @@ it('renders correctly', () => {
   //expect(wrapper).toMatchSnapshot()
 
   expect(1).toEqual(1)
+})
+
+it('calls addExercise when button is pressed', () => {
+
+
+
 })
