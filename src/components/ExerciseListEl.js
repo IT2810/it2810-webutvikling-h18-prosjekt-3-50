@@ -36,7 +36,7 @@ class ExerciseListEl extends Component {
         </Body>
         <Right>
           <Button
-            error
+            danger
             onPress={this.delete}
           >
             <Text> X </Text>

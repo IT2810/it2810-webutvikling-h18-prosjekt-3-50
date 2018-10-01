@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
-import { View, Text } from 'react-native'
+import { View, Text } from 'native-base'
 
 class CalendarView extends Component {
 

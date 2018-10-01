@@ -5,7 +5,7 @@ import { StyleSheet, SafeAreaView } from 'react-native'
 import { StyleSheet } from 'react-native'
 
 import CalendarView from './src/components/CalendarView.js'
-import SessionForm from './src/components/SessionForm.js'
+import CreateSession from './src/components/CreateSession.js'
 import AddExercise from './src/components/AddExercise.js'
 import Home from './src/components/Home.js'
 
@@ -57,11 +57,11 @@ export default class App extends Component {
 const RootStack = createStackNavigator(
   {
     Home: { screen: Home },
-    SessionForm: { screen: SessionForm },
+    CreateSession: { screen: CreateSession },
     AddExercise: { screen: AddExercise}
   },
   {
-    initialRouteName: 'SessionForm',
+    initialRouteName: 'CreateSession',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#5BC1F2'

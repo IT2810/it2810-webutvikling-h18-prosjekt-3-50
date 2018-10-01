@@ -6,9 +6,9 @@ import  { Button, Text, View, Container, Content, DatePicker, Form, Card, Footer
 import AddExercise from './AddExercise.js'
 import ExerciseListEl from './ExerciseListEl.js'
 
-class SessionForm extends Component {
+class CreateSession extends Component {
   static navigationOptions = {
-    title: 'SessionForm'
+    title: 'CreateSession'
   }
 
   constructor(props, context) {
@@ -120,25 +120,23 @@ class SessionForm extends Component {
             </List>
           </View>
 
+          <Button
+            success
+            large
+            block
+            onPress={this.saveSession}
+          >
+            <Text> SAVE SESSION </Text>
+          </Button>
+
         </Content>
-        <Footer>
-          <FooterTab>
-            <Button
-              success
-              large
-              block
-              onPress={this.saveSession}
-            >
-              <Text> SAVE SESSION </Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+
       </Container>
     )
   }
 }
 
-export default SessionForm
+export default CreateSession
 
 const styles = StyleSheet.create ({
   inline: {

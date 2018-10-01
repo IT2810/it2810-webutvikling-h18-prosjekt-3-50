@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import SessionForm from './SessionForm.js'
+import CreateSession from './CreateSession.js'
 import CalendarView from './CalendarView.js'
 
 import  { Button, View, Text} from 'native-base'
@@ -20,7 +20,7 @@ class Home extends Component {
           primary
           large
           block
-          onPress={() => this.props.navigation.navigate('SessionForm')}
+          onPress={() => this.props.navigation.navigate('CreateSession')}
         >
           
           <Text> ADD SESSION </Text>
