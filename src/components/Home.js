@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
-import SessionForm from './components/SessionForm.js'
+import SessionForm from './SessionForm.js'
+import CalendarView from './CalendarView.js'
+
+import  { Button, View, Text} from 'native-base'
 
 class Home extends Component {
   static navigationOptions = {
@@ -12,10 +15,20 @@ class Home extends Component {
 
     return (
       <View>
-
-        <SessionForm />
+        <CalendarView />
+        <Button 
+          primary
+          large
+          block
+          onPress={() => this.props.navigation.navigate('SessionForm')}
+        >
+          
+          <Text> ADD SESSION </Text>
+        </Button>
       </View>
 
     )
   }
 }
+
+export default Home

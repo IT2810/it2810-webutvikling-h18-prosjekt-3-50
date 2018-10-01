@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './store'
-import { StyleSheet, Text, SafeAreaView } from 'react-native'
+import { StyleSheet, SafeAreaView } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 import CalendarView from './src/components/CalendarView.js'
 import SessionForm from './src/components/SessionForm.js'
 import AddExercise from './src/components/AddExercise.js'
+import Home from './src/components/Home.js'
 
 import  { Button, Container, Header, Icon, StyleProvider, Root} from 'native-base'
 import getTheme from './native-base-theme/components'
