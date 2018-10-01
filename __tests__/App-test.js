@@ -1,22 +1,37 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import 'react-native';
 import React from 'react';
 import App from '../App';
 import renderer from 'react-test-renderer';
 import NavigationTestUtils from 'react-navigation/NavigationTestUtils';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
+
+
+beforeEach(() => {
+  global.window.addEventListener = jest.fn();
+})
 
 describe('App snapshot', () => {
-  jest.useFakeTimers();
+  console.log('In app-test')
+/*  jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
-  });
+  });*/
 
   it('renders the loading screen', async () => {
-    const tree = renderer.create(<App />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(<App />);
+    const component = wrapper.dive();
+
+    //const tree = renderer.create(<App />).toJSON();
+    expect(toJson(component)).toMatchSnapshot();
   });
 
-  it('renders the root without loading screen', async () => {
-    const tree = renderer.create(<App skipLoadingScreen />).toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+  // it('renders the root without loading screen', async () => {
+  //   const tree = renderer.create(<App skipLoadingScreen />).toJSON();
+  //   expect(tree).toMatchSnapshot();
+  // });
 });
