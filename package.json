@@ -32,7 +32,15 @@
     ],
     "transform": {
       "^.+\\.js$": "babel-jest"
-    }
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js, jsx}",
+      "!<rootDir>/coverage/**",
+      "!<rootDir>/node_modules/**",
+      "!<rootDir>/native-base-theme/**",
+      "!**/jestSetup.js"
+    ]
   },
   "devDependencies": {
     "babel-jest": "^23.6.0",

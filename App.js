@@ -32,7 +32,7 @@ const RootStack = createStackNavigator(
     AddExercise: { screen: AddExercise}
   },
   {
-    initialRouteName: 'CreateSession',
+    initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#5BC1F2'
