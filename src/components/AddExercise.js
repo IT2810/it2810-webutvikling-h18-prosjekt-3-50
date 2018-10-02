@@ -32,15 +32,17 @@ class AddExercise extends Component {
 
   validateExercise() {
     if (this.state.name != null) {
-      if (this.state.reps == null && this.state.sets == null) {
+      if (this.state.reps == null || this.state.sets == null) {
           this.showToast('Sets and/or reps can not be null')
           return false
+      } else {
+        this.showToast('name is ' + this.state.name)
+        return true
       }
-      this.showToast('name is ' + this.state.name)
-      return true
+    } else {
+      this.showToast('You have to give the exercise a name')
+      return false
     }
-    this.showToast('You have to give the exercise a name')
-    return false
 
   }
 
@@ -141,3 +143,4 @@ export default AddExercise
 const styles = StyleSheet.create ({
 
 })
+

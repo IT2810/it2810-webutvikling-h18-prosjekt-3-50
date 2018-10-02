@@ -26,7 +26,6 @@ describe('App snapshot', () => {
     const wrapper = shallow(<App />);
     const component = wrapper.dive();
 
-    //const tree = renderer.create(<App />).toJSON();
     expect(toJson(component)).toMatchSnapshot();
   });
 

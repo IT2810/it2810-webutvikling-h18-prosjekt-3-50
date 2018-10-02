@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
+import Expo from 'expo'
 
 import CalendarView from './src/components/CalendarView.js'
 import CreateSession from './src/components/CreateSession.js'
@@ -43,3 +44,5 @@ const RootStack = createStackNavigator(
     }
   }
 )
+
+Expo.registerRootComponent(App)

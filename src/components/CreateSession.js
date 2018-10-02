@@ -44,18 +44,21 @@ class CreateSession extends Component {
 
   validateSession() {
     if (this.state.name != null) {
-      if (this.state.date != null) {
+      if (this.state.date == null) {
         this.showToast('You have to add a date')
         return false
       }
-      else if (this.state.exercises != null) {
+      else if (this.state.exercises == null) {
         this.showToast('You have to add minimum 1 exercise')
         return false
+      } else {
+        return true
       }
-      return true
+
+    } else {
+      this.showToast('You have to give the exercise a name')
+      return false
     }
-    this.showToast('You have to give the exercise a name')
-    return false
   }
 
   showToast(text) {

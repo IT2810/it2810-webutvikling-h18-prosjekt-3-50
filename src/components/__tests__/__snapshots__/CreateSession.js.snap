@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateSession renders correctly 1`] = `
+<Container
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "height": 1334,
+    }
+  }
+>
+  <Styled(Content)
+    padder={true}
+  >
+    <Styled(Item)
+      floatingLabel={true}
+    >
+      <Styled(Label)>
+         Name 
+      </Styled(Label)>
+      <Styled(Input)
+        onChangeText={[Function]}
+        value={null}
+      />
+    </Styled(Item)>
+    <Styled(Item)>
+      <Styled(Label)>
+         Date 
+      </Styled(Label)>
+      <DatePicker
+        androidMode="default"
+        onDateChange={[Function]}
+        placeHolderText="Select date"
+        value={0}
+      />
+    </Styled(Item)>
+    <RowNB
+      style={
+        Object {
+          "marginTop": 16,
+        }
+      }
+    >
+      <Styled(Left)>
+        <Styled(H2)>
+          Exercises
+        </Styled(H2)>
+      </Styled(Left)>
+      <Styled(Right)>
+        <Styled(Button)
+          block={true}
+          onPress={[Function]}
+          primary={true}
+        >
+          <Styled(Text)>
+             ADD EXERCISE 
+          </Styled(Text)>
+        </Styled(Button)>
+      </Styled(Right)>
+    </RowNB>
+    <Styled(ViewNB)>
+      <Styled(List)
+        dataArray={
+          Array [
+            Object {
+              "name": "Squat",
+              "reps": "12",
+              "sets": "4",
+            },
+            Object {
+              "name": "Benchpress",
+              "reps": "12",
+              "sets": "4",
+            },
+            Object {
+              "name": "Pullup",
+              "reps": "12",
+              "sets": "4",
+            },
+            Object {
+              "name": "Row",
+              "reps": "12",
+              "sets": "4",
+            },
+          ]
+        }
+        renderRow={[Function]}
+      />
+    </Styled(ViewNB)>
+    <Styled(Button)
+      block={true}
+      large={true}
+      onPress={[Function]}
+      success={true}
+    >
+      <Styled(Text)>
+         SAVE SESSION 
+      </Styled(Text)>
+    </Styled(Button)>
+  </Styled(Content)>
+</Container>
+`;

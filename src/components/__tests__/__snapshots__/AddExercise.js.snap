@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddExercise renders correctly 1`] = `
+<Container
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "height": 1334,
+    }
+  }
+>
+  <Styled(Content)
+    padder={true}
+  >
+    <Styled(ViewNB)
+      padder={true}
+    >
+      <Styled(Item)
+        floatingLabel={true}
+      >
+        <Styled(Label)>
+           Name 
+        </Styled(Label)>
+        <Styled(Input)
+          onChangeText={[Function]}
+          value={null}
+        />
+      </Styled(Item)>
+    </Styled(ViewNB)>
+    <Styled(ViewNB)>
+      <Styled(Text)>
+        Sets (weight is optional)
+      </Styled(Text)>
+      <RowNB
+        style={
+          Object {
+            "flex": 0,
+            "flexWrap": "wrap",
+            "paddingBottom": 16,
+          }
+        }
+      >
+        <Styled(Item)
+          floatingLabel={true}
+          style={
+            Object {
+              "width": 50,
+            }
+          }
+        >
+          <Styled(Label)>
+             sets 
+          </Styled(Label)>
+          <Styled(Input)
+            onChangeText={[Function]}
+            value={null}
+          />
+        </Styled(Item)>
+        <Styled(Text)
+          style={
+            Object {
+              "color": "grey",
+              "fontSize": 16,
+              "textAlignVertical": "bottom",
+            }
+          }
+        >
+           x 
+        </Styled(Text)>
+        <Styled(Item)
+          floatingLabel={true}
+          style={
+            Object {
+              "width": 50,
+            }
+          }
+        >
+          <Styled(Label)>
+             reps 
+          </Styled(Label)>
+          <Styled(Input)
+            onChangeText={[Function]}
+            value={null}
+          />
+        </Styled(Item)>
+        <Styled(Text)
+          style={
+            Object {
+              "color": "grey",
+              "fontSize": 16,
+              "textAlignVertical": "bottom",
+            }
+          }
+        >
+           x 
+        </Styled(Text)>
+        <Styled(Item)
+          floatingLabel={true}
+          style={
+            Object {
+              "width": 50,
+            }
+          }
+        >
+          <Styled(Label)>
+             kg 
+          </Styled(Label)>
+          <Styled(Input)
+            onChangeText={[Function]}
+            value={null}
+          />
+        </Styled(Item)>
+      </RowNB>
+      <Styled(Button)
+        block={true}
+        flat={true}
+        onPress={[Function]}
+        primary={true}
+        testID="addExerciseButton"
+      >
+        <Styled(Text)>
+           Add exercise 
+        </Styled(Text)>
+      </Styled(Button)>
+    </Styled(ViewNB)>
+  </Styled(Content)>
+</Container>
+`;
