@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 import { StyleSheet, SafeAreaView } from 'react-native'
 import { StyleSheet } from 'react-native'
+import Expo from 'expo'
 
 import CalendarView from './src/components/CalendarView.js'
 import CreateSession from './src/components/CreateSession.js'
@@ -73,3 +74,5 @@ const RootStack = createStackNavigator(
     }
   }
 )
+
+Expo.registerRootComponent(App)
