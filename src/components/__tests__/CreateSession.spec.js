@@ -19,11 +19,6 @@ describe('CreateSession', () => {
   })
 
   it('renders correctly', () => {
-    //const wrapper = renderer.create(<AddExercise />).toJSON()
-    //wrapper = shallow(<CreateSession />).dive()
-
-
-    //expect(wrapper).toMatchSnapshot()
     expect(toJson(wrapper.dive())).toMatchSnapshot()
   })
 
