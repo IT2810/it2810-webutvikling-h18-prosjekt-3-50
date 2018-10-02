@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalendarView renders correctly 1`] = `
+<ViewNB
+  style={Object {}}
+>
+  <Calendar
+    markingType="multi-dot"
+    onDayLongPress={[Function]}
+  />
+</ViewNB>
+`;

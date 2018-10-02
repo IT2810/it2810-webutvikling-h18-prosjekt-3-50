@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders correctly 1`] = `
+<ViewNB
+  style={Object {}}
+>
+  <CalendarView />
+  <Styled(Button)
+    block={true}
+    large={true}
+    onPress={[Function]}
+    primary={true}
+  >
+    <Styled(Text)>
+       ADD SESSION 
+    </Styled(Text)>
+  </Styled(Button)>
+</ViewNB>
+`;
