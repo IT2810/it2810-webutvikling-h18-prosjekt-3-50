@@ -59,27 +59,51 @@ this._subscription = null;
 };
 
 render() {
-return (
-  <View style={styles.container}>
-    <Text>
-      Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
-    </Text>
-    <Text>
-      Steps taken in the last 24 hours: {this.state.pastStepCount}
-    </Text>
-    <Text>Walk! And watch this go up: {this.state.currentStepCount}</Text>
-  </View>
-);
+  if (this.state.isPedometerAvailable){
+    return (
+      <View style={styles.container}>
+        <Text>
+          Working
+        </Text>
+      <Text>
+        Last 24 hours: {this.state.pastStepCount}
+      </Text>
+      <Text>
+        Steps: {this.state.currentStepCount}
+      </Text>
+      </View>
+    );
+  }
+
+  else{
+    return(
+      <View style={styles.container}>
+      <Text>
+        Error: Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
+      </Text>
+      <Text>
+        Last 24 hours: {this.state.pastStepCount}
+      </Text>
+      <Text>
+        Steps: {this.state.currentStepCount}
+      </Text>
+    </View>
+    );
+  }
 }
 }
+
 
 const styles = StyleSheet.create({
 container: {
 flex: 1,
 marginTop: 15,
 alignItems: "center",
-justifyContent: "center"
+justifyContent: "center",
+borderStyle: "solid",
+borderColor: "black",
 }
 });
+
 
 Expo.registerRootComponent(PedometerSensor);
