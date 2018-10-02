@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './store'
 import { StyleSheet, SafeAreaView } from 'react-native'
-import { StyleSheet } from 'react-native'
 import Expo from 'expo'
 
 import CalendarView from './src/components/CalendarView.js'
@@ -17,13 +16,22 @@ import material from './native-base-theme/variables/material'
 import { createStackNavigator } from 'react-navigation'
 
 export default class App extends Component {
+  async componentWillMount () {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf')
+    })
+    this.setState({ loading: false })
+  }
+
   render () {
     return (
-      <Root>
-        <StyleProvider style={getTheme(material)}>
-          <RootStack />
-        </StyleProvider>
-      </Root>
+      <Provider store={store}>
+        <Root>
+          <StyleProvider style={getTheme(material)}>
+            <RootStack />
+          </StyleProvider>
+        </Root>
+      </Provider>
     )
   }
 }
@@ -47,5 +55,3 @@ const RootStack = createStackNavigator(
     }
   }
 )
-
-Expo.registerRootComponent(App)

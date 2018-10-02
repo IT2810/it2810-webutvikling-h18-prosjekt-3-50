@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../actions'
+// import * as actions from '../actions'
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
 import { View, Text } from 'native-base'
 
-class CalendarView extends Component {
+let actions = null
 
+class CalendarView extends Component {
   getworkouts () {
-  	return ''
+    return ''
   }
 
   addSession (startTime, contact, todos) {
-  	console.log('Open view to add session on that date')
+    console.log('Open view to add session on that date')
     // see format.txt for format of startTime, contacts, todos
     this.props.userAddAppointmentSynchronousAction(startTime, contacts, todos)
   }
@@ -37,8 +38,8 @@ class CalendarView extends Component {
   }
 }
 
-const mapStateToProps = ( { userReducerState } ) => {
+const mapStateToProps = ({ userReducerState }) => {
   return { appointments: userReducerState.user.appointments }
 }
 
-export default connect( mapStateToProps, actions )( CalendarView )
+export default connect(mapStateToProps, actions)(CalendarView)
