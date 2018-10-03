@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExerciseListEl renders correctly 1`] = `
+<ListItem
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "transparent",
+      "borderBottomWidth": 0.5,
+      "borderColor": "#c9c9c9",
+      "flexDirection": "row",
+      "marginLeft": 16,
+      "paddingBottom": 13,
+      "paddingRight": 16,
+      "paddingTop": 13,
+    }
+  }
+>
+  <Styled(Left)
+    onPress={[Function]}
+  >
+    <Styled(Text)>
+       
+        
+    </Styled(Text)>
+  </Styled(Left)>
+  <Styled(Body)
+    onPress={[Function]}
+  >
+    <Styled(Text)>
+       12 x 4 
+    </Styled(Text)>
+  </Styled(Body)>
+  <Styled(Right)>
+    <Styled(Button)
+      danger={true}
+      onPress={[Function]}
+    >
+      <Styled(Text)>
+         X 
+      </Styled(Text)>
+    </Styled(Button)>
+  </Styled(Right)>
+</ListItem>
+`;
