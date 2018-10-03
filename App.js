@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import { Provider } from 'react-redux'
+import store from './store'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import Expo from 'expo'
 
 import CalendarView from './src/components/CalendarView.js'
@@ -7,20 +9,29 @@ import CreateSession from './src/components/CreateSession.js'
 import AddExercise from './src/components/AddExercise.js'
 import Home from './src/components/Home.js'
 
-import  { Button, Container, Header, Icon, StyleProvider, Root} from 'native-base'
+import { Button, Container, Header, Icon, StyleProvider, Root} from 'native-base'
 import getTheme from './native-base-theme/components'
 import material from './native-base-theme/variables/material'
 
 import { createStackNavigator } from 'react-navigation'
 
 export default class App extends Component {
-  render() {
+  async componentWillMount () {
+    await Font.loadAsync({
+      Roboto: require('native-base/Fonts/Roboto.ttf')
+    })
+    this.setState({ loading: false })
+  }
+
+  render () {
     return (
-      <Root>
-        <StyleProvider style={getTheme(material)}>
-          <RootStack />
-        </StyleProvider>
-      </Root>
+      <Provider store={store}>
+        <Root>
+          <StyleProvider style={getTheme(material)}>
+            <RootStack />
+          </StyleProvider>
+        </Root>
+      </Provider>
     )
   }
 }
@@ -45,4 +56,3 @@ const RootStack = createStackNavigator(
   }
 )
 
-Expo.registerRootComponent(App)
