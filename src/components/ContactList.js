@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-
 import { StyleSheet } from 'react-native'
-
-import {Card, List, ListItem, Text, Left, Right, Button, View, Row, H2, Picker, Icon } from 'native-base'
+import { List, ListItem, Text, Left, Right, Button, View, Row, H2, Picker, Icon } from 'native-base'
 
 const savedContacts = require('../assets/contacts.json')
 
@@ -11,27 +9,27 @@ export default class ContactList extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      availableContacts: savedContacts,
+      availableContacts: savedContacts.contacts,
       addedContacts: ["Ola Nordmann", "Kari Nordmann"]
     }
 
     this.getAll = this.getAll.bind(this)
-    this.remove = this.remove.bind(this)
     this.availableContacts = this.availableContacts.bind(this)
-    this.add = this.add.bind(this)
   }
 
   getAll() {
     // TODO: get from redux
-    this.setState({ availableContacs: savedContacts })
+    this.setState({ availableContacs: savedContacts.contacts })
   }
 
-  remove() {
+  _remove(value: string) {
     // TODO in redux, then update state
+    this.setState(prevState => ({
+      addedContacts: prevState.addedContacts.filter(contact => contact !== value)
+    }))
   }
 
-  add(value: string) {
-    console.log(value)
+  _add(value: string) {
     if (value !== '0') {
       this.setState(prevState => ({
         addedContacts: [...prevState.addedContacts, value]
@@ -41,7 +39,7 @@ export default class ContactList extends Component {
 
   // Filter out the contacts allready added, so that they can't be added twice
   availableContacts() {
-    return this.state.availableContacts.contacts.filter(contact => this.state.addedContacts.indexOf(contact) === -1)
+    return this.state.availableContacts.filter(contact => this.state.addedContacts.indexOf(contact) === -1)
   }
 
   render () {    
@@ -55,13 +53,13 @@ export default class ContactList extends Component {
 
     return (
       <View>
+
         <Row style={{marginTop: 16}}>
           <Left>
             <H2>Contacts</H2>
           </Left>
         </Row>
 
-        
         <List
           dataArray={this.state.addedContacts}
           renderRow={(contact) => 
@@ -72,7 +70,7 @@ export default class ContactList extends Component {
               <Right>
                 <Button
                   danger
-                  onPress={this.remove}
+                  onPress={this._remove.bind(this, contact)}
                 >
                   <Icon active name="trash" />
                 </Button>
@@ -81,11 +79,12 @@ export default class ContactList extends Component {
           }
         >
         </List>
+
         <Picker
           mode="dropdown"
           placeholder="Add a contact"
           selectedValue=''
-          onValueChange={this.add}
+          onValueChange={this._add.bind(this)}
         >
           {contactPickers}         
 

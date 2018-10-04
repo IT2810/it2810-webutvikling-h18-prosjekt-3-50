@@ -16,11 +16,9 @@ export default class ExerciseList extends Component {
       ]
     }
 
-    this.remove = this.remove.bind(this)
-    this.add = this.add.bind(this)
   }
   
-  remove() {
+  _remove() {
     // TODO: delete from state
     Toast.show({
       type: 'warning',
@@ -29,7 +27,7 @@ export default class ExerciseList extends Component {
     })
   }
 
-  add() {
+  _add() {
 
   }
 
@@ -37,7 +35,7 @@ export default class ExerciseList extends Component {
 
     return (
       <View>
-        <Row style={{marginTop: 16}}>
+        <Row>
           <Left>
             <H2>Exercises</H2>
           </Left>
@@ -55,19 +53,16 @@ export default class ExerciseList extends Component {
           dataArray={this.state.exercises}
           renderRow={(exercise) => 
             <ListItem>
-              <Left
-              >
+              <Left>
                 <Text> { exercise.name }  </Text>
               </Left>
-              <Body
-              >
+              <Body>
                 <Text> {exercise.reps} x {exercise.sets} </Text>
-                
               </Body>
               <Right>
                 <Button
                   danger
-                  onPress={this.remove}
+                  onPress={this._remove.bind(this, exercise)}
                 >
                   <Icon active name="trash" />
                 </Button>
@@ -79,6 +74,4 @@ export default class ExerciseList extends Component {
       </View>
     ) 
   }
-  
-
 }
