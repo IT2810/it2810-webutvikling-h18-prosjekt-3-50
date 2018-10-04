@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Moment from 'react-moment'
 
-import  { Button, Text, View, Container, Content, DatePicker, Form, Card, Footer, FooterTab, ScrollView, Header, Right, Left, Row, Toast, Icon, Input, Item, Label, List, ListItem, H1, H2} from 'native-base'
+import  { Button, Text, View, Container, Content, DatePicker, Picker, Form, Card, Footer, FooterTab, ScrollView, Header, Right, Left, Row, Toast, Icon, Input, Item, Label, List, ListItem, H1, H2} from 'native-base'
 
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
 import AddExercise from './AddExercise.js'
 import ExerciseListEl from './ExerciseListEl.js'
+import ContactList from './ContactList.js'
+import ExerciseList from './ExerciseList.js'
+
+const contacts = require('../assets/contacts.json')
 
 class CreateSession extends Component {
   static navigationOptions = {
@@ -19,13 +23,10 @@ class CreateSession extends Component {
     this.state = {
       date: null,
       name: null,
-      exercises: [
-        {name: 'Squat', sets: '4', reps: '12'},
-        {name: 'Benchpress', sets: '4', reps: '12'},
-        {name: 'Pullup', sets: '4', reps: '12'},
-        {name: 'Row', sets: '4', reps: '12'}
-      ],
       isDateTimePickerVisible: false
+      exercises: [],
+      showToast: false, 
+      contacts: null
     }
 
     this.saveSession = this.saveSession.bind(this)
@@ -91,7 +92,6 @@ class CreateSession extends Component {
 
   render () {
     const { navigate } = this.props.navigation
-
     var dateTimeText = ''
 
     if (this.state.date != null) {
@@ -108,17 +108,17 @@ class CreateSession extends Component {
 
     return (
       <Container>
-        <Content padder>
-          <Item floatingLabel>
-            <Label> Name </Label>
+        <Content padder scrollEnabled={true}>
+          <Text> Title </Text>
+          <Item rounded>
             <Input 
               onChangeText={(name) => this.setState({name})}
               value={this.state.name}
             />
           </Item>
 
-          <Item>
-            <Label> Date and time </Label>
+          <Text> Date and time </Text>
+          <Item rounded>
             <TouchableOpacity onPress={this._showDateTimePicker}>
               {dateTimeText}
             </TouchableOpacity>
@@ -126,35 +126,13 @@ class CreateSession extends Component {
               mode='datetime'
               isVisible={this.state.isDateTimePickerVisible}
               onConfirm={this._setDateAndTime}
-              onCancel={this._hideDateTimePicker}
-            />
+              onCancel={this._hideDateTimePicker}            />
             
           </Item>
 
-          <Row style={{marginTop: 16}}>
-            <Left>
-              <H2>Exercises</H2>
-            </Left>
-            <Right>
-              <Button
-                primary
-                block
-                onPress={() => navigate('AddExercise')}
-              >
-                <Text> ADD EXERCISE </Text>
-              </Button>
-            </Right>
-          </Row>
+          <ExerciseList />
 
-          <View>
-            <List
-              dataArray={this.state.exercises}
-              renderRow={(exercise) => 
-                <ExerciseListEl exercise={exercise.name} />
-              }
-            >
-            </List>
-          </View>
+          <ContactList />
 
           <Button
             success
