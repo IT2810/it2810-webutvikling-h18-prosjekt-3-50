@@ -11,7 +11,7 @@ export default class ContactList extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      possibleContacts: savedContacts,
+      allContacts: savedContacts,
       addedContacts: ["Ole Nordmann", "Kari Nordmann"]
     }
 
@@ -20,18 +20,20 @@ export default class ContactList extends Component {
   }
 
   getContacts() {
-    this.setState({ contacts: ["Ole Nordmann", "Kari Nordmann"] })
+    this.setState({ allContacts: ["Ole Nordmann", "Kari Nordmann"] })
   }
 
   remove() {
-    // TODO
+    // TODO in redux, then update state
   }
 
   addContact(value: string) {
     console.log("Adding the contact")
+    console.log(value)
     this.setState(prevState => ({
       addedContacts: [...prevState.addedContacts, value]
     }))
+    //this.setState({addedContacts: [value]})
   }
 
   render () {
@@ -40,7 +42,7 @@ export default class ContactList extends Component {
     const contactPickers = [
       <Picker.Item label='Add a contact' value='0' key="0" />
     ]
-    for (let contact of savedContacts.contacts) {
+    for (let contact of this.state.allContacts.contacts) {
       //console.log(contacts.contacts[i])
       //let contact = contacts.contacts[i]
       contactPickers.push(<Picker.Item label={contact} value={contact} key={contact}/>)
@@ -78,7 +80,7 @@ export default class ContactList extends Component {
           mode="dropdown"
           placeholder="Add a contact"
           selectedValue=''
-          onValueChange={this.addContact}
+          onValueChange={this.addContact.bind(this)}
         >
           {contactPickers}         
 
