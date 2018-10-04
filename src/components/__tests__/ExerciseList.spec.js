@@ -16,16 +16,16 @@ describe('ExerciseList', () => {
 
   beforeEach(() => {
     wrapper = shallow(<ExerciseList navigation={navigation}/>)
+    wrapper.instance().showToast = jest.fn()
   })
 
   it('renders correctly', () => {
     expect(toJson(wrapper.dive())).toMatchSnapshot()
   })
 
-  // TODO: Can delete from list
-
   describe('_remove', () => {
     it('removes from list', () => {
+
       wrapper.setState({exercises: [
         {name: 'Squat', sets: '4', reps: '12'},
         {name: 'Benchpress', sets: '4', reps: '12'},
@@ -37,7 +37,7 @@ describe('ExerciseList', () => {
       wrapper.instance()._remove(exerciseRemoved)
 
       expect(wrapper.state('exercises').indexOf(exerciseRemoved)).toEqual(-1)
-      expect(wrapper.state('exercises').size()).toEqual(3)
+      expect(wrapper.state('exercises')).toHaveLength(3)
     })
   })
 

@@ -16,10 +16,20 @@ export default class ExerciseList extends Component {
       ]
     }
 
+    this.showToast = this.showToast.bind(this)
+    this._add = this._add.bind(this)
   }
   
-  _remove() {
+  _remove(value) {
     // TODO: delete from state
+    this.setState(prevState => ({
+      exercises: prevState.exercises.filter(exercise => exercise.name !== value.name)
+    }))
+
+    this.showToast()
+  }
+
+  showToast() {
     Toast.show({
       type: 'warning',
       duration: 3000,
@@ -28,7 +38,7 @@ export default class ExerciseList extends Component {
   }
 
   _add() {
-
+    this.props.navigation.navigate('AddExercise')
   }
 
   render () {
@@ -53,10 +63,14 @@ export default class ExerciseList extends Component {
           dataArray={this.state.exercises}
           renderRow={(exercise) => 
             <ListItem>
-              <Left>
+              <Left
+                onPress={this._add}
+              >
                 <Text> { exercise.name }  </Text>
               </Left>
-              <Body>
+              <Body
+                onPress={this._add}
+              >
                 <Text> {exercise.reps} x {exercise.sets} </Text>
               </Body>
               <Right>
