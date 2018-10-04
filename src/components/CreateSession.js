@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import Moment from 'react-moment'
 
 import  { Button, Text, View, Container, Content, DatePicker, Picker, Form, Card, Footer, FooterTab, ScrollView, Header, Right, Left, Row, Toast, Icon, Input, Item, Label, List, ListItem, H1, H2} from 'native-base'
+
+import DateTimePicker from 'react-native-modal-datetime-picker'
 
 import AddExercise from './AddExercise.js'
 import ExerciseListEl from './ExerciseListEl.js'
@@ -18,20 +21,20 @@ class CreateSession extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      date: this.props.date | null,
+      date: null,
       name: null,
+      isDateTimePickerVisible: false
       exercises: [],
       showToast: false, 
       contacts: null
     }
 
-    this.setDate = this.setDate.bind(this)
     this.saveSession = this.saveSession.bind(this)
     this.validateSession = this.validateSession.bind(this)
-  }
 
-  setDate(newDate) {
-    this.setState({ date: newDate })
+    this._hideDateTimePicker = this._hideDateTimePicker.bind(this)
+    this._showDateTimePicker = this._showDateTimePicker.bind(this)
+    this._setDateAndTime = this._setDateAndTime.bind(this)
   }
 
   saveSession() {
@@ -74,9 +77,35 @@ class CreateSession extends Component {
     })
   }
 
+  _showDateTimePicker() {
+    this.setState({ isDateTimePickerVisible: true})
+  }
+
+  _hideDateTimePicker() {
+    this.setState({ isDateTimePickerVisible: false})
+  }
+
+  _setDateAndTime(date) {
+    this.setState({ date: date })
+    this._hideDateTimePicker()
+  }
+
   render () {
     const { navigate } = this.props.navigation
-    
+    var dateTimeText = ''
+
+    if (this.state.date != null) {
+      dateTimeText = 
+            <Moment 
+              element={Text}
+              format="DD.MM HH:mm"
+            > 
+              {this.state.date}
+            </Moment>
+    } else {
+      dateTimeText = <Text> Pick a date and time </Text>
+    }
+
     return (
       <Container>
         <Content padder scrollEnabled={true}>
@@ -88,14 +117,17 @@ class CreateSession extends Component {
             />
           </Item>
 
-          <Text> Date </Text>
+          <Text> Date and time </Text>
           <Item rounded>
-            <DatePicker
-              androidMode={"default"}
-              placeHolderText="Select date"
-              onDateChange={(date) => this.setDate({date})}
-              value={this.state.date}
-            />
+            <TouchableOpacity onPress={this._showDateTimePicker}>
+              {dateTimeText}
+            </TouchableOpacity>
+            <DateTimePicker
+              mode='datetime'
+              isVisible={this.state.isDateTimePickerVisible}
+              onConfirm={this._setDateAndTime}
+              onCancel={this._hideDateTimePicker}            />
+            
           </Item>
 
           <ExerciseList />
