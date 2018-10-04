@@ -11,40 +11,45 @@ export default class ContactList extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      allContacts: savedContacts,
-      addedContacts: ["Ole Nordmann", "Kari Nordmann"]
+      availableContacts: savedContacts,
+      addedContacts: ["Ola Nordmann", "Kari Nordmann"]
     }
 
-    this.getContacts = this.getContacts.bind(this)
+    this.getAll = this.getAll.bind(this)
     this.remove = this.remove.bind(this)
+    this.availableContacts = this.availableContacts.bind(this)
+    this.add = this.add.bind(this)
   }
 
-  getContacts() {
-    this.setState({ allContacts: ["Ole Nordmann", "Kari Nordmann"] })
+  getAll() {
+    // TODO: get from redux
+    this.setState({ availableContacs: savedContacts })
   }
 
   remove() {
     // TODO in redux, then update state
   }
 
-  addContact(value: string) {
-    console.log("Adding the contact")
+  add(value: string) {
     console.log(value)
-    this.setState(prevState => ({
-      addedContacts: [...prevState.addedContacts, value]
-    }))
-    //this.setState({addedContacts: [value]})
+    if (value !== '0') {
+      this.setState(prevState => ({
+        addedContacts: [...prevState.addedContacts, value]
+      }))
+    }
   }
 
-  render () {
+  // Filter out the contacts allready added, so that they can't be added twice
+  availableContacts() {
+    return this.state.availableContacts.contacts.filter(contact => this.state.addedContacts.indexOf(contact) === -1)
+  }
 
-    
+  render () {    
     const contactPickers = [
       <Picker.Item label='Add a contact' value='0' key="0" />
     ]
-    for (let contact of this.state.allContacts.contacts) {
-      //console.log(contacts.contacts[i])
-      //let contact = contacts.contacts[i]
+
+    for (let contact of this.availableContacts()) {
       contactPickers.push(<Picker.Item label={contact} value={contact} key={contact}/>)
     }
 
@@ -80,7 +85,7 @@ export default class ContactList extends Component {
           mode="dropdown"
           placeholder="Add a contact"
           selectedValue=''
-          onValueChange={this.addContact.bind(this)}
+          onValueChange={this.add}
         >
           {contactPickers}         
 
