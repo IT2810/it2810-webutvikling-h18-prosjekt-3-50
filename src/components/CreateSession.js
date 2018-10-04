@@ -80,16 +80,16 @@ class CreateSession extends Component {
     return (
       <Container>
         <Content padder scrollEnabled={true}>
-          <Item floatingLabel>
-            <Label> Name </Label>
+          <Text> Title </Text>
+          <Item rounded>
             <Input 
               onChangeText={(name) => this.setState({name})}
               value={this.state.name}
             />
           </Item>
 
-          <Item>
-            <Label> Date </Label>
+          <Text> Date </Text>
+          <Item rounded>
             <DatePicker
               androidMode={"default"}
               placeHolderText="Select date"

@@ -38,12 +38,12 @@ export default class ContactList extends Component {
 
     
     const contactPickers = [
-      <Picker.Item label='Add a contact' value='' />
+      <Picker.Item label='Add a contact' value='0' key="0" />
     ]
     for (let contact of savedContacts.contacts) {
       //console.log(contacts.contacts[i])
       //let contact = contacts.contacts[i]
-      contactPickers.push(<Picker.Item label={contact} value={contact} />)
+      contactPickers.push(<Picker.Item label={contact} value={contact} key={contact}/>)
     }
 
     return (
