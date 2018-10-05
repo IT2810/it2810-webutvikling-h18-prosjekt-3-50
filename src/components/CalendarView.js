@@ -16,11 +16,17 @@ class CalendarView extends Component {
     const interval = {key: 'interval', color: 'blue', selectedDotColor: 'blue'}
     const calestethic = {key: 'calestethic', color: 'green'}
 
+    const { navigate } = this.props.navigation
+
     return (
       <View>
         <Calendar
           markingType={'multi-dot'}
-          onDayLongPress={(day) => { console.log('selected day', day) }}
+          onDayLongPress={(day) => { 
+            navigate('CreateSession', {
+              date: day
+            })
+          }}
         />
       </View>
     )

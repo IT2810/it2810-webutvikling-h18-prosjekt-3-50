@@ -20,14 +20,18 @@ class CreateSession extends Component {
 
   constructor(props, context) {
     super(props, context)
+    // If navigation prop has params, set the propDate in params as propDate
+    let propDate = this.props.navigation.state.params != null ? this.props.navigation.state.params.date : null
     this.state = {
-      date: null,
+      // If propDate isn't null, set it as date. If it is, set today as date
+      date: propDate != null ? propDate : new Date(),
       name: null,
       isDateTimePickerVisible: false,
       exercises: [],
       showToast: false, 
       contacts: null
     }
+
 
     this.saveSession = this.saveSession.bind(this)
     this.validateSession = this.validateSession.bind(this)
