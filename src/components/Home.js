@@ -16,9 +16,10 @@ class Home extends Component {
 
     return (
       <View>
-        <CalendarView />
-        <ShowSession />
 
+        <CalendarView navigation={this.props.navigation}/>
+
+        <ShowSession />
         <Button 
           primary
           large

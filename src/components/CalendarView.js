@@ -48,8 +48,7 @@ class CalendarView extends Component {
     if (this.state.sessionDates[date.dateString] != null) {
       this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true, marked: true}}}) 
     } else {
-      this.setState({status: 'the datestring does not exists'})
-
+      
       this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true}}}) 
     }
   }
@@ -60,7 +59,12 @@ class CalendarView extends Component {
         <Calendar
           markedDates={{...this.state.markedDates}}
           onDayLongPress={(day) => { console.log('selected day', day) }}
-          onDayPress={this.selectDate}
+          onDayLongPress={(day) => { 
+            navigate('CreateSession', {
+              date: day
+            })
+          }}
+
         />
       </View>
     )
