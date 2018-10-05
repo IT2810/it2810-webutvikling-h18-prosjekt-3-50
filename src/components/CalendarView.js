@@ -1,26 +1,66 @@
 import React, { Component } from 'react'
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
 import { View, Text } from 'native-base'
+import Moment from 'react-moment'
 
 class CalendarView extends Component {
-  getworkouts () {
-  	return ''
+
+  constructor(props, context) {
+    super(props, context)
+
+    this.state = {
+      markedDates: {},
+      sessionDates: {},
+      date: new Date(),
+    }
+
+    this.selectDate = this.selectDate.bind(this)
+    this.getSessions = this.getSessions.bind(this)
+    this.addSession = this.addSession.bind(this)
+  }
+
+  componentDidMount() {
+    let today = new Date().dateString
+    this.setState({
+      sessionDates: this.getSessions(),
+      markedDates: this.getSessions()
+
+    })
+  }
+
+  getSessions () {
+  	return {
+      '2018-10-02': {marked: true},
+      '2018-10-06': {marked: true},
+      '2018-10-19': {marked: true}
+    }
   }
 
   addSession (date) {
   	console.log('Open view to add session on that date')
   }
 
-  render () {
-    const strength = {key: 'strength', color: 'red', selectedDotColor: 'blue'}
-    const interval = {key: 'interval', color: 'blue', selectedDotColor: 'blue'}
-    const calestethic = {key: 'calestethic', color: 'green'}
+  selectDate (date) {
+    // TODO: Update selected date in store
+   
+    this.setState({date: date})
 
+    if (this.state.sessionDates[date.dateString] != null) {
+      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true, marked: true}}}) 
+    } else {
+      this.setState({status: 'the datestring does not exists'})
+
+      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true}}}) 
+    }
+  }
+
+  render () {
     return (
       <View>
         <Calendar
-          markingType={'multi-dot'}
+          markedDates={{...this.state.markedDates}}
           onDayLongPress={(day) => { console.log('selected day', day) }}
+          onDayPress={this.selectDate}
         />
       </View>
     )

@@ -23,7 +23,7 @@ class CreateSession extends Component {
     this.state = {
       date: null,
       name: null,
-      isDateTimePickerVisible: false
+      isDateTimePickerVisible: false,
       exercises: [],
       showToast: false, 
       contacts: null
