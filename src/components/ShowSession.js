@@ -40,28 +40,21 @@ class ShowSession extends Component {
     } else if (session.dateTime.getDate() == today) {
       return <Text>Todays session</Text>
     } else {
-      return <Text> Session the 
-        <Moment element={Text} format="DD.MM">
-            {session.dateTime}
-          </Moment> 
-        </Text>
-    } 
-
-  }
-
-  getTimeCount(dateTime) {
-    var now = new Date()
-    if (dateTime < now) {
-      return <Moment element={Text} toNow>
-        {dateTime}
-      </Moment>
-    } else {
-      return <Moment element={Text} fromNow>
-        {dateTime}
-      </Moment>
-
+      return <Text>
+        <Text>Date: </Text>
+        <Moment element={Text} format="D. MMMM">
+          {session.dateTime}
+        </Moment>
+      </Text>
     }
+
   }
+
+  getTimeCount = (dateTime) => (
+    <Moment element={Text} fromNow={new Date() > dateTime} toNow={new Date() <= dateTime}>
+      {dateTime}
+    </Moment>
+  )
 
   render() {
     const date = this.getSelectedDate()
@@ -79,30 +72,26 @@ class ShowSession extends Component {
     return (
       <Card>
         <CardItem header bordered>
-            {dateText}
+          <Body>
+              {dateText}
+          </Body>
+          <Right>
+            <Text> ( {timeCount} ) </Text>
+          </Right>
+        </CardItem>
+        <CardItem bordered>
+            <Text>
+              <Text>Time: </Text>
+              <Moment element={Text} format="HH:mm">
+                {session.dateTime}
+              </Moment>
+            </Text>
         </CardItem>
         <CardItem bordered>
           <Text>Title: {session.name} </Text>
         </CardItem>
         <CardItem bordered>
-          <Body>
-            <Text>
-              Time: 
-              <Moment element={Text} format="HH:mm">
-                {session.dateTime}
-              </Moment>
-            </Text>
-          </Body>
-          <Right>
-            <Text> 
-              (  
-              {timeCount}
-              )
-            </Text>
-          </Right>
-        </CardItem>
-        <CardItem bordered>
-          <Text> 
+          <Text>
             With: {trainingPartners}
           </Text>
         </CardItem>

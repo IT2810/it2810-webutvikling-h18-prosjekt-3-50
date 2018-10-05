@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { List, ListItem, Text, Left, Right, Button, View, Row, H2, Picker, Icon } from 'native-base'
+import { List, ListItem, Text, Left, Right, Button, View, Row, Picker, Icon, Card } from 'native-base'
 
 const savedContacts = require('../assets/contacts.json')
 
@@ -42,10 +42,8 @@ export default class ContactList extends Component {
     return this.state.availableContacts.filter(contact => this.state.addedContacts.indexOf(contact) === -1)
   }
 
-  render () {    
-    const contactPickers = [
-      <Picker.Item label='Add a contact' value='0' key="0" />
-    ]
+  render () {
+    const contactPickers = []
 
     for (let contact of this.availableContacts()) {
       contactPickers.push(<Picker.Item label={contact} value={contact} key={contact}/>)
@@ -56,14 +54,29 @@ export default class ContactList extends Component {
 
         <Row style={{marginTop: 16}}>
           <Left>
-            <H2>Contacts</H2>
+            <Text style={styles.inputTitle}>Contacts</Text>
           </Left>
-        </Row>
+          <Right>
+            <Button
+              primary
+              block
+            >
+              <Picker
+                textStyle={{ color: "#ffffff" }}
+                mode="dropdown"
+                placeholder="ADD CONTACT"
+                selectedValue=''
+                onValueChange={this._add.bind(this)}
+              >
+                {contactPickers}
 
-        <List
-          dataArray={this.state.addedContacts}
-          renderRow={(contact) => 
-            <ListItem>
+              </Picker>
+            </Button>
+          </Right>
+        </Row>
+        <Card style={styles.cardWithList}>
+          {this.state.addedContacts.map((contact, index) => (
+            <ListItem key={index}>
               <Left>
                 <Text> {contact} </Text>
               </Left>
@@ -76,20 +89,20 @@ export default class ContactList extends Component {
                 </Button>
               </Right>
             </ListItem>
-          }
-        >
-        </List>
-
-        <Picker
-          mode="dropdown"
-          placeholder="Add a contact"
-          selectedValue=''
-          onValueChange={this._add.bind(this)}
-        >
-          {contactPickers}         
-
-        </Picker>
+          ))}
+        </Card>
       </View>
     )
   }
 }
+const styles = StyleSheet.create ({
+  cardWithList: {
+    marginTop: '5%',
+    marginBottom: '5%'
+  },
+  inputTitle: {
+    lineHeight: 45,
+    fontSize: 30,
+    fontWeight: '600'
+  }
+})

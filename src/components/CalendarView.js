@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
+import { StyleSheet } from 'react-native'
 import { View, Text } from 'native-base'
 import Moment from 'react-moment'
 
@@ -42,24 +43,25 @@ class CalendarView extends Component {
 
   selectDate (date) {
     // TODO: Update selected date in store
-   
+
     this.setState({date: date})
 
     if (this.state.sessionDates[date.dateString] != null) {
-      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true, marked: true}}}) 
+      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true, marked: true}}})
     } else {
-      
-      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true}}}) 
+
+      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true}}})
     }
   }
 
   render () {
+    const { navigate } = this.props.navigation
     return (
-      <View>
+      <View style={styles.calendarContainer}>
         <Calendar
           markedDates={{...this.state.markedDates}}
           onDayLongPress={(day) => { console.log('selected day', day) }}
-          onDayLongPress={(day) => { 
+          onDayLongPress={(day) => {
             navigate('CreateSession', {
               date: day
             })
@@ -72,3 +74,10 @@ class CalendarView extends Component {
 }
 
 export default CalendarView
+
+const styles = StyleSheet.create ({
+  calendarContainer: {
+    marginTop: '5%',
+    marginBottom: '5%'
+  }
+})

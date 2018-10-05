@@ -76,6 +76,7 @@ class CreateSession extends Component {
       text: text,
       style: {
         margin: 8,
+        marginTop: 20,
         padding: 16
       }
     })
@@ -103,25 +104,27 @@ class CreateSession extends Component {
             <Moment
               element={Text}
               format="DD.MM HH:mm"
+              style={styles.dateAndTimeText}
             >
               {this.state.date}
             </Moment>
     } else {
-      dateTimeText = <Text> Pick a date and time </Text>
+      dateTimeText = <Text style={styles.dateAndTimeText}> Pick a date and time </Text>
     }
 
     return (
       <Container>
         <Content padder scrollEnabled={true}>
-          <Text> Title </Text>
+          <Text style={styles.inputTitle}>Title</Text>
           <Item rounded>
             <Input
+              style={styles.titleText}
               onChangeText={(name) => this.setState({name})}
               value={this.state.name}
             />
           </Item>
 
-          <Text> Date and time </Text>
+          <Text style={styles.inputTitle}> Date and time </Text>
           <Item rounded>
             <TouchableOpacity onPress={this._showDateTimePicker}>
               {dateTimeText}
@@ -134,10 +137,15 @@ class CreateSession extends Component {
 
           </Item>
 
-          <ExerciseList />
+          <View style={styles.exerciseListConatiner}>
+            <ExerciseList />
+          </View>
+          <View style={styles.contactListConatiner}>
+            <ContactList />
+          </View>
+        </Content>
 
-          <ContactList />
-
+        <View style={styles.buttonContainer}>
           <Button
             success
             large
@@ -146,9 +154,7 @@ class CreateSession extends Component {
           >
             <Text> SAVE SESSION </Text>
           </Button>
-
-        </Content>
-
+        </View>
       </Container>
     )
   }
@@ -157,10 +163,41 @@ class CreateSession extends Component {
 export default CreateSession
 
 const styles = StyleSheet.create ({
-  inline: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row'
+  exerciseListConatiner: {
+    marginTop: '10%'
+  },
+  contactListConatiner: {
+    marginTop: '10%',
+    marginBottom: '30%' // room for save session button
+  },
+  inputTitle: {
+    marginTop: '5%',
+    marginBottom: '2%',
+    lineHeight: 45,
+    fontSize: 30,
+    fontWeight: '600'
+  },
+  titleText: {
+    paddingLeft: '7%',
+    paddingRight: '7%',
+    fontSize: 22
+  },
+  dateAndTimeText: {
+    paddingLeft: '7%',
+    paddingRight: '7%',
+    fontSize: 22,
+    lineHeight: 42
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: '0%',
+    left: '10%',
+    width: '80%',
+    marginBottom: '7%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 4
   }
-
 })

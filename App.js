@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import store from './store'
-import { StyleSheet, SafeAreaView } from 'react-native'
 import Expo, { Font } from 'expo'
 
 import CalendarView from './src/components/CalendarView.js'
@@ -9,9 +8,9 @@ import CreateSession from './src/components/CreateSession.js'
 import AddExercise from './src/components/AddExercise.js'
 import Home from './src/components/Home.js'
 
-import { Button, Container, Header, Icon, StyleProvider, Root} from 'native-base'
-import getTheme from './native-base-theme/components'
-import material from './native-base-theme/variables/material'
+import { getTheme, material, Button, Container, Header, Icon, StyleProvider, Root} from 'native-base'
+//import getTheme from './native-base-theme/components'
+//import material from './native-base-theme/variables/material'
 
 import { createStackNavigator } from 'react-navigation'
 
@@ -21,7 +20,7 @@ export default class App extends Component {
     super(props);
     this.state = { loading: true };
   }
-  
+
   async componentWillMount () {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf')
