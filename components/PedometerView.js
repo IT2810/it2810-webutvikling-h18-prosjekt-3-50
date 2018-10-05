@@ -1,7 +1,9 @@
 import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { View, Text, Container, Header, Content, Form, Item, Input, Button, Label, Card, CardItem, Toast, H3, H4, Row} from 'native-base';
+
 
 export default class PedometerSensor extends React.Component {
   state = {
@@ -66,7 +68,9 @@ render() {
           Working
         </Text>
       <Text>
-        Last 24 hours: {this.state.pastStepCount}
+        <Header>
+          Last 24 hours: {this.state.pastStepCount}
+        </Header>
       </Text>
       <Text>
         Steps: {this.state.currentStepCount}
@@ -82,7 +86,9 @@ render() {
         Error: Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
       </Text>
       <Text>
-        Last 24 hours: {this.state.pastStepCount}
+        <Header>
+          Last 24 hours: {this.state.pastStepCount}
+        </Header>
       </Text>
       <Text>
         Steps: {this.state.currentStepCount}
