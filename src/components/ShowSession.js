@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Text } from 'native-base'
+import { Card, Text, CardItem, Body, Right, Left } from 'native-base'
 import Moment from 'react-moment'
 
 class ShowSession extends Component {
@@ -8,7 +8,9 @@ class ShowSession extends Component {
     super(props, context)
 
     this.getSession = this.getSession.bind(this)
-    this.getSElectedDate = this.getSelectedDate.bind(this)
+    this.getSelectedDate = this.getSelectedDate.bind(this)
+    this.getDateText = this.getDateText.bind(this)
+    this.getTimeCount = this.getTimeCount.bind(this)
   }
 
   getSelectedDate() {
@@ -20,7 +22,7 @@ class ShowSession extends Component {
     // TODO: get from redux
     return {
       name: "Test Exercise",
-      dateTime: "2018-10-05T12:59-0500",
+      dateTime: new Date(2018, 9, 2, 16, 30, 0, 0),
       contacts: ["Kari Nordmann", "Pål Hansen", "Line Kristiansen"],
       exercises: [
         {name: 'Squat', sets: '4', reps: '12'},
@@ -31,26 +33,84 @@ class ShowSession extends Component {
     }
   }
 
+  getDateText(session) {
+    let today = new Date().getDate()
+    if (session == null) {
+      return <Text>No session planned for today </Text>
+    } else if (session.dateTime.getDate() == today) {
+      return <Text>Todays session</Text>
+    } else {
+      return <Text> Session the 
+        <Moment element={Text} format="DD.MM">
+            {session.dateTime}
+          </Moment> 
+        </Text>
+    } 
+
+  }
+
+  getTimeCount(dateTime) {
+    var now = new Date()
+    if (dateTime < now) {
+      return <Moment element={Text} toNow>
+        {dateTime}
+      </Moment>
+    } else {
+      return <Moment element={Text} fromNow>
+        {dateTime}
+      </Moment>
+
+    }
+  }
+
   render() {
     const date = this.getSelectedDate()
     const session = this.getSession(date)
     const trainingPartners = session.contacts.join(', ')
     const exercises = session.exercises.map(exercise => exercise.name).join(', ')
+
+    console.log("This is the session")
+    console.log(session)
+
+    const dateText = this.getDateText(session)
+
+    const timeCount = this.getTimeCount(session.dateTime)
+
     return (
       <Card>
-        <Text> {session.name} </Text>
-        <Moment element={Text} format="DD.MM HH:mm">
-          {session.date}
-        </Moment>
-
-        <Text> 
-          Trainingpartners: {trainingPartners}
-        </Text>
-
-        <Text>
-          Exercises: {exercises}
-        </Text>
-
+        <CardItem header bordered>
+            {dateText}
+        </CardItem>
+        <CardItem bordered>
+          <Text>Title: {session.name} </Text>
+        </CardItem>
+        <CardItem bordered>
+          <Body>
+            <Text>
+              Time: 
+              <Moment element={Text} format="HH:mm">
+                {session.dateTime}
+              </Moment>
+            </Text>
+          </Body>
+          <Right>
+            <Text> 
+              (  
+              {timeCount}
+              )
+            </Text>
+          </Right>
+        </CardItem>
+        <CardItem bordered>
+          <Text> 
+            With: {trainingPartners}
+          </Text>
+        </CardItem>
+        <CardItem bordered>
+          <Text>
+            Exercises: {exercises}
+          </Text>
+        </CardItem>
       </Card>
     )
   }
