@@ -28,7 +28,7 @@ class CreateSession extends Component {
       name: null,
       isDateTimePickerVisible: false,
       exercises: [],
-      showToast: false, 
+      showToast: false,
       contacts: null
     }
 
@@ -99,11 +99,11 @@ class CreateSession extends Component {
     var dateTimeText = ''
 
     if (this.state.date != null) {
-      dateTimeText = 
-            <Moment 
+      dateTimeText =
+            <Moment
               element={Text}
               format="DD.MM HH:mm"
-            > 
+            >
               {this.state.date}
             </Moment>
     } else {
@@ -115,7 +115,7 @@ class CreateSession extends Component {
         <Content padder scrollEnabled={true}>
           <Text> Title </Text>
           <Item rounded>
-            <Input 
+            <Input
               onChangeText={(name) => this.setState({name})}
               value={this.state.name}
             />
@@ -131,7 +131,7 @@ class CreateSession extends Component {
               isVisible={this.state.isDateTimePickerVisible}
               onConfirm={this._setDateAndTime}
               onCancel={this._hideDateTimePicker}            />
-            
+
           </Item>
 
           <ExerciseList />
@@ -160,7 +160,7 @@ const styles = StyleSheet.create ({
   inline: {
     display: 'flex',
     flexWrap: 'wrap',
-    flexDirection: 'row'  
+    flexDirection: 'row'
   }
-  
+
 })

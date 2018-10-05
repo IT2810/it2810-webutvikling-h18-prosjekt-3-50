@@ -16,6 +16,12 @@ import material from './native-base-theme/variables/material'
 import { createStackNavigator } from 'react-navigation'
 
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
+  
   async componentWillMount () {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf')
@@ -24,6 +30,9 @@ export default class App extends Component {
   }
 
   render () {
+    if (this.state.loading) {
+      return <Expo.AppLoading />;
+    }
     return (
       <Provider store={store}>
         <Root>
@@ -50,9 +59,8 @@ const RootStack = createStackNavigator(
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
-        fontWeight: 'bold' 
-      } 
+        fontWeight: 'bold'
+      }
     }
   }
 )
-
