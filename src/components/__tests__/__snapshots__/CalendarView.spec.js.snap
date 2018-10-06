@@ -19,6 +19,8 @@ exports[`CalendarView renders correctly 1`] = `
       }
     }
     onDayLongPress={[Function]}
+    onDayPress={[Function]}
+    testID="calendar"
   />
 </ViewNB>
 `;

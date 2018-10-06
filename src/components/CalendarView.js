@@ -38,34 +38,37 @@ class CalendarView extends Component {
   }
 
   addSession (date) {
-  	console.log('Open view to add session on that date')
+    this.props.navigation.navigate(
+      'CreateSession',
+      {
+        date: date
+      }
+    )
   }
 
   selectDate (date) {
     // TODO: Update selected date in store
-   
-    this.setState({date: date})
 
-    if (this.state.sessionDates[date.dateString] != null) {
-      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true, marked: true}}}) 
-    } else {
-      
-      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true}}}) 
+    this.setState({date: date})
+    let dateString = date.dateString
+
+    if (this.state.sessionDates[dateString] != null) {
+      this.setState({markedDates: {...this.state.sessionDates, [dateString]: {selected: true, marked: true}}}) 
+    } else { 
+      this.setState({markedDates: {...this.state.sessionDates, [dateString]: {selected: true}}}) 
     }
   }
 
   render () {
+    const { navigate } = this.props.navigation
+    
     return (
       <View>
         <Calendar
+          testID={'calendar'}
           markedDates={{...this.state.markedDates}}
-          onDayLongPress={(day) => { console.log('selected day', day) }}
-          onDayLongPress={(day) => { 
-            navigate('CreateSession', {
-              date: day
-            })
-          }}
-
+          onDayLongPress={(date) => {this.addSession(date)}}
+          onDayPress={(date) => this.selectDate(date)}
         />
       </View>
     )

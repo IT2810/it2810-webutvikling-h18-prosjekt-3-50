@@ -20,9 +20,7 @@ describe('AddExercise', () => {
   })
 
   it('renders correctly', () => {
-    const wrapper = shallow(<AddExercise />).dive()
-
-    expect(toJson(wrapper)).toMatchSnapshot()
+    expect(toJson(wrapper.dive())).toMatchSnapshot()
   })
   
   describe('addExercise', () => {
