@@ -29,6 +29,7 @@ class CalendarView extends Component {
   }
 
   getSessions () {
+    // TODO: get from store
   	return {
       '2018-10-02': {marked: true},
       '2018-10-06': {marked: true},

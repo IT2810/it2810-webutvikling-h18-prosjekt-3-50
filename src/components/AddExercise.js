@@ -24,6 +24,8 @@ class AddExercise extends Component {
   addExercise() {
     // TODO save in state with redux
 
+
+
     if (this.validateExercise()) {
       this.props.navigation.navigate('SessionForm')
     }
@@ -57,13 +59,14 @@ class AddExercise extends Component {
   render() {
 
     return (
-      <Container>
-        <Content padder>
-          <View padder>
+      <Container testID={"container"}>
+        <Content padder testID={"content"}>
+          <View padder testID={"view"}>
             <Item floatingLabel>
               <Label> Name </Label>
               <Input
-                onChangeText={(name) => this.setState({name})}
+                onChangeText={(name) => {this.setState({name: name})}}
+                testID={"nameInput"}
                 value={this.state.name}
               />
             </Item>
@@ -84,12 +87,13 @@ class AddExercise extends Component {
                 <Label> sets </Label>
                 <Input 
                   onChangeText={(sets) => this.setState({sets})}
+                  testID={"setsInput"}
                   value={this.state.sets}
                 />
               </Item>
 
               <Text
-                style={{color: 'grey', textAlignVertical: 'bottom', fontSize: 16}}
+                style={styles.textLabel}
               > x </Text>
               <Item
                 floatingLabel
@@ -99,12 +103,13 @@ class AddExercise extends Component {
                 <Label> reps </Label>
                 <Input 
                   onChangeText={(reps) => this.setState({reps})}
+                  testID={"repsInput"}
                   value={this.state.reps}
                 />
               </Item>
 
               <Text
-                style={{color: 'grey', textAlignVertical: 'bottom', fontSize: 16}}
+                style={styles.textLabel}
               > x </Text>
 
               <Item
@@ -115,6 +120,7 @@ class AddExercise extends Component {
                 <Label> kg </Label>
                 <Input
                   onChangeText={(kg) => this.setState({kg})}
+                  testID={"kgInput"}
                   value={this.state.kg}
                 />
               </Item>
@@ -141,6 +147,12 @@ class AddExercise extends Component {
 export default AddExercise
 
 const styles = StyleSheet.create ({
+
+  textLabel: {
+    color: 'grey',
+    textAlignVertical: 'bottom',
+    fontSize: 16
+  }
 
 })
 
