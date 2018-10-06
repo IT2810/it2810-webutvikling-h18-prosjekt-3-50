@@ -1,6 +1,3 @@
-
-
-
 export function findByID(wrapper, testID) {
   if (wrapper.props() && wrapper.props().testID === testID) {
     return wrapper

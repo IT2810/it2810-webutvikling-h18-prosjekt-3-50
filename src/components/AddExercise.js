@@ -24,12 +24,11 @@ class AddExercise extends Component {
   addExercise() {
     // TODO save in state with redux
 
-
+    console.log("Add exercise is called")
 
     if (this.validateExercise()) {
       this.props.navigation.navigate('SessionForm')
     }
-
   }
 
   validateExercise() {
