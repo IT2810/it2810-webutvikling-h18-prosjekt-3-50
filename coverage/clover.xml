@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1538830439794" clover="3.2.0">
-  <project timestamp="1538830439794" name="All files">
+<coverage generated="1538831282260" clover="3.2.0">
+  <project timestamp="1538831282260" name="All files">
     <metrics statements="211" coveredstatements="20" conditionals="58" coveredconditionals="7" methods="34" coveredmethods="8" elements="303" coveredelements="35" complexity="0" loc="211" ncloc="211" packages="4" files="15" classes="15">
       <package name="it2810-webutvikling-h18-prosjekt-3-50">
         <metrics statements="21" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -77,11 +77,11 @@
         <metrics statements="170" coveredstatements="20" conditionals="46" coveredconditionals="7" methods="30" coveredmethods="8"/>
         <file name="AddExercise.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/components/AddExercise.js">
           <metrics statements="23" coveredstatements="20" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="8"/>
-          <line num="11" count="12" type="stmt"/>
-          <line num="12" count="12" type="stmt"/>
-          <line num="19" count="12" type="stmt"/>
-          <line num="20" count="12" type="stmt"/>
-          <line num="21" count="12" type="stmt"/>
+          <line num="11" count="14" type="stmt"/>
+          <line num="12" count="14" type="stmt"/>
+          <line num="19" count="14" type="stmt"/>
+          <line num="20" count="14" type="stmt"/>
+          <line num="21" count="14" type="stmt"/>
           <line num="27" count="2" type="stmt"/>
           <line num="29" count="2" type="cond" truecount="2" falsecount="0"/>
           <line num="30" count="1" type="stmt"/>
@@ -94,7 +94,7 @@
           <line num="44" count="0" type="stmt"/>
           <line num="45" count="0" type="stmt"/>
           <line num="51" count="0" type="stmt"/>
-          <line num="60" count="16" type="stmt"/>
+          <line num="60" count="19" type="stmt"/>
           <line num="67" count="1" type="stmt"/>
           <line num="88" count="1" type="stmt"/>
           <line num="104" count="1" type="stmt"/>
