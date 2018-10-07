@@ -13,7 +13,9 @@ exports[`ExerciseList renders correctly 1`] = `
     <Styled(Right)>
       <Styled(Button)
         block={true}
+        onPress={[Function]}
         primary={true}
+        testID="addExerciseButton"
       >
         <Styled(Text)>
            ADD EXERCISE 

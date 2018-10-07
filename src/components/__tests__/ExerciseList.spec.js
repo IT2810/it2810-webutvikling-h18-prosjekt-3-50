@@ -7,14 +7,18 @@ import { shallow } from 'enzyme'
 import ExerciseList from '../ExerciseList'
 import toJson from 'enzyme-to-json';
 import 'native-base'
+import { findByID } from './testUtils.js'
+
 
 import renderer from 'react-test-renderer';
 
 describe('ExerciseList', () => {
   let wrapper
-  const navigation = {navigate: jest.fn()}
-
+  let navigateMock
+  
   beforeEach(() => {
+    navigateMock = jest.fn()
+    const navigation = {navigate: navigateMock}
     wrapper = shallow(<ExerciseList navigation={navigation}/>)
     wrapper.instance().showToast = jest.fn()
   })
@@ -42,9 +46,22 @@ describe('ExerciseList', () => {
   })
 
   describe('_add', () => {
-    it('navigates to AddExercise', () => {
+    it('called when clicking on add exercise button', () => {
+      let _addMock = jest.fn()
 
-      // TODO
+      wrapper.instance()._add = _addMock
+      wrapper.instance().forceUpdate()
+
+      let addExerciseButton = findByID(wrapper, 'addExerciseButton')
+      addExerciseButton.props().onPress()
+
+      expect(_addMock.mock.calls.length).toBe(1)
+    })
+    
+    it('navigates to AddExercise', () => {
+      wrapper.instance()._add()
+
+      expect(navigateMock.mock.calls.length).toBe(1)
     })
 
   })

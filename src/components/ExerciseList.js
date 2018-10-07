@@ -53,6 +53,8 @@ export default class ExerciseList extends Component {
             <Button
               primary
               block
+              onPress={this._add}
+              testID={'addExerciseButton'}
             >
               <Text> ADD EXERCISE </Text>
             </Button>
@@ -63,14 +65,10 @@ export default class ExerciseList extends Component {
           dataArray={this.state.exercises}
           renderRow={(exercise) => 
             <ListItem>
-              <Left
-                onPress={this._add}
-              >
+              <Left>
                 <Text> { exercise.name }  </Text>
               </Left>
-              <Body
-                onPress={this._add}
-              >
+              <Body>
                 <Text> {exercise.reps} x {exercise.sets} </Text>
               </Body>
               <Right>
