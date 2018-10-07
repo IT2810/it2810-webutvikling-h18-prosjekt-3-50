@@ -15,7 +15,6 @@ beforeEach(() => {
 })
 
 describe('App snapshot', () => {
-
   /*  jest.useFakeTimers();
   beforeEach(() => {
     NavigationTestUtils.resetInternalState();
