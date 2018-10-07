@@ -25,6 +25,7 @@ class Home extends Component {
           large
           block
           onPress={() => this.props.navigation.navigate('CreateSession')}
+          testID={'addSessionButton'}
         >
           <Text> ADD SESSION </Text>
         </Button>

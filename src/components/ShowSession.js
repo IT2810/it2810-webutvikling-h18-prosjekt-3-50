@@ -69,9 +69,6 @@ class ShowSession extends Component {
     const trainingPartners = session.contacts.join(', ')
     const exercises = session.exercises.map(exercise => exercise.name).join(', ')
 
-    console.log("This is the session")
-    console.log(session)
-
     const dateText = this.getDateText(session)
 
     const timeCount = this.getTimeCount(session.dateTime)
