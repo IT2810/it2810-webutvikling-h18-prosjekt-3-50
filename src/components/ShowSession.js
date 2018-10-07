@@ -3,8 +3,7 @@ import { Card, Text, CardItem, Body, Right, Left } from 'native-base'
 import Moment from 'react-moment'
 
 class ShowSession extends Component {
-
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
 
     this.getSession = this.getSession.bind(this)
@@ -13,42 +12,42 @@ class ShowSession extends Component {
     this.getTimeCount = this.getTimeCount.bind(this)
   }
 
-  getSelectedDate() {
+  getSelectedDate () {
     // Get selected date from store
     return new Date()
   }
 
-  getSession(date) {
+  getSession (date) {
     // TODO: get from redux
     return {
-      name: "Test Exercise",
+      name: 'Test Exercise',
       dateTime: new Date(2018, 9, 2, 16, 30, 0, 0),
-      contacts: ["Kari Nordmann", "Pål Hansen", "Line Kristiansen"],
+      contacts: ['Kari Nordmann', 'Pål Hansen', 'Line Kristiansen'],
       exercises: [
-        {name: 'Squat', sets: '4', reps: '12'},
-        {name: 'Benchpress', sets: '4', reps: '12'},
-        {name: 'Pullup', sets: '4', reps: '12'},
-        {name: 'Row', sets: '4', reps: '12'}
+        { name: 'Squat', sets: '4', reps: '12' },
+        { name: 'Benchpress', sets: '4', reps: '12' },
+        { name: 'Pullup', sets: '4', reps: '12' },
+        { name: 'Row', sets: '4', reps: '12' }
       ]
     }
   }
 
-  getDateText(session) {
+  getDateText (session) {
     let today = new Date().getDate()
     if (session == null) {
       return <Text>No session planned for today </Text>
     } else if (session.dateTime.getDate() == today) {
       return <Text>Todays session</Text>
     } else {
-      return <Text> Session the 
-          <Moment element={Text} format="DD.MM">
-            {session.dateTime}
-          </Moment> 
-        </Text>
+      return <Text> Session the
+        <Moment element={Text} format="DD.MM">
+          {session.dateTime}
+        </Moment>
+      </Text>
     }
   }
 
-  getTimeCount(dateTime) {
+  getTimeCount (dateTime) {
     var now = new Date()
     if (dateTime < now) {
       return <Moment element={Text} toNow>
@@ -61,7 +60,7 @@ class ShowSession extends Component {
     }
   }
 
-  render() {
+  render () {
     const date = this.getSelectedDate()
     const session = this.getSession(date)
     const trainingPartners = session.contacts.join(', ')
@@ -72,7 +71,7 @@ class ShowSession extends Component {
     return (
       <Card>
         <CardItem header bordered>
-            {dateText}
+          {dateText}
         </CardItem>
         <CardItem bordered>
           <Text>Title: {session.name} </Text>
@@ -80,22 +79,22 @@ class ShowSession extends Component {
         <CardItem bordered>
           <Body>
             <Text>
-              Time: 
+              Time:
               <Moment element={Text} format="HH:mm">
                 {session.dateTime}
               </Moment>
             </Text>
           </Body>
           <Right>
-            <Text> 
-              (  
+            <Text>
+              (
               {timeCount}
               )
             </Text>
           </Right>
         </CardItem>
         <CardItem bordered>
-          <Text> 
+          <Text>
             With: {trainingPartners}
           </Text>
         </CardItem>

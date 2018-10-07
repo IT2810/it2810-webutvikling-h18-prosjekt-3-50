@@ -5,13 +5,13 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import CalendarView from '../CalendarView'
-import toJson from 'enzyme-to-json';
+import toJson from 'enzyme-to-json'
 import 'native-base'
 import { findByID } from '../../testUtils.js'
 
 describe('CalendarView', () => {
   let wrapper
-  const navigation = {navigate: jest.fn()}
+  const navigation = { navigate: jest.fn() }
 
   beforeEach(() => {
     wrapper = shallow(<CalendarView navigation={navigation}/>)
@@ -37,7 +37,7 @@ describe('CalendarView', () => {
 
     it('calls navigate with date as param', () => {
       const navigateMock = jest.fn()
-      const navigation = {navigate: navigateMock}
+      const navigation = { navigate: navigateMock }
       const wrapper = shallow(<CalendarView navigation={navigation} />)
 
       let date = findByID(wrapper, 'calendar')
@@ -67,7 +67,7 @@ describe('CalendarView', () => {
 
     it('setting date in state', () => {
       let dateString = '2018-10-18'
-      let date = {dateString: dateString}
+      let date = { dateString: dateString }
       let calendar = findByID(wrapper, 'calendar')
       calendar.props().onDayPress(date)
 
@@ -76,7 +76,7 @@ describe('CalendarView', () => {
 
     it('add date to markedDates with select as true', () => {
       let dateString = '2018-10-18'
-      let date = {dateString: dateString}
+      let date = { dateString: dateString }
       let calendar = findByID(wrapper, 'calendar')
       calendar.props().onDayPress(date)
 
@@ -86,10 +86,10 @@ describe('CalendarView', () => {
 
     it('set selected date as marked if it is marked', () => {
       let dateString = '2018-10-18'
-      let date = {dateString: dateString}
-      let sessionDateObject = {[dateString]: {marked: true}} 
+      let date = { dateString: dateString }
+      let sessionDateObject = { [dateString]: { marked: true } }
       wrapper.setState({
-        sessionDates: sessionDateObject, 
+        sessionDates: sessionDateObject,
         markedDates: {}
       })
 

@@ -14,12 +14,11 @@ import material from './native-base-theme/variables/material'
 import { createStackNavigator } from 'react-navigation'
 
 export default class App extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
+  constructor (props) {
+    super(props)
+    this.state = { loading: true }
   }
-  
+
   async componentWillMount () {
     // Needed to avoid error regarding font on Iphone
     await Font.loadAsync({
@@ -30,7 +29,7 @@ export default class App extends Component {
 
   render () {
     if (this.state.loading) {
-      return <Expo.AppLoading />;
+      return <Expo.AppLoading />
     }
     return (
       <Provider store={store}>
@@ -48,7 +47,7 @@ const RootStack = createStackNavigator(
   {
     Home: { screen: Home },
     CreateSession: { screen: CreateSession },
-    AddExercise: { screen: AddExercise}
+    AddExercise: { screen: AddExercise }
   },
   {
     initialRouteName: 'Home',

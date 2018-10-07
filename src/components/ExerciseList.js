@@ -3,22 +3,22 @@ import { StyleSheet } from 'react-native'
 import { List, ListItem, Text, Left, Body, Right, Button, View, Row, H2, Icon, Toast } from 'native-base'
 
 export default class ExerciseList extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       exercises: [
-        {name: 'Squat', sets: '4', reps: '12'},
-        {name: 'Benchpress', sets: '4', reps: '12'},
-        {name: 'Pullup', sets: '4', reps: '12'},
-        {name: 'Row', sets: '4', reps: '12'}
+        { name: 'Squat', sets: '4', reps: '12' },
+        { name: 'Benchpress', sets: '4', reps: '12' },
+        { name: 'Pullup', sets: '4', reps: '12' },
+        { name: 'Row', sets: '4', reps: '12' }
       ]
     }
 
     this.showToast = this.showToast.bind(this)
     this._add = this._add.bind(this)
   }
-  
-  _remove(value) {
+
+  _remove (value) {
     // TODO: delete in redux
     this.setState(prevState => ({
       exercises: prevState.exercises.filter(exercise => exercise.name !== value.name)
@@ -27,7 +27,7 @@ export default class ExerciseList extends Component {
     this.showToast()
   }
 
-  showToast() {
+  showToast () {
     Toast.show({
       type: 'warning',
       duration: 3000,
@@ -35,7 +35,7 @@ export default class ExerciseList extends Component {
     })
   }
 
-  _add() {
+  _add () {
     this.props.navigation.navigate('AddExercise')
   }
 
@@ -60,7 +60,7 @@ export default class ExerciseList extends Component {
 
         <List
           dataArray={this.state.exercises}
-          renderRow={(exercise) => 
+          renderRow={(exercise) =>
             <ListItem>
               <Left>
                 <Text> { exercise.name }  </Text>
@@ -81,6 +81,6 @@ export default class ExerciseList extends Component {
         >
         </List>
       </View>
-    ) 
+    )
   }
 }

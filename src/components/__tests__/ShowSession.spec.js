@@ -5,7 +5,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import ShowSession from '../ShowSession'
-import toJson from 'enzyme-to-json';
+import toJson from 'enzyme-to-json'
 import Moment from 'react-moment'
 import { Card, Text, CardItem, Body, Right, Left } from 'native-base'
 
@@ -15,8 +15,8 @@ describe('ShowSession', () => {
 
   beforeEach(() => {
     navigateMock = jest.fn()
-    const navigation = {navigate: navigateMock}
-    wrapper = shallow(<ShowSession navigation={navigation} />) 
+    const navigation = { navigate: navigateMock }
+    wrapper = shallow(<ShowSession navigation={navigation} />)
   })
 
   it('renders correctly', () => {
@@ -33,7 +33,7 @@ describe('ShowSession', () => {
     })
 
     it('if there is a session planned for the date', () => {
-      let session = {dateTime: new Date()}
+      let session = { dateTime: new Date() }
 
       let text = wrapper.instance().getDateText(session)
 
@@ -43,15 +43,15 @@ describe('ShowSession', () => {
     })
 
     it('if the session is for a date that was', () => {
-     let session = {dateTime: new Date(2018, 10, 4)}
+      let session = { dateTime: new Date(2018, 10, 4) }
 
       let text = wrapper.instance().getDateText(session)
 
       expect(text).toEqual(
-        <Text> Session the 
-        <Moment element={Text} format="DD.MM">
+        <Text> Session the
+          <Moment element={Text} format="DD.MM">
             {session.dateTime}
-          </Moment> 
+          </Moment>
         </Text>
       )
     })

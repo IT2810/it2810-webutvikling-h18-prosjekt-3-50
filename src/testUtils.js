@@ -1,4 +1,4 @@
-export function findByID(wrapper, testID) {
+export function findByID (wrapper, testID) {
   if (wrapper.props() && wrapper.props().testID === testID) {
     return wrapper
   }
@@ -6,7 +6,7 @@ export function findByID(wrapper, testID) {
     let childs = wrapper.children()
     for (let i = 0; i < childs.length; i++) {
       let item = findByID(wrapper.childAt(i), testID)
-      if (typeof(item) !== 'undefined') {
+      if (typeof (item) !== 'undefined') {
         return item
       }
     }

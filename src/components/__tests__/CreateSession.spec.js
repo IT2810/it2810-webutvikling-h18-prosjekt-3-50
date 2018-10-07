@@ -5,7 +5,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import CreateSession from '../CreateSession'
-import toJson from 'enzyme-to-json';
+import toJson from 'enzyme-to-json'
 import 'native-base'
 import { findByID } from '../../testUtils.js'
 import DateTimePicker from 'react-native-modal-datetime-picker'
@@ -13,17 +13,17 @@ import DateTimePicker from 'react-native-modal-datetime-picker'
 describe('CreateSession', () => {
   let wrapper
   let navigateMock
-  
+
   beforeEach(() => {
     navigateMock = jest.fn()
-    const navigation = {navigate: navigateMock, state: { params: {}}}
+    const navigation = { navigate: navigateMock, state: { params: {} } }
     wrapper = shallow(<CreateSession navigation={navigation}/>)
   })
 
   // Date object in DateTimePicker does not update and thereby the test fails
-  /*it('renders correctly', () => {
+  /* it('renders correctly', () => {
     expect(toJson(wrapper.dive())).toMatchSnapshot()
-  })*/
+  }) */
 
   describe('saveSession', () => {
     it('called when button clicked', () => {

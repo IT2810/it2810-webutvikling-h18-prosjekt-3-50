@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import toJson from 'enzyme-to-json';
+import toJson from 'enzyme-to-json'
 import AddExercise from '../AddExercise'
 import 'native-base'
 import { findByID } from '../../testUtils.js'
@@ -19,7 +19,7 @@ describe('AddExercise', () => {
   it('renders correctly', () => {
     expect(toJson(wrapper.dive())).toMatchSnapshot()
   })
-  
+
   describe('addExercise', () => {
     it('calls addExercise when button is pressed', () => {
       let addExerciseMock = jest.fn()
@@ -38,7 +38,7 @@ describe('AddExercise', () => {
 
     it('navigates to SessionForm if validateExercise is true', () => {
       const navigateMock = jest.fn()
-      const navigation = {navigate: navigateMock}
+      const navigation = { navigate: navigateMock }
       const wrapper = shallow(<AddExercise navigation={navigation} />)
 
       let validateExerciseMock = jest.fn()
@@ -54,7 +54,7 @@ describe('AddExercise', () => {
 
     it('does not navigates to SessionForm if validateExercise is false', () => {
       const navigateMock = jest.fn()
-      const navigation = {navigate: navigateMock}
+      const navigation = { navigate: navigateMock }
       const wrapper = shallow(<AddExercise navigation={navigation} />)
 
       let validateExerciseMock = jest.fn()
@@ -71,7 +71,7 @@ describe('AddExercise', () => {
 
   describe('state updated when giving input', () => {
     it('name of exercise', () => {
-      let input = 'Squat'      
+      let input = 'Squat'
       let nameInput = findByID(wrapper, 'nameInput')
       nameInput.props().onChangeText(input)
 
@@ -79,7 +79,7 @@ describe('AddExercise', () => {
     })
 
     it('sets of exercise', () => {
-      let input = '4'      
+      let input = '4'
       let sets = findByID(wrapper, 'setsInput')
       sets.props().onChangeText(input)
 
@@ -87,7 +87,7 @@ describe('AddExercise', () => {
     })
 
     it('reps of exercise', () => {
-      let input = '12'      
+      let input = '12'
       let repsInput = findByID(wrapper, 'repsInput')
       repsInput.props().onChangeText(input)
 
@@ -95,7 +95,7 @@ describe('AddExercise', () => {
     })
 
     it('kg of exercise', () => {
-      let input = '60'      
+      let input = '60'
       let kgInput = findByID(wrapper, 'kgInput')
       kgInput.props().onChangeText(input)
 
@@ -104,7 +104,6 @@ describe('AddExercise', () => {
   })
 
   describe('validate', () => {
-
     it('exercise is valid if both name, sets and reps are given', () => {
       wrapper.instance().showToast = jest.fn()
       wrapper.state().name = 'TestName'
@@ -127,6 +126,5 @@ describe('AddExercise', () => {
       wrapper.state().sets = '4'
       expect(wrapper.instance().validateExercise()).toBeFalsy()
     })
-
   })
 })

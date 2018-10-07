@@ -4,14 +4,13 @@ import { View } from 'native-base'
 import Moment from 'react-moment'
 
 class CalendarView extends Component {
-
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
 
     this.state = {
       markedDates: {},
       sessionDates: {},
-      date: new Date(),
+      date: new Date()
     }
 
     this.selectDate = this.selectDate.bind(this)
@@ -19,7 +18,7 @@ class CalendarView extends Component {
     this.addSession = this.addSession.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     let today = new Date().dateString
     this.setState({
       sessionDates: this.getSessions(),
@@ -30,9 +29,9 @@ class CalendarView extends Component {
   getSessions () {
     // TODO: get from store
   	return {
-      '2018-10-02': {marked: true},
-      '2018-10-06': {marked: true},
-      '2018-10-19': {marked: true}
+      '2018-10-02': { marked: true },
+      '2018-10-06': { marked: true },
+      '2018-10-19': { marked: true }
     }
   }
 
@@ -48,25 +47,25 @@ class CalendarView extends Component {
   selectDate (date) {
     // TODO: Update selected date in store
 
-    this.setState({date: date})
+    this.setState({ date: date })
     let dateString = date.dateString
 
     if (this.state.sessionDates[dateString] != null) {
-      this.setState({markedDates: {...this.state.sessionDates, [dateString]: {selected: true, marked: true}}}) 
-    } else { 
-      this.setState({markedDates: {...this.state.sessionDates, [dateString]: {selected: true}}}) 
+      this.setState({ markedDates: { ...this.state.sessionDates, [dateString]: { selected: true, marked: true } } })
+    } else {
+      this.setState({ markedDates: { ...this.state.sessionDates, [dateString]: { selected: true } } })
     }
   }
 
   render () {
     const { navigate } = this.props.navigation
-    
+
     return (
       <View>
         <Calendar
           testID={'calendar'}
-          markedDates={{...this.state.markedDates}}
-          onDayLongPress={(date) => {this.addSession(date)}}
+          markedDates={{ ...this.state.markedDates }}
+          onDayLongPress={(date) => { this.addSession(date) }}
           onDayPress={(date) => this.selectDate(date)}
         />
       </View>
