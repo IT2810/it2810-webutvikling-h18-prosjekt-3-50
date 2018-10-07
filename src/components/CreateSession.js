@@ -129,9 +129,9 @@ class CreateSession extends Component {
 
           </Item>
 
-          <ExerciseList />
+          <ExerciseList navigation={this.props.navigation}/>
 
-          <ContactList />
+          <ContactList navigation={this.props.navigation}/>
 
           <Button
             success

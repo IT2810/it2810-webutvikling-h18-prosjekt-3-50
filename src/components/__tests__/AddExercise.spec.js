@@ -45,6 +45,7 @@ describe('AddExercise', () => {
       validateExerciseMock.mockReturnValue(true)
 
       wrapper.instance().validateExercise = validateExerciseMock
+      wrapper.instance().showToast = jest.fn()
       wrapper.update()
 
       wrapper.instance().addExercise()
@@ -61,6 +62,7 @@ describe('AddExercise', () => {
       validateExerciseMock.mockReturnValue(false)
 
       wrapper.instance().validateExercise = validateExerciseMock
+      wrapper.instance().showToast = jest.fn()
       wrapper.update()
 
       wrapper.instance().addExercise()

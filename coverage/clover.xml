@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1538907175658" clover="3.2.0">
-  <project timestamp="1538907175658" name="All files">
-    <metrics statements="160" coveredstatements="136" conditionals="49" coveredconditionals="41" methods="62" coveredmethods="49" elements="271" coveredelements="226" complexity="0" loc="160" ncloc="160" packages="5" files="15" classes="15">
+<coverage generated="1538910045279" clover="3.2.0">
+  <project timestamp="1538910045279" name="All files">
+    <metrics statements="161" coveredstatements="136" conditionals="49" coveredconditionals="41" methods="62" coveredmethods="49" elements="272" coveredelements="226" complexity="0" loc="161" ncloc="161" packages="5" files="16" classes="16">
       <package name="it2810-webutvikling-h18-prosjekt-3-50">
-        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <file name=".eslintrc.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/.eslintrc.js">
+          <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+        </file>
         <file name="App.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/App.js">
           <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+          <line num="18" count="1" type="stmt"/>
           <line num="19" count="1" type="stmt"/>
-          <line num="20" count="1" type="stmt"/>
-          <line num="25" count="1" type="stmt"/>
-          <line num="28" count="1" type="stmt"/>
-          <line num="32" count="2" type="cond" truecount="2" falsecount="0"/>
-          <line num="33" count="1" type="stmt"/>
-          <line num="35" count="1" type="stmt"/>
-          <line num="47" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="31" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="46" count="1" type="stmt"/>
         </file>
         <file name="store.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/store.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -81,11 +85,11 @@
           <line num="21" count="13" type="stmt"/>
           <line num="27" count="2" type="cond" truecount="2" falsecount="0"/>
           <line num="28" count="1" type="stmt"/>
-          <line num="33" count="4" type="cond" truecount="1" falsecount="1"/>
-          <line num="34" count="4" type="cond" truecount="4" falsecount="0"/>
-          <line num="35" count="3" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="34" count="4" type="cond" truecount="1" falsecount="1"/>
+          <line num="35" count="4" type="cond" truecount="4" falsecount="0"/>
           <line num="36" count="3" type="stmt"/>
-          <line num="38" count="1" type="stmt"/>
+          <line num="37" count="3" type="stmt"/>
           <line num="39" count="1" type="stmt"/>
           <line num="42" count="0" type="stmt"/>
           <line num="43" count="0" type="stmt"/>
@@ -99,24 +103,24 @@
         </file>
         <file name="CalendarView.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/components/CalendarView.js">
           <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="8"/>
-          <line num="9" count="8" type="stmt"/>
-          <line num="11" count="8" type="stmt"/>
+          <line num="8" count="8" type="stmt"/>
+          <line num="10" count="8" type="stmt"/>
+          <line num="16" count="8" type="stmt"/>
           <line num="17" count="8" type="stmt"/>
           <line num="18" count="8" type="stmt"/>
-          <line num="19" count="8" type="stmt"/>
+          <line num="22" count="8" type="stmt"/>
           <line num="23" count="8" type="stmt"/>
-          <line num="24" count="8" type="stmt"/>
-          <line num="32" count="16" type="stmt"/>
-          <line num="40" count="1" type="stmt"/>
+          <line num="31" count="16" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="50" count="3" type="stmt"/>
           <line num="51" count="3" type="stmt"/>
-          <line num="52" count="3" type="stmt"/>
-          <line num="54" count="3" type="cond" truecount="2" falsecount="0"/>
-          <line num="55" count="1" type="stmt"/>
-          <line num="57" count="2" type="stmt"/>
-          <line num="62" count="25" type="stmt"/>
-          <line num="64" count="25" type="stmt"/>
-          <line num="69" count="2" type="stmt"/>
-          <line num="70" count="4" type="stmt"/>
+          <line num="53" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="56" count="2" type="stmt"/>
+          <line num="61" count="25" type="stmt"/>
+          <line num="63" count="25" type="stmt"/>
+          <line num="68" count="2" type="stmt"/>
+          <line num="69" count="4" type="stmt"/>
         </file>
         <file name="ContactList.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/components/ContactList.js">
           <metrics statements="16" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="11" coveredmethods="9"/>
@@ -196,30 +200,30 @@
         </file>
         <file name="ShowSession.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/components/ShowSession.js">
           <metrics statements="24" coveredstatements="24" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="7"/>
-          <line num="8" count="6" type="stmt"/>
+          <line num="7" count="6" type="stmt"/>
+          <line num="9" count="6" type="stmt"/>
           <line num="10" count="6" type="stmt"/>
           <line num="11" count="6" type="stmt"/>
           <line num="12" count="6" type="stmt"/>
-          <line num="13" count="6" type="stmt"/>
-          <line num="18" count="6" type="stmt"/>
-          <line num="23" count="6" type="stmt"/>
-          <line num="37" count="9" type="stmt"/>
-          <line num="38" count="9" type="cond" truecount="2" falsecount="0"/>
-          <line num="39" count="1" type="stmt"/>
-          <line num="40" count="8" type="cond" truecount="2" falsecount="0"/>
-          <line num="41" count="1" type="stmt"/>
-          <line num="43" count="7" type="stmt"/>
-          <line num="52" count="8" type="stmt"/>
-          <line num="53" count="8" type="cond" truecount="2" falsecount="0"/>
-          <line num="54" count="7" type="stmt"/>
-          <line num="58" count="1" type="stmt"/>
+          <line num="17" count="6" type="stmt"/>
+          <line num="22" count="6" type="stmt"/>
+          <line num="36" count="9" type="stmt"/>
+          <line num="37" count="9" type="cond" truecount="2" falsecount="0"/>
+          <line num="38" count="1" type="stmt"/>
+          <line num="39" count="8" type="cond" truecount="2" falsecount="0"/>
+          <line num="40" count="1" type="stmt"/>
+          <line num="42" count="7" type="stmt"/>
+          <line num="51" count="8" type="stmt"/>
+          <line num="52" count="8" type="cond" truecount="2" falsecount="0"/>
+          <line num="53" count="7" type="stmt"/>
+          <line num="57" count="1" type="stmt"/>
+          <line num="64" count="6" type="stmt"/>
           <line num="65" count="6" type="stmt"/>
           <line num="66" count="6" type="stmt"/>
-          <line num="67" count="6" type="stmt"/>
-          <line num="68" count="24" type="stmt"/>
+          <line num="67" count="24" type="stmt"/>
+          <line num="68" count="6" type="stmt"/>
           <line num="69" count="6" type="stmt"/>
-          <line num="70" count="6" type="stmt"/>
-          <line num="72" count="6" type="stmt"/>
+          <line num="71" count="6" type="stmt"/>
         </file>
       </package>
     </metrics>

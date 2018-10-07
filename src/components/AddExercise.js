@@ -25,28 +25,28 @@ class AddExercise extends Component {
     // TODO save in state with redux
 
     if (this.validateExercise()) {
-      this.props.navigation.navigate('SessionForm')
+      this.showToast('Added exercise', 'success')
+      this.props.navigation.navigate('CreateSession')
     }
   }
 
   validateExercise() {
     if (this.state.name != null) {
       if (this.state.reps == null || this.state.sets == null) {
-          this.showToast('Sets and/or reps can not be null')
-          return false
+        this.showToast('Sets and/or reps can not be null', 'danger')
+        return false
       } else {
-        this.showToast('name is ' + this.state.name)
         return true
       }
     } else {
-      this.showToast('You have to give the exercise a name')
+      this.showToast('You have to give the exercise a name', 'danger')
       return false
     }
   }
 
-  showToast(text) {
+  showToast(text, type) {
     Toast.show({
-      type: 'danger',
+      type: type,
       duration: 3000,
       text: text
     })
