@@ -130,7 +130,9 @@ class CreateSession extends Component {
               mode='datetime'
               isVisible={this.state.isDateTimePickerVisible}
               onConfirm={this._setDateAndTime}
-              onCancel={this._hideDateTimePicker}            />
+              onCancel={this._hideDateTimePicker}
+              testID={"dateTimePicker"}
+          />
 
           </Item>
 
@@ -143,6 +145,7 @@ class CreateSession extends Component {
             large
             block
             onPress={this.saveSession}
+            testID={'saveSessionButton'}
           >
             <Text> SAVE SESSION </Text>
           </Button>

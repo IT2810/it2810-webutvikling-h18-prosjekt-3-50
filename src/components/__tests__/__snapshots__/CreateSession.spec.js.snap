@@ -26,16 +26,48 @@ exports[`CreateSession renders correctly 1`] = `
       />
     </Styled(Item)>
     <Styled(Text)>
-       Date 
+       Date and time 
     </Styled(Text)>
     <Styled(Item)
       rounded={true}
     >
-      <DatePicker
-        androidMode="default"
+      <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={[Function]}
+      >
+        <t
+          ago={false}
+          calendar={false}
+          decimal={false}
+          element={[Function]}
+          filter={[Function]}
+          format="DD.MM HH:mm"
+          fromNow={false}
+          interval={60000}
+          onChange={[Function]}
+          titleFormat=""
+          toNow={false}
+          unit={null}
+          unix={false}
+          utc={false}
+          withTitle={false}
+        >
+          <Component />
+        </t>
+      </TouchableOpacity>
+      <CustomDatePickerIOS
+        cancelTextIOS="Cancel"
+        confirmTextIOS="Confirm"
+        date={2018-10-07T08:45:05.707Z}
+        isVisible={false}
+        mode="datetime"
+        neverDisableConfirmIOS={false}
+        onCancel={[Function]}
+        onConfirm={[Function]}
         onDateChange={[Function]}
-        placeHolderText="Select date"
-        value={0}
+        onHideAfterConfirm={[Function]}
+        reactNativeModalPropsIOS={Object {}}
+        titleIOS="Pick a date"
       />
     </Styled(Item)>
     <ExerciseList />
@@ -45,6 +77,7 @@ exports[`CreateSession renders correctly 1`] = `
       large={true}
       onPress={[Function]}
       success={true}
+      testID="saveSessionButton"
     >
       <Styled(Text)>
          SAVE SESSION 
