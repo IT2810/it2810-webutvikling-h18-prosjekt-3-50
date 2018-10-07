@@ -7,10 +7,7 @@ import { shallow } from 'enzyme'
 import ExerciseList from '../ExerciseList'
 import toJson from 'enzyme-to-json';
 import 'native-base'
-import { findByID } from './testUtils.js'
-
-
-import renderer from 'react-test-renderer';
+import { findByID } from '../../testUtils.js'
 
 describe('ExerciseList', () => {
   let wrapper
@@ -48,7 +45,6 @@ describe('ExerciseList', () => {
   describe('_add', () => {
     it('called when clicking on add exercise button', () => {
       let _addMock = jest.fn()
-
       wrapper.instance()._add = _addMock
       wrapper.instance().forceUpdate()
 

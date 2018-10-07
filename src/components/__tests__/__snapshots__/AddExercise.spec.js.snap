@@ -71,7 +71,7 @@ exports[`AddExercise renders correctly 1`] = `
             }
           }
         >
-           x 
+          x
         </Styled(Text)>
         <Styled(Item)
           floatingLabel={true}
@@ -99,7 +99,7 @@ exports[`AddExercise renders correctly 1`] = `
             }
           }
         >
-           x 
+          x
         </Styled(Text)>
         <Styled(Item)
           floatingLabel={true}

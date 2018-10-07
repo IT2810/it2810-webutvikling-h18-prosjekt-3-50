@@ -7,10 +7,8 @@ import { shallow } from 'enzyme'
 import CreateSession from '../CreateSession'
 import toJson from 'enzyme-to-json';
 import 'native-base'
-import { findByID } from './testUtils.js'
-
-
-import renderer from 'react-test-renderer';
+import { findByID } from '../../testUtils.js'
+import DateTimePicker from 'react-native-modal-datetime-picker'
 
 describe('CreateSession', () => {
   let wrapper
@@ -67,7 +65,6 @@ describe('CreateSession', () => {
     })
   })
 
-
   describe('validateSession', () => {
     it('returns false if name is not given', () => {
       wrapper.instance().showToast = jest.fn()
@@ -109,9 +106,7 @@ describe('CreateSession', () => {
   describe('_setDateAndTime', () => {
     it('called when onConfirm on dateTimePicker', () => {
       let _setDateAndTimeMock = jest.fn()
-
       wrapper.instance()._setDateAndTime = _setDateAndTimeMock
-
       wrapper.instance().forceUpdate()
 
       let button = findByID(wrapper, 'dateTimePicker')
@@ -120,5 +115,4 @@ describe('CreateSession', () => {
       expect(_setDateAndTimeMock.mock.calls.length).toBe(1)
     })
   })
-   
 })

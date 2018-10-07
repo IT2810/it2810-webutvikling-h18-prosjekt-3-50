@@ -41,12 +41,11 @@ class ShowSession extends Component {
       return <Text>Todays session</Text>
     } else {
       return <Text> Session the 
-        <Moment element={Text} format="DD.MM">
+          <Moment element={Text} format="DD.MM">
             {session.dateTime}
           </Moment> 
         </Text>
-    } 
-
+    }
   }
 
   getTimeCount(dateTime) {
@@ -59,7 +58,6 @@ class ShowSession extends Component {
       return <Moment element={Text} fromNow>
         {dateTime}
       </Moment>
-
     }
   }
 
@@ -68,9 +66,7 @@ class ShowSession extends Component {
     const session = this.getSession(date)
     const trainingPartners = session.contacts.join(', ')
     const exercises = session.exercises.map(exercise => exercise.name).join(', ')
-
     const dateText = this.getDateText(session)
-
     const timeCount = this.getTimeCount(session.dateTime)
 
     return (
@@ -111,7 +107,6 @@ class ShowSession extends Component {
       </Card>
     )
   }
-
 }
 
 export default ShowSession

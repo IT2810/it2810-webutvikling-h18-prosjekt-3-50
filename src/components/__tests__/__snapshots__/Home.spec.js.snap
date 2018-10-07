@@ -17,6 +17,7 @@ exports[`Home renders correctly 1`] = `
     large={true}
     onPress={[Function]}
     primary={true}
+    testID="addSessionButton"
   >
     <Styled(Text)>
        ADD SESSION 

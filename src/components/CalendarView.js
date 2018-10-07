@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
-import { View, Text } from 'native-base'
+import { Calendar } from 'react-native-calendars'
+import { View } from 'native-base'
 import Moment from 'react-moment'
 
 class CalendarView extends Component {
@@ -24,7 +24,6 @@ class CalendarView extends Component {
     this.setState({
       sessionDates: this.getSessions(),
       markedDates: this.getSessions()
-
     })
   }
 

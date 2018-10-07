@@ -7,7 +7,7 @@ import CreateSession from './src/components/CreateSession.js'
 import AddExercise from './src/components/AddExercise.js'
 import Home from './src/components/Home.js'
 
-import { Icon, StyleProvider, Root } from 'native-base'
+import { StyleProvider, Root } from 'native-base'
 import getTheme from './native-base-theme/components'
 import material from './native-base-theme/variables/material'
 

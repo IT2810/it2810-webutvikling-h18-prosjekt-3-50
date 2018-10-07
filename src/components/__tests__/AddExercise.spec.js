@@ -7,10 +7,7 @@ import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json';
 import AddExercise from '../AddExercise'
 import 'native-base'
-import { findByID } from './testUtils.js'
-
-
-import renderer from 'react-test-renderer';
+import { findByID } from '../../testUtils.js'
 
 describe('AddExercise', () => {
   let wrapper
@@ -104,7 +101,6 @@ describe('AddExercise', () => {
 
       expect(wrapper.state('kg')).toEqual(input)
     })
-
   })
 
   describe('validate', () => {

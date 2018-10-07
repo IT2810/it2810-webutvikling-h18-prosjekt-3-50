@@ -8,8 +8,6 @@ import ContactList from '../ContactList'
 import toJson from 'enzyme-to-json';
 import 'native-base'
 
-import renderer from 'react-test-renderer';
-
 describe('ContactList', () => {
   let wrapper
   const navigation = {navigate: jest.fn()}
@@ -53,11 +51,8 @@ describe('ContactList', () => {
     it('can remove contact', () => {
       wrapper.setState({addedContacts: ["Ola Nordmann", "Kristine Hansen"]})
 
-
       wrapper.instance()._remove("Kristine Hansen")
-      expect(wrapper.state('addedContacts')).toEqual(["Ola Nordmann"])
-  
+      expect(wrapper.state('addedContacts')).toEqual(["Ola Nordmann"])  
     })
   })
-
 })

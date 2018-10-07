@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-
 import { StyleSheet } from 'react-native'
-
-import {Card, List, ListItem, Text, Left, Body, Right, Button, View, Row, H2, Picker, Icon, Toast } from 'native-base'
+import { List, ListItem, Text, Left, Body, Right, Button, View, Row, H2, Icon, Toast } from 'native-base'
 
 export default class ExerciseList extends Component {
   constructor(props, context) {
@@ -42,7 +40,6 @@ export default class ExerciseList extends Component {
   }
 
   render () {
-
     return (
       <View>
         <Row>

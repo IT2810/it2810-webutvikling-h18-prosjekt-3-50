@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Container, Header, Content, Form, Item, Input, Button, Label, Card, CardItem, Toast, H3, H4, Row} from 'native-base';
+import { View, Text, Container, Header, Content, Item, Input, Button, Label, Toast, Row} from 'native-base';
 import { StyleSheet } from 'react-native'
 
 class AddExercise extends Component {
@@ -24,8 +24,6 @@ class AddExercise extends Component {
   addExercise() {
     // TODO save in state with redux
 
-    console.log("Add exercise is called")
-
     if (this.validateExercise()) {
       this.props.navigation.navigate('SessionForm')
     }
@@ -44,7 +42,6 @@ class AddExercise extends Component {
       this.showToast('You have to give the exercise a name')
       return false
     }
-
   }
 
   showToast(text) {
@@ -93,7 +90,10 @@ class AddExercise extends Component {
 
               <Text
                 style={styles.textLabel}
-              > x </Text>
+              > 
+                x 
+              </Text>
+
               <Item
                 floatingLabel
                 style={{width: 50}}
@@ -109,12 +109,13 @@ class AddExercise extends Component {
 
               <Text
                 style={styles.textLabel}
-              > x </Text>
+              > 
+                x 
+              </Text>
 
               <Item
                 floatingLabel
                 style={{width: 50}}
-                
               >
                 <Label> kg </Label>
                 <Input
@@ -126,7 +127,6 @@ class AddExercise extends Component {
              
             </Row>
 
-          
             <Button
               primary
               flat
@@ -146,7 +146,6 @@ class AddExercise extends Component {
 export default AddExercise
 
 const styles = StyleSheet.create ({
-
   textLabel: {
     color: 'grey',
     textAlignVertical: 'bottom',

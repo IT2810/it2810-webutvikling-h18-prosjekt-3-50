@@ -7,9 +7,7 @@ import { shallow } from 'enzyme'
 import CalendarView from '../CalendarView'
 import toJson from 'enzyme-to-json';
 import 'native-base'
-import { findByID } from './testUtils.js'
-
-import renderer from 'react-test-renderer';
+import { findByID } from '../../testUtils.js'
 
 describe('CalendarView', () => {
   let wrapper
@@ -21,10 +19,6 @@ describe('CalendarView', () => {
 
   it('renders correctly', () => {
     expect(toJson(wrapper.dive())).toMatchSnapshot()
-  })
-
-  it('getSessions retrive sessions from store', () => {
-
   })
 
   describe('addSession', () => {
@@ -54,7 +48,6 @@ describe('CalendarView', () => {
       expect(navigateMock.mock.calls[0][0]).toBe('CreateSession')
       expect(navigateMock.mock.calls[0][1].date).toBe('2018-10-18')
     })
-
   })
 
   describe('selectDate', () => {
@@ -107,7 +100,5 @@ describe('CalendarView', () => {
       expect(dateInMarkedDates.selected).toBe(true)
       expect(dateInMarkedDates.marked).toBe(true)
     })
-
   })
-
 })
