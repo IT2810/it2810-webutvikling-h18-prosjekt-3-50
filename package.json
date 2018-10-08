@@ -9,7 +9,7 @@
     "eject": "expo eject",
     "test": "jest",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "eslint-fix": "eslint . --fix" 
+    "eslint-fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",

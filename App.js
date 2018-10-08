@@ -3,8 +3,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import Expo, { Font } from 'expo'
 
-import CalendarView from './components/CalendarView.js'
-import PedometerView from './components/PedometerView.js'
 import CreateSession from './src/components/CreateSession.js'
 import AddExercise from './src/components/AddExercise.js'
 import Home from './src/components/Home.js'

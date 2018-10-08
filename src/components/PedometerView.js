@@ -1,16 +1,21 @@
 import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
-import { StyleSheet } from "react-native";
-import { View, Text, Container, Header, Content, Form, Item, Input, Button, Label, Card, CardItem, Toast, H3, H4, Row} from 'native-base';
+import { Platform, StyleSheet } from "react-native";
+import { Text, Container, Header, Icon} from 'native-base';
 
 
 export default class PedometerSensor extends React.Component {
-  state = {
-    isPedometerAvailable: "checking",
-    pastStepCount: 0,
-    currentStepCount: 0
-  };
+  constructor(props, context){
+    super(props, context)
+    this.state = {
+      isPedometerAvailable: "checking",
+      pastStepCount: 0,
+      currentStepCount: 0,
+      totalStepCount: 0
+    }
+  }
+
 
   componentDidMount() {
     this._subscribe();
@@ -23,7 +28,8 @@ export default class PedometerSensor extends React.Component {
   _subscribe = () => {
     this._subscription = Pedometer.watchStepCount(result => {
       this.setState({
-        currentStepCount: result.steps
+        currentStepCount: result.steps,
+        totalStepCount: result.steps + this.state.pastStepCount
     });
 });
 
@@ -45,7 +51,10 @@ const start = new Date();
 start.setDate(end.getDate() - 1);
 Pedometer.getStepCountAsync(start, end).then(
   result => {
-    this.setState({ pastStepCount: result.steps });
+    this.setState({ 
+      pastStepCount: result.steps,
+      totalStepCount : this.state.currentStepCount + result.steps
+    });
   },
   error => {
     this.setState({
@@ -63,37 +72,23 @@ this._subscription = null;
 render() {
   if (this.state.isPedometerAvailable){
     return (
-      <View style={styles.container}>
+      <Container>
         <Text>
-          Working
+          <Header>
+            <Icon name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"} style={{paddingRight: 10}}/>: {this.state.totalStepCount}
+          </Header>
         </Text>
-      <Text>
-        <Header>
-          Last 24 hours: {this.state.pastStepCount}
-        </Header>
-      </Text>
-      <Text>
-        Steps: {this.state.currentStepCount}
-      </Text>
-      </View>
+      </Container>
     );
   }
 
   else{
     return(
-      <View style={styles.container}>
+      <Container>
       <Text>
         Error: Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
       </Text>
-      <Text>
-        <Header>
-          Last 24 hours: {this.state.pastStepCount}
-        </Header>
-      </Text>
-      <Text>
-        Steps: {this.state.currentStepCount}
-      </Text>
-    </View>
+    </Container>
     );
   }
 }
@@ -106,8 +101,6 @@ flex: 1,
 marginTop: 15,
 alignItems: "center",
 justifyContent: "center",
-borderStyle: "solid",
-borderColor: "black",
 }
 });
 
