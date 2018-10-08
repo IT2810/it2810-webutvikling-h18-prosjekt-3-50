@@ -5,16 +5,17 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Home from '../Home'
-import toJson from 'enzyme-to-json';
-import 'native-base'
-
-import renderer from 'react-test-renderer';
+import toJson from 'enzyme-to-json'
+import { Button, View, Text } from 'native-base'
+import { findByID } from '../../testUtils.js'
 
 describe('Home', () => {
   let wrapper
-  const navigation = {navigate: jest.fn()}
+  let navigateMock
 
   beforeEach(() => {
+    navigateMock = jest.fn()
+    const navigation = { navigate: navigateMock }
     wrapper = shallow(<Home navigation={navigation}/>)
   })
 
@@ -22,7 +23,10 @@ describe('Home', () => {
     expect(toJson(wrapper.dive())).toMatchSnapshot()
   })
 
+  it('navigates when add session button is pressed', () => {
+    let addSessionButton = findByID(wrapper, 'addSessionButton')
+    addSessionButton.props().onPress()
 
-  // Todo: navigates to CreateSession if click on button
-
+    expect(navigateMock.mock.calls.length).toBe(1)
+  })
 })

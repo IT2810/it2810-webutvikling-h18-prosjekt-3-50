@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Moment from 'react-moment'
-
-import  { Button, Text, View, Container, Content, DatePicker, Picker, Form, Card, Footer, FooterTab, ScrollView, Header, Right, Left, Row, Toast, Icon, Input, Item, Label, List, ListItem, H1, H2} from 'native-base'
-
+import  { Button, Text, Container, Content, Toast, Input, Item} from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
-import AddExercise from './AddExercise.js'
-import ExerciseListEl from './ExerciseListEl.js'
 import ContactList from './ContactList.js'
 import ExerciseList from './ExerciseList.js'
 
@@ -32,7 +28,6 @@ class CreateSession extends Component {
       contacts: null
     }
 
-
     this.saveSession = this.saveSession.bind(this)
     this.validateSession = this.validateSession.bind(this)
 
@@ -54,14 +49,12 @@ class CreateSession extends Component {
       if (this.state.date == null) {
         this.showToast('You have to add a date')
         return false
-      }
-      else if (this.state.exercises == null) {
+      } else if (this.state.exercises == null) {
         this.showToast('You have to add minimum 1 exercise')
         return false
       } else {
         return true
       }
-
     } else {
       this.showToast('You have to give the exercise a name')
       return false
@@ -133,7 +126,9 @@ class CreateSession extends Component {
               mode='datetime'
               isVisible={this.state.isDateTimePickerVisible}
               onConfirm={this._setDateAndTime}
-              onCancel={this._hideDateTimePicker}            />
+              onCancel={this._hideDateTimePicker}
+              testID={"dateTimePicker"}
+          />
 
           </Item>
 
@@ -151,6 +146,7 @@ class CreateSession extends Component {
             large
             block
             onPress={this.saveSession}
+            testID={'saveSessionButton'}
           >
             <Text> SAVE SESSION </Text>
           </Button>

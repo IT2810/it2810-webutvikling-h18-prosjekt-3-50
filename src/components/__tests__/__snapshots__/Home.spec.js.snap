@@ -4,12 +4,20 @@ exports[`Home renders correctly 1`] = `
 <ViewNB
   style={Object {}}
 >
-  <CalendarView />
+  <CalendarView
+    navigation={
+      Object {
+        "navigate": [MockFunction],
+      }
+    }
+  />
+  <ShowSession />
   <Styled(Button)
     block={true}
     large={true}
     onPress={[Function]}
     primary={true}
+    testID="addSessionButton"
   >
     <Styled(Text)>
        ADD SESSION 

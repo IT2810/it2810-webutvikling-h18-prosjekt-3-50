@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars'
+
+import { Calendar } from 'react-native-calendars'
 import { StyleSheet } from 'react-native'
-import { View, Text } from 'native-base'
+import { View } from 'native-base'
+
 import Moment from 'react-moment'
 
 class CalendarView extends Component {
-
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
 
     this.state = {
       markedDates: {},
       sessionDates: {},
-      date: new Date(),
+      date: new Date()
     }
 
     this.selectDate = this.selectDate.bind(this)
@@ -20,53 +21,55 @@ class CalendarView extends Component {
     this.addSession = this.addSession.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     let today = new Date().dateString
     this.setState({
       sessionDates: this.getSessions(),
       markedDates: this.getSessions()
-
     })
   }
 
   getSessions () {
+    // TODO: get from store
   	return {
-      '2018-10-02': {marked: true},
-      '2018-10-06': {marked: true},
-      '2018-10-19': {marked: true}
+      '2018-10-02': { marked: true },
+      '2018-10-06': { marked: true },
+      '2018-10-19': { marked: true }
     }
   }
 
   addSession (date) {
-  	console.log('Open view to add session on that date')
+    this.props.navigation.navigate(
+      'CreateSession',
+      {
+        date: date
+      }
+    )
   }
 
   selectDate (date) {
     // TODO: Update selected date in store
 
-    this.setState({date: date})
+    this.setState({ date: date })
+    let dateString = date.dateString
 
-    if (this.state.sessionDates[date.dateString] != null) {
-      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true, marked: true}}})
+    if (this.state.sessionDates[dateString] != null) {
+      this.setState({ markedDates: { ...this.state.sessionDates, [dateString]: { selected: true, marked: true } } })
     } else {
-
-      this.setState({markedDates: {...this.state.sessionDates, [date.dateString]: {selected: true}}})
+      this.setState({ markedDates: { ...this.state.sessionDates, [dateString]: { selected: true } } })
     }
   }
 
   render () {
     const { navigate } = this.props.navigation
+
     return (
       <View style={styles.calendarContainer}>
         <Calendar
-          markedDates={{...this.state.markedDates}}
-          onDayLongPress={(day) => { console.log('selected day', day) }}
-          onDayLongPress={(day) => {
-            navigate('CreateSession', {
-              date: day
-            })
-          }}
-
+          testID={'calendar'}
+          markedDates={{ ...this.state.markedDates }}
+          onDayLongPress={(date) => { this.addSession(date) }}
+          onDayPress={(date) => this.selectDate(date)}
         />
       </View>
     )
