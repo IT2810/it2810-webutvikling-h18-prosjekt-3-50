@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactList renders correctly 1`] = `
+<ViewNB
+  style={Object {}}
+>
+  <RowNB
+    style={
+      Object {
+        "marginTop": 16,
+      }
+    }
+  >
+    <Styled(Left)>
+      <Styled(H2)>
+        Contacts
+      </Styled(H2)>
+    </Styled(Left)>
+  </RowNB>
+  <Styled(List)
+    dataArray={
+      Array [
+        "Ola Nordmann",
+        "Kari Nordmann",
+      ]
+    }
+    renderRow={[Function]}
+  />
+  <Styled(PickerNB)
+    mode="dropdown"
+    onValueChange={[Function]}
+    placeholder="Add a contact"
+    selectedValue=""
+  >
+    <Item
+      key="0"
+      label="Add a contact"
+      value="0"
+    />
+    <Item
+      key="Petter Larsen"
+      label="Petter Larsen"
+      value="Petter Larsen"
+    />
+    <Item
+      key="Kristine Hansen"
+      label="Kristine Hansen"
+      value="Kristine Hansen"
+    />
+    <Item
+      key="Alfred Bustad"
+      label="Alfred Bustad"
+      value="Alfred Bustad"
+    />
+    <Item
+      key="Hege Nielsen"
+      label="Hege Nielsen"
+      value="Hege Nielsen"
+    />
+  </Styled(PickerNB)>
+</ViewNB>
+`;
