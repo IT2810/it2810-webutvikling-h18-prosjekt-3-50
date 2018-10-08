@@ -1,26 +1,24 @@
 import React, { Component } from 'react'
-
 import { StyleSheet } from 'react-native'
-
-import {Card, List, ListItem, Text, Left, Body, Right, Button, View, Row, H2, Picker, Icon, Toast } from 'native-base'
+import { List, ListItem, Text, Left, Body, Right, Button, View, Row, H2, Icon, Toast } from 'native-base'
 
 export default class ExerciseList extends Component {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
       exercises: [
-        {name: 'Squat', sets: '4', reps: '12'},
-        {name: 'Benchpress', sets: '4', reps: '12'},
-        {name: 'Pullup', sets: '4', reps: '12'},
-        {name: 'Row', sets: '4', reps: '12'}
+        { name: 'Squat', sets: '4', reps: '12' },
+        { name: 'Benchpress', sets: '4', reps: '12' },
+        { name: 'Pullup', sets: '4', reps: '12' },
+        { name: 'Row', sets: '4', reps: '12' }
       ]
     }
 
     this.showToast = this.showToast.bind(this)
     this._add = this._add.bind(this)
   }
-  
-  _remove(value) {
+
+  _remove (value) {
     // TODO: delete in redux
     this.setState(prevState => ({
       exercises: prevState.exercises.filter(exercise => exercise.name !== value.name)
@@ -29,7 +27,7 @@ export default class ExerciseList extends Component {
     this.showToast()
   }
 
-  showToast() {
+  showToast () {
     Toast.show({
       type: 'warning',
       duration: 3000,
@@ -37,12 +35,11 @@ export default class ExerciseList extends Component {
     })
   }
 
-  _add() {
+  _add () {
     this.props.navigation.navigate('AddExercise')
   }
 
   render () {
-
     return (
       <View>
         <Row>
@@ -53,6 +50,8 @@ export default class ExerciseList extends Component {
             <Button
               primary
               block
+              onPress={this._add}
+              testID={'addExerciseButton'}
             >
               <Text> ADD EXERCISE </Text>
             </Button>
@@ -61,16 +60,12 @@ export default class ExerciseList extends Component {
 
         <List
           dataArray={this.state.exercises}
-          renderRow={(exercise) => 
+          renderRow={(exercise) =>
             <ListItem>
-              <Left
-                onPress={this._add}
-              >
+              <Left>
                 <Text> { exercise.name }  </Text>
               </Left>
-              <Body
-                onPress={this._add}
-              >
+              <Body>
                 <Text> {exercise.reps} x {exercise.sets} </Text>
               </Body>
               <Right>
@@ -86,6 +81,6 @@ export default class ExerciseList extends Component {
         >
         </List>
       </View>
-    ) 
+    )
   }
 }

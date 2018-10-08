@@ -5,8 +5,22 @@ exports[`CalendarView renders correctly 1`] = `
   style={Object {}}
 >
   <Calendar
-    markingType="multi-dot"
+    markedDates={
+      Object {
+        "2018-10-02": Object {
+          "marked": true,
+        },
+        "2018-10-06": Object {
+          "marked": true,
+        },
+        "2018-10-19": Object {
+          "marked": true,
+        },
+      }
+    }
     onDayLongPress={[Function]}
+    onDayPress={[Function]}
+    testID="calendar"
   />
 </ViewNB>
 `;

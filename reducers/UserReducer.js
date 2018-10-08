@@ -6,10 +6,10 @@ const INITIAL_STATE = {
   appointmentIdCount: 0,
   user: {
     id: 0,
-    firstName: "My",
-    lastName: "Name",
+    firstName: 'My',
+    lastName: 'Name',
     appointments: [
-      {description: 'example'}
+      { description: 'example' }
     ],
     currentTarget: {
       id: 0,
@@ -23,7 +23,7 @@ const INITIAL_STATE = {
       }
     },
     currentTargetIterationsMade: 0
-  },
+  }
 }
 
 const createNewAppointment = (newState, startTime, contacts, todos) => {
@@ -36,10 +36,10 @@ const createNewAppointment = (newState, startTime, contacts, todos) => {
   }
 }
 
-export default function( state = INITIAL_STATE, action ) {
-  switch ( action.type ) {
+export default function (state = INITIAL_STATE, action) {
+  switch (action.type) {
     case USER_ADD_APPOINTMENT:
-      let newState = {...{}, ...state}
+      let newState = { ...{}, ...state }
       const { startTime, contacts, todos } = action.payload
       newState.user.appointments.push(createNewAppointment(newState, startTime, contacts, todos))
       return newState

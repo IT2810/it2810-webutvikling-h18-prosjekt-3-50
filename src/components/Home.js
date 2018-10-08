@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import  { Button, View, Text} from 'native-base'
 
 import CreateSession from './CreateSession.js'
 import CalendarView from './CalendarView.js'
 import ShowSession from './ShowSession.js'
 
-import  { Button, View, Text} from 'native-base'
 
 class Home extends Component {
   static navigationOptions = {
@@ -25,11 +25,11 @@ class Home extends Component {
           large
           block
           onPress={() => this.props.navigation.navigate('CreateSession')}
+          testID={'addSessionButton'}
         >
           <Text> ADD SESSION </Text>
         </Button>
       </View>
-
     )
   }
 }
