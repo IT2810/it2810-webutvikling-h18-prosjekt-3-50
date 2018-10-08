@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Moment from 'react-moment'
-import  { Button, Text, Container, Content, Toast, Input, Item} from 'native-base'
+import  { Button, View, Text, Container, Content, Toast, Input, Item} from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
 import ContactList from './ContactList.js'
