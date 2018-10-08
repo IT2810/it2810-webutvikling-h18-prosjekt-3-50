@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Moment from 'react-moment'
-import  { Button, View, Text, Container, Content, Toast, Input, Item} from 'native-base'
+import  { Button, View, Text, Container, Content, Toast, Input, Item, Fab, Icon } from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
 import ContactList from './ContactList.js'
@@ -140,7 +140,7 @@ class CreateSession extends Component {
           </View>
         </Content>
 
-        <View style={styles.buttonContainer}>
+        {/*<View style={styles.buttonContainer}>
           <Button
             success
             large
@@ -150,7 +150,16 @@ class CreateSession extends Component {
           >
             <Text> SAVE SESSION </Text>
           </Button>
-        </View>
+        </View>*/}
+        <Fab
+          onPress={this.saveSession}
+          //containerStyle={{}}
+          style={{ backgroundColor: '#199E59' }}
+          position="bottomRight"
+        >
+          <Icon ios="ios-checkmark" android="md-checkmark" style={{fontSize: 50, lineHeight: 50}} />
+
+        </Fab>
       </Container>
     )
   }

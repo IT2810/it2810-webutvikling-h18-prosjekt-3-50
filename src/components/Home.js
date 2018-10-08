@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import { StyleSheet, SafeAreaView } from 'react-native'
-import  { Button, View, Text} from 'native-base'
+import { SafeAreaView, ScrollView } from 'react-native'
+import  { View, Fab, Icon} from 'native-base'
 
 import CreateSession from './CreateSession.js'
 import CalendarView from './CalendarView.js'
 import ShowSession from './ShowSession.js'
-
+import PedometerView from './PedometerView'
 
 class Home extends Component {
   static navigationOptions = {
@@ -14,22 +14,22 @@ class Home extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation
 
     return (
       <SafeAreaView>
-
-        <CalendarView navigation={this.props.navigation}/>
-
-        <ShowSession />
-
-        <View style={styles.addSessionButton}>
-          <Button block large primary
-            onPress={() => this.props.navigation.navigate('CreateSession')}
-          >
-            <Text> ADD SESSION </Text>
-          </Button>
-        </View>
+        <ScrollView>
+          <CalendarView navigation={this.props.navigation}/>
+          <PedometerView />
+          <ShowSession />
+        </ScrollView>
+        <Fab
+          onPress={() => this.props.navigation.navigate('CreateSession')}
+          containerStyle={{ }}
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomRight"
+        >
+          <Icon name="add" style={{fontSize: 34, lineHeight: 34}} />
+        </Fab>
       </SafeAreaView>
 
     )
@@ -37,11 +37,3 @@ class Home extends Component {
 }
 
 export default Home
-
-const styles = StyleSheet.create ({
-  addSessionButton: {
-    marginTop: '5%',
-    width: '80%',
-    marginLeft: '10%'
-  }
-})
