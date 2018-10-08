@@ -137,10 +137,10 @@ class CreateSession extends Component {
 
           </Item>
 
-          <View style={styles.exerciseListConatiner}>
+          <View style={styles.exerciseListContainer}>
             <ExerciseList />
           </View>
-          <View style={styles.contactListConatiner}>
+          <View style={styles.contactListContainer}>
             <ContactList />
           </View>
         </Content>
@@ -163,10 +163,10 @@ class CreateSession extends Component {
 export default CreateSession
 
 const styles = StyleSheet.create ({
-  exerciseListConatiner: {
+  exerciseListContainer: {
     marginTop: '10%'
   },
-  contactListConatiner: {
+  contactListContainer: {
     marginTop: '10%',
     marginBottom: '30%' // room for save session button
   },
