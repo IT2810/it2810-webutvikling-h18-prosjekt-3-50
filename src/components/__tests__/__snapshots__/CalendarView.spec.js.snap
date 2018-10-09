@@ -2,7 +2,15 @@
 
 exports[`CalendarView renders correctly 1`] = `
 <ViewNB
-  style={Object {}}
+  style={
+    Array [
+      Object {},
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "5%",
+      },
+    ]
+  }
 >
   <Calendar
     markedDates={

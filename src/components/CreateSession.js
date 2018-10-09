@@ -153,6 +153,7 @@ class CreateSession extends Component {
         </View>*/}
         <Fab
           onPress={this.saveSession}
+          testID={'saveSessionButton'}
           //containerStyle={{}}
           style={{ backgroundColor: '#199E59' }}
           position="bottomRight"

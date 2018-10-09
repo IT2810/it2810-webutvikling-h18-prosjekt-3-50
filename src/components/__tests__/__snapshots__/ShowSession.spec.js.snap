@@ -31,15 +31,69 @@ exports[`ShowSession renders correctly 1`] = `
     bordered={true}
     header={true}
   >
+    <Styled(Body)>
+      <Styled(Text)>
+        <Styled(Text)>
+          Date: 
+        </Styled(Text)>
+        <t
+          ago={false}
+          calendar={false}
+          decimal={false}
+          element={[Function]}
+          filter={[Function]}
+          format="D. MMMM"
+          fromNow={false}
+          interval={60000}
+          onChange={[Function]}
+          titleFormat=""
+          toNow={false}
+          unit={null}
+          unix={false}
+          utc={false}
+          withTitle={false}
+        >
+          <Component />
+        </t>
+      </Styled(Text)>
+    </Styled(Body)>
+    <Styled(Right)>
+      <Styled(Text)>
+        <t
+          ago={false}
+          calendar={false}
+          decimal={false}
+          element={[Function]}
+          filter={[Function]}
+          fromNow={true}
+          interval={60000}
+          onChange={[Function]}
+          titleFormat=""
+          toNow={false}
+          unit={null}
+          unix={false}
+          utc={false}
+          withTitle={false}
+        >
+          <Component />
+        </t>
+      </Styled(Text)>
+    </Styled(Right)>
+  </Styled(CardItem)>
+  <Styled(CardItem)
+    bordered={true}
+  >
     <Styled(Text)>
-       Session the
+      <Styled(Text)>
+        Time: 
+      </Styled(Text)>
       <t
         ago={false}
         calendar={false}
         decimal={false}
         element={[Function]}
         filter={[Function]}
-        format="DD.MM"
+        format="HH:mm"
         fromNow={false}
         interval={60000}
         onChange={[Function]}
@@ -62,58 +116,6 @@ exports[`ShowSession renders correctly 1`] = `
       Test Exercise
        
     </Styled(Text)>
-  </Styled(CardItem)>
-  <Styled(CardItem)
-    bordered={true}
-  >
-    <Styled(Body)>
-      <Styled(Text)>
-        Time:
-        <t
-          ago={false}
-          calendar={false}
-          decimal={false}
-          element={[Function]}
-          filter={[Function]}
-          format="HH:mm"
-          fromNow={false}
-          interval={60000}
-          onChange={[Function]}
-          titleFormat=""
-          toNow={false}
-          unit={null}
-          unix={false}
-          utc={false}
-          withTitle={false}
-        >
-          <Component />
-        </t>
-      </Styled(Text)>
-    </Styled(Body)>
-    <Styled(Right)>
-      <Styled(Text)>
-        (
-        <t
-          ago={false}
-          calendar={false}
-          decimal={false}
-          element={[Function]}
-          filter={[Function]}
-          fromNow={false}
-          interval={60000}
-          onChange={[Function]}
-          titleFormat=""
-          toNow={true}
-          unit={null}
-          unix={false}
-          utc={false}
-          withTitle={false}
-        >
-          <Component />
-        </t>
-        )
-      </Styled(Text)>
-    </Styled(Right)>
   </Styled(CardItem)>
   <Styled(CardItem)
     bordered={true}

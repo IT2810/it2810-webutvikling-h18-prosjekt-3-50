@@ -48,8 +48,9 @@ describe('ShowSession', () => {
       let text = wrapper.instance().getDateText(session)
 
       expect(text).toEqual(
-        <Text> Session the
-          <Moment element={Text} format="DD.MM">
+        <Text>
+          <Text>Date: </Text>
+          <Moment element={Text} format="D. MMMM">
             {session.dateTime}
           </Moment>
         </Text>
@@ -57,31 +58,5 @@ describe('ShowSession', () => {
     })
   })
 
-  describe('getTimeCount', () => {
-    it('if date is before now', () => {
-      let today = new Date()
-      let dateTime = today.setDate(today.getDate() - 1)
 
-      let text = wrapper.instance().getTimeCount(dateTime)
-
-      expect(text).toEqual(
-        <Moment element={Text} toNow>
-          {dateTime}
-        </Moment>
-      )
-    })
-
-    it('if date is after now', () => {
-      let today = new Date()
-      let dateTime = today.setDate(today.getDate() + 1)
-
-      let text = wrapper.instance().getTimeCount(dateTime)
-
-      expect(text).toEqual(
-        <Moment element={Text} fromNow>
-          {dateTime}
-        </Moment>
-      )
-    })
-  })
 })
