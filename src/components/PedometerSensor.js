@@ -2,7 +2,18 @@ import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
 import { Platform, StyleSheet } from "react-native";
-import { Text, Container, Header, Icon, View } from 'native-base';
+import { Text, Container, Header, Icon, View, Button, ActionSheet } from 'native-base';
+
+var BUTTONS = [
+  { text: "5000", number: 5000},
+  { text: "10 000", number: 10000},
+  { text: "15 000", number: 15000},
+  { text: "20 000", number: 20000},
+  { text: "Delete" },
+  { text: "Cancel" }
+];
+var DESTRUCTIVE_INDEX = 4;
+var CANCEL_INDEX = 5;
 
 
 export default class PedometerSensor extends React.Component {
@@ -12,9 +23,12 @@ export default class PedometerSensor extends React.Component {
       isPedometerAvailable: "checking",
       pastStepCount: 0,
       currentStepCount: 0,
-      totalStepCount: 0
+      totalStepCount: 0,
+      target: 0
     }
   }
+
+
 
 
   componentDidMount() {
@@ -74,7 +88,24 @@ render() {
     return (
       <View style={styles.stepsBar}>
         <Text style={{fontSize: 25, lineHeight: 25, color: 'white'}}>
-            <Icon name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"} style={{fontSize: 25, lineHeight: 25, color: 'white'}} />: {this.state.totalStepCount}
+            <Icon name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"} style={{fontSize: 25, lineHeight: 25, color: 'white'}} />: {this.state.totalStepCount} / { this.state.target }
+            <Button light onPress={() =>
+            ActionSheet.show(
+              {
+                options: BUTTONS,
+                cancelButtonIndex: CANCEL_INDEX,
+                destructiveButtonIndex: DESTRUCTIVE_INDEX,
+                title: "Choose target steps"
+              },
+              buttonIndex => {
+                this.setState({ 
+                  clicked: BUTTONS[buttonIndex],
+                  target: clicked.number
+                },
+                {});
+              }
+            )}
+          ><Text>{ this.state.target }</Text></Button>
         </Text>
       </View>
     )
@@ -82,11 +113,11 @@ render() {
 
   else{
     return(
-      <Container>
-      <Text>
-        Error: Pedometer.isAvailableAsync(): {this.state.isPedometerAvailable}
+      <View style={styles.stepsBar}>
+      <Text style={{fontSize: 25, lineHeight: 25, color: 'white'}}>
+        Error: Pedometer not available
       </Text>
-    </Container>
+    </View>
     );
   }
 }
