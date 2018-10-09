@@ -133,7 +133,7 @@ class CreateSession extends Component {
           </Item>
 
           <View style={styles.exerciseListContainer}>
-            <ExerciseList />
+            <ExerciseList navigation={this.props.navigation} />
           </View>
           <View style={styles.contactListContainer}>
             <ContactList />
