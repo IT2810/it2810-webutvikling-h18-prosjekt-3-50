@@ -21,7 +21,7 @@ class Home extends Component {
         <CalendarView navigation={this.props.navigation}/>
         <PedometerSensor />
         <ShowSession />
-        <Button 
+        <Button
           primary
           large
           block

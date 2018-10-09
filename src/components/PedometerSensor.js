@@ -79,17 +79,25 @@ export default class PedometerSensor extends React.Component {
   }
 
 _unsubscribe = () => {
-this._subscription && this._subscription.remove();
-this._subscription = null;
-};
+  this._subscription && this._subscription.remove();
+  this._subscription = null;
+}
 
 render() {
   if (this.state.isPedometerAvailable){
     return (
       <View style={styles.stepsBar}>
-        <Text style={{fontSize: 25, lineHeight: 25, color: 'white'}}>
-            <Icon name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"} style={{fontSize: 25, lineHeight: 25, color: 'white'}} />: {this.state.totalStepCount} / { this.state.target }
-            <Button light onPress={() =>
+        <View>
+        <Text style={{fontSize: 25, lineHeight: 25, color: 'white', marginTop: '5%'}}>
+          <Icon
+            name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
+            style={{fontSize: 25, lineHeight: 25, color: 'white'}}
+          />
+          : {this.state.totalStepCount} / { this.state.target }
+        </Text>
+        </View>
+        <View>
+          <Button style={{display: 'flex'}} light onPress={() =>
             ActionSheet.show(
               {
                 options: BUTTONS,
@@ -98,15 +106,16 @@ render() {
                 title: "Choose target steps"
               },
               buttonIndex => {
-                this.setState({ 
+                this.setState({
                   clicked: BUTTONS[buttonIndex],
-                  target: clicked.number
-                },
-                {});
+                  target: BUTTONS[buttonIndex].number
+                })
               }
             )}
-          ><Text>{ this.state.target }</Text></Button>
-        </Text>
+          >
+          <Text style={{color: 'black'}}>Set target</Text>
+         </Button>
+       </View>
       </View>
     )
   }
@@ -118,22 +127,16 @@ render() {
         Error: Pedometer not available
       </Text>
     </View>
-    );
+    )
   }
 }
 }
 
-
-//Expo.registerRootComponent(PedometerSensor);
-
-
 const styles = StyleSheet.create({
   stepsBar: {
-    width: '100%',
-    height: '10%',
+    width: '90%',
     backgroundColor: '#57BA98',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'center'
   }
 })
