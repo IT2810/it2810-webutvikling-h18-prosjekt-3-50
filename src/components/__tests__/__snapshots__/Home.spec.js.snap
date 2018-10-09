@@ -1,27 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home renders correctly 1`] = `
-<ViewNB
-  style={Object {}}
->
-  <CalendarView
-    navigation={
+<_class>
+  <ScrollView>
+    <CalendarView
+      navigation={
+        Object {
+          "navigate": [MockFunction],
+        }
+      }
+    />
+    <ShowSession />
+  </ScrollView>
+  <Styled(Fab)
+    containerStyle={Object {}}
+    onPress={[Function]}
+    position="bottomRight"
+    style={
       Object {
-        "navigate": [MockFunction],
+        "backgroundColor": "#5067FF",
       }
     }
-  />
-  <ShowSession />
-  <Styled(Button)
-    block={true}
-    large={true}
-    onPress={[Function]}
-    primary={true}
     testID="addSessionButton"
   >
-    <Styled(Text)>
-       ADD SESSION 
-    </Styled(Text)>
-  </Styled(Button)>
-</ViewNB>
+    <Styled(Icon)
+      name="add"
+      style={
+        Object {
+          "fontSize": 34,
+          "lineHeight": 34,
+        }
+      }
+    />
+  </Styled(Fab)>
+</_class>
 `;
