@@ -4,6 +4,7 @@ import  { Button, View, Text} from 'native-base'
 import CreateSession from './CreateSession.js'
 import CalendarView from './CalendarView.js'
 import ShowSession from './ShowSession.js'
+import PedometerSensor from './PedometerSensor.js'
 
 
 class Home extends Component {
@@ -18,7 +19,7 @@ class Home extends Component {
       <View>
 
         <CalendarView navigation={this.props.navigation}/>
-
+        <PedometerSensor />
         <ShowSession />
         <Button 
           primary
