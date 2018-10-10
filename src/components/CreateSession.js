@@ -136,7 +136,7 @@ class CreateSession extends Component {
             <ExerciseList navigation={this.props.navigation} />
           </View>
           <View style={styles.contactListContainer}>
-            <ContactList />
+            <ContactList navigation={this.props.navigation} />
           </View>
         </Content>
 
@@ -179,8 +179,9 @@ const styles = StyleSheet.create ({
   inputTitle: {
     marginTop: '5%',
     marginBottom: '2%',
+    marginLeft: '3%',
     lineHeight: 45,
-    fontSize: 30,
+    fontSize: 27,
     fontWeight: '600'
   },
   titleText: {

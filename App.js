@@ -5,10 +5,11 @@ import Expo, { Font } from 'expo'
 
 import CreateSession from './src/components/CreateSession.js'
 import AddExercise from './src/components/AddExercise.js'
+import AddContact from './src/components/AddContact.js'
 import Home from './src/components/Home.js'
 
 
-import { getTheme, material, StyleProvider, Root} from 'native-base'
+import { getTheme, material, StyleProvider, Root } from 'native-base'
 
 import { createStackNavigator } from 'react-navigation'
 
@@ -47,7 +48,8 @@ const RootStack = createStackNavigator(
   {
     Home: { screen: Home },
     CreateSession: { screen: CreateSession },
-    AddExercise: { screen: AddExercise }
+    AddExercise: { screen: AddExercise },
+    AddContact: { screen: AddContact }
   },
   {
     initialRouteName: 'Home',
