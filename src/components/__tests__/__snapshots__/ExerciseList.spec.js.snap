@@ -6,9 +6,17 @@ exports[`ExerciseList renders correctly 1`] = `
 >
   <RowNB>
     <Styled(Left)>
-      <Styled(H2)>
+      <Styled(Text)
+        style={
+          Object {
+            "fontSize": 30,
+            "fontWeight": "600",
+            "lineHeight": 45,
+          }
+        }
+      >
         Exercises
-      </Styled(H2)>
+      </Styled(Text)>
     </Styled(Left)>
     <Styled(Right)>
       <Styled(Button)
@@ -23,32 +31,146 @@ exports[`ExerciseList renders correctly 1`] = `
       </Styled(Button)>
     </Styled(Right)>
   </RowNB>
-  <Styled(List)
-    dataArray={
-      Array [
-        Object {
-          "name": "Squat",
-          "reps": "12",
-          "sets": "4",
-        },
-        Object {
-          "name": "Benchpress",
-          "reps": "12",
-          "sets": "4",
-        },
-        Object {
-          "name": "Pullup",
-          "reps": "12",
-          "sets": "4",
-        },
-        Object {
-          "name": "Row",
-          "reps": "12",
-          "sets": "4",
-        },
-      ]
+  <Styled(Card)
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "5%",
+      }
     }
-    renderRow={[Function]}
-  />
+  >
+    <Styled(ListItem)
+      key="0"
+    >
+      <Styled(Left)
+        onPress={[Function]}
+      >
+        <Styled(Text)>
+           
+          Squat
+            
+        </Styled(Text)>
+      </Styled(Left)>
+      <Styled(Body)>
+        <Styled(Text)>
+           
+          12
+           x 
+          4
+           
+        </Styled(Text)>
+      </Styled(Body)>
+      <Styled(Right)>
+        <Styled(Button)
+          danger={true}
+          onPress={[Function]}
+        >
+          <Styled(Icon)
+            active={true}
+            name="trash"
+          />
+        </Styled(Button)>
+      </Styled(Right)>
+    </Styled(ListItem)>
+    <Styled(ListItem)
+      key="1"
+    >
+      <Styled(Left)
+        onPress={[Function]}
+      >
+        <Styled(Text)>
+           
+          Benchpress
+            
+        </Styled(Text)>
+      </Styled(Left)>
+      <Styled(Body)>
+        <Styled(Text)>
+           
+          12
+           x 
+          4
+           
+        </Styled(Text)>
+      </Styled(Body)>
+      <Styled(Right)>
+        <Styled(Button)
+          danger={true}
+          onPress={[Function]}
+        >
+          <Styled(Icon)
+            active={true}
+            name="trash"
+          />
+        </Styled(Button)>
+      </Styled(Right)>
+    </Styled(ListItem)>
+    <Styled(ListItem)
+      key="2"
+    >
+      <Styled(Left)
+        onPress={[Function]}
+      >
+        <Styled(Text)>
+           
+          Pullup
+            
+        </Styled(Text)>
+      </Styled(Left)>
+      <Styled(Body)>
+        <Styled(Text)>
+           
+          12
+           x 
+          4
+           
+        </Styled(Text)>
+      </Styled(Body)>
+      <Styled(Right)>
+        <Styled(Button)
+          danger={true}
+          onPress={[Function]}
+        >
+          <Styled(Icon)
+            active={true}
+            name="trash"
+          />
+        </Styled(Button)>
+      </Styled(Right)>
+    </Styled(ListItem)>
+    <Styled(ListItem)
+      key="3"
+    >
+      <Styled(Left)
+        onPress={[Function]}
+      >
+        <Styled(Text)>
+           
+          Row
+            
+        </Styled(Text)>
+      </Styled(Left)>
+      <Styled(Body)>
+        <Styled(Text)>
+           
+          12
+           x 
+          4
+           
+        </Styled(Text)>
+      </Styled(Body)>
+      <Styled(Right)>
+        <Styled(Button)
+          danger={true}
+          onPress={[Function]}
+        >
+          <Styled(Icon)
+            active={true}
+            name="trash"
+          />
+        </Styled(Button)>
+      </Styled(Right)>
+    </Styled(ListItem)>
+  </Styled(Card)>
 </ViewNB>
 `;

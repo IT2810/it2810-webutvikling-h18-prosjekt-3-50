@@ -42,7 +42,7 @@ export default class ContactList extends Component {
     return this.state.availableContacts.filter(contact => this.state.addedContacts.indexOf(contact) === -1)
   }
 
-  render () {    
+  render () {
     const contactPickers = [
       <Picker.Item label='Add a contact' value='0' key="0" />
     ]
@@ -62,7 +62,7 @@ export default class ContactList extends Component {
 
         <List
           dataArray={this.state.addedContacts}
-          renderRow={(contact) => 
+          renderRow={(contact) =>
             <ListItem>
               <Left>
                 <Text> {contact} </Text>
@@ -86,7 +86,7 @@ export default class ContactList extends Component {
           selectedValue=''
           onValueChange={this._add.bind(this)}
         >
-          {contactPickers}         
+          {contactPickers}
 
         </Picker>
       </View>

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+
 import { Calendar } from 'react-native-calendars'
+import { StyleSheet } from 'react-native'
 import { View } from 'native-base'
+
 import Moment from 'react-moment'
 
 class CalendarView extends Component {
@@ -61,7 +64,7 @@ class CalendarView extends Component {
     const { navigate } = this.props.navigation
 
     return (
-      <View>
+      <View style={styles.calendarContainer}>
         <Calendar
           testID={'calendar'}
           markedDates={{ ...this.state.markedDates }}
@@ -74,3 +77,10 @@ class CalendarView extends Component {
 }
 
 export default CalendarView
+
+const styles = StyleSheet.create ({
+  calendarContainer: {
+    marginTop: '5%',
+    marginBottom: '5%'
+  }
+})

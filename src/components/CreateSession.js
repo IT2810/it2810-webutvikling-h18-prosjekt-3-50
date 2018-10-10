@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Moment from 'react-moment'
-import  { Button, Text, Container, Content, Toast, Input, Item} from 'native-base'
+import  { Button, View, Text, Container, Content, Toast, Input, Item, Fab, Icon } from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
 import ContactList from './ContactList.js'
@@ -69,6 +69,7 @@ class CreateSession extends Component {
       text: text,
       style: {
         margin: 8,
+        marginTop: 20,
         padding: 16
       }
     })
@@ -96,25 +97,27 @@ class CreateSession extends Component {
             <Moment
               element={Text}
               format="DD.MM HH:mm"
+              style={styles.dateAndTimeText}
             >
               {this.state.date}
             </Moment>
     } else {
-      dateTimeText = <Text> Pick a date and time </Text>
+      dateTimeText = <Text style={styles.dateAndTimeText}> Pick a date and time </Text>
     }
 
     return (
       <Container>
         <Content padder scrollEnabled={true}>
-          <Text> Title </Text>
+          <Text style={styles.inputTitle}>Title</Text>
           <Item rounded>
             <Input
+              style={styles.titleText}
               onChangeText={(name) => this.setState({name})}
               value={this.state.name}
             />
           </Item>
 
-          <Text> Date and time </Text>
+          <Text style={styles.inputTitle}> Date and time </Text>
           <Item rounded>
             <TouchableOpacity onPress={this._showDateTimePicker}>
               {dateTimeText}
@@ -129,10 +132,15 @@ class CreateSession extends Component {
 
           </Item>
 
-          <ExerciseList navigation={this.props.navigation}/>
+          <View style={styles.exerciseListContainer}>
+            <ExerciseList navigation={this.props.navigation} />
+          </View>
+          <View style={styles.contactListContainer}>
+            <ContactList />
+          </View>
+        </Content>
 
-          <ContactList navigation={this.props.navigation}/>
-
+        {/*<View style={styles.buttonContainer}>
           <Button
             success
             large
@@ -142,9 +150,17 @@ class CreateSession extends Component {
           >
             <Text> SAVE SESSION </Text>
           </Button>
+        </View>*/}
+        <Fab
+          onPress={this.saveSession}
+          testID={'saveSessionButton'}
+          //containerStyle={{}}
+          style={{ backgroundColor: '#199E59' }}
+          position="bottomRight"
+        >
+          <Icon ios="ios-checkmark" android="md-checkmark" style={{fontSize: 50, lineHeight: 50}} />
 
-        </Content>
-
+        </Fab>
       </Container>
     )
   }
@@ -153,9 +169,41 @@ class CreateSession extends Component {
 export default CreateSession
 
 const styles = StyleSheet.create ({
-  inline: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    flexDirection: 'row'
+  exerciseListContainer: {
+    marginTop: '10%'
+  },
+  contactListContainer: {
+    marginTop: '10%',
+    marginBottom: '30%' // room for save session button
+  },
+  inputTitle: {
+    marginTop: '5%',
+    marginBottom: '2%',
+    lineHeight: 45,
+    fontSize: 30,
+    fontWeight: '600'
+  },
+  titleText: {
+    paddingLeft: '7%',
+    paddingRight: '7%',
+    fontSize: 22
+  },
+  dateAndTimeText: {
+    paddingLeft: '7%',
+    paddingRight: '7%',
+    fontSize: 22,
+    lineHeight: 42
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: '0%',
+    left: '10%',
+    width: '80%',
+    marginBottom: '7%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 4
   }
 })

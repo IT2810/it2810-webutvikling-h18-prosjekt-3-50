@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { List, ListItem, Text, Left, Body, Right, Button, View, Row, H2, Icon, Toast } from 'native-base'
+
+import {Card, List, ListItem, Text, Left, Body, Right, Button, View, Row, Picker, Icon, Toast } from 'native-base'
+
 
 export default class ExerciseList extends Component {
   constructor (props, context) {
@@ -14,9 +16,9 @@ export default class ExerciseList extends Component {
       ]
     }
 
-    this.showToast = this.showToast.bind(this)
     this._add = this._add.bind(this)
   }
+
 
   _remove (value) {
     // TODO: delete in redux
@@ -24,15 +26,6 @@ export default class ExerciseList extends Component {
       exercises: prevState.exercises.filter(exercise => exercise.name !== value.name)
     }))
 
-    this.showToast()
-  }
-
-  showToast () {
-    Toast.show({
-      type: 'warning',
-      duration: 3000,
-      text: 'Deleted exercise'
-    })
   }
 
   _add () {
@@ -44,7 +37,7 @@ export default class ExerciseList extends Component {
       <View>
         <Row>
           <Left>
-            <H2>Exercises</H2>
+            <Text style={styles.inputTitle}>Exercises</Text>
           </Left>
           <Right>
             <Button
@@ -58,11 +51,13 @@ export default class ExerciseList extends Component {
           </Right>
         </Row>
 
-        <List
-          dataArray={this.state.exercises}
-          renderRow={(exercise) =>
-            <ListItem>
-              <Left>
+
+        <Card style={styles.cardWithList}>
+          {this.state.exercises.map((exercise, index) => (
+            <ListItem key={index}>
+              <Left
+                onPress={this._add}
+              >
                 <Text> { exercise.name }  </Text>
               </Left>
               <Body>
@@ -77,10 +72,21 @@ export default class ExerciseList extends Component {
                 </Button>
               </Right>
             </ListItem>
-          }
-        >
-        </List>
+          ))}
+        </Card>
+
       </View>
     )
   }
 }
+const styles = StyleSheet.create ({
+  cardWithList: {
+    marginTop: '5%',
+    marginBottom: '5%'
+  },
+  inputTitle: {
+    lineHeight: 45,
+    fontSize: 30,
+    fontWeight: '600'
+  }
+})
