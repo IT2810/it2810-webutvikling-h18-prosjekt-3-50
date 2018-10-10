@@ -25,7 +25,6 @@ class Home extends Component {
         </ScrollView>
         <Fab
           testID="addSessionButton"
-
           onPress={() => this.props.navigation.navigate('CreateSession')}
           containerStyle={{ }}
           style={{ backgroundColor: '#5067FF' }}
