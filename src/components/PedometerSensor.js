@@ -2,7 +2,7 @@ import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
 import { Platform, StyleSheet } from "react-native";
-import { Text, Container, Header, Icon, View, Button, ActionSheet, SwipeRow, Array } from 'native-base';
+import { Text, Container, Header, Icon, View, Button, ActionSheet, SwipeRow, Array, Textarea } from 'native-base';
 
 var BUTTONS = [
   { text: "5000", number: 5000},
@@ -24,8 +24,7 @@ export default class PedometerSensor extends React.Component {
       pastStepCount: 0,
       currentStepCount: 0,
       totalStepCount: 0,
-      target: 0,
-      clicked: BUTTONS[0]
+      target: 0
     }
   }
 
@@ -96,9 +95,7 @@ render() {
   var smile = this.reachedTarget()
   if (this.state.isPedometerAvailable){
       return (
-        <View style={styles.stepsBar}>
-          <View>
-          <SwipeRow style={{ width: '100%', backgroundColor: '#57BA98' }}
+          <SwipeRow style={styles.stepsBar}
             leftOpenValue={75}
             rightOpenValue={-75}
             left={
@@ -123,12 +120,12 @@ render() {
               </Button>
             }
             body={
-             <Text style={{fontSize: 25, lineHeight: 25, color: 'white', marginTop: '5%'}}>
+             <Text style={styles.stepsText}>
                 <Icon
                   name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
                   style={{fontSize: 25, lineHeight: 25, color: 'white'}}
                 />
-                : {this.state.totalStepCount} / { this.state.target }  {smile}
+                : {this.state.totalStepCount} /  {this.state.target}  {smile}
               </Text>
             }
             right={
@@ -143,16 +140,13 @@ render() {
            </Button>
             }
             />
-          
-          </View>
-        </View>
       )
     }
 
   else{
     return(
       <View style={styles.stepsBar}>
-      <Text style={{fontSize: 25, lineHeight: 25, color: 'white'}}>
+      <Text style={styles.stepsText}>
         Error: Pedometer not available
       </Text>
     </View>
@@ -165,7 +159,13 @@ const styles = StyleSheet.create({
   stepsBar: {
     width: '100%',
     backgroundColor: '#57BA98',
-    display: 'flex',
-    alignItems: 'center'
+  },
+  stepsText: {
+    flex: 1, 
+    justifyContent: 'center', 
+    textAlign: 'center', 
+    fontSize: 25, 
+    lineHeight: 25, 
+    color: 'white'
   }
 })
