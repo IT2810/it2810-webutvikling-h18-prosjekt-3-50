@@ -66,6 +66,7 @@ export default class ExerciseList extends Component {
               <Right>
                 <Button
                   danger
+                  style={{minWidth: '140%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                   onPress={this._remove.bind(this, exercise)}
                 >
                   <Icon active name="trash" />

@@ -28,7 +28,7 @@ class Home extends Component {
         <Fab
           testID="addSessionButton"
           onPress={() => this.props.navigation.navigate('CreateSession')}
-          containerStyle={{ }}
+          //containerStyle={{}}
           style={{ backgroundColor: '#5067FF' }}
           position="bottomRight"
         >
