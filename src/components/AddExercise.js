@@ -23,7 +23,7 @@ class AddExercise extends Component {
 
   addExercise() {
     // TODO save in state with redux
-
+    store.dispatch(addExercise(this.state.name, this.state.reps, this.state.sets, this.state.kg))
     if (this.validateExercise()) {
       this.showToast('Added exercise', 'success')
       this.props.navigation.navigate('CreateSession')

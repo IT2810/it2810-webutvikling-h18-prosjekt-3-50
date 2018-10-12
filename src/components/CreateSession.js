@@ -166,7 +166,7 @@ class CreateSession extends Component {
   }
 }
 
-export default CreateSession
+export default connect()(CreateSession)
 
 const styles = StyleSheet.create ({
   exerciseListContainer: {

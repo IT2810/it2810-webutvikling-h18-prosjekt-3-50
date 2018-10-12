@@ -19,6 +19,16 @@ class CalendarView extends Component {
     this.selectDate = this.selectDate.bind(this)
     this.getSessions = this.getSessions.bind(this)
     this.addSession = this.addSession.bind(this)
+
+    store.subscribe(() => {
+      // When state will be updated(in our case, when items will be fetched),
+      // we will update local component state and force component to rerender
+      // with new data.
+
+      this.setState({
+        sessionDates: this.getSessions()
+      })
+    })
   }
 
   componentDidMount () {
@@ -30,12 +40,19 @@ class CalendarView extends Component {
   }
 
   getSessions () {
-    // TODO: get from store
-  	return {
-      '2018-10-02': { marked: true },
-      '2018-10-06': { marked: true },
-      '2018-10-19': { marked: true }
+    let sessions = store.getState().sessions
+    let dates = sessions.map(session => session.date)
+    console.log('Dates')
+    console.log(dates)
+    return {
+      dates: { marked: true }
     }
+    // TODO: get from store
+//    return {
+//      '2018-10-02': { marked: true },
+//      '2018-10-06': { marked: true },
+//      '2018-10-19': { marked: true }
+ //   }
   }
 
   addSession (date) {
@@ -76,9 +93,9 @@ class CalendarView extends Component {
   }
 }
 
-export default CalendarView
+export default connect()(CalendarView)
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   calendarContainer: {
     marginTop: '5%',
     marginBottom: '5%'
