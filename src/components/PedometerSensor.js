@@ -2,7 +2,7 @@ import Expo from "expo";
 import React from "react";
 import { Pedometer } from "expo";
 import { Platform, StyleSheet } from "react-native";
-import { Text, Container, Header, Icon, View, Button, ActionSheet } from 'native-base';
+import { Text, Container, Header, Icon, View, Button, ActionSheet, SwipeRow, Array } from 'native-base';
 
 var BUTTONS = [
   { text: "5000", number: 5000},
@@ -24,7 +24,8 @@ export default class PedometerSensor extends React.Component {
       pastStepCount: 0,
       currentStepCount: 0,
       totalStepCount: 0,
-      target: 0
+      target: 0,
+      clicked: BUTTONS[0]
     }
   }
 
@@ -39,6 +40,13 @@ export default class PedometerSensor extends React.Component {
     this._unsubscribe()
   }
 
+  reachedTarget() {
+    if(this.state.target <= this.state.totalStepCount && this.state.target != 0 && this.state.target != NaN){
+      return <Icon name={Platform.OS === 'ios' ? "ios-happy" : "md-happy"}
+                  style={{fontSize: 25, lineHeight: 25, color: 'white' }}/>
+    }
+  }
+
   _subscribe = () => {
     this._subscription = Pedometer.watchStepCount(result => {
       this.setState({
@@ -46,6 +54,7 @@ export default class PedometerSensor extends React.Component {
         totalStepCount: result.steps + this.state.pastStepCount
     })
   })
+
 
   Pedometer.isAvailableAsync().then(
     result => {
@@ -84,41 +93,61 @@ _unsubscribe = () => {
 }
 
 render() {
+  var smile = this.reachedTarget()
   if (this.state.isPedometerAvailable){
-    return (
-      <View style={styles.stepsBar}>
-        <View>
-        <Text style={{fontSize: 25, lineHeight: 25, color: 'white', marginTop: '5%'}}>
-          <Icon
-            name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
-            style={{fontSize: 25, lineHeight: 25, color: 'white'}}
-          />
-          : {this.state.totalStepCount} / { this.state.target }
-        </Text>
+      return (
+        <View style={styles.stepsBar}>
+          <View>
+          <SwipeRow style={{ width: '100%', backgroundColor: '#57BA98' }}
+            leftOpenValue={75}
+            rightOpenValue={-75}
+            left={
+              <Button success onPress={() =>
+                ActionSheet.show(
+                  {
+                    options: BUTTONS,
+                    cancelButtonIndex: CANCEL_INDEX,
+                    destructiveButtonIndex: DESTRUCTIVE_INDEX,
+                    title: "Choose target steps"
+                  },
+                  buttonIndex => {
+                    this.setState({
+                      clicked: BUTTONS[buttonIndex],
+                      target: BUTTONS[buttonIndex].number
+                    })
+                  }
+                )}
+              >
+            <Icon name={Platform.OS === 'ios' ? "ios-add" : "md-add"}
+                  style={{fontSize: 25, lineHeight: 25, color: 'white'}}/>
+              </Button>
+            }
+            body={
+             <Text style={{fontSize: 25, lineHeight: 25, color: 'white', marginTop: '5%'}}>
+                <Icon
+                  name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
+                  style={{fontSize: 25, lineHeight: 25, color: 'white'}}
+                />
+                : {this.state.totalStepCount} / { this.state.target }  {smile}
+              </Text>
+            }
+            right={
+              <Button style={{display: 'flex'}} danger onPress={() =>
+                  this.setState({
+                    target: BUTTONS[DESTRUCTIVE_INDEX].number
+                  })
+                }
+            >
+            <Icon name={Platform.OS === 'ios' ? "ios-trash" : "md-trash"}
+                  style={{fontSize: 25, lineHeight: 25, color: 'white'}}/>
+           </Button>
+            }
+            />
+          
+          </View>
         </View>
-        <View>
-          <Button style={{display: 'flex'}} light onPress={() =>
-            ActionSheet.show(
-              {
-                options: BUTTONS,
-                cancelButtonIndex: CANCEL_INDEX,
-                destructiveButtonIndex: DESTRUCTIVE_INDEX,
-                title: "Choose target steps"
-              },
-              buttonIndex => {
-                this.setState({
-                  clicked: BUTTONS[buttonIndex],
-                  target: BUTTONS[buttonIndex].number
-                })
-              }
-            )}
-          >
-          <Text style={{color: 'black'}}>Set target</Text>
-         </Button>
-       </View>
-      </View>
-    )
-  }
+      )
+    }
 
   else{
     return(
@@ -134,7 +163,7 @@ render() {
 
 const styles = StyleSheet.create({
   stepsBar: {
-    width: '90%',
+    width: '100%',
     backgroundColor: '#57BA98',
     display: 'flex',
     alignItems: 'center'
