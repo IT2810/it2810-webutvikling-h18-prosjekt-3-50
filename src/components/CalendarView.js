@@ -10,6 +10,8 @@ import { connect } from 'react-redux'
 
 import { getSessionDates } from '../assets/utils.js'
 
+import { selectDate } from '../../actions/index'
+
 class CalendarView extends Component {
   constructor (props, context) {
     super(props, context)
@@ -38,20 +40,7 @@ class CalendarView extends Component {
   }
 
   getSessions () {
-    let dates = getSessionDates(this.state.sessions)
-    //let map = {}
-    //map[dates] = {marked: true}
-    console.log(dates)
-
-    //return map  
-    //TODO: get from store
-    /*dates = {
-     '2018-10-02': { marked: true },
-     '2018-10-06': { marked: true },
-     '2018-10-19': { marked: true }
-    }*/
-    console.log(dates)
-    return dates
+    return getSessionDates(this.state.sessions)
   }
 
   addSession (date) {
@@ -65,6 +54,8 @@ class CalendarView extends Component {
 
   selectDate (date) {
     // TODO: Update selected date in store
+
+    this.props.selectDate(date)
 
     this.setState({ date: date })
     let dateString = date.dateString
@@ -94,10 +85,14 @@ class CalendarView extends Component {
 
 
 function mapStateToProps(state){
-  return {sessions: state.sessions}
+  return {sessions: state.sessions.sessions}
 }
 
-export default connect(mapStateToProps)(CalendarView)
+const mapDispatchToProps = dispatch => ({
+  selectDate: date => dispatch(selectDate(date))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarView)
 
 const styles = StyleSheet.create({
   calendarContainer: {

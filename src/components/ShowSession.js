@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Card, Text, CardItem, Body, Right, Left } from 'native-base'
 import Moment from 'react-moment'
+import { connect } from 'react-redux'
+
 
 class ShowSession extends Component {
   constructor (props, context) {
@@ -12,12 +14,12 @@ class ShowSession extends Component {
   }
 
   getSelectedDate () {
-    // Get selected date from store
-    return new Date()
+    this.props.selectedDate
   }
 
   getSession (date) {
     // TODO: get from redux
+
     return {
       name: 'Test Exercise',
       dateTime: new Date(2018, 12, 17, 4, 0, 0),
@@ -35,71 +37,92 @@ class ShowSession extends Component {
     let today = new Date().getDate()
     if (session == null) {
       return <Text>No session planned for today </Text>
-    } else if (session.dateTime.getDate() == today) {
+    } else if (session.date == today) {
       return <Text>Todays session</Text>
     } else {
 
       return <Text>
         <Text>Date: </Text>
         <Moment element={Text} format="D. MMMM">
-          {session.dateTime}
+          {session.date}
         </Moment>
       </Text>
     }
-
-
   }
 
   render () {
     const date = this.getSelectedDate()
-    const session = this.getSession(date)
-    const trainingPartners = session.contacts.join(', ')
-    const exercises = session.exercises.map(exercise => exercise.name).join(', ')
-    const dateText = this.getDateText(session)
+    let session = this.props.session 
 
-    return (
-      <Card>
-        <CardItem header bordered>
+    console.log("Session")
+    console.log(session)
+    if (session == null) {
+      return (
+        <Card>
+          <CardItem bordered>
+            <Text> No sessin for today </Text>
+          </CardItem>
+        </Card>
+      )
+    } else {
+      const trainingPartners = session.contacts.join(', ')
+      const exercises = session.exercises.map(exercise => exercise.name).join(', ')
+      const dateText = this.getDateText(session)
 
-          <Body>
+      return (
+        <Card>
+          <Moment element={Text}>
+            {this.props.date}
+          </Moment>
+          <CardItem header bordered>
+            <Body>
               {dateText}
-          </Body>
-          <Right>
+            </Body>
+            <Right>
+              <Text>
+                <Moment element={Text} fromNow>
+                  {session.date}
+                </Moment>
+              </Text>
+            </Right>
+          </CardItem>
+
+          <CardItem bordered>
+              <Text>
+
+                <Text>Time: </Text>
+                <Moment element={Text} format="HH:mm">
+                  {session.time}
+                </Moment>
+              </Text>
+          </CardItem>
+
+          <CardItem bordered>
+            <Text>Title: {session.name} </Text>
+          </CardItem>
+
+          <CardItem bordered>
             <Text>
-              <Moment element={Text} fromNow>
-                {session.dateTime}
-              </Moment>
+              With: {trainingPartners}
             </Text>
-          </Right>
-
-        </CardItem>
-        <CardItem bordered>
+          </CardItem>
+          
+          <CardItem bordered>
             <Text>
-
-              <Text>Time: </Text>
-              <Moment element={Text} format="HH:mm">
-                {session.dateTime}
-              </Moment>
+              Exercises: {exercises}
             </Text>
-
-        </CardItem>
-        <CardItem bordered>
-          <Text>Title: {session.name} </Text>
-        </CardItem>
-        <CardItem bordered>
-
-          <Text>
-            With: {trainingPartners}
-          </Text>
-        </CardItem>
-        <CardItem bordered>
-          <Text>
-            Exercises: {exercises}
-          </Text>
-        </CardItem>
-      </Card>
-    )
+          </CardItem>
+        </Card>
+      )
+    }
   }
 }
 
-export default ShowSession
+function mapStateToProps(state){
+  return {
+    date: state.sessions.selectedDate,
+    session: state.sessions.activeSession
+  }
+}
+
+export default connect(mapStateToProps)(ShowSession)

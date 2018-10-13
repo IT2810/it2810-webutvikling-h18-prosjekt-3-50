@@ -33,6 +33,7 @@ class CreateSession extends Component {
 
     this.saveSession = this.saveSession.bind(this)
     this.validateSession = this.validateSession.bind(this)
+    this.getSessionObject = this.getSessionObject.bind(this)
 
     this._hideDateTimePicker = this._hideDateTimePicker.bind(this)
     this._showDateTimePicker = this._showDateTimePicker.bind(this)
@@ -42,7 +43,8 @@ class CreateSession extends Component {
   saveSession() {
     if (this.validateSession()) {
       // TODO save in state with redux
-      this.props.addSession({name: "A new session"})
+      console.log(this.props)
+      this.props.addSession(this.getSessionObject())
 
       this.props.navigation.navigate('Home')
     }
@@ -62,6 +64,15 @@ class CreateSession extends Component {
     } else {
       this.showToast('You have to give the exercise a name')
       return false
+    }
+  }
+
+  getSessionObject() {
+    return {
+      name: this.state.name,
+      date: this.state.date,
+      exercises: this.state.exercises,
+      contacts: this.state.contacts
     }
   }
 
@@ -170,11 +181,9 @@ class CreateSession extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addSession: session => dispatch(addSession(session))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  addSession: session => dispatch(addSession(session))
+})
 
 export default connect(null, mapDispatchToProps)(CreateSession)
 
