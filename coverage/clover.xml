@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1539440944230" clover="3.2.0">
-  <project timestamp="1539440944231" name="All files">
-    <metrics statements="287" coveredstatements="16" conditionals="83" coveredconditionals="4" methods="59" coveredmethods="4" elements="429" coveredelements="24" complexity="0" loc="287" ncloc="287" packages="6" files="21" classes="21">
+<coverage generated="1539466136403" clover="3.2.0">
+  <project timestamp="1539466136404" name="All files">
+    <metrics statements="287" coveredstatements="39" conditionals="80" coveredconditionals="10" methods="61" coveredmethods="7" elements="428" coveredelements="56" complexity="0" loc="287" ncloc="287" packages="6" files="21" classes="21">
       <package name="it2810-webutvikling-h18-prosjekt-3-50">
         <metrics statements="20" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <file name=".eslintrc.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/.eslintrc.js">
@@ -35,26 +35,22 @@
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.actions">
-        <metrics statements="16" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="12" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <file name="UserActions.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/actions/UserActions.js">
-          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="5" count="0" type="stmt"/>
+          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="5" count="1" type="stmt"/>
           <line num="6" count="0" type="stmt"/>
         </file>
         <file name="index.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/actions/index.js">
-          <metrics statements="2" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
-          <line num="1" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
+          <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>
         <file name="sessions.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/actions/sessions.js">
-          <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
+          <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
           <line num="4" count="0" type="stmt"/>
-          <line num="10" count="0" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
           <line num="11" count="0" type="stmt"/>
-          <line num="17" count="0" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
           <line num="18" count="0" type="stmt"/>
         </file>
         <file name="types.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/actions/types.js">
@@ -66,7 +62,7 @@
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.reducers">
-        <metrics statements="32" coveredstatements="12" conditionals="11" coveredconditionals="4" methods="7" coveredmethods="4"/>
+        <metrics statements="35" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <file name="UserReducer.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/reducers/UserReducer.js">
           <metrics statements="13" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="1" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
@@ -90,37 +86,40 @@
           <line num="3" count="0" type="stmt"/>
         </file>
         <file name="sessions.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/reducers/sessions.js">
-          <metrics statements="16" coveredstatements="12" conditionals="5" coveredconditionals="4" methods="6" coveredmethods="4"/>
-          <line num="6" count="1" type="stmt"/>
-          <line num="8" count="1" type="stmt"/>
-          <line num="10" count="2" type="stmt"/>
-          <line num="13" count="1" type="stmt"/>
-          <line num="14" count="2" type="stmt"/>
-          <line num="15" count="2" type="stmt"/>
-          <line num="18" count="1" type="stmt"/>
+          <metrics statements="19" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
           <line num="19" count="0" type="stmt"/>
           <line num="20" count="0" type="stmt"/>
           <line num="22" count="0" type="stmt"/>
-          <line num="27" count="5" type="stmt"/>
-          <line num="28" count="5" type="cond" truecount="3" falsecount="1"/>
-          <line num="30" count="2" type="stmt"/>
-          <line num="32" count="2" type="stmt"/>
+          <line num="26" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
           <line num="34" count="0" type="stmt"/>
-          <line num="36" count="1" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.src">
-        <metrics statements="8" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="8" conditionals="10" coveredconditionals="8" methods="1" coveredmethods="1"/>
         <file name="testUtils.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/testUtils.js">
-          <metrics statements="8" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="1" coveredmethods="0"/>
-          <line num="2" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="5" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="6" count="0" type="stmt"/>
-          <line num="7" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
-          <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="10" count="0" type="stmt"/>
+          <metrics statements="8" coveredstatements="8" conditionals="10" coveredconditionals="8" methods="1" coveredmethods="1"/>
+          <line num="2" count="12" type="cond" truecount="4" falsecount="0"/>
+          <line num="3" count="6" type="stmt"/>
+          <line num="5" count="6" type="cond" truecount="3" falsecount="1"/>
+          <line num="6" count="6" type="stmt"/>
+          <line num="7" count="6" type="stmt"/>
+          <line num="8" count="6" type="stmt"/>
+          <line num="9" count="6" type="cond" truecount="1" falsecount="1"/>
+          <line num="10" count="6" type="stmt"/>
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.src.assets">
@@ -141,67 +140,68 @@
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.src.components">
-        <metrics statements="203" coveredstatements="0" conditionals="54" coveredconditionals="0" methods="39" coveredmethods="0"/>
+        <metrics statements="204" coveredstatements="23" conditionals="52" coveredconditionals="2" methods="44" coveredmethods="6"/>
         <file name="AddExercise.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/components/AddExercise.js">
-          <metrics statements="27" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="5" coveredmethods="0"/>
+          <metrics statements="31" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="7" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
-          <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="12" count="0" type="stmt"/>
-          <line num="19" count="0" type="stmt"/>
-          <line num="20" count="0" type="stmt"/>
-          <line num="21" count="0" type="stmt"/>
-          <line num="26" count="0" type="stmt"/>
-          <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="28" count="0" type="stmt"/>
-          <line num="29" count="0" type="stmt"/>
-          <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="35" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="36" count="0" type="stmt"/>
-          <line num="37" count="0" type="stmt"/>
-          <line num="39" count="0" type="stmt"/>
-          <line num="42" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="39" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
           <line num="43" count="0" type="stmt"/>
-          <line num="48" count="0" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
-          <line num="57" count="0" type="stmt"/>
-          <line num="64" count="0" type="stmt"/>
-          <line num="85" count="0" type="stmt"/>
-          <line num="104" count="0" type="stmt"/>
-          <line num="122" count="0" type="stmt"/>
-          <line num="148" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="126" count="0" type="stmt"/>
+          <line num="150" count="0" type="stmt"/>
+          <line num="151" count="0" type="stmt"/>
+          <line num="156" count="0" type="stmt"/>
         </file>
         <file name="CalendarView.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/components/CalendarView.js">
-          <metrics statements="28" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
-          <line num="1" count="0" type="stmt"/>
-          <line num="2" count="0" type="stmt"/>
-          <line num="3" count="0" type="stmt"/>
-          <line num="4" count="0" type="stmt"/>
-          <line num="5" count="0" type="stmt"/>
-          <line num="6" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
-          <line num="9" count="0" type="stmt"/>
-          <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="15" count="0" type="stmt"/>
-          <line num="22" count="0" type="stmt"/>
-          <line num="24" count="0" type="stmt"/>
-          <line num="40" count="0" type="stmt"/>
-          <line num="49" count="0" type="stmt"/>
-          <line num="51" count="0" type="stmt"/>
-          <line num="52" count="0" type="stmt"/>
-          <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="55" count="0" type="stmt"/>
-          <line num="57" count="0" type="stmt"/>
-          <line num="61" count="0" type="stmt"/>
-          <line num="62" count="0" type="stmt"/>
-          <line num="64" count="0" type="stmt"/>
-          <line num="70" count="0" type="stmt"/>
-          <line num="71" count="0" type="stmt"/>
-          <line num="80" count="0" type="stmt"/>
-          <line num="86" count="0" type="stmt"/>
-          <line num="87" count="0" type="stmt"/>
+          <metrics statements="25" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="9" coveredmethods="6"/>
+          <line num="13" count="9" type="stmt"/>
+          <line num="15" count="9" type="stmt"/>
+          <line num="22" count="9" type="stmt"/>
+          <line num="24" count="9" type="stmt"/>
+          <line num="40" count="1" type="stmt"/>
+          <line num="49" count="3" type="stmt"/>
+          <line num="50" count="3" type="stmt"/>
+          <line num="51" count="3" type="stmt"/>
+          <line num="52" count="3" type="stmt"/>
+          <line num="54" count="3" type="stmt"/>
+          <line num="55" count="3" type="stmt"/>
+          <line num="56" count="3" type="stmt"/>
+          <line num="58" count="3" type="cond" truecount="2" falsecount="0"/>
+          <line num="59" count="1" type="stmt"/>
+          <line num="60" count="1" type="stmt"/>
+          <line num="62" count="2" type="stmt"/>
+          <line num="63" count="2" type="stmt"/>
+          <line num="68" count="17" type="stmt"/>
+          <line num="70" count="17" type="stmt"/>
+          <line num="75" count="2" type="stmt"/>
+          <line num="76" count="4" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="91" count="1" type="stmt"/>
           <line num="92" count="0" type="stmt"/>
+          <line num="97" count="1" type="stmt"/>
         </file>
         <file name="ContactList.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/src/components/ContactList.js">
           <metrics statements="21" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="6" coveredmethods="0"/>

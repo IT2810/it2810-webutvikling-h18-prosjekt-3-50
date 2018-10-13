@@ -3,14 +3,14 @@
 exports[`Home renders correctly 1`] = `
 <_class>
   <ScrollView>
-    <CalendarView
+    <Connect(CalendarView)
       navigation={
         Object {
           "navigate": [MockFunction],
         }
       }
     />
-    <ShowSession />
+    <Connect(ShowSession) />
   </ScrollView>
   <Styled(Fab)
     containerStyle={Object {}}

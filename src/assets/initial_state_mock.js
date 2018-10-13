@@ -33,5 +33,6 @@ export default initial_state = {
       ]
     }
   ],
-  selectedDate: new Date()
+  selectedDate: new Date(),
+  activeSession: null
 }

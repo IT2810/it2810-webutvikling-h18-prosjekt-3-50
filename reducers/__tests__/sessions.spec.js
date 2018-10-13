@@ -6,7 +6,6 @@ import { ADD_SESSION, SELECT_SESSION, SELECT_DATE } from '../../actions/types'
 import reducer from '../sessions'
 import initial_state_mock from '../../src/assets/initial_state_mock.js'
 
-
 describe('session reducers', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual(initial_state_mock)

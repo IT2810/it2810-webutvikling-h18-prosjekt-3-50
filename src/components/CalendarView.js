@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 import { getSessionDates } from '../assets/utils.js'
 import { selectDate } from '../../actions/index'
 
-class CalendarView extends Component {
+export class CalendarView extends Component {
   constructor (props, context) {
     super(props, context)
 
@@ -46,14 +46,20 @@ class CalendarView extends Component {
   }
 
   selectDate (date) {
+    console.log("Select date")
+    console.log(date)
+    console.log(date.dateString)
     this.props.selectDate(date)
 
     this.setState({ date: date })
     let dateString = date.dateString
+    console.log(this.props.sessionDates)
 
     if (this.props.sessionDates[dateString] != null) {
+      console.log("Setting it as marked and selected")
       this.setState({ markedDates: { [dateString]: { selected: true, marked: true } } })
     } else {
+      console.log("Setting it as selected")
       this.setState({ markedDates: { [dateString]: { selected: true } } })
     }
   }
@@ -63,7 +69,6 @@ class CalendarView extends Component {
 
     return (
       <View style={styles.calendarContainer}>
-        <Text> {this.props.sessions.length } </Text>
         <Calendar
           testID={'calendar'}
           markedDates={{ ...this.props.sessionDates, ...this.state.markedDates }}

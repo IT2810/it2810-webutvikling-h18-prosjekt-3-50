@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { View, Text, Container, Header, Content, Item, Input, Button, Label, Toast, Row} from 'native-base';
 import { StyleSheet } from 'react-native'
 
-class AddExercise extends Component {
+import { connect } from 'react-redux'
+
+import { addExercise } from '../../actions/index'
+
+export class AddExercise extends Component {
   static navigationOptions = {
     title: 'AddExercise'
   }
@@ -23,7 +27,7 @@ class AddExercise extends Component {
 
   addExercise() {
     // TODO save in state with redux
-    store.dispatch(addExercise(this.state.name, this.state.reps, this.state.sets, this.state.kg))
+    this.props.addExercise(this.state.name, this.state.reps, this.state.sets, this.state.kg)
     if (this.validateExercise()) {
       this.showToast('Added exercise', 'success')
       this.props.navigation.navigate('CreateSession')
@@ -143,7 +147,11 @@ class AddExercise extends Component {
   }
 }
 
-export default AddExercise
+const mapDispatchToProps = dispatch => ({
+  addExercise: exercise => dispatch(addExercise(exercise))
+})
+
+export default connect(null, mapDispatchToProps)(AddExercise)
 
 const styles = StyleSheet.create ({
   textLabel: {

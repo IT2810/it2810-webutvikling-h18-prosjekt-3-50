@@ -15,7 +15,7 @@ import { timeString } from '../assets/utils'
 
 const contacts = require('../assets/contacts.json')
 
-class CreateSession extends Component {
+export class CreateSession extends Component {
   static navigationOptions = {
     title: 'CreateSession'
   }

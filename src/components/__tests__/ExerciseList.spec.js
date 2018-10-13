@@ -26,6 +26,8 @@ describe('ExerciseList', () => {
 
   describe('_remove', () => {
     it('removes from list', () => {
+      console.log(toJson(wrapper))
+      console.log(toJson(wrapper.instance()))
       wrapper.setState({ exercises: [
         { name: 'Squat', sets: '4', reps: '12' },
         { name: 'Benchpress', sets: '4', reps: '12' },
