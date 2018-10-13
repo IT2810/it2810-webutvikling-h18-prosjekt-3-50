@@ -3,6 +3,5 @@ import UserReducer from './UserReducer'
 import sessions from './sessions'
 
 export default combineReducers({
-  userReducerState: UserReducer,
   sessions: sessions
 })

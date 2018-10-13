@@ -6,53 +6,52 @@ import { View } from 'native-base'
 
 import Moment from 'react-moment'
 
+import { connect } from 'react-redux'
+
+import { getSessionDates } from '../assets/utils.js'
+
 class CalendarView extends Component {
   constructor (props, context) {
     super(props, context)
 
     this.state = {
+      sessions: this.props.sessions,
       markedDates: {},
       sessionDates: {},
       date: new Date()
     }
 
+    console.log("Props")
+    console.log(this.props.dispatch)
+
     this.selectDate = this.selectDate.bind(this)
     this.getSessions = this.getSessions.bind(this)
     this.addSession = this.addSession.bind(this)
-
-    store.subscribe(() => {
-      // When state will be updated(in our case, when items will be fetched),
-      // we will update local component state and force component to rerender
-      // with new data.
-
-      this.setState({
-        sessionDates: this.getSessions()
-      })
-    })
   }
 
   componentDidMount () {
     let today = new Date().dateString
     this.setState({
-      sessionDates: this.getSessions(),
+      sessionDates: getSessionDates(this.state.sessions),
       markedDates: this.getSessions()
     })
   }
 
   getSessions () {
-    let sessions = store.getState().sessions
-    let dates = sessions.map(session => session.date)
-    console.log('Dates')
+    let dates = getSessionDates(this.state.sessions)
+    //let map = {}
+    //map[dates] = {marked: true}
     console.log(dates)
-    return {
-      dates: { marked: true }
-    }
-    // TODO: get from store
-//    return {
-//      '2018-10-02': { marked: true },
-//      '2018-10-06': { marked: true },
-//      '2018-10-19': { marked: true }
- //   }
+
+    //return map  
+    //TODO: get from store
+    /*dates = {
+     '2018-10-02': { marked: true },
+     '2018-10-06': { marked: true },
+     '2018-10-19': { marked: true }
+    }*/
+    console.log(dates)
+    return dates
   }
 
   addSession (date) {
@@ -93,7 +92,12 @@ class CalendarView extends Component {
   }
 }
 
-export default connect()(CalendarView)
+
+function mapStateToProps(state){
+  return {sessions: state.sessions}
+}
+
+export default connect(mapStateToProps)(CalendarView)
 
 const styles = StyleSheet.create({
   calendarContainer: {

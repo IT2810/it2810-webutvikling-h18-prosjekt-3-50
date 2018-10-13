@@ -3,6 +3,9 @@ import { StyleSheet, TouchableOpacity } from 'react-native'
 import Moment from 'react-moment'
 import  { Button, View, Text, Container, Content, Toast, Input, Item, Fab, Icon } from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
+import { connect } from 'react-redux'
+
+import { addSession } from '../../actions/index'
 
 import ContactList from './ContactList.js'
 import ExerciseList from './ExerciseList.js'
@@ -39,6 +42,7 @@ class CreateSession extends Component {
   saveSession() {
     if (this.validateSession()) {
       // TODO save in state with redux
+      this.props.addSession({name: "A new session"})
 
       this.props.navigation.navigate('Home')
     }
@@ -166,7 +170,13 @@ class CreateSession extends Component {
   }
 }
 
-export default connect()(CreateSession)
+const mapDispatchToProps = dispatch => {
+  return {
+    addSession: session => dispatch(addSession(session))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CreateSession)
 
 const styles = StyleSheet.create ({
   exerciseListContainer: {

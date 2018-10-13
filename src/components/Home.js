@@ -20,7 +20,6 @@ class Home extends Component {
       <SafeAreaView>
         <ScrollView>
           <CalendarView navigation={this.props.navigation}/>
-          <PedometerSensor />
           <ShowSession />
         </ScrollView>
         <Fab

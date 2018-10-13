@@ -1,5 +1,11 @@
+const initial_state_mock = require('../src/assets/initial_state_mock.json')
 
-const INITIAL_STATE = {
+
+const INITIAL_STATE = initial_state_mock.sessions
+
+//initial_state_mock
+
+/*{
   sessions: [
     {
       id: 0,
@@ -32,32 +38,22 @@ const INITIAL_STATE = {
       ]
     }
   ]
-}
+}*/
 
 const addSession = (state, session) => {
-  return Object.assing({}, state, {
-    sessions: [
-      ...state,
-      {
-        id: session.id,
-        date: session.date,
-        name: session.name,
-        exercises: session.exercises,
-        contacts: session.contacs
-      }
-    ]
-  })
+  // Returnes a new state, doesn't edit the existing one
+  return { ...state, sessions: [...state.sessions, action.payload] }
 }
 
+// If no state is given, state is set to INITIAL_STATE
 export default function (state = INITIAL_STATE, action) {
+  console.log("In reducer")
   switch (action.type) {
     case 'ADD_SESSION':
       console.log('Adding session in reducers')
       console.log(action)
-      this.addSession(state, action)
+      return this.addSession(state, action)
     case 'GET_SESSION':
-      // TODO
-    case 'GET_ALL_SESSIONS':
       // TODO
     default:
       return state

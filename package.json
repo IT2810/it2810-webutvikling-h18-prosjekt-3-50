@@ -9,7 +9,7 @@
     "eject": "expo eject",
     "test": "jest",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "eslint-fix": "eslint . --fix" 
+    "eslint-fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -58,6 +58,7 @@
     "expo-cli": "^2.2.0",
     "jest-expo": "^30.0.0",
     "jest-styled-components": "^6.2.1",
+    "moment": "^2.22.2",
     "react-dom": "^16.5.2",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.17.0",

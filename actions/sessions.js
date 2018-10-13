@@ -1,13 +1,8 @@
-import {
-	ADD_SESSION
-} from '.types'
+import { ADD_SESSION } from './types'
 
-export const addSession = (name, reps, sets, kg) => {
+export const addSession = (session) => {
   return {
     type: ADD_SESSION,
-    name,
-    reps,
-    sets,
-    kg
+    payload: session
   }
 }
