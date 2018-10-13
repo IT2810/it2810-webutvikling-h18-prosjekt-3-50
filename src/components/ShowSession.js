@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { isToday } from '../assets/utils'
 
-class ShowSession extends Component {
+export class ShowSession extends Component {
   constructor (props, context) {
     super(props, context)
 
@@ -13,12 +13,13 @@ class ShowSession extends Component {
   }
 
   getDateText (session) {
+    console.log("SEssion")
+    console.log(session)
     if (session == null) {
       return <Text>No session planned for today </Text>
-    } else if (isToday(session.date)) {
+    } else if (isToday(session.date.dateString)) {
       return <Text>Todays session</Text>
     } else {
-
       return <Text>
         <Text>Date: </Text>
         <Moment element={Text} format="D. MMMM">

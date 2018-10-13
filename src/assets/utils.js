@@ -15,6 +15,8 @@ export function isSameDay(dateOne, dateTwo) {
 }
 
 export function isToday(date) {
+  console.log("Date in isTOday")
+  console.log(date)
   return moment(date).isSame(new Date().dateString)
 }
 
