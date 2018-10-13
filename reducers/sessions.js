@@ -11,12 +11,9 @@ const addSession = (state, session) => {
 }
 
 const selectDate = (state, action) => {
-  console.log("selectDate")
-  console.log(action.payload)
   const date = action.payload
   let activeSession = state.sessions.find(session => isSameDay(session.date, date))
-  console.log("Active session: ")
-  console.log(activeSession)
+
   return { ...state, selectedDate: action.payload, activeSession: activeSession}
 }
 

@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
-
 import { Calendar } from 'react-native-calendars'
 import { StyleSheet } from 'react-native'
-import { View } from 'native-base'
-
+import { View, Text } from 'native-base'
 import Moment from 'react-moment'
-
 import { connect } from 'react-redux'
 
 import { getSessionDates } from '../assets/utils.js'
-
 import { selectDate } from '../../actions/index'
 
 class CalendarView extends Component {
@@ -22,9 +18,6 @@ class CalendarView extends Component {
       sessionDates: {},
       date: new Date()
     }
-
-    console.log("Props")
-    console.log(this.props.dispatch)
 
     this.selectDate = this.selectDate.bind(this)
     this.getSessions = this.getSessions.bind(this)
@@ -53,17 +46,15 @@ class CalendarView extends Component {
   }
 
   selectDate (date) {
-    // TODO: Update selected date in store
-
     this.props.selectDate(date)
 
     this.setState({ date: date })
     let dateString = date.dateString
 
-    if (this.state.sessionDates[dateString] != null) {
-      this.setState({ markedDates: { ...this.state.sessionDates, [dateString]: { selected: true, marked: true } } })
+    if (this.props.sessionDates[dateString] != null) {
+      this.setState({ markedDates: { [dateString]: { selected: true, marked: true } } })
     } else {
-      this.setState({ markedDates: { ...this.state.sessionDates, [dateString]: { selected: true } } })
+      this.setState({ markedDates: { [dateString]: { selected: true } } })
     }
   }
 
@@ -72,9 +63,10 @@ class CalendarView extends Component {
 
     return (
       <View style={styles.calendarContainer}>
+        <Text> {this.props.sessions.length } </Text>
         <Calendar
           testID={'calendar'}
-          markedDates={{ ...this.state.markedDates }}
+          markedDates={{ ...this.props.sessionDates, ...this.state.markedDates }}
           onDayLongPress={(date) => { this.addSession(date) }}
           onDayPress={(date) => this.selectDate(date)}
         />
@@ -85,7 +77,10 @@ class CalendarView extends Component {
 
 
 function mapStateToProps(state){
-  return {sessions: state.sessions.sessions}
+  return {
+    sessions: state.sessions.sessions,
+    sessionDates: getSessionDates(state.sessions.sessions)
+  }
 }
 
 const mapDispatchToProps = dispatch => ({

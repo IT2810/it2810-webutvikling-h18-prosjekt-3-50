@@ -9,16 +9,11 @@ export function getSessionDates(sessions) {
   return markedDates
 }
 
+// Need dateOne to be YYYY-MM-DD format and dateTwo to be a dateObject
 export function isSameDay(dateOne, dateTwo) {
-  console.log("Is same day")
-  console.log(dateOne)
-  console.log(dateTwo)
-/*  const format = 'YYYY-MM-DD'
-  dateOne = moment(dateOne, format)
-  dateTwo = moment(dateTwo, format)*/
-  console.log(dateOne)
-  console.log(dateTwo)
-  //console.log(dateOne.dateString == dateTwo.dateString  )
-  console.log(moment(dateOne).isSame(dateTwo.dateString))
   return moment(dateOne).isSame(dateTwo.dateString)
+}
+
+export function isToday(date) {
+  return moment(date).isSame(new Date().dateString)
 }
