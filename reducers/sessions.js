@@ -10,6 +10,11 @@ const addSession = (state, session) => {
   return { ...state, sessions: [...state.sessions, session.payload] }
 }
 
+const selectSession = (state, action) => {
+  let session = state.sessions.find(session => session.id == action.payload)
+  return { ...state, activeSession: session}
+}
+
 const selectDate = (state, action) => {
   const date = action.payload
   let activeSession = state.sessions.find(session => isSameDay(session.date, date))
@@ -22,36 +27,11 @@ export default function (state = INITIAL_STATE, action) {
   console.log("In reducer")
   switch (action.type) {
     case 'ADD_SESSION':
-      console.log('Adding session in reducers')
-      console.log(action)
       return addSession(state, action)
-    case 'GET_SESSION':
-      // TODO
+    case 'SELECT_SESSION':
+      return selectSession(state, action)
     case 'SELECT_DATE':
-      console.log("Selecting date")
-      console.log(action.payload)
       return selectDate(state, action)
-    default:
-      return state
-  }
-}
-
-function todoApp (state = initialState, action) {
-  switch (action.type) {
-    case SET_VISIBILITY_FILTER:
-      return Object.assign({}, state, {
-        visibilityFilter: action.filter
-      })
-    case ADD_TODO:
-      return Object.assign({}, state, {
-        todos: [
-          ...state.todos,
-          {
-            text: action.text,
-            completed: false
-          }
-        ]
-      })
     default:
       return state
   }

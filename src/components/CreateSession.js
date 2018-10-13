@@ -72,8 +72,6 @@ class CreateSession extends Component {
   }
 
   getSessionObject() {
-    console.log("Date in session")
-    console.log(this.state.date)
     return {
       name: this.state.name,
       date: this.state.date.dateString,
