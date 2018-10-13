@@ -20,11 +20,11 @@ class CalendarView extends Component {
     }
 
     this.selectDate = this.selectDate.bind(this)
-    this.getSessions = this.getSessions.bind(this)
+    /*this.getSessions = this.getSessions.bind(this)*/
     this.addSession = this.addSession.bind(this)
   }
 
-  componentDidMount () {
+  /*componentDidMount () {
     let today = new Date().dateString
     this.setState({
       sessionDates: getSessionDates(this.state.sessions),
@@ -34,7 +34,7 @@ class CalendarView extends Component {
 
   getSessions () {
     return getSessionDates(this.state.sessions)
-  }
+  }*/
 
   addSession (date) {
     this.props.navigation.navigate(

@@ -17,3 +17,7 @@ export function isSameDay(dateOne, dateTwo) {
 export function isToday(date) {
   return moment(date).isSame(new Date().dateString)
 }
+
+export function TimeString(date) {
+  return moment(date, 'HH:MM')
+}

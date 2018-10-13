@@ -10,6 +10,9 @@ import { addSession } from '../../actions/index'
 import ContactList from './ContactList.js'
 import ExerciseList from './ExerciseList.js'
 
+import { timeString } from '../assets/utils'
+
+
 const contacts = require('../assets/contacts.json')
 
 class CreateSession extends Component {
@@ -21,9 +24,12 @@ class CreateSession extends Component {
     super(props, context)
     // If navigation prop has params, set the propDate in params as propDate
     let propDate = this.props.navigation.state.params != null ? this.props.navigation.state.params.date : null
+    console.log("Propdate")
+    console.log(propDate)
     this.state = {
       // If propDate isn't null, set it as date. If it is, set today as date
       date: propDate != null ? propDate : new Date(),
+      time: null,
       name: null,
       isDateTimePickerVisible: false,
       exercises: [],
@@ -42,8 +48,6 @@ class CreateSession extends Component {
 
   saveSession() {
     if (this.validateSession()) {
-      // TODO save in state with redux
-      console.log(this.props)
       this.props.addSession(this.getSessionObject())
 
       this.props.navigation.navigate('Home')
@@ -68,9 +72,12 @@ class CreateSession extends Component {
   }
 
   getSessionObject() {
+    console.log("Date in session")
+    console.log(this.state.date)
     return {
       name: this.state.name,
-      date: this.state.date,
+      date: this.state.date.dateString,
+      time: this.state.time,
       exercises: this.state.exercises,
       contacts: this.state.contacts
     }
@@ -99,7 +106,11 @@ class CreateSession extends Component {
   }
 
   _setDateAndTime(date) {
-    this.setState({ date: date })
+    this.setState({ 
+      date: date,
+      time: timeString(date)
+
+    })
     this._hideDateTimePicker()
   }
 
