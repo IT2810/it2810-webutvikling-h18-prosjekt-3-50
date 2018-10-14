@@ -24,7 +24,6 @@ const selectDate = (state, action) => {
 
 // If no state is given, state is set to INITIAL_STATE
 export default function (state = INITIAL_STATE, action) {
-  console.log("In reducer")
   switch (action.type) {
     case 'ADD_SESSION':
       return addSession(state, action)

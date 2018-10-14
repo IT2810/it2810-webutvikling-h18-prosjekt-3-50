@@ -9,17 +9,17 @@ export function getSessionDates(sessions) {
   return markedDates
 }
 
-// Need dateOne to be YYYY-MM-DD format and dateTwo to be a dateObject
+// Need dateOne to be a string and dateTwo to be a dateObject
 export function isSameDay(dateOne, dateTwo) {
+  dateOne = moment(dateOne).format('YYYY-MM-DD')
   return moment(dateOne).isSame(dateTwo.dateString)
 }
 
 export function isToday(date) {
-  console.log("Date in isTOday")
-  console.log(date)
-  return moment(date).isSame(new Date().dateString)
+  date = moment(date).format('YYYY-MM-DD')
+  return moment(date).isSame(moment().format('YYYY-MM-DD'))
 }
 
-export function TimeString(date) {
+export function timeString(date) {
   return moment(date, 'HH:MM')
 }

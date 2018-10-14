@@ -13,11 +13,9 @@ export class ShowSession extends Component {
   }
 
   getDateText (session) {
-    console.log("SEssion")
-    console.log(session)
     if (session == null) {
       return <Text>No session planned for today </Text>
-    } else if (isToday(session.date.dateString)) {
+    } else if (isToday(session.date)) {
       return <Text>Todays session</Text>
     } else {
       return <Text>
@@ -42,7 +40,7 @@ export class ShowSession extends Component {
         </Card>
       )
     } else {
-      const trainingPartners = session.contacts.join(', ')
+      const trainingPartners = session.contacts.map(contact => contact.name).join(', ')
       const exercises = session.exercises.map(exercise => exercise.name).join(', ')
       const dateText = this.getDateText(session)
 
@@ -65,7 +63,7 @@ export class ShowSession extends Component {
               <Text>
                 <Text>Time: </Text>
                 <Moment element={Text} format="HH:mm">
-                  {session.time}
+                  {session.date}
                 </Moment>
               </Text>
           </CardItem>

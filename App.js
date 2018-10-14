@@ -33,7 +33,7 @@ export default class App extends Component {
     }
     return (
       <Provider store={store}>
-        <Root>
+        <Root id="root">
           <StyleProvider style={getTheme(material)}>
             <RootStack />
           </StyleProvider>

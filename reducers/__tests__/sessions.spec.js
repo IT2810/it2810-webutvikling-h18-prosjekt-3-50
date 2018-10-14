@@ -45,8 +45,7 @@ describe('session reducers', () => {
         payload: 0
       }).activeSession).toEqual({
           id: 0,
-          date: '2018-10-02',
-          time: '13:40',
+          date: new Date(2018, 9, 2, 13, 40),
           name: 'Session one',
           exercises: [
               { name: 'Squat', sets: '4', reps: '12' },

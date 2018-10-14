@@ -2,8 +2,7 @@ export default initial_state = {
   sessions: [
     {
       id: 0,
-      date: '2018-10-02',
-      time: '13:40',
+      date: new Date(2018, 9, 2, 13, 40),
       name: 'Session one',
       exercises: [
           { name: 'Squat', sets: '4', reps: '12' },
@@ -18,8 +17,7 @@ export default initial_state = {
     },
     {
       id: 1,
-      date: '2018-10-15',
-      time: '16:30',
+      date: new Date(2018, 9, 15, 16, 30),
       name: 'Session two',
       exercises: [
           { name: 'Squat', sets: '5', reps: '6' },
