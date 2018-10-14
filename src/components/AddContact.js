@@ -20,13 +20,17 @@ export class AddContact extends Component {
     }
 
     this._add = this._add.bind(this)
+    this.availableContacts = this.availableContacts.bind(this)
   }
 
   _add(contact) {
-    console.log("Contact: ")
-    console.log(contact)
     this.props.addContact(contact)
     this.props.navigation.goBack()
+  }
+
+  // Filter out the contacts allready added, so that they can't be added twice
+  availableContacts() {
+    return savedContacts.filter(contact => this.props.contacts.indexOf(contact) === -1)
   }
 
   render() {

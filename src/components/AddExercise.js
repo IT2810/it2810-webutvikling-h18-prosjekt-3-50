@@ -29,7 +29,13 @@ export class AddExercise extends Component {
     if (this.validateExercise()) {
       console.log("Exercise is valid")
       this.showToast('Added exercise', 'success')
-      this.props.addExercise(this.state.name, this.state.reps, this.state.sets, this.state.kg)
+
+      this.props.addExercise({
+        name: this.state.name,
+        reps: this.state.reps,
+        sets: this.state.sets,
+        kg: this.state.kg
+      })
       this.props.navigation.navigate('CreateSession')
     } else {
       console.log("Exercise is not valid")

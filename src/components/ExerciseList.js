@@ -67,9 +67,9 @@ export class ExerciseList extends Component {
 }
 
 function mapStateToProps(state){
-  if (state.activeSession != null) {
+  if (state.sessions.activeSession) {
     return {
-      exercises: state.activeSession.exercises
+      exercises: state.sessions.activeSession.exercises
     }  
   } else {
     return {
@@ -79,7 +79,7 @@ function mapStateToProps(state){
 }
 
 const mapDispatchToProps = dispatch => ({
-  removeExerice: exercise => dispatch(removeExercise(exercise))
+  removeExercise: exercise => dispatch(removeExercise(exercise))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExerciseList)
