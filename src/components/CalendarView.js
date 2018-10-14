@@ -20,21 +20,8 @@ export class CalendarView extends Component {
     }
 
     this.selectDate = this.selectDate.bind(this)
-    /*this.getSessions = this.getSessions.bind(this)*/
     this.addSession = this.addSession.bind(this)
   }
-
-  /*componentDidMount () {
-    let today = new Date().dateString
-    this.setState({
-      sessionDates: getSessionDates(this.state.sessions),
-      markedDates: this.getSessions()
-    })
-  }
-
-  getSessions () {
-    return getSessionDates(this.state.sessions)
-  }*/
 
   addSession (date) {
     this.props.navigation.navigate(
@@ -46,20 +33,14 @@ export class CalendarView extends Component {
   }
 
   selectDate (date) {
-    console.log("Select date")
-    console.log(date)
-    console.log(date.dateString)
     this.props.selectDate(date)
 
     this.setState({ date: date })
     let dateString = date.dateString
-    console.log(this.props.sessionDates)
 
     if (this.props.sessionDates[dateString] != null) {
-      console.log("Setting it as marked and selected")
       this.setState({ markedDates: { [dateString]: { selected: true, marked: true } } })
     } else {
-      console.log("Setting it as selected")
       this.setState({ markedDates: { [dateString]: { selected: true } } })
     }
   }
@@ -79,7 +60,6 @@ export class CalendarView extends Component {
     )
   }
 }
-
 
 function mapStateToProps(state){
   return {

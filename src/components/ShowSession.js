@@ -40,8 +40,8 @@ export class ShowSession extends Component {
         </Card>
       )
     } else {
-      const trainingPartners = session.contacts.map(contact => contact.name).join(', ')
-      const exercises = session.exercises.map(exercise => exercise.name).join(', ')
+      const trainingPartners = [] //session.contacts.map(contact => contact.name).join(', ')
+      const exercises = []// session.exercises.map(exercise => exercise.name).join(', ')
       const dateText = this.getDateText(session)
 
       return (

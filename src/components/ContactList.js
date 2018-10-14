@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { List, ListItem, Text, Left, Right, Button, View, Row, Picker, Icon, Card } from 'native-base'
+import { connect } from 'react-redux'
 
+import { removeContact } from '../../actions/index'
 const savedContacts = require('../assets/contacts.json')
 
-export default class ContactList extends Component {
+export class ContactList extends Component {
 
   constructor(props, context) {
     super(props, context)
@@ -19,12 +21,12 @@ export default class ContactList extends Component {
 
   //getAll() {this.setState({ availableContacs: savedContacts.contacts })} // TODO: get from redux
 
-  _remove(value: string) {
+ /* _remove(value: string) {
     // TODO in redux, then update state
     this.setState(prevState => ({
       addedContacts: prevState.addedContacts.filter(contact => contact !== value)
     }))
-  }
+  }*/
 
   _add(value: string) {
     if (value !== '0') {
@@ -59,29 +61,21 @@ export default class ContactList extends Component {
               block
               onPress={() => this.props.navigation.navigate('AddContact')}
             >
-              {/*<Picker
-                textStyle={{ color: "#ffffff" }}
-                mode="dropdown"
-                placeholder="ADD CONTACT"
-                selectedValue=''
-                onValueChange={this._add.bind(this)}
-              >
-                {contactPickers}
-              </Picker>*/}
               <Text>ADD CONTACT</Text>
             </Button>
           </Right>
         </Row>
         <Card style={styles.cardWithList}>
-          {this.state.addedContacts.map((contact, index) => (
+          <Text> { this.props.contacts.length } </Text>
+          {this.props.contacts.map((contact, index) => (
             <ListItem key={index}>
               <Left>
-                <Text> {contact} </Text>
+                <Text> { contact.name } </Text>
               </Left>
               <Right>
                 <Button
                   danger
-                  onPress={this._remove.bind(this, contact)}
+                  onPress={() => this.props.removeContact(contact)}
                 >
                   <Icon active name="trash" />
                 </Button>
@@ -93,6 +87,30 @@ export default class ContactList extends Component {
     )
   }
 }
+
+function mapStateToProps(state){
+  console.log(state.sessions.activeSession)
+  /*return {
+    contacts: state.sessions.activeSession
+  }*/
+
+  if (state.sessions.activeSession) {
+    return {
+      contacts: state.sessions.activeSession.contacts    }  
+  } else {
+    return {
+      contacts: []
+    }
+  }
+
+}
+
+const mapDispatchToProps = dispatch => ({
+  removeContacts: contact => dispatch(removeContacts(contact))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList)
+
 const styles = StyleSheet.create ({
   cardWithList: {
     marginTop: '5%',

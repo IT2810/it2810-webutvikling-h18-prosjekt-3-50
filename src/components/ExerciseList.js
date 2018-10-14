@@ -1,31 +1,16 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
 
 import {Card, List, ListItem, Text, Left, Body, Right, Button, View, Row, Picker, Icon, Toast } from 'native-base'
 
+import { removeExercise } from '../../actions/index'
 
-export default class ExerciseList extends Component {
+export class ExerciseList extends Component {
   constructor (props, context) {
     super(props, context)
-    this.state = {
-      exercises: [
-        { name: 'Squat', sets: '4', reps: '12' },
-        { name: 'Benchpress', sets: '4', reps: '12' },
-        { name: 'Pullup', sets: '4', reps: '12' },
-        { name: 'Row', sets: '4', reps: '12' }
-      ]
-    }
-
+    
     this._add = this._add.bind(this)
-  }
-
-
-  _remove (value) {
-    // TODO: delete in redux
-    this.setState(prevState => ({
-      exercises: prevState.exercises.filter(exercise => exercise.name !== value.name)
-    }))
-
   }
 
   _add () {
@@ -53,7 +38,7 @@ export default class ExerciseList extends Component {
 
 
         <Card style={styles.cardWithList}>
-          {this.state.exercises.map((exercise, index) => (
+          {this.props.exercises.map((exercise, index) => (
             <ListItem key={index}>
               <Left
                 onPress={this._add}
@@ -67,7 +52,7 @@ export default class ExerciseList extends Component {
                 <Button
                   danger
                   style={{minWidth: '140%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
-                  onPress={this._remove.bind(this, exercise)}
+                  onPress={() => {this.props.removeExercise(exercise)}}
                 >
                   <Icon active name="trash" />
                 </Button>
@@ -80,6 +65,25 @@ export default class ExerciseList extends Component {
     )
   }
 }
+
+function mapStateToProps(state){
+  if (state.activeSession != null) {
+    return {
+      exercises: state.activeSession.exercises
+    }  
+  } else {
+    return {
+      exercises: []
+    }
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  removeExerice: exercise => dispatch(removeExercise(exercise))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseList)
+
 const styles = StyleSheet.create ({
   cardWithList: {
     marginTop: '5%',

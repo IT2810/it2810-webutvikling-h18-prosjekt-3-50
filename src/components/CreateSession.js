@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import Moment from 'react-moment'
-import  { Button, View, Text, Container, Content, Toast, Input, Item, Fab, Icon } from 'native-base'
+import { Button, View, Text, Container, Content, Toast, Input, Item, Fab, Icon } from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import { connect } from 'react-redux'
 
@@ -11,7 +11,6 @@ import ContactList from './ContactList.js'
 import ExerciseList from './ExerciseList.js'
 
 import { timeString } from '../assets/utils'
-
 
 const contacts = require('../assets/contacts.json')
 
@@ -24,8 +23,7 @@ export class CreateSession extends Component {
     super(props, context)
     // If navigation prop has params, set the propDate in params as propDate
     let propDate = this.props.navigation.state.params != null ? this.props.navigation.state.params.date : null
-    console.log("Propdate")
-    console.log(propDate)
+
     this.state = {
       // If propDate isn't null, set it as date. If it is, set today as date
       date: propDate != null ? propDate : new Date(),
@@ -76,8 +74,8 @@ export class CreateSession extends Component {
       name: this.state.name,
       date: this.state.date.dateString,
       time: this.state.time,
-      exercises: this.state.exercises,
-      contacts: this.state.contacts
+      exercises: this.props.exercises,
+      contacts: this.props.contacts
     }
   }
 
@@ -114,7 +112,7 @@ export class CreateSession extends Component {
 
   render () {
     const { navigate } = this.props.navigation
-    var dateTimeText = ''
+    var dateTimeText
 
     if (this.state.date != null) {
       dateTimeText =
@@ -154,8 +152,7 @@ export class CreateSession extends Component {
                 onConfirm={this._setDateAndTime}
                 onCancel={this._hideDateTimePicker}
                 testID={"dateTimePicker"}
-            />
-
+              />
             </Item>
 
             <View style={styles.exerciseListContainer}>
@@ -164,23 +161,12 @@ export class CreateSession extends Component {
             <View style={styles.contactListContainer}>
               <ContactList navigation={this.props.navigation} />
             </View>
+            
           </Content>
 
-          {/*<View style={styles.buttonContainer}>
-            <Button
-              success
-              large
-              block
-              onPress={this.saveSession}
-              testID={'saveSessionButton'}
-            >
-              <Text> SAVE SESSION </Text>
-            </Button>
-          </View>*/}
           <Fab
             onPress={this.saveSession}
             testID={'saveSessionButton'}
-            //containerStyle={{}}
             style={{ backgroundColor: '#199E59' }}
             position="bottomRight"
           >
@@ -191,6 +177,10 @@ export class CreateSession extends Component {
       </KeyboardAvoidingView>
     )
   }
+}
+
+function mapStateToProps(state) {
+
 }
 
 const mapDispatchToProps = dispatch => ({

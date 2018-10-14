@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import { View/*, Text*/ } from 'react-native'
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Card, CardItem } from 'native-base';
+import { View } from 'react-native'
+import { Container, Content, Text, Card, CardItem } from 'native-base';
+import { connect } from 'react-redux'
+
 
 const savedContacts = require('../assets/contacts.json')
 
-export default class AddContact extends Component {
+import { addContact } from '../../actions/index'
+
+export class AddContact extends Component {
   static navigationOptions = {
     title: 'Choose contact'
   }
@@ -14,6 +18,15 @@ export default class AddContact extends Component {
     this.state = {
       availableContacts: savedContacts.contacts
     }
+
+    this._add = this._add.bind(this)
+  }
+
+  _add(contact) {
+    console.log("Contact: ")
+    console.log(contact)
+    this.props.addContact(contact)
+    this.props.navigation.goBack()
   }
 
   render() {
@@ -26,12 +39,10 @@ export default class AddContact extends Component {
                 key={index}
                 bordered
                 button
-                onPress={() => {
-                  //this.props.addContactToEvent() -> when redux ready
-                  this.props.navigation.goBack()
-                }}>
+                onPress={() => this._add(contact)}
+                >
                 <Text>
-                  {contact}
+                  { contact.name }
                 </Text>
               </CardItem>
             ))}
@@ -41,3 +52,9 @@ export default class AddContact extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  addContact: contact => dispatch(addContact(contact))
+})
+
+export default connect(null, mapDispatchToProps)(AddContact)

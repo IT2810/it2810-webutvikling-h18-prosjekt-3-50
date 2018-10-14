@@ -26,11 +26,13 @@ export class AddExercise extends Component {
   }
 
   addExercise() {
-    // TODO save in state with redux
-    this.props.addExercise(this.state.name, this.state.reps, this.state.sets, this.state.kg)
     if (this.validateExercise()) {
+      console.log("Exercise is valid")
       this.showToast('Added exercise', 'success')
+      this.props.addExercise(this.state.name, this.state.reps, this.state.sets, this.state.kg)
       this.props.navigation.navigate('CreateSession')
+    } else {
+      console.log("Exercise is not valid")
     }
   }
 
@@ -119,7 +121,6 @@ export class AddExercise extends Component {
           <Fab
             onPress={this.addExercise}
             testID={'addExerciseButton'}
-            //containerStyle={{}}
             style={{ backgroundColor: '#199E59' }}
             position="bottomRight"
           >

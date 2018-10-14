@@ -32,5 +32,8 @@ export default initial_state = {
     }
   ],
   selectedDate: new Date(),
-  activeSession: null
+  activeSession: {
+    contacts: [],
+    exercises: []
+  }
 }

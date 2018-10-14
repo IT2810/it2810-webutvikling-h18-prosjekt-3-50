@@ -9,9 +9,10 @@ exports[`ExerciseList renders correctly 1`] = `
       <Styled(Text)
         style={
           Object {
-            "fontSize": 30,
+            "fontSize": 27,
             "fontWeight": "600",
             "lineHeight": 45,
+            "marginLeft": "8%",
           }
         }
       >
@@ -26,7 +27,7 @@ exports[`ExerciseList renders correctly 1`] = `
         testID="addExerciseButton"
       >
         <Styled(Text)>
-           ADD EXERCISE 
+          ADD EXERCISE
         </Styled(Text)>
       </Styled(Button)>
     </Styled(Right)>
@@ -64,6 +65,14 @@ exports[`ExerciseList renders correctly 1`] = `
         <Styled(Button)
           danger={true}
           onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+              "minWidth": "140%",
+            }
+          }
         >
           <Styled(Icon)
             active={true}
@@ -97,6 +106,14 @@ exports[`ExerciseList renders correctly 1`] = `
         <Styled(Button)
           danger={true}
           onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+              "minWidth": "140%",
+            }
+          }
         >
           <Styled(Icon)
             active={true}
@@ -130,6 +147,14 @@ exports[`ExerciseList renders correctly 1`] = `
         <Styled(Button)
           danger={true}
           onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+              "minWidth": "140%",
+            }
+          }
         >
           <Styled(Icon)
             active={true}
@@ -163,6 +188,14 @@ exports[`ExerciseList renders correctly 1`] = `
         <Styled(Button)
           danger={true}
           onPress={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "justifyContent": "center",
+              "minWidth": "140%",
+            }
+          }
         >
           <Styled(Icon)
             active={true}
