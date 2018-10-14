@@ -6,27 +6,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { CreateSession } from '../CreateSession'
 import toJson from 'enzyme-to-json'
-import 'native-base'
 import { findByID } from '../../testUtils.js'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 
-import initial_state_mock from '../../assets/initial_state_mock.js'
-import configureStore from 'redux-mock-store'
-
 describe('CreateSession', () => {
-  const initialState = initial_state_mock
-  const mockStore = configureStore()
   let wrapper
   let navigateMock
-  let store
   let dispatchAddSessionMock
 
   beforeEach(() => {
-    store = mockStore(initialState)
     navigateMock = jest.fn()
     const navigation = { navigate: navigateMock, state: { params: {} } }
     dispatchAddSessionMock = jest.fn()
-    wrapper = shallow(<CreateSession navigation={navigation} store={store} addSession={dispatchAddSessionMock}/>)
+    wrapper = shallow(<CreateSession navigation={navigation} addSession={dispatchAddSessionMock}/>)
   })
 
   // Date object in DateTimePicker does not update and thereby the test fails

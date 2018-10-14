@@ -6,27 +6,19 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { ContactList } from '../ContactList'
 import toJson from 'enzyme-to-json'
-import 'native-base'
 
 import { findByID } from '../../testUtils.js'
 
-import initial_state_mock from '../../assets/initial_state_mock.js'
-import configureStore from 'redux-mock-store'
-
 describe('ContactList', () => {
-  const initialState = initial_state_mock
-  const mockStore = configureStore()
   let wrapper
   let navigation
-  let store
   let dispatchRemoveContactMock
 
   beforeEach(() => {
-    store = mockStore(initialState)
     dispatchRemoveContactMock = jest.fn()
     navigateMock = jest.fn()
     navigation = { navigate: navigateMock }
-    wrapper = shallow(<ContactList navigation={navigation} store={store} removeContact={dispatchRemoveContactMock} contacts={[]} />)
+    wrapper = shallow(<ContactList navigation={navigation} removeContact={dispatchRemoveContactMock} contacts={[]} />)
   })
 
   it('renders correctly', () => {
@@ -73,7 +65,7 @@ describe('ContactList', () => {
   describe('_remove', () => {
     it('called when clicking on add contact button', () => {
       const contacts = [{name: 'Test contact'}]
-      wrapper = shallow(<ContactList navigation={navigation} store={store} removeContact={dispatchRemoveContactMock} contacts={contacts} />)
+      wrapper = shallow(<ContactList navigation={navigation} removeContact={dispatchRemoveContactMock} contacts={contacts} />)
     
       let _removeMock = jest.fn()
       wrapper.instance()._remove = _removeMock

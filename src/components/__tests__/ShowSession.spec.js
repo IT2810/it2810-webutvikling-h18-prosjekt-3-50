@@ -9,25 +9,16 @@ import toJson from 'enzyme-to-json'
 import Moment from 'react-moment'
 import { Card, Text, CardItem, Body, Right, Left } from 'native-base'
 
-import initial_state_mock from '../../assets/initial_state_mock.js'
-import configureStore from 'redux-mock-store'
-
-import { connect } from 'react-redux'
-
 describe('ShowSession', () => {
-  const initialState = initial_state_mock
-  const mockStore = configureStore()
   let wrapper
   let navigateMock
-  let store
   let navigation
 
   beforeEach(() => {
     navigateMock = jest.fn()
     navigation = { navigate: navigateMock }
     
-    store = mockStore(initialState)
-    wrapper = shallow(<ShowSession navigation={navigation} store={store} />)
+    wrapper = shallow(<ShowSession navigation={navigation} />)
   })
 
   it('renders correctly', () => {
@@ -36,8 +27,6 @@ describe('ShowSession', () => {
 
   describe('getDateText', () => {
     it('if no session is planned for the date', () => {
-      console.log(toJson(wrapper))
-      console.log(toJson(wrapper.instance()))
       let text = wrapper.instance().getDateText(null)
 
       expect(text).toEqual(

@@ -6,27 +6,23 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { CalendarView } from '../CalendarView'
 import toJson from 'enzyme-to-json'
-import 'native-base'
 import { findByID } from '../../testUtils.js'
 
-import initial_state_mock from '../../assets/initial_state_mock.js'
-import configureStore from 'redux-mock-store'
 
 describe('CalendarView', () => {
-  const initialState = initial_state_mock
-  const mockStore = configureStore()
   let wrapper
-  let store
-  const navigation = { navigate: jest.fn() }
-  let dispatchSelectDateMock = jest.fn()
+  let navigateMock
+  let navigation
+  let dispatchSelectDateMock
   let sessionDates
 
   beforeEach(() => {
-    store = mockStore(initialState)
     sessionDates = []
+    navigateMock = jest.fn()
+    navigation = {navigate: navigateMock}
+    dispatchSelectDateMock = jest.fn()
     wrapper = shallow(<CalendarView 
       navigation={navigation} 
-      store={store} 
       selectDate={dispatchSelectDateMock}
       sessionDates={sessionDates}/>
     )
@@ -51,14 +47,11 @@ describe('CalendarView', () => {
     })
 
     it('calls navigate with date as param', () => {
-      const navigateMock = jest.fn()
-      const navigation = { navigate: navigateMock }
-      const wrapper = shallow(<CalendarView navigation={navigation} store={store}/>)
+      const wrapper = shallow(<CalendarView navigation={navigation}/>)
 
       let date = findByID(wrapper, 'calendar')
       date.props().onDayLongPress('2018-10-18')
 
-      console.log(navigateMock.mock.calls)
       expect(navigateMock.mock.calls.length).toBe(1)
       expect(navigateMock.mock.calls[0][0]).toBe('CreateSession')
       expect(navigateMock.mock.calls[0][1].date).toBe('2018-10-18')
@@ -107,7 +100,6 @@ describe('CalendarView', () => {
 
       wrapper = shallow(<CalendarView 
         navigation={navigation} 
-        store={store} 
         selectDate={dispatchSelectDateMock}
         sessionDates={sessionDateObject}/>
       )
