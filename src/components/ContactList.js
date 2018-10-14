@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-import { List, ListItem, Text, Left, Right, Button, View, Row, H2, Picker, Icon } from 'native-base'
+import { List, ListItem, Text, Left, Right, Button, View, Row, Picker, Icon, Card } from 'native-base'
 
 const savedContacts = require('../assets/contacts.json')
 
@@ -13,14 +13,11 @@ export default class ContactList extends Component {
       addedContacts: ["Ola Nordmann", "Kari Nordmann"]
     }
 
-    this.getAll = this.getAll.bind(this)
+    //this.getAll = this.getAll.bind(this)
     this.availableContacts = this.availableContacts.bind(this)
   }
 
-  getAll() {
-    // TODO: get from redux
-    this.setState({ availableContacs: savedContacts.contacts })
-  }
+  //getAll() {this.setState({ availableContacs: savedContacts.contacts })} // TODO: get from redux
 
   _remove(value: string) {
     // TODO in redux, then update state
@@ -43,27 +40,41 @@ export default class ContactList extends Component {
   }
 
   render () {
-    const contactPickers = [
-      <Picker.Item label='Add a contact' value='0' key="0" />
-    ]
+    /*const contactPickers = []
 
     for (let contact of this.availableContacts()) {
       contactPickers.push(<Picker.Item label={contact} value={contact} key={contact}/>)
-    }
+    }*/
 
     return (
       <View>
 
         <Row style={{marginTop: 16}}>
           <Left>
-            <H2>Contacts</H2>
+            <Text style={styles.inputTitle}>Contacts</Text>
           </Left>
+          <Right>
+            <Button
+              primary
+              block
+              onPress={() => this.props.navigation.navigate('AddContact')}
+            >
+              {/*<Picker
+                textStyle={{ color: "#ffffff" }}
+                mode="dropdown"
+                placeholder="ADD CONTACT"
+                selectedValue=''
+                onValueChange={this._add.bind(this)}
+              >
+                {contactPickers}
+              </Picker>*/}
+              <Text>ADD CONTACT</Text>
+            </Button>
+          </Right>
         </Row>
-
-        <List
-          dataArray={this.state.addedContacts}
-          renderRow={(contact) =>
-            <ListItem>
+        <Card style={styles.cardWithList}>
+          {this.state.addedContacts.map((contact, index) => (
+            <ListItem key={index}>
               <Left>
                 <Text> {contact} </Text>
               </Left>
@@ -76,20 +87,21 @@ export default class ContactList extends Component {
                 </Button>
               </Right>
             </ListItem>
-          }
-        >
-        </List>
-
-        <Picker
-          mode="dropdown"
-          placeholder="Add a contact"
-          selectedValue=''
-          onValueChange={this._add.bind(this)}
-        >
-          {contactPickers}
-
-        </Picker>
+          ))}
+        </Card>
       </View>
     )
   }
 }
+const styles = StyleSheet.create ({
+  cardWithList: {
+    marginTop: '5%',
+    marginBottom: '5%'
+  },
+  inputTitle: {
+    lineHeight: 45,
+    fontSize: 27,
+    marginLeft: '8%',
+    fontWeight: '600'
+  }
+})

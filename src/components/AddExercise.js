@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, Container, Header, Content, Item, Input, Button, Label, Toast, Row} from 'native-base';
-import { StyleSheet } from 'react-native'
+import { View, Text, Container, Header, Content, Item, Input, Button, Label, Toast, Row, Fab, Icon, Form} from 'native-base';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native'
 
 import { connect } from 'react-redux'
 
@@ -37,7 +37,7 @@ export class AddExercise extends Component {
   validateExercise() {
     if (this.state.name != null) {
       if (this.state.reps == null || this.state.sets == null) {
-        this.showToast('Sets and/or reps can not be null', 'danger')
+        this.showToast('Sets and/or reps must be set', 'danger')
         return false
       } else {
         return true
@@ -52,97 +52,82 @@ export class AddExercise extends Component {
     Toast.show({
       type: type,
       duration: 3000,
-      text: text
+      text: text,
+      position: "top"
     })
   }
-  
+
   render() {
 
     return (
-      <Container testID={"container"}>
-        <Content padder testID={"content"}>
-          <View padder testID={"view"}>
-            <Item floatingLabel>
-              <Label> Name </Label>
-              <Input
-                onChangeText={(name) => {this.setState({name: name})}}
-                testID={"nameInput"}
-                value={this.state.name}
-              />
-            </Item>
-          </View>
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+        <Container testID={"container"}>
+          <Content padder testID={"content"}>
+            <Form>
+              <View style={styles.inputView} testID={"view"}>
+                <Text style={styles.inputTitle}>Description</Text>
+                <Item>
+                  <Input
+                    onChangeText={(name) => {this.setState({name: name})}}
+                    testID={"nameInput"}
+                    value={this.state.name}
+                    placeholder="Enter description here"
+                  />
+                </Item>
+              </View>
 
-          <View>
-            <Text>
-              Sets (weight is optional)
-            </Text>
-            
-            <Row style={{flex: 0, flexWrap: 'wrap', paddingBottom: 16}}>
-             
-              <Item 
-                floatingLabel
-                style={{width: 50}}
-                
-              >
-                <Label> sets </Label>
-                <Input 
-                  onChangeText={(sets) => this.setState({sets})}
-                  testID={"setsInput"}
-                  value={this.state.sets}
-                />
-              </Item>
+              <View style={styles.inputView}>
+                <Text style={styles.inputTitle}>Sets</Text>
+                <Item>
+                  <Input
+                    onChangeText={(sets) => this.setState({sets})}
+                    testID={"setsInput"}
+                    value={this.state.sets}
+                    placeholder="0"
+                    keyboardType="numeric"
+                  />
+                </Item>
+              </View>
 
-              <Text
-                style={styles.textLabel}
-              > 
-                x 
-              </Text>
+              <View style={styles.inputView}>
+                <Text style={styles.inputTitle}>Reps</Text>
+                <Item>
+                  <Input
+                    onChangeText={(reps) => this.setState({reps})}
+                    testID={"repsInput"}
+                    value={this.state.reps}
+                    placeholder="0"
+                    keyboardType="numeric"
+                  />
+                </Item>
+              </View>
 
-              <Item
-                floatingLabel
-                style={{width: 50}}
-                
-              >
-                <Label> reps </Label>
-                <Input 
-                  onChangeText={(reps) => this.setState({reps})}
-                  testID={"repsInput"}
-                  value={this.state.reps}
-                />
-              </Item>
+              <View style={styles.inputView}>
+                <Text style={styles.inputTitle}>Weight in kg (optional)</Text>
+                <Item>
+                  <Input
+                    onChangeText={(kg) => this.setState({kg})}
+                    testID={"kgInput"}
+                    value={this.state.kg}
+                    placeholder="0"
+                    keyboardType="numeric"
+                  />
+                </Item>
+              </View>
+            </Form>
+          </Content>
+          <Fab
+            onPress={this.addExercise}
+            testID={'addExerciseButton'}
+            //containerStyle={{}}
+            style={{ backgroundColor: '#199E59' }}
+            position="bottomRight"
+          >
+            <Icon ios="ios-checkmark" android="md-checkmark" style={{fontSize: 50, lineHeight: 50}} />
 
-              <Text
-                style={styles.textLabel}
-              > 
-                x 
-              </Text>
-
-              <Item
-                floatingLabel
-                style={{width: 50}}
-              >
-                <Label> kg </Label>
-                <Input
-                  onChangeText={(kg) => this.setState({kg})}
-                  testID={"kgInput"}
-                  value={this.state.kg}
-                />
-              </Item>
-             
-            </Row>
-
-            <Button
-              primary
-              flat
-              block
-              testID={"addExerciseButton"}
-              onPress={this.addExercise}
-            >
-              <Text> Add exercise </Text>
-            </Button>
-          </View>
-        </Content>
-      </Container>
+          </Fab>
+        </Container>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -154,11 +139,13 @@ const mapDispatchToProps = dispatch => ({
 export default connect(null, mapDispatchToProps)(AddExercise)
 
 const styles = StyleSheet.create ({
-  textLabel: {
-    color: 'grey',
-    textAlignVertical: 'bottom',
-    fontSize: 16
+  inputView: {
+    marginTop: '8%',
+    paddingLeft: '4%',
+    paddingRight: '4%'
+  },
+  inputTitle: {
+    fontSize: 20,
+    fontWeight: "bold"
   }
-
 })
-
