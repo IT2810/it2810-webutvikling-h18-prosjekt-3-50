@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1539542402510" clover="3.2.0">
-  <project timestamp="1539542402511" name="All files">
-    <metrics statements="266" coveredstatements="191" conditionals="70" coveredconditionals="46" methods="113" coveredmethods="63" elements="449" coveredelements="300" complexity="0" loc="266" ncloc="266" packages="6" files="22" classes="22">
+<coverage generated="1539542752007" clover="3.2.0">
+  <project timestamp="1539542752008" name="All files">
+    <metrics statements="253" coveredstatements="187" conditionals="67" coveredconditionals="46" methods="110" coveredmethods="63" elements="430" coveredelements="296" complexity="0" loc="253" ncloc="253" packages="6" files="20" classes="20">
       <package name="it2810-webutvikling-h18-prosjekt-3-50">
         <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
         <file name=".eslintrc.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/.eslintrc.js">
@@ -25,12 +25,7 @@
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.actions">
-        <metrics statements="24" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="7"/>
-        <file name="UserActions.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/actions/UserActions.js">
-          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-          <line num="5" count="8" type="stmt"/>
-          <line num="6" count="0" type="stmt"/>
-        </file>
+        <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
         <file name="index.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/actions/index.js">
           <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>
@@ -52,32 +47,18 @@
           <line num="46" count="1" type="stmt"/>
         </file>
         <file name="types.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/actions/types.js">
-          <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="10" type="stmt"/>
-          <line num="3" count="10" type="stmt"/>
+          <line num="2" count="10" type="stmt"/>
           <line num="4" count="10" type="stmt"/>
-          <line num="6" count="10" type="stmt"/>
+          <line num="5" count="10" type="stmt"/>
           <line num="7" count="10" type="stmt"/>
-          <line num="9" count="10" type="stmt"/>
+          <line num="8" count="10" type="stmt"/>
           <line num="10" count="10" type="stmt"/>
-          <line num="12" count="10" type="stmt"/>
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.reducers">
-        <metrics statements="47" coveredstatements="34" conditionals="14" coveredconditionals="9" methods="14" coveredmethods="10"/>
-        <file name="UserReducer.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/reducers/UserReducer.js">
-          <metrics statements="10" coveredstatements="2" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="0"/>
-          <line num="5" count="1" type="stmt"/>
-          <line num="29" count="1" type="stmt"/>
-          <line num="30" count="0" type="stmt"/>
-          <line num="31" count="0" type="stmt"/>
-          <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
-          <line num="42" count="0" type="stmt"/>
-          <line num="43" count="0" type="stmt"/>
-          <line num="44" count="0" type="stmt"/>
-          <line num="45" count="0" type="stmt"/>
-          <line num="47" count="0" type="stmt"/>
-        </file>
+        <metrics statements="37" coveredstatements="32" conditionals="11" coveredconditionals="9" methods="12" coveredmethods="10"/>
         <file name="index.js" path="/mnt/f/Koding/NTNU/it2810-webutvikling-h18-prosjekt-3-50/reducers/index.js">
           <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>

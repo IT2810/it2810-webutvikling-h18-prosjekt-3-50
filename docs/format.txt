@@ -1,46 +1,20 @@
-
-user {
+session {
   id: [0-inf],
-  firstName: "",
-  lastName: "",
-  appointments: [{appointment}*],
-  currentTarget: {target},
-  currentTargetIterationsMade: [1-inf],
-  //targetsReached: [{target}*] // not sure about this - depends on whether we want to include historic achievements or not
-}
-
-appointment {
-  id: [0-inf],
-  description: "",
-  startTime: {time}, // duration/endTime not included for now
+  name: "",
+  date: "", // datetime string in ISO
   contacts: [{contact}*],
-  todos: [{todo}*]
-}
-
-time {
-  id: [0-inf], // id perhaps not necessary here?
-  minutes: [0-59],
-  hours: [0-23],
-  day: [1-31],
-  month: [1-12],
-  year: [2018-2030]
+  exercises: [{todo}*]
 }
 
 contact {
   id: [0-inf],
-  firstName: "",
-  lastName: ""
+  name: ""
 }
 
-todo {
+exercise {
   id: [0-inf],
-  description: "",
-  numberOfSets: [1-inf],
-  numberOfRepsPerSet: [1-inf]
-}
-
-target {
-  id: [0-inf],
-  iterationCount: [1-inf], // number of steps
-  deadline: {time}
+  name: "",
+  sets: [1-inf],
+  reps: [1-inf],
+  kg: [1-inf]
 }
