@@ -106,7 +106,6 @@ describe('CalendarView', () => {
       let calendar = findByID(wrapper, 'calendar')
       calendar.props().onDayPress(date)
 
-      console.log(wrapper.state('markedDates'))
       let dateInMarkedDates = wrapper.state('markedDates')[dateString]
       expect(dateInMarkedDates.selected).toBe(true)
       expect(dateInMarkedDates.marked).toBe(true)

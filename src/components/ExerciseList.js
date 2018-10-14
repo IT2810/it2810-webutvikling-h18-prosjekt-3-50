@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
-
 import {Card, List, ListItem, Text, Left, Body, Right, Button, View, Row, Picker, Icon, Toast } from 'native-base'
 
 import { removeExercise } from '../../actions/index'
@@ -41,7 +40,6 @@ export class ExerciseList extends Component {
           </Right>
         </Row>
 
-
         <Card style={styles.cardWithList}>
           {this.props.exercises.map((exercise, index) => (
             <ListItem key={index}>
@@ -66,7 +64,6 @@ export class ExerciseList extends Component {
             </ListItem>
           ))}
         </Card>
-
       </View>
     )
   }

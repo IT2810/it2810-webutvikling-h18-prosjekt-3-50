@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Container, Header, Content, Item, Input, Button, Label, Toast, Row, Fab, Icon, Form} from 'native-base';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native'
-
 import { connect } from 'react-redux'
 
 import { addExercise } from '../../actions/index'

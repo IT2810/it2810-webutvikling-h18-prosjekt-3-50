@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { Container, Content, Text, Card, CardItem } from 'native-base';
 import { connect } from 'react-redux'
 
-
 const savedContacts = require('../assets/contacts.json')
 
 import { addContact } from '../../actions/index'
