@@ -88,15 +88,15 @@ render() {
     return (
       <View style={styles.stepsBar}>
         <View>
-        <Text style={{fontSize: 25, lineHeight: 25, color: 'white', marginTop: '5%'}}>
-          <Icon
-            name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
-            style={{fontSize: 25, lineHeight: 25, color: 'white'}}
-          />
-          : {this.state.totalStepCount} / { this.state.target }
-        </Text>
+          <Text style={{fontSize: 25, lineHeight: 25, color: 'white', marginTop: '5%'}}>
+            <Icon
+              name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
+              style={{fontSize: 25, lineHeight: 25, color: 'white'}}
+            />
+            : {this.state.totalStepCount} / { this.state.target }
+          </Text>
         </View>
-        <View>
+        <View style={{marginTop: '3%'}}>
           <Button style={{display: 'flex'}} light onPress={() =>
             ActionSheet.show(
               {
@@ -123,10 +123,10 @@ render() {
   else{
     return(
       <View style={styles.stepsBar}>
-      <Text style={{fontSize: 25, lineHeight: 25, color: 'white'}}>
-        Error: Pedometer not available
-      </Text>
-    </View>
+        <Text style={{fontSize: 25, lineHeight: 25, color: 'white'}}>
+          Error: Pedometer not available
+        </Text>
+      </View>
     )
   }
 }
@@ -134,9 +134,11 @@ render() {
 
 const styles = StyleSheet.create({
   stepsBar: {
-    width: '90%',
+    width: '100%',
     backgroundColor: '#57BA98',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingTop: '0%',
+    paddingBottom: '3%'
   }
 })

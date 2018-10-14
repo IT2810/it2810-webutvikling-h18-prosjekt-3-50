@@ -46,7 +46,7 @@ export default class ExerciseList extends Component {
               onPress={this._add}
               testID={'addExerciseButton'}
             >
-              <Text> ADD EXERCISE </Text>
+              <Text>ADD EXERCISE</Text>
             </Button>
           </Right>
         </Row>
@@ -66,6 +66,7 @@ export default class ExerciseList extends Component {
               <Right>
                 <Button
                   danger
+                  style={{minWidth: '140%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                   onPress={this._remove.bind(this, exercise)}
                 >
                   <Icon active name="trash" />
@@ -86,7 +87,8 @@ const styles = StyleSheet.create ({
   },
   inputTitle: {
     lineHeight: 45,
-    fontSize: 30,
+    fontSize: 27,
+    marginLeft: '8%',
     fontWeight: '600'
   }
 })
