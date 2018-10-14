@@ -18,25 +18,22 @@ const selectSession = (state, action) => {
 const selectDate = (state, action) => {
   const date = action.payload
   let activeSession = state.sessions.find(session => isSameDay(session.date, date))
-
   return { ...state, selectedDate: action.payload, activeSession: activeSession}
 }
 
 const addContact = (state, action) => {
-  console.log("In add contact")
   let activeSession = state.activeSession
   if (activeSession.contacts) {
     activeSession.contacts = [...activeSession.contacts, action.payload]
   } else {
     activeSession.contacts = [action.payload]
   }
-  console.log(activeSession.contacts)
   return { ...state, activeSession: activeSession }  
 }
 
 const removeContact = (state, action) => {
   let activeSession = state.activeSession
-  activeSession.contacts = activeSession.contacts.filter(contacts => contacts != action.payload)
+  activeSession.contacts = activeSession.contacts.filter(contact => contact.name != action.payload.name)
   return { ...state, activeSession: activeSession }
 }
 
@@ -48,7 +45,7 @@ const addExercise = (state, action) => {
 
 const removeExercise = (state, action) => {
   let activeSession = state.activeSession
-  activeSession.exercises = activeSession.exercises.filter(exercise => exercise != action.payload)
+  activeSession.exercises = activeSession.exercises.filter(exercise => exercise.name != action.payload.name )
   return { ...state, activeSession: activeSession }
 }
 

@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import { ADD_SESSION, SELECT_SESSION, SELECT_DATE } from '../types'
-import { addSession, selectSession, selectDate } from '../sessions'
+import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE } from '../types'
+import { addSession, selectSession, selectDate, addContact, removeContact, addExercise, removeExercise } from '../sessions'
 
 describe('session actions', () => {
   it('should create an action to add session', () => {
@@ -37,4 +37,49 @@ describe('session actions', () => {
 
     expect(selectDate(date)).toEqual(expectedAction)
   })
+
+  it('should create an action to addContact', () => {
+    const contact = {name: 'Test contact'}
+
+    const expectedAction = {
+      type: ADD_CONTACT,
+      payload: contact
+    }
+
+    expect(addContact(contact)).toEqual(expectedAction)
+  })
+
+  it('should create an action to removeContact', () => {
+    const contact = {name: 'Test contact'}
+
+    const expectedAction = {
+      type: REMOVE_CONTACT,
+      payload: contact
+    }
+
+    expect(removeContact(contact)).toEqual(expectedAction)
+  })
+
+  it('should create an action to addExercise', () => {
+    const exercise = {name: 'Test exercise'}
+
+    const expectedAction = {
+      type: ADD_EXERCISE,
+      payload: exercise
+    }
+
+    expect(addExercise(exercise)).toEqual(expectedAction)
+  })
+
+  it('should create an action to removeExercise', () => {
+    const exercise = {name: 'Test exercise'}
+
+    const expectedAction = {
+      type: REMOVE_EXERCISE,
+      payload: exercise
+    }
+
+    expect(removeExercise(exercise)).toEqual(expectedAction)
+  })
+
 })
