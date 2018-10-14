@@ -58,6 +58,7 @@ export class ExerciseList extends Component {
                   danger
                   style={{minWidth: '140%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                   onPress={() => {this._remove(exercise)}}
+                  testID={'removeExerciseButton'}
                 >
                   <Icon active name="trash" />
                 </Button>

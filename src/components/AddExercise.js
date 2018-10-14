@@ -27,7 +27,6 @@ export class AddExercise extends Component {
 
   addExercise() {
     if (this.validateExercise()) {
-      console.log("Exercise is valid")
       this.showToast('Added exercise', 'success')
 
       this.props.addExercise({

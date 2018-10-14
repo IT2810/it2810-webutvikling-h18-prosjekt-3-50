@@ -44,6 +44,7 @@ export class AddContact extends Component {
                 bordered
                 button
                 onPress={() => this._add(contact)}
+                testID={'addContactButton'}
                 >
                 <Text>
                   { contact.name }

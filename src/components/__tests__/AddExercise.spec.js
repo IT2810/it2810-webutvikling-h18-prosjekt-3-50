@@ -17,9 +17,10 @@ describe('AddExercise', () => {
   const mockStore = configureStore()
   let wrapper
   let store
-  let dispatchAddExerciseMock = jest.fn()
+  let dispatchAddExerciseMock
 
   beforeEach(() => {
+    dispatchAddExerciseMock = jest.fn()
     store = mockStore(initialState)
     wrapper = shallow(<AddExercise store={store} addExercise={dispatchAddExerciseMock} />)
   })
@@ -44,7 +45,7 @@ describe('AddExercise', () => {
       expect(addExerciseMock.mock.calls.length).toBe(1)
     })
 
-    it('navigates to SessionForm if validateExercise is true', () => {
+    it('dispatch addExercise and navigates to SessionForm if validateExercise is true', () => {
       const navigateMock = jest.fn()
       const navigation = { navigate: navigateMock }
       const wrapper = shallow(<AddExercise navigation={navigation} store={store} addExercise={dispatchAddExerciseMock} />)
@@ -58,10 +59,11 @@ describe('AddExercise', () => {
 
       wrapper.instance().addExercise()
 
+      expect(dispatchAddExerciseMock.mock.calls.length).toBe(1)
       expect(navigateMock.mock.calls.length).toBe(1)
     })
 
-    it('does not navigates to SessionForm if validateExercise is false', () => {
+    it('does not dispatch addExercise or navigates to SessionForm if validateExercise is false', () => {
       const navigateMock = jest.fn()
       const navigation = { navigate: navigateMock }
       const wrapper = shallow(<AddExercise navigation={navigation} store={store} addExercise={dispatchAddExerciseMock} />)
@@ -75,6 +77,7 @@ describe('AddExercise', () => {
 
       wrapper.instance().addExercise()
 
+      expect(dispatchAddExerciseMock.mock.calls.length).toBe(0)
       expect(navigateMock.mock.calls.length).toBe(0)
     })
   })

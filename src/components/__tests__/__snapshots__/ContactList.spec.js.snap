@@ -30,6 +30,7 @@ exports[`ContactList renders correctly 1`] = `
         block={true}
         onPress={[Function]}
         primary={true}
+        testID="addContactButton"
       >
         <Styled(Text)>
           ADD CONTACT
@@ -44,51 +45,6 @@ exports[`ContactList renders correctly 1`] = `
         "marginTop": "5%",
       }
     }
-  >
-    <Styled(ListItem)
-      key="0"
-    >
-      <Styled(Left)>
-        <Styled(Text)>
-           
-          Ola Nordmann
-           
-        </Styled(Text)>
-      </Styled(Left)>
-      <Styled(Right)>
-        <Styled(Button)
-          danger={true}
-          onPress={[Function]}
-        >
-          <Styled(Icon)
-            active={true}
-            name="trash"
-          />
-        </Styled(Button)>
-      </Styled(Right)>
-    </Styled(ListItem)>
-    <Styled(ListItem)
-      key="1"
-    >
-      <Styled(Left)>
-        <Styled(Text)>
-           
-          Kari Nordmann
-           
-        </Styled(Text)>
-      </Styled(Left)>
-      <Styled(Right)>
-        <Styled(Button)
-          danger={true}
-          onPress={[Function]}
-        >
-          <Styled(Icon)
-            active={true}
-            name="trash"
-          />
-        </Styled(Button)>
-      </Styled(Right)>
-    </Styled(ListItem)>
-  </Styled(Card)>
+  />
 </ViewNB>
 `;

@@ -4,7 +4,6 @@ import { List, ListItem, Text, Left, Right, Button, View, Row, Picker, Icon, Car
 import { connect } from 'react-redux'
 
 import { removeContact } from '../../actions/index'
-const savedContacts = require('../assets/contacts.json')
 
 export class ContactList extends Component {
 
@@ -35,6 +34,7 @@ export class ContactList extends Component {
               primary
               block
               onPress={this._add}
+              testID={'addContactButton'}
             >
               <Text>ADD CONTACT</Text>
             </Button>
@@ -50,6 +50,7 @@ export class ContactList extends Component {
                 <Button
                   danger
                   onPress={() => {this._remove(contact)}}
+                  testID={'removeContactButton'}
                 >
                   <Icon active name="trash" />
                 </Button>

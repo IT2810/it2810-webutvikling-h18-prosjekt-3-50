@@ -12,8 +12,6 @@ import ExerciseList from './ExerciseList.js'
 
 import { timeString } from '../assets/utils'
 
-const contacts = require('../assets/contacts.json')
-
 export class CreateSession extends Component {
   static navigationOptions = {
     title: 'CreateSession'
