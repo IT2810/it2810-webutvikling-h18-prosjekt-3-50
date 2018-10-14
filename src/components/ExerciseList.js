@@ -11,10 +11,15 @@ export class ExerciseList extends Component {
     super(props, context)
     
     this._add = this._add.bind(this)
+    this._remove = this._remove.bind(this)
   }
 
   _add () {
     this.props.navigation.navigate('AddExercise')
+  }
+
+  _remove (exercise) {
+    this.props.removeExercise(exercise)
   }
 
   render () {
@@ -41,7 +46,7 @@ export class ExerciseList extends Component {
           {this.props.exercises.map((exercise, index) => (
             <ListItem key={index}>
               <Left
-                onPress={this._add}
+                onPress={() => {this.props.navigation.navigate('AddExercise')}}
               >
                 <Text> { exercise.name }  </Text>
               </Left>
@@ -52,7 +57,7 @@ export class ExerciseList extends Component {
                 <Button
                   danger
                   style={{minWidth: '140%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
-                  onPress={() => {this.props.removeExercise(exercise)}}
+                  onPress={() => {this._remove(exercise)}}
                 >
                   <Icon active name="trash" />
                 </Button>

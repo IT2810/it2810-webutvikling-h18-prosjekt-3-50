@@ -10,6 +10,17 @@ export class ContactList extends Component {
 
   constructor(props, context) {
     super(props, context)
+
+    this._add = this._add.bind(this)
+    this._remove = this._remove.bind(this)
+  }
+
+  _add () {
+    this.props.navigation.navigate('AddContact')
+  }
+
+  _remove (contact) {
+    this.props.removeContact(contact)
   }
 
   render () {
@@ -23,7 +34,7 @@ export class ContactList extends Component {
             <Button
               primary
               block
-              onPress={() => this.props.navigation.navigate('AddContact')}
+              onPress={this._add}
             >
               <Text>ADD CONTACT</Text>
             </Button>
@@ -38,7 +49,7 @@ export class ContactList extends Component {
               <Right>
                 <Button
                   danger
-                  onPress={() => this.props.removeContact(contact)}
+                  onPress={() => {this._remove(contact)}}
                 >
                   <Icon active name="trash" />
                 </Button>
