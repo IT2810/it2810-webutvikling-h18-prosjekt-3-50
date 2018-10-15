@@ -3,3 +3,4 @@ node_modules/**/*
 npm-debug.*
 coverage/*
 __tests__/__snapshots__/*
+src/components/__tests__/__snapshots__/*
