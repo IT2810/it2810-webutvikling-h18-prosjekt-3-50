@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import Moment from 'react-moment'
 import  { Button, View, Text, Container, Content, Toast, Input, Item, Fab, Icon } from 'native-base'
 import DateTimePicker from 'react-native-modal-datetime-picker'
@@ -106,62 +106,65 @@ class CreateSession extends Component {
     }
 
     return (
-      <Container>
-        <Content padder scrollEnabled={true}>
-          <Text style={styles.inputTitle}>Title</Text>
-          <Item rounded>
-            <Input
-              style={styles.titleText}
-              onChangeText={(name) => this.setState({name})}
-              value={this.state.name}
+      <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+        <Container>
+          <Content padder scrollEnabled={true}>
+            <Text style={styles.inputTitle}>Title</Text>
+            <Item rounded>
+              <Input
+                style={styles.titleText}
+                onChangeText={(name) => this.setState({name})}
+                value={this.state.name}
+                placeholder="Enter title here"
+              />
+            </Item>
+
+            <Text style={styles.inputTitle}> Date and time </Text>
+            <Item rounded>
+              <TouchableOpacity onPress={this._showDateTimePicker}>
+                {dateTimeText}
+              </TouchableOpacity>
+              <DateTimePicker
+                mode='datetime'
+                isVisible={this.state.isDateTimePickerVisible}
+                onConfirm={this._setDateAndTime}
+                onCancel={this._hideDateTimePicker}
+                testID={"dateTimePicker"}
             />
-          </Item>
 
-          <Text style={styles.inputTitle}> Date and time </Text>
-          <Item rounded>
-            <TouchableOpacity onPress={this._showDateTimePicker}>
-              {dateTimeText}
-            </TouchableOpacity>
-            <DateTimePicker
-              mode='datetime'
-              isVisible={this.state.isDateTimePickerVisible}
-              onConfirm={this._setDateAndTime}
-              onCancel={this._hideDateTimePicker}
-              testID={"dateTimePicker"}
-          />
+            </Item>
 
-          </Item>
+            <View style={styles.exerciseListContainer}>
+              <ExerciseList navigation={this.props.navigation} />
+            </View>
+            <View style={styles.contactListContainer}>
+              <ContactList navigation={this.props.navigation} />
+            </View>
+          </Content>
 
-          <View style={styles.exerciseListContainer}>
-            <ExerciseList navigation={this.props.navigation} />
-          </View>
-          <View style={styles.contactListContainer}>
-            <ContactList />
-          </View>
-        </Content>
-
-        {/*<View style={styles.buttonContainer}>
-          <Button
-            success
-            large
-            block
+          {/*<View style={styles.buttonContainer}>
+            <Button
+              success
+              large
+              block
+              onPress={this.saveSession}
+              testID={'saveSessionButton'}
+            >
+              <Text> SAVE SESSION </Text>
+            </Button>
+          </View>*/}
+          <Fab
             onPress={this.saveSession}
             testID={'saveSessionButton'}
+            //containerStyle={{}}
+            style={{ backgroundColor: '#199E59' }}
+            position="bottomRight"
           >
-            <Text> SAVE SESSION </Text>
-          </Button>
-        </View>*/}
-        <Fab
-          onPress={this.saveSession}
-          testID={'saveSessionButton'}
-          //containerStyle={{}}
-          style={{ backgroundColor: '#199E59' }}
-          position="bottomRight"
-        >
-          <Icon ios="ios-checkmark" android="md-checkmark" style={{fontSize: 50, lineHeight: 50}} />
+            <Icon ios="ios-checkmark" android="md-checkmark" style={{fontSize: 50, lineHeight: 50}} />
 
-        </Fab>
-      </Container>
+          </Fab>
+        </Container>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -179,8 +182,9 @@ const styles = StyleSheet.create ({
   inputTitle: {
     marginTop: '5%',
     marginBottom: '2%',
+    marginLeft: '3%',
     lineHeight: 45,
-    fontSize: 30,
+    fontSize: 27,
     fontWeight: '600'
   },
   titleText: {

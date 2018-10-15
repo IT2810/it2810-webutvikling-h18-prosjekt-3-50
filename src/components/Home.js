@@ -18,15 +18,17 @@ class Home extends Component {
     return (
 
       <SafeAreaView>
-        <ScrollView>
-          <CalendarView navigation={this.props.navigation}/>
-          <PedometerSensor />
-          <ShowSession />
+        <ScrollView style={{height: '100%'}}>
+          <View style={{paddingBottom: '25%'}}>
+            <CalendarView navigation={this.props.navigation}/>
+            <PedometerSensor />
+            <ShowSession />
+          </View>
         </ScrollView>
         <Fab
           testID="addSessionButton"
           onPress={() => this.props.navigation.navigate('CreateSession')}
-          containerStyle={{ }}
+          //containerStyle={{}}
           style={{ backgroundColor: '#5067FF' }}
           position="bottomRight"
         >

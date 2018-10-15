@@ -162,6 +162,7 @@ render() {
         Error: Pedometer not available
       </Text>
     </View>
+
     )
   }
 }
