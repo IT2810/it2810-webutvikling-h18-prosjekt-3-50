@@ -20,11 +20,10 @@ export class CreateSession extends Component {
   constructor(props, context) {
     super(props, context)
     // If navigation prop has params, set the propDate in params as propDate
-    let propDate = this.props.selectedDate != null ? this.props.selectedDate : null
+    let date = this.props.selectedDate != null ? this.props.selectedDate : new Date()
 
     this.state = {
-      // If propDate isn't null, set it as date. If it is, set today as date
-      date: propDate != null ? propDate : new Date(),
+      date: date,
       time: null,
       name: null,
       isDateTimePickerVisible: false,
@@ -44,6 +43,7 @@ export class CreateSession extends Component {
 
   saveSession() {
     if (this.validateSession()) {
+      console.log("Saving sesssion")
       this.props.addSession(this.getSessionObject())
 
       this.props.navigation.navigate('Home')
@@ -70,7 +70,7 @@ export class CreateSession extends Component {
   getSessionObject() {
     return {
       name: this.state.name,
-      date: this.state.date.dateString,
+      date: this.state.date,
       time: this.state.time,
       exercises: this.props.exercises,
       contacts: this.props.contacts
@@ -100,6 +100,8 @@ export class CreateSession extends Component {
   }
 
   _setDateAndTime(date) {
+    console.log("Setting date")
+    console.log(date)
     this.setState({ 
       date: date,
       time: timeString(date)
@@ -147,6 +149,7 @@ export class CreateSession extends Component {
               <DateTimePicker
                 mode='datetime'
                 isVisible={this.state.isDateTimePickerVisible}
+                value={this.state.date}
                 onConfirm={this._setDateAndTime}
                 onCancel={this._hideDateTimePicker}
                 testID={"dateTimePicker"}

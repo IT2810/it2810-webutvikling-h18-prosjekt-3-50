@@ -43,11 +43,13 @@ export class CalendarView extends Component {
   }
 
   render () {
+    let markedDates = {...getSessionDates(this.props.sessions), ...this.state.markedDates}
+
     return (
       <View style={styles.calendarContainer}>
         <Calendar
           testID={'calendar'}
-          markedDates={{ ...this.props.sessionDates, ...this.state.markedDates }}
+          markedDates={markedDates}
           onDayLongPress={(date) => { this.addSession(date) }}
           onDayPress={(date) => this.selectDate(date)}
         />

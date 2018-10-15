@@ -5,9 +5,18 @@ import { isSameDay } from '../src/assets/utils'
 
 const INITIAL_STATE = initial_state_mock
 
+const emptySession = {
+  date: null,
+  name: null,
+  exercises: [],
+  contacts: []
+
+}
 const addSession = (state, session) => {
   // Returnes a new state, doesn't edit the existing one
-  return { ...state, sessions: [...state.sessions, session.payload] }
+  console.log('Saving session as reducer')
+  console.log(session.payload)
+  return { ...state, sessions: [...state.sessions, session.payload], activeSession: emptySession}
 }
 
 const selectSession = (state, action) => {
@@ -17,12 +26,8 @@ const selectSession = (state, action) => {
 
 const createNewSession = (state, action) => {
   return { ...state,
-    activeSession: {
-      date: null,
-      name: null,
-      exercises: [],
-      contacts: []
-    }}
+    activeSession: emptySession
+  }
 }
 
 const selectDate = (state, action) => {
