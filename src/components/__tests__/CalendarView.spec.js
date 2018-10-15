@@ -8,7 +8,6 @@ import { CalendarView } from '../CalendarView'
 import toJson from 'enzyme-to-json'
 import { findByID } from '../../testUtils.js'
 
-
 describe('CalendarView', () => {
   let wrapper
   let navigateMock
@@ -21,10 +20,10 @@ describe('CalendarView', () => {
     navigateMock = jest.fn()
     navigation = {navigate: navigateMock}
     dispatchSelectDateMock = jest.fn()
-    wrapper = shallow(<CalendarView 
-      navigation={navigation} 
+    wrapper = shallow(<CalendarView
+      navigation={navigation}
       selectDate={dispatchSelectDateMock}
-      sessionDates={sessionDates}/>
+      sessionDates={sessionDates} />
     )
   })
 
@@ -46,15 +45,15 @@ describe('CalendarView', () => {
       expect(addSessionMock.mock.calls.length).toBe(1)
     })
 
-    it('calls navigate with date as param', () => {
-      const wrapper = shallow(<CalendarView navigation={navigation}/>)
+    it('calls selectDate and navigate with date as param', () => {
+      const wrapper = shallow(<CalendarView navigation={navigation} selectDate={dispatchSelectDateMock} />)
 
       let date = findByID(wrapper, 'calendar')
       date.props().onDayLongPress('2018-10-18')
 
+      expect(dispatchSelectDateMock.mock.calls.length).toBe(1)
       expect(navigateMock.mock.calls.length).toBe(1)
       expect(navigateMock.mock.calls[0][0]).toBe('CreateSession')
-      expect(navigateMock.mock.calls[0][1].date).toBe('2018-10-18')
     })
   })
 
@@ -91,17 +90,16 @@ describe('CalendarView', () => {
       let dateInMarkedDates = wrapper.state('markedDates')[date.dateString]
       expect(dateInMarkedDates.selected).toBe(true)
     })
-    
 
     it('set selected date as marked if it is marked', () => {
       let dateString = '2018-10-18'
       let date = { dateString: dateString }
       let sessionDateObject = { [dateString]: { marked: true } }
 
-      wrapper = shallow(<CalendarView 
-        navigation={navigation} 
+      wrapper = shallow(<CalendarView
+        navigation={navigation}
         selectDate={dispatchSelectDateMock}
-        sessionDates={sessionDateObject}/>
+        sessionDates={sessionDateObject} />
       )
       let calendar = findByID(wrapper, 'calendar')
       calendar.props().onDayPress(date)

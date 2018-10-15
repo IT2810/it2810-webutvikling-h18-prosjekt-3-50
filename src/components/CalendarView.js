@@ -24,12 +24,8 @@ export class CalendarView extends Component {
   }
 
   addSession (date) {
-    this.props.navigation.navigate(
-      'CreateSession',
-      {
-        date: date
-      }
-    )
+    this.props.selectDate(date)
+    this.props.navigation.navigate('CreateSession')
   }
 
   selectDate (date) {
@@ -59,7 +55,7 @@ export class CalendarView extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps (state) {
   return {
     sessions: state.sessions.sessions,
     sessionDates: getSessionDates(state.sessions.sessions)

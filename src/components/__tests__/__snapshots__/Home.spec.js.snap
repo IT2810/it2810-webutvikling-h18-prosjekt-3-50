@@ -2,7 +2,7 @@
 
 exports[`Home renders correctly 1`] = `
 <_class>
-  <ScrollView
+  <ScrollViewMock
     style={
       Object {
         "height": "100%",
@@ -26,7 +26,7 @@ exports[`Home renders correctly 1`] = `
       <PedometerSensor />
       <Connect(ShowSession) />
     </Styled(ViewNB)>
-  </ScrollView>
+  </ScrollViewMock>
   <Styled(Fab)
     onPress={[Function]}
     position="bottomRight"

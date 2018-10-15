@@ -20,7 +20,7 @@ export class CreateSession extends Component {
   constructor(props, context) {
     super(props, context)
     // If navigation prop has params, set the propDate in params as propDate
-    let propDate = this.props.navigation.state.params != null ? this.props.navigation.state.params.date : null
+    let propDate = this.props.selectedDate != null ? this.props.selectedDate : null
 
     this.state = {
       // If propDate isn't null, set it as date. If it is, set today as date
@@ -178,7 +178,7 @@ export class CreateSession extends Component {
 }
 
 function mapStateToProps(state) {
-
+  selectedDate: state.session.selectedDate
 }
 
 const mapDispatchToProps = dispatch => ({

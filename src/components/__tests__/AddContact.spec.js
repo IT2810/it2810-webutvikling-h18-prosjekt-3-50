@@ -17,7 +17,7 @@ describe('AddContact', () => {
   beforeEach(() => {
     goBackMock = jest.fn()
     navigation = {goBack: goBackMock}
-    wrapper = shallow(<AddContact navigation={navigation} addExercise={dispatchAddContactMock} addContact={dispatchAddContactMock} />)
+    wrapper = shallow(<AddContact navigation={navigation} addContact={dispatchAddContactMock} />)
   })
 
   it('renders correctly', () => {
@@ -27,7 +27,7 @@ describe('AddContact', () => {
   describe('_add', () => {
     it('calls _add when button is pressed', () => {
       let _addMock = jest.fn()
-      let wrapper = shallow(<AddContact navigation={navigation}  _add={_addMock} />)
+      let wrapper = shallow(<AddContact navigation={navigation} _add={_addMock} ddContanct={dispatchAddContactMock} />)
 
       wrapper.instance()._add = _addMock
 
@@ -52,5 +52,4 @@ describe('AddContact', () => {
       expect(goBackMock.mock.calls.length).toBe(1)
     })
   })
-
 })
