@@ -6,7 +6,7 @@ import Moment from 'react-moment'
 import { connect } from 'react-redux'
 
 import { getSessionDates } from '../assets/utils.js'
-import { selectDate } from '../../actions/index'
+import { selectDate, createNewSession } from '../../actions/index'
 
 export class CalendarView extends Component {
   constructor (props, context) {
@@ -25,6 +25,7 @@ export class CalendarView extends Component {
 
   addSession (date) {
     this.props.selectDate(date)
+    this.props.createNewSession()
     this.props.navigation.navigate('CreateSession')
   }
 
@@ -63,7 +64,8 @@ function mapStateToProps (state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  selectDate: date => dispatch(selectDate(date))
+  selectDate: date => dispatch(selectDate(date)),
+  createNewSession: () => dispatch(createNewSession())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarView)
