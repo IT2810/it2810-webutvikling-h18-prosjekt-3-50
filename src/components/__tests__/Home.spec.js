@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import Home from '../Home'
+import { Home } from '../Home'
 import toJson from 'enzyme-to-json'
 import { findByID } from '../../testUtils.js'
 
@@ -15,7 +15,7 @@ describe('Home', () => {
   beforeEach(() => {
     navigateMock = jest.fn()
     const navigation = { navigate: navigateMock }
-    wrapper = shallow(<Home navigation={navigation}/>)
+    wrapper = shallow(<Home navigation={navigation} />)
   })
 
   it('renders correctly', () => {

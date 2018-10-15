@@ -1,4 +1,4 @@
-import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE } from './types'
+import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, CREATE_NEW_SESSION, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE } from './types'
 
 export const addSession = (session) => {
   return {
@@ -11,6 +11,12 @@ export const selectSession = (id) => {
   return {
     type: SELECT_SESSION,
     payload: id
+  }
+}
+
+export const createNewSession = () => {
+  return {
+    type: CREATE_NEW_SESSION
   }
 }
 

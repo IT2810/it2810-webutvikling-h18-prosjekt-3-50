@@ -1,4 +1,4 @@
-//const initial_state_mock = require('../src/assets/initial_state_mock.json')
+// const initial_state_mock = require('../src/assets/initial_state_mock.json')
 import initial_state_mock from '../src/assets/initial_state_mock.js'
 
 import { isSameDay } from '../src/assets/utils'
@@ -15,6 +15,16 @@ const selectSession = (state, action) => {
   return { ...state, activeSession: session}
 }
 
+const createNewSession = (state, action) => {
+  return { ...state,
+    activeSession: {
+      date: null,
+      name: null,
+      exercises: [],
+      contacts: []
+    }}
+}
+
 const selectDate = (state, action) => {
   const date = action.payload
   let activeSession = state.sessions.find(session => isSameDay(session.date, date))
@@ -28,7 +38,7 @@ const addContact = (state, action) => {
   } else {
     activeSession.contacts = [action.payload]
   }
-  return { ...state, activeSession: activeSession }  
+  return { ...state, activeSession: activeSession }
 }
 
 const removeContact = (state, action) => {
@@ -45,7 +55,7 @@ const addExercise = (state, action) => {
 
 const removeExercise = (state, action) => {
   let activeSession = state.activeSession
-  activeSession.exercises = activeSession.exercises.filter(exercise => exercise.name != action.payload.name )
+  activeSession.exercises = activeSession.exercises.filter(exercise => exercise.name != action.payload.name)
   return { ...state, activeSession: activeSession }
 }
 
@@ -56,6 +66,8 @@ export default function (state = INITIAL_STATE, action) {
       return addSession(state, action)
     case 'SELECT_SESSION':
       return selectSession(state, action)
+    case 'CREATE_NEW_SESSION':
+      return createNewSession(state, action)
     case 'ADD_CONTACT':
       return addContact(state, action)
     case 'REMOVE_CONTACT':
