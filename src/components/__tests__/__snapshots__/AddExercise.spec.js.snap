@@ -1,136 +1,168 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddExercise renders correctly 1`] = `
-<Container
+<Component
+  enabled={true}
+  keyboardVerticalOffset={0}
+  onLayout={[Function]}
   style={
-    Object {
-      "backgroundColor": "#fff",
-      "flex": 1,
-      "height": 1334,
-    }
+    Array [
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
   }
-  testID="container"
 >
-  <Styled(Content)
-    padder={true}
-    testID="content"
+  <Styled(Container)
+    testID="container"
   >
-    <Styled(ViewNB)
+    <Styled(Content)
       padder={true}
-      testID="view"
+      testID="content"
     >
-      <Styled(Item)
-        floatingLabel={true}
-      >
-        <Styled(Label)>
-           Name 
-        </Styled(Label)>
-        <Styled(Input)
-          onChangeText={[Function]}
-          testID="nameInput"
-          value={null}
-        />
-      </Styled(Item)>
-    </Styled(ViewNB)>
-    <Styled(ViewNB)>
-      <Styled(Text)>
-        Sets (weight is optional)
-      </Styled(Text)>
-      <RowNB
+      <Styled(Form)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+          testID="view"
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Description
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              onChangeText={[Function]}
+              placeholder="Enter description here"
+              testID="nameInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Sets
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              keyboardType="numeric"
+              onChangeText={[Function]}
+              placeholder="0"
+              testID="setsInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Reps
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              keyboardType="numeric"
+              onChangeText={[Function]}
+              placeholder="0"
+              testID="repsInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Weight in kg (optional)
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              keyboardType="numeric"
+              onChangeText={[Function]}
+              placeholder="0"
+              testID="kgInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+      </Styled(Form)>
+    </Styled(Content)>
+    <Styled(Fab)
+      onPress={[Function]}
+      position="bottomRight"
+      style={
+        Object {
+          "backgroundColor": "#199E59",
+        }
+      }
+      testID="addExerciseButton"
+    >
+      <Styled(Icon)
+        android="md-checkmark"
+        ios="ios-checkmark"
         style={
           Object {
-            "flex": 0,
-            "flexWrap": "wrap",
-            "paddingBottom": 16,
+            "fontSize": 50,
+            "lineHeight": 50,
           }
         }
-      >
-        <Styled(Item)
-          floatingLabel={true}
-          style={
-            Object {
-              "width": 50,
-            }
-          }
-        >
-          <Styled(Label)>
-             sets 
-          </Styled(Label)>
-          <Styled(Input)
-            onChangeText={[Function]}
-            testID="setsInput"
-            value={null}
-          />
-        </Styled(Item)>
-        <Styled(Text)
-          style={
-            Object {
-              "color": "grey",
-              "fontSize": 16,
-              "textAlignVertical": "bottom",
-            }
-          }
-        >
-          x
-        </Styled(Text)>
-        <Styled(Item)
-          floatingLabel={true}
-          style={
-            Object {
-              "width": 50,
-            }
-          }
-        >
-          <Styled(Label)>
-             reps 
-          </Styled(Label)>
-          <Styled(Input)
-            onChangeText={[Function]}
-            testID="repsInput"
-            value={null}
-          />
-        </Styled(Item)>
-        <Styled(Text)
-          style={
-            Object {
-              "color": "grey",
-              "fontSize": 16,
-              "textAlignVertical": "bottom",
-            }
-          }
-        >
-          x
-        </Styled(Text)>
-        <Styled(Item)
-          floatingLabel={true}
-          style={
-            Object {
-              "width": 50,
-            }
-          }
-        >
-          <Styled(Label)>
-             kg 
-          </Styled(Label)>
-          <Styled(Input)
-            onChangeText={[Function]}
-            testID="kgInput"
-            value={null}
-          />
-        </Styled(Item)>
-      </RowNB>
-      <Styled(Button)
-        block={true}
-        flat={true}
-        onPress={[Function]}
-        primary={true}
-        testID="addExerciseButton"
-      >
-        <Styled(Text)>
-           Add exercise 
-        </Styled(Text)>
-      </Styled(Button)>
-    </Styled(ViewNB)>
-  </Styled(Content)>
-</Container>
+      />
+    </Styled(Fab)>
+  </Styled(Container)>
+</Component>
 `;

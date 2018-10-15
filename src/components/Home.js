@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { SafeAreaView, ScrollView } from 'react-native'
-import  { View, Fab, Icon} from 'native-base'
+import { SafeAreaView, ScrollView, Button } from 'react-native'
+import  { View, Fab, Icon } from 'native-base'
 
 import CreateSession from './CreateSession.js'
 import CalendarView from './CalendarView.js'
@@ -9,9 +9,16 @@ import ShowSession from './ShowSession.js'
 import PedometerSensor from './PedometerSensor.js'
 
 class Home extends Component {
-  static navigationOptions = {
-    title: 'Home'
-  }
+  static navigationOptions = ({navigation}) => ({
+    title: 'Home',
+    headerRight: (
+      <Button
+        onPress={() => navigation.navigate('Stats')}
+        title="Stats      " // whitespace = easiest way to create padding
+        color="#fff"
+      />
+    )
+  })
 
   render() {
 

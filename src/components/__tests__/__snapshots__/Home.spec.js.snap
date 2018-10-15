@@ -2,18 +2,32 @@
 
 exports[`Home renders correctly 1`] = `
 <_class>
-  <ScrollView>
-    <CalendarView
-      navigation={
+  <ScrollView
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  >
+    <Styled(ViewNB)
+      style={
         Object {
-          "navigate": [MockFunction],
+          "paddingBottom": "25%",
         }
       }
-    />
-    <ShowSession />
+    >
+      <CalendarView
+        navigation={
+          Object {
+            "navigate": [MockFunction],
+          }
+        }
+      />
+      <PedometerSensor />
+      <ShowSession />
+    </Styled(ViewNB)>
   </ScrollView>
   <Styled(Fab)
-    containerStyle={Object {}}
     onPress={[Function]}
     position="bottomRight"
     style={
