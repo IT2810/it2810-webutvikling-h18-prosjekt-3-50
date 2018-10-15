@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1539092346865" clover="3.2.0">
-  <project timestamp="1539092346866" name="All files">
-    <metrics statements="153" coveredstatements="130" conditionals="47" coveredconditionals="39" methods="60" coveredmethods="49" elements="260" coveredelements="218" complexity="0" loc="153" ncloc="153" packages="5" files="16" classes="16">
+<coverage generated="1539565120286" clover="3.2.0">
+  <project timestamp="1539565120286" name="All files">
+    <metrics statements="185" coveredstatements="134" conditionals="64" coveredconditionals="39" methods="77" coveredmethods="49" elements="326" coveredelements="222" complexity="0" loc="185" ncloc="185" packages="5" files="17" classes="17">
       <package name="it2810-webutvikling-h18-prosjekt-3-50">
         <metrics statements="10" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
-        <file name=".eslintrc.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/.eslintrc.js">
+        <file name=".eslintrc.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\.eslintrc.js">
           <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
         </file>
-        <file name="App.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/App.js">
+        <file name="App.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\App.js">
           <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
           <line num="17" count="1" type="stmt"/>
           <line num="18" count="1" type="stmt"/>
@@ -19,31 +19,31 @@
           <line num="34" count="1" type="stmt"/>
           <line num="46" count="1" type="stmt"/>
         </file>
-        <file name="store.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/store.js">
+        <file name="store.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\store.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="7" count="1" type="stmt"/>
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.actions">
         <metrics statements="5" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <file name="UserActions.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/actions/UserActions.js">
+        <file name="UserActions.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\actions\UserActions.js">
           <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="5" count="0" type="stmt"/>
           <line num="6" count="0" type="stmt"/>
         </file>
-        <file name="index.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/actions/index.js">
+        <file name="index.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\actions\index.js">
           <metrics statements="1" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
           <line num="1" count="0" type="cond" truecount="0" falsecount="2"/>
         </file>
-        <file name="types.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/actions/types.js">
+        <file name="types.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\actions\types.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="1" type="stmt"/>
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.reducers">
         <metrics statements="10" coveredstatements="4" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="1"/>
-        <file name="UserReducer.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/reducers/UserReducer.js">
+        <file name="UserReducer.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\reducers\UserReducer.js">
           <metrics statements="10" coveredstatements="4" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="1"/>
           <line num="5" count="1" type="stmt"/>
           <line num="29" count="1" type="stmt"/>
@@ -56,27 +56,27 @@
           <line num="45" count="0" type="stmt"/>
           <line num="47" count="3" type="stmt"/>
         </file>
-        <file name="index.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/reducers/index.js">
+        <file name="index.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\reducers\index.js">
           <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.src">
         <metrics statements="8" coveredstatements="8" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
-        <file name="testUtils.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/testUtils.js">
+        <file name="testUtils.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\testUtils.js">
           <metrics statements="8" coveredstatements="8" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
-          <line num="2" count="153" type="cond" truecount="4" falsecount="0"/>
+          <line num="2" count="154" type="cond" truecount="4" falsecount="0"/>
           <line num="3" count="15" type="stmt"/>
-          <line num="5" count="138" type="cond" truecount="4" falsecount="0"/>
+          <line num="5" count="139" type="cond" truecount="4" falsecount="0"/>
           <line num="6" count="91" type="stmt"/>
           <line num="7" count="91" type="stmt"/>
-          <line num="8" count="138" type="stmt"/>
-          <line num="9" count="138" type="cond" truecount="2" falsecount="0"/>
+          <line num="8" count="139" type="stmt"/>
+          <line num="9" count="139" type="cond" truecount="2" falsecount="0"/>
           <line num="10" count="36" type="stmt"/>
         </file>
       </package>
       <package name="it2810-webutvikling-h18-prosjekt-3-50.src.components">
-        <metrics statements="120" coveredstatements="108" conditionals="30" coveredconditionals="25" methods="52" coveredmethods="44"/>
-        <file name="AddExercise.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/components/AddExercise.js">
+        <metrics statements="152" coveredstatements="112" conditionals="47" coveredconditionals="25" methods="69" coveredmethods="44"/>
+        <file name="AddExercise.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\AddExercise.js">
           <metrics statements="22" coveredstatements="19" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="8"/>
           <line num="11" count="13" type="stmt"/>
           <line num="12" count="13" type="stmt"/>
@@ -101,7 +101,7 @@
           <line num="122" count="1" type="stmt"/>
           <line num="148" count="2" type="stmt"/>
         </file>
-        <file name="CalendarView.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/components/CalendarView.js">
+        <file name="CalendarView.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\CalendarView.js">
           <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="8"/>
           <line num="11" count="8" type="stmt"/>
           <line num="13" count="8" type="stmt"/>
@@ -123,7 +123,7 @@
           <line num="72" count="4" type="stmt"/>
           <line num="81" count="3" type="stmt"/>
         </file>
-        <file name="ContactList.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/components/ContactList.js">
+        <file name="ContactList.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\ContactList.js">
           <metrics statements="16" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="11" coveredmethods="9"/>
           <line num="5" count="4" type="stmt"/>
           <line num="10" count="4" type="stmt"/>
@@ -142,7 +142,7 @@
           <line num="54" count="12" type="stmt"/>
           <line num="66" count="0" type="stmt"/>
         </file>
-        <file name="CreateSession.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/components/CreateSession.js">
+        <file name="CreateSession.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\CreateSession.js">
           <metrics statements="34" coveredstatements="27" conditionals="14" coveredconditionals="11" methods="9" coveredmethods="4"/>
           <line num="10" count="3" type="stmt"/>
           <line num="18" count="8" type="stmt"/>
@@ -179,7 +179,7 @@
           <line num="115" count="0" type="stmt"/>
           <line num="171" count="3" type="stmt"/>
         </file>
-        <file name="ExerciseList.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/components/ExerciseList.js">
+        <file name="ExerciseList.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\ExerciseList.js">
           <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
           <line num="9" count="4" type="stmt"/>
           <line num="10" count="4" type="stmt"/>
@@ -191,12 +191,47 @@
           <line num="57" count="27" type="stmt"/>
           <line num="82" count="4" type="stmt"/>
         </file>
-        <file name="Home.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/components/Home.js">
+        <file name="Home.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\Home.js">
           <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-          <line num="17" count="2" type="stmt"/>
-          <line num="25" count="1" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
         </file>
-        <file name="ShowSession.js" path="/Users/Marius/Desktop/P3/it2810-webutvikling-h18-prosjekt-3-50/src/components/ShowSession.js">
+        <file name="PedometerSensor.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\PedometerSensor.js">
+          <metrics statements="32" coveredstatements="4" conditionals="17" coveredconditionals="0" methods="17" coveredmethods="0"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="48" count="0" type="cond" truecount="0" falsecount="5"/>
+          <line num="49" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="81" count="0" type="stmt"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="95" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="100" count="0" type="stmt"/>
+          <line num="101" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="102" count="0" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="116" count="0" type="stmt"/>
+          <line num="138" count="0" type="stmt"/>
+          <line num="152" count="0" type="stmt"/>
+          <line num="163" count="2" type="stmt"/>
+        </file>
+        <file name="ShowSession.js" path="C:\Users\peder\Documents\Webutvikling\Oppgave3\it2810-webutvikling-h18-prosjekt-3-50\src\components\ShowSession.js">
           <metrics statements="18" coveredstatements="18" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
           <line num="7" count="4" type="stmt"/>
           <line num="9" count="4" type="stmt"/>

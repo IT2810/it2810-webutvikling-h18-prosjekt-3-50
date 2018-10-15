@@ -28,8 +28,15 @@ export default class PedometerSensor extends React.Component {
     }
   }
 
+  _change_target(value: number) {
+    this.setState({
+      target: value
+    })
+  }
 
-
+  getButtonsLength(){
+    return BUTTONS.length
+  }
 
   componentDidMount() {
     this._subscribe()
@@ -37,6 +44,10 @@ export default class PedometerSensor extends React.Component {
 
   componentWillUnmount() {
     this._unsubscribe()
+  }
+
+  isTargetReached() {
+    return this.state.target <= this.state.totalStepCount
   }
 
   reachedTarget() {
