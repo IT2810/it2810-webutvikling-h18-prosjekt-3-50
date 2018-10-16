@@ -23,6 +23,7 @@ exports[`Home renders correctly 1`] = `
           }
         }
       />
+      <PedometerSensor />
       <Connect(ShowSession) />
     </Styled(ViewNB)>
   </ScrollView>
