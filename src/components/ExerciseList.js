@@ -1,35 +1,24 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
-
+import { connect } from 'react-redux'
 import {Card, List, ListItem, Text, Left, Body, Right, Button, View, Row, Picker, Icon, Toast } from 'native-base'
 
+import { removeExercise } from '../../actions/index'
 
-export default class ExerciseList extends Component {
+export class ExerciseList extends Component {
   constructor (props, context) {
     super(props, context)
-    this.state = {
-      exercises: [
-        { name: 'Squat', sets: '4', reps: '12' },
-        { name: 'Benchpress', sets: '4', reps: '12' },
-        { name: 'Pullup', sets: '4', reps: '12' },
-        { name: 'Row', sets: '4', reps: '12' }
-      ]
-    }
-
+    
     this._add = this._add.bind(this)
-  }
-
-
-  _remove (value) {
-    // TODO: delete in redux
-    this.setState(prevState => ({
-      exercises: prevState.exercises.filter(exercise => exercise.name !== value.name)
-    }))
-
+    this._remove = this._remove.bind(this)
   }
 
   _add () {
     this.props.navigation.navigate('AddExercise')
+  }
+
+  _remove (exercise) {
+    this.props.removeExercise(exercise)
   }
 
   render () {
@@ -51,12 +40,11 @@ export default class ExerciseList extends Component {
           </Right>
         </Row>
 
-
         <Card style={styles.cardWithList}>
-          {this.state.exercises.map((exercise, index) => (
+          {this.props.exercises.map((exercise, index) => (
             <ListItem key={index}>
               <Left
-                onPress={this._add}
+                onPress={() => {this.props.navigation.navigate('AddExercise')}}
               >
                 <Text> { exercise.name }  </Text>
               </Left>
@@ -67,7 +55,8 @@ export default class ExerciseList extends Component {
                 <Button
                   danger
                   style={{minWidth: '140%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
-                  onPress={this._remove.bind(this, exercise)}
+                  onPress={() => {this._remove(exercise)}}
+                  testID={'removeExerciseButton'}
                 >
                   <Icon active name="trash" />
                 </Button>
@@ -75,11 +64,29 @@ export default class ExerciseList extends Component {
             </ListItem>
           ))}
         </Card>
-
       </View>
     )
   }
 }
+
+function mapStateToProps(state){
+  if (state.sessions.activeSession) {
+    return {
+      exercises: state.sessions.activeSession.exercises
+    }  
+  } else {
+    return {
+      exercises: []
+    }
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  removeExercise: exercise => dispatch(removeExercise(exercise))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExerciseList)
+
 const styles = StyleSheet.create ({
   cardWithList: {
     marginTop: '5%',

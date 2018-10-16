@@ -4,17 +4,34 @@
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import CalendarView from '../CalendarView'
+import { CalendarView } from '../CalendarView'
 import toJson from 'enzyme-to-json'
-import 'native-base'
 import { findByID } from '../../testUtils.js'
+
+const initial_state_mock = require('../../assets/initial_state_mock.js')
 
 describe('CalendarView', () => {
   let wrapper
-  const navigation = { navigate: jest.fn() }
+  let navigateMock
+  let navigation
+  let dispatchSelectDateMock
+  let sessionDates
+  const sessions = initial_state_mock.sessions
 
   beforeEach(() => {
-    wrapper = shallow(<CalendarView navigation={navigation}/>)
+    sessionDates = []
+    navigateMock = jest.fn()
+    navigation = {navigate: navigateMock}
+    dispatchSelectDateMock = jest.fn()
+    dispatchCreateNewSessionMock = jest.fn()
+    wrapper = shallow(<CalendarView
+      navigation={navigation}
+      selectDate={dispatchSelectDateMock}
+      createNewSession={dispatchCreateNewSessionMock}
+      sessionDates={sessionDates}
+      sessions={sessions}
+      />
+    )
   })
 
   it('renders correctly', () => {
@@ -35,18 +52,15 @@ describe('CalendarView', () => {
       expect(addSessionMock.mock.calls.length).toBe(1)
     })
 
-    it('calls navigate with date as param', () => {
-      const navigateMock = jest.fn()
-      const navigation = { navigate: navigateMock }
-      const wrapper = shallow(<CalendarView navigation={navigation} />)
+    it('calls selectDate and navigate with date as param', () => {
+      const wrapper = shallow(<CalendarView navigation={navigation} selectDate={dispatchSelectDateMock} createNewSession={dispatchCreateNewSessionMock} sessions={sessions}/>)
 
       let date = findByID(wrapper, 'calendar')
       date.props().onDayLongPress('2018-10-18')
 
-      console.log(navigateMock.mock.calls)
+      expect(dispatchSelectDateMock.mock.calls.length).toBe(1)
       expect(navigateMock.mock.calls.length).toBe(1)
       expect(navigateMock.mock.calls[0][0]).toBe('CreateSession')
-      expect(navigateMock.mock.calls[0][1].date).toBe('2018-10-18')
     })
   })
 
@@ -88,11 +102,15 @@ describe('CalendarView', () => {
       let dateString = '2018-10-18'
       let date = { dateString: dateString }
       let sessionDateObject = { [dateString]: { marked: true } }
-      wrapper.setState({
-        sessionDates: sessionDateObject,
-        markedDates: {}
-      })
 
+      wrapper = shallow(<CalendarView
+        navigation={navigation}
+        selectDate={dispatchSelectDateMock}
+        createNewSession={dispatchCreateNewSessionMock}
+        sessionDates={sessionDateObject}
+        sessions={sessions}
+        />
+      )
       let calendar = findByID(wrapper, 'calendar')
       calendar.props().onDayPress(date)
 

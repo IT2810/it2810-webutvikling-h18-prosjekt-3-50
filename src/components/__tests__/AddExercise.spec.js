@@ -5,15 +5,16 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import AddExercise from '../AddExercise'
-import 'native-base'
+import { AddExercise } from '../AddExercise'
 import { findByID } from '../../testUtils.js'
 
 describe('AddExercise', () => {
   let wrapper
+  let dispatchAddExerciseMock
 
   beforeEach(() => {
-    wrapper = shallow(<AddExercise />)
+    dispatchAddExerciseMock = jest.fn()
+    wrapper = shallow(<AddExercise addExercise={dispatchAddExerciseMock} />)
   })
 
   it('renders correctly', () => {
@@ -23,7 +24,7 @@ describe('AddExercise', () => {
   describe('addExercise', () => {
     it('calls addExercise when button is pressed', () => {
       let addExerciseMock = jest.fn()
-      let wrapper = shallow(<AddExercise />)
+      let wrapper = shallow(<AddExercise addExercise={dispatchAddExerciseMock} />)
 
       wrapper.instance().addExercise = addExerciseMock
       wrapper.instance().showToast = jest.fn()
@@ -36,10 +37,10 @@ describe('AddExercise', () => {
       expect(addExerciseMock.mock.calls.length).toBe(1)
     })
 
-    it('navigates to SessionForm if validateExercise is true', () => {
+    it('dispatch addExercise and navigates to SessionForm if validateExercise is true', () => {
       const navigateMock = jest.fn()
       const navigation = { navigate: navigateMock }
-      const wrapper = shallow(<AddExercise navigation={navigation} />)
+      const wrapper = shallow(<AddExercise navigation={navigation} addExercise={dispatchAddExerciseMock} />)
 
       let validateExerciseMock = jest.fn()
       validateExerciseMock.mockReturnValue(true)
@@ -50,13 +51,14 @@ describe('AddExercise', () => {
 
       wrapper.instance().addExercise()
 
+      expect(dispatchAddExerciseMock.mock.calls.length).toBe(1)
       expect(navigateMock.mock.calls.length).toBe(1)
     })
 
-    it('does not navigates to SessionForm if validateExercise is false', () => {
+    it('does not dispatch addExercise or navigates to SessionForm if validateExercise is false', () => {
       const navigateMock = jest.fn()
       const navigation = { navigate: navigateMock }
-      const wrapper = shallow(<AddExercise navigation={navigation} />)
+      const wrapper = shallow(<AddExercise navigation={navigation} addExercise={dispatchAddExerciseMock} />)
 
       let validateExerciseMock = jest.fn()
       validateExerciseMock.mockReturnValue(false)
@@ -67,6 +69,7 @@ describe('AddExercise', () => {
 
       wrapper.instance().addExercise()
 
+      expect(dispatchAddExerciseMock.mock.calls.length).toBe(0)
       expect(navigateMock.mock.calls.length).toBe(0)
     })
   })

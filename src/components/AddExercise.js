@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { View, Text, Container, Header, Content, Item, Input, Button, Label, Toast, Row, Fab, Icon, Form} from 'native-base';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { connect } from 'react-redux'
 
-class AddExercise extends Component {
+import { addExercise } from '../../actions/index'
+
+export class AddExercise extends Component {
   static navigationOptions = {
     title: 'AddExercise'
   }
@@ -22,11 +25,18 @@ class AddExercise extends Component {
   }
 
   addExercise() {
-    // TODO save in state with redux
-
     if (this.validateExercise()) {
       this.showToast('Added exercise', 'success')
+
+      this.props.addExercise({
+        name: this.state.name,
+        reps: this.state.reps,
+        sets: this.state.sets,
+        kg: this.state.kg
+      })
       this.props.navigation.navigate('CreateSession')
+    } else {
+      console.log("Exercise is not valid")
     }
   }
 
@@ -115,7 +125,6 @@ class AddExercise extends Component {
           <Fab
             onPress={this.addExercise}
             testID={'addExerciseButton'}
-            //containerStyle={{}}
             style={{ backgroundColor: '#199E59' }}
             position="bottomRight"
           >
@@ -128,7 +137,11 @@ class AddExercise extends Component {
   }
 }
 
-export default AddExercise
+const mapDispatchToProps = dispatch => ({
+  addExercise: exercise => dispatch(addExercise(exercise))
+})
+
+export default connect(null, mapDispatchToProps)(AddExercise)
 
 const styles = StyleSheet.create ({
   inputView: {

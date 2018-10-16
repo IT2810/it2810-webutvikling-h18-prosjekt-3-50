@@ -12,51 +12,39 @@ exports[`ContactList renders correctly 1`] = `
     }
   >
     <Styled(Left)>
-      <Styled(H2)>
+      <Styled(Text)
+        style={
+          Object {
+            "fontSize": 27,
+            "fontWeight": "600",
+            "lineHeight": 45,
+            "marginLeft": "8%",
+          }
+        }
+      >
         Contacts
-      </Styled(H2)>
+      </Styled(Text)>
     </Styled(Left)>
+    <Styled(Right)>
+      <Styled(Button)
+        block={true}
+        onPress={[Function]}
+        primary={true}
+        testID="addContactButton"
+      >
+        <Styled(Text)>
+          ADD CONTACT
+        </Styled(Text)>
+      </Styled(Button)>
+    </Styled(Right)>
   </RowNB>
-  <Styled(List)
-    dataArray={
-      Array [
-        "Ola Nordmann",
-        "Kari Nordmann",
-      ]
+  <Styled(Card)
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "5%",
+      }
     }
-    renderRow={[Function]}
   />
-  <Styled(PickerNB)
-    mode="dropdown"
-    onValueChange={[Function]}
-    placeholder="Add a contact"
-    selectedValue=""
-  >
-    <Item
-      key="0"
-      label="Add a contact"
-      value="0"
-    />
-    <Item
-      key="Petter Larsen"
-      label="Petter Larsen"
-      value="Petter Larsen"
-    />
-    <Item
-      key="Kristine Hansen"
-      label="Kristine Hansen"
-      value="Kristine Hansen"
-    />
-    <Item
-      key="Alfred Bustad"
-      label="Alfred Bustad"
-      value="Alfred Bustad"
-    />
-    <Item
-      key="Hege Nielsen"
-      label="Hege Nielsen"
-      value="Hege Nielsen"
-    />
-  </Styled(PickerNB)>
 </ViewNB>
 `;
