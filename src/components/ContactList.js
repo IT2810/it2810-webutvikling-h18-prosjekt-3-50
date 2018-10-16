@@ -1,54 +1,30 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native'
 import { List, ListItem, Text, Left, Right, Button, View, Row, Picker, Icon, Card } from 'native-base'
+import { connect } from 'react-redux'
 
-const savedContacts = require('../assets/contacts.json')
+import { removeContact } from '../../actions/index'
 
-export default class ContactList extends Component {
+export class ContactList extends Component {
 
   constructor(props, context) {
     super(props, context)
-    this.state = {
-      availableContacts: savedContacts.contacts,
-      addedContacts: ["Ola Nordmann", "Kari Nordmann"]
-    }
 
-    //this.getAll = this.getAll.bind(this)
-    this.availableContacts = this.availableContacts.bind(this)
+    this._add = this._add.bind(this)
+    this._remove = this._remove.bind(this)
   }
 
-  //getAll() {this.setState({ availableContacs: savedContacts.contacts })} // TODO: get from redux
-
-  _remove(value: string) {
-    // TODO in redux, then update state
-    this.setState(prevState => ({
-      addedContacts: prevState.addedContacts.filter(contact => contact !== value)
-    }))
+  _add () {
+    this.props.navigation.navigate('AddContact')
   }
 
-  _add(value: string) {
-    if (value !== '0') {
-      this.setState(prevState => ({
-        addedContacts: [...prevState.addedContacts, value]
-      }))
-    }
-  }
-
-  // Filter out the contacts allready added, so that they can't be added twice
-  availableContacts() {
-    return this.state.availableContacts.filter(contact => this.state.addedContacts.indexOf(contact) === -1)
+  _remove (contact) {
+    this.props.removeContact(contact)
   }
 
   render () {
-    /*const contactPickers = []
-
-    for (let contact of this.availableContacts()) {
-      contactPickers.push(<Picker.Item label={contact} value={contact} key={contact}/>)
-    }*/
-
     return (
       <View>
-
         <Row style={{marginTop: 16}}>
           <Left>
             <Text style={styles.inputTitle}>Contacts</Text>
@@ -57,31 +33,24 @@ export default class ContactList extends Component {
             <Button
               primary
               block
-              onPress={() => this.props.navigation.navigate('AddContact')}
+              onPress={this._add}
+              testID={'addContactButton'}
             >
-              {/*<Picker
-                textStyle={{ color: "#ffffff" }}
-                mode="dropdown"
-                placeholder="ADD CONTACT"
-                selectedValue=''
-                onValueChange={this._add.bind(this)}
-              >
-                {contactPickers}
-              </Picker>*/}
               <Text>ADD CONTACT</Text>
             </Button>
           </Right>
         </Row>
         <Card style={styles.cardWithList}>
-          {this.state.addedContacts.map((contact, index) => (
+          {this.props.contacts.map((contact, index) => (
             <ListItem key={index}>
               <Left>
-                <Text> {contact} </Text>
+                <Text> { contact.name } </Text>
               </Left>
               <Right>
                 <Button
                   danger
-                  onPress={this._remove.bind(this, contact)}
+                  onPress={() => {this._remove(contact)}}
+                  testID={'removeContactButton'}
                 >
                   <Icon active name="trash" />
                 </Button>
@@ -93,6 +62,24 @@ export default class ContactList extends Component {
     )
   }
 }
+
+function mapStateToProps(state){
+  if (state.sessions.activeSession) {
+    return {
+      contacts: state.sessions.activeSession.contacts    }  
+  } else {
+    return {
+      contacts: []
+    }
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  removeContact: contact => dispatch(removeContact(contact))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList)
+
 const styles = StyleSheet.create ({
   cardWithList: {
     marginTop: '5%',
