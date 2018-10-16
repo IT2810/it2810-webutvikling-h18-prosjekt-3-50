@@ -8,22 +8,29 @@ import { CalendarView } from '../CalendarView'
 import toJson from 'enzyme-to-json'
 import { findByID } from '../../testUtils.js'
 
+const initial_state_mock = require('../../assets/initial_state_mock.js')
+
 describe('CalendarView', () => {
   let wrapper
   let navigateMock
   let navigation
   let dispatchSelectDateMock
   let sessionDates
+  const sessions = initial_state_mock.sessions
 
   beforeEach(() => {
     sessionDates = []
     navigateMock = jest.fn()
     navigation = {navigate: navigateMock}
     dispatchSelectDateMock = jest.fn()
+    dispatchCreateNewSessionMock = jest.fn()
     wrapper = shallow(<CalendarView
       navigation={navigation}
       selectDate={dispatchSelectDateMock}
-      sessionDates={sessionDates} />
+      createNewSession={dispatchCreateNewSessionMock}
+      sessionDates={sessionDates}
+      sessions={sessions}
+      />
     )
   })
 
@@ -46,7 +53,7 @@ describe('CalendarView', () => {
     })
 
     it('calls selectDate and navigate with date as param', () => {
-      const wrapper = shallow(<CalendarView navigation={navigation} selectDate={dispatchSelectDateMock} />)
+      const wrapper = shallow(<CalendarView navigation={navigation} selectDate={dispatchSelectDateMock} createNewSession={dispatchCreateNewSessionMock} sessions={sessions}/>)
 
       let date = findByID(wrapper, 'calendar')
       date.props().onDayLongPress('2018-10-18')
@@ -99,7 +106,10 @@ describe('CalendarView', () => {
       wrapper = shallow(<CalendarView
         navigation={navigation}
         selectDate={dispatchSelectDateMock}
-        sessionDates={sessionDateObject} />
+        createNewSession={dispatchCreateNewSessionMock}
+        sessionDates={sessionDateObject}
+        sessions={sessions}
+        />
       )
       let calendar = findByID(wrapper, 'calendar')
       calendar.props().onDayPress(date)

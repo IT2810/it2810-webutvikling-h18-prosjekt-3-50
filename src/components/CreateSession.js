@@ -21,12 +21,14 @@ export class CreateSession extends Component {
     super(props, context)
     // If navigation prop has params, set the propDate in params as propDate
     let date = this.props.selectedDate != null ? this.props.selectedDate : new Date()
-
+    console.log("Date in constructor")
+    console.log(date)
     this.state = {
       date: date,
       time: null,
       name: null,
-      isDateTimePickerVisible: false,
+      isDatePickerVisible: false,
+      isTimePickerVisible: false,
       exercises: [],
       showToast: false,
       contacts: null
@@ -36,14 +38,16 @@ export class CreateSession extends Component {
     this.validateSession = this.validateSession.bind(this)
     this.getSessionObject = this.getSessionObject.bind(this)
 
-    this._hideDateTimePicker = this._hideDateTimePicker.bind(this)
-    this._showDateTimePicker = this._showDateTimePicker.bind(this)
-    this._setDateAndTime = this._setDateAndTime.bind(this)
+    this._hideDatePicker = this._hideDatePicker.bind(this)
+    this._showDatePicker = this._showDatePicker.bind(this)
+    this._hideTimePicker = this._hideTimePicker.bind(this)
+    this._showTimePicker = this._showTimePicker.bind(this)
+    this._setDate = this._setDate.bind(this)
+    this._setTime = this._setTime.bind(this)
   }
 
   saveSession() {
     if (this.validateSession()) {
-      console.log("Saving sesssion")
       this.props.addSession(this.getSessionObject())
 
       this.props.navigation.navigate('Home')
@@ -91,40 +95,69 @@ export class CreateSession extends Component {
     })
   }
 
-  _showDateTimePicker() {
-    this.setState({ isDateTimePickerVisible: true})
+  _showDatePicker() {
+    this.setState({ isDatePickerVisible: true})
   }
 
-  _hideDateTimePicker() {
-    this.setState({ isDateTimePickerVisible: false})
+  _hideDatePicker() {
+    this.setState({ isDatePickerVisible: false})
   }
 
-  _setDateAndTime(date) {
-    console.log("Setting date")
+  _showTimePicker() {
+    this.setState({ isTimePickerVisible: true})
+  }
+
+  _hideTimePicker() {
+    this.setState({ isTimePickerVisible: false})
+  }
+
+  _setDate(date) {
+    console.log("Setting date: ")
     console.log(date)
     this.setState({ 
-      date: date,
-      time: timeString(date)
-
+      date: date,  
     })
-    this._hideDateTimePicker()
+
+    this._hideDatePicker()
+  }
+
+  _setTime(date) {
+    this.setState({ 
+      time: timeString(date)
+    })
+
+    this._hideTimePicker()
   }
 
   render () {
-    const { navigate } = this.props.navigation
-    var dateTimeText
+    var dateText
+    var timeText
 
     if (this.state.date != null) {
-      dateTimeText =
+      dateText =
             <Moment
               element={Text}
-              format="DD.MM HH:mm"
+              format="DD MMM"
               style={styles.dateAndTimeText}
             >
               {this.state.date}
             </Moment>
     } else {
-      dateTimeText = <Text style={styles.dateAndTimeText}> Pick a date and time </Text>
+      // TODO: never happens since date is set to today
+      dateText = <Text style={styles.dateAndTimeText}> Pick a date </Text>
+    }
+
+    if (this.state.time != null) {
+      timeText =
+            <Moment
+              element={Text}
+              format="HH:MM"
+              style={styles.dateAndTimeText}
+            >
+              {this.state.time}
+            </Moment>
+    } else {
+      timeText= <Text style={styles.dateAndTimeText}> Pick a time </Text>
     }
 
     return (
@@ -141,18 +174,33 @@ export class CreateSession extends Component {
               />
             </Item>
 
-            <Text style={styles.inputTitle}> Date and time </Text>
+            <Text style={styles.inputTitle}> Date </Text>
             <Item rounded>
-              <TouchableOpacity onPress={this._showDateTimePicker}>
-                {dateTimeText}
+              <TouchableOpacity onPress={this._showDatePicker}>
+                {dateText}
               </TouchableOpacity>
               <DateTimePicker
-                mode='datetime'
-                isVisible={this.state.isDateTimePickerVisible}
+                mode='date'
+                isVisible={this.state.isDatePickerVisible}
                 value={this.state.date}
-                onConfirm={this._setDateAndTime}
-                onCancel={this._hideDateTimePicker}
-                testID={"dateTimePicker"}
+                onConfirm={this._setDate}
+                onCancel={this._hideDatePicker}
+                testID={"datePicker"}
+              />
+            </Item>
+
+            <Text style={styles.inputTitle}> Time </Text>
+            <Item rounded>
+              <TouchableOpacity onPress={this._showTimePicker}>
+                {timeText}
+              </TouchableOpacity>
+              <DateTimePicker
+                mode='time'
+                isVisible={this.state.isTimePickerVisible}
+                value={this.state.time}
+                onConfirm={this._setTime}
+                onCancel={this._hideTimePicker}
+                testID={"timePicker"}
               />
             </Item>
 
@@ -181,14 +229,16 @@ export class CreateSession extends Component {
 }
 
 function mapStateToProps(state) {
-  selectedDate: state.session.selectedDate
+  return {
+    selectedDate: state.sessions.selectedDate
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
   addSession: session => dispatch(addSession(session))
 })
 
-export default connect(null, mapDispatchToProps)(CreateSession)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSession)
 
 const styles = StyleSheet.create ({
   exerciseListContainer: {

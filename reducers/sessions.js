@@ -1,7 +1,7 @@
 // const initial_state_mock = require('../src/assets/initial_state_mock.json')
 import initial_state_mock from '../src/assets/initial_state_mock.js'
 
-import { isSameDay } from '../src/assets/utils'
+import { isSameDay, toISOString } from '../src/assets/utils'
 
 const INITIAL_STATE = initial_state_mock
 
@@ -14,8 +14,6 @@ const emptySession = {
 }
 const addSession = (state, session) => {
   // Returnes a new state, doesn't edit the existing one
-  console.log('Saving session as reducer')
-  console.log(session.payload)
   return { ...state, sessions: [...state.sessions, session.payload], activeSession: emptySession}
 }
 
@@ -31,9 +29,15 @@ const createNewSession = (state, action) => {
 }
 
 const selectDate = (state, action) => {
-  const date = action.payload
+  console.log("Selecting date")
+  console.log(action.payload)
+  // Needs to substract one month, since month in the Date-object is 0-indexed, 
+  // but the date given from the calendar is 1-indexed
+  const date = toISOString(action.payload)
+  //const date = action.payload.toISOString()
+
   let activeSession = state.sessions.find(session => isSameDay(session.date, date))
-  return { ...state, selectedDate: action.payload, activeSession: activeSession}
+  return { ...state, selectedDate: date, activeSession: activeSession}
 }
 
 const addContact = (state, action) => {

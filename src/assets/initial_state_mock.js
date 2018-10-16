@@ -29,6 +29,21 @@ export default initial_state = {
           {name: 'Fredrik Hansen'},
           {name: 'Katrine Olavsen'}
       ]
+    },
+    {
+      id: 1,
+      date: new Date(2018, 12, 15, 16, 30),
+      name: 'Session three',
+      exercises: [
+          { name: 'Squat', sets: '5', reps: '6' },
+          { name: 'Deadlift', sets: '5', reps: '6' },
+          { name: 'Pushup', sets: '5', reps: '6' },
+          { name: 'Bicepscurl', sets: '5', reps: '6' }
+      ],
+      contacts: [
+          {name: 'Fredrik Hansen'},
+          {name: 'Katrine Olavsen'}
+      ]
     }
   ],
   selectedDate: new Date(),

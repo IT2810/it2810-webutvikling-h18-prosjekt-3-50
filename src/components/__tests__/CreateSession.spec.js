@@ -104,16 +104,29 @@ describe('CreateSession', () => {
     })
   })
 
-  describe('_setDateAndTime', () => {
+  describe('_setDate', () => {
     it('called when onConfirm on dateTimePicker', () => {
-      let _setDateAndTimeMock = jest.fn()
-      wrapper.instance()._setDateAndTime = _setDateAndTimeMock
+      let _setDateMock = jest.fn()
+      wrapper.instance()._setDate = _setDateMock
       wrapper.instance().forceUpdate()
 
-      let button = findByID(wrapper, 'dateTimePicker')
+      let button = findByID(wrapper, 'datePicker')
       button.props().onConfirm()
 
-      expect(_setDateAndTimeMock.mock.calls.length).toBe(1)
+      expect(_setDateMock.mock.calls.length).toBe(1)
+    })
+  })
+
+  describe('_setTime', () => {
+    it('called when onConfirm on dateTimePicker', () => {
+      let _setTimeMock = jest.fn()
+      wrapper.instance()._setTime = _setTimeMock
+      wrapper.instance().forceUpdate()
+
+      let button = findByID(wrapper, 'timePicker')
+      button.props().onConfirm()
+
+      expect(_setTimeMock.mock.calls.length).toBe(1)
     })
   })
 })

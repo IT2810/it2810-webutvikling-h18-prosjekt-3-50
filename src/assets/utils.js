@@ -24,5 +24,10 @@ export function isToday (date) {
 }
 
 export function timeString (date) {
-  return moment(date, 'HH:MM')
+  return moment(date).format('HH:MM')
+}
+
+export function toISOString (date) {
+  date = moment(date).subtract(1, 'months')
+  return moment(date).toISOString()
 }
