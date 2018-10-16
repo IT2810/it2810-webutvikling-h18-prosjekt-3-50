@@ -10,8 +10,6 @@ import { addSession } from '../../actions/index'
 import ContactList from './ContactList.js'
 import ExerciseList from './ExerciseList.js'
 
-import { timeString } from '../assets/utils'
-
 export class CreateSession extends Component {
   static navigationOptions = {
     title: 'CreateSession'
@@ -117,9 +115,9 @@ export class CreateSession extends Component {
     this._hideDatePicker()
   }
 
-  _setTime(date) {
+  _setTime(time) {
     this.setState({ 
-      time: timeString(date)
+      time: time
     })
 
     this._hideTimePicker()

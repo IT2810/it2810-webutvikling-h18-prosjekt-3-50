@@ -12,16 +12,13 @@ export function getSessionDates (sessions) {
 // Need dateOne to be a string and dateTwo to be a dateObject
 export function isSameDay (dateOne, dateTwo) {
   dateOne = moment(dateOne).format('YYYY-MM-DD')
-  return moment(dateOne).isSame(dateTwo.dateString)
+  dateTwo = moment(dateTwo).format('YYYY-MM-DD')
+  return moment(dateOne).isSame(dateTwo)
 }
 
 export function isToday (date) {
   date = moment(date).format('YYYY-MM-DD')
   return moment(date).isSame(moment().format('YYYY-MM-DD'))
-}
-
-export function timeString (date) {
-  return moment(date).format('HH:MM')
 }
 
 export function toISOString (date) {
