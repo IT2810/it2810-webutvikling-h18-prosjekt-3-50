@@ -4,13 +4,13 @@ import { BarChart, Grid, YAxis, XAxis } from 'react-native-svg-charts'
 import * as scale from 'd3-scale'
 import { Content, Card, Text, View } from 'native-base'
 
-const StatItem = ({title, number}) => (
+const StatItem = ({title, value}) => (
   <Card style={{padding: 12}}>
     <View>
       <Text style={{fontWeight: 'bold', fontSize: 20, lineHeight: 30, textAlign: 'left'}}>{title}</Text>
     </View>
     <View>
-      <Text style={{textAlign: 'left', fontSize: 20, lineHeight: 40}}>{number}</Text>
+      <Text style={{textAlign: 'left', fontSize: 20, lineHeight: 40}}>{value}</Text>
     </View>
   </Card>
 )
@@ -25,7 +25,8 @@ export default class Stats extends Component {
       allTimeNumberOfSteps: 124210,
       maxNumberOfStepsInADay: 14710,
       numberOfDaysTargetReached: 36,
-      sessionsCompleted: 40
+      sessionsCompleted: 40,
+      mostCommonExercise: 'Squats'
     }
   }
 
@@ -90,10 +91,11 @@ export default class Stats extends Component {
               </View>
             </View>
           </Card>
-          <StatItem title="All time total number of steps" number={this.state.allTimeNumberOfSteps} />
-          <StatItem title="Highest number of steps in a single day" number={this.state.maxNumberOfStepsInADay} />
-          <StatItem title="Number of days where target was reached" number={this.state.numberOfDaysTargetReached} />
-          <StatItem title="Number of training sessions completed" number={this.state.sessionsCompleted} />
+          <StatItem title="All time total number of steps" value={this.state.allTimeNumberOfSteps} />
+          <StatItem title="Highest number of steps in a single day" value={this.state.maxNumberOfStepsInADay} />
+          <StatItem title="Number of days where target was reached" value={this.state.numberOfDaysTargetReached} />
+          <StatItem title="Number of training sessions completed" value={this.state.sessionsCompleted} />
+          <StatItem title="Most common exercise" value={this.state.mostCommonExercise} />
 
       </Content>
     )

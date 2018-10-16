@@ -9,16 +9,7 @@ import ShowSession from './ShowSession.js'
 import PedometerSensor from './PedometerSensor.js'
 
 class Home extends Component {
-  static navigationOptions = ({navigation}) => ({
-    title: 'Home',
-    headerRight: (
-      <Button
-        onPress={() => navigation.navigate('Stats')}
-        title="Stats      " // whitespace = easiest way to create padding
-        color="#fff"
-      />
-    )
-  })
+  static navigationOptions = {title: 'Home'}
 
   render() {
 
@@ -40,6 +31,15 @@ class Home extends Component {
           position="bottomRight"
         >
           <Icon name="add" style={{fontSize: 34, lineHeight: 34}} />
+        </Fab>
+        <Fab
+          testID="addSessionButton"
+          onPress={() => this.props.navigation.navigate('Stats')}
+          //containerStyle={{}}
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomLeft"
+        >
+          <Icon name="stats" style={{fontSize: 34, lineHeight: 34}} />
         </Fab>
       </SafeAreaView>
 
