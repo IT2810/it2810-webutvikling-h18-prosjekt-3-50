@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExerciseList renders correctly 1`] = `
+<ViewNB
+  style={Object {}}
+>
+  <RowNB>
+    <Styled(Left)>
+      <Styled(Text)
+        style={
+          Object {
+            "fontSize": 27,
+            "fontWeight": "600",
+            "lineHeight": 45,
+            "marginLeft": "8%",
+          }
+        }
+      >
+        Exercises
+      </Styled(Text)>
+    </Styled(Left)>
+    <Styled(Right)>
+      <Styled(Button)
+        block={true}
+        onPress={[Function]}
+        primary={true}
+        testID="addExerciseButton"
+      >
+        <Styled(Text)>
+          ADD EXERCISE
+        </Styled(Text)>
+      </Styled(Button)>
+    </Styled(Right)>
+  </RowNB>
+  <Styled(Card)
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "5%",
+      }
+    }
+  />
+</ViewNB>
+`;

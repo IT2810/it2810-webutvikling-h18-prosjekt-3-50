@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactList renders correctly 1`] = `
+<ViewNB
+  style={Object {}}
+>
+  <RowNB
+    style={
+      Object {
+        "marginTop": 16,
+      }
+    }
+  >
+    <Styled(Left)>
+      <Styled(Text)
+        style={
+          Object {
+            "fontSize": 27,
+            "fontWeight": "600",
+            "lineHeight": 45,
+            "marginLeft": "8%",
+          }
+        }
+      >
+        Contacts
+      </Styled(Text)>
+    </Styled(Left)>
+    <Styled(Right)>
+      <Styled(Button)
+        block={true}
+        onPress={[Function]}
+        primary={true}
+        testID="addContactButton"
+      >
+        <Styled(Text)>
+          ADD CONTACT
+        </Styled(Text)>
+      </Styled(Button)>
+    </Styled(Right)>
+  </RowNB>
+  <Styled(Card)
+    style={
+      Object {
+        "marginBottom": "5%",
+        "marginTop": "5%",
+      }
+    }
+  />
+</ViewNB>
+`;

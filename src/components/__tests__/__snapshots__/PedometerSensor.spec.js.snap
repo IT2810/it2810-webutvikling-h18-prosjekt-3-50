@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PedometerSensor renders correctly 1`] = `
+<SwipeRow
+  body={
+    <Styled(Text)
+      style={
+        Object {
+          "color": "white",
+          "flex": 1,
+          "fontSize": 25,
+          "justifyContent": "center",
+          "lineHeight": 25,
+          "textAlign": "center",
+        }
+      }
+    >
+      <Styled(Icon)
+        name="ios-walk"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+            "lineHeight": 25,
+          }
+        }
+      />
+      : 
+      0
+       /  
+      0
+        
+    </Styled(Text)>
+  }
+  closeOnRowPress={true}
+  directionalDistanceChangeThreshold={2}
+  disableLeftSwipe={false}
+  disableRightSwipe={false}
+  left={
+    <Styled(Button)
+      onPress={[Function]}
+      success={true}
+    >
+      <Styled(Icon)
+        name="ios-add"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+            "lineHeight": 25,
+          }
+        }
+      />
+    </Styled(Button)>
+  }
+  leftOpenValue={75}
+  preview={false}
+  previewDuration={300}
+  recalculateHiddenLayout={false}
+  right={
+    <Styled(Button)
+      danger={true}
+      onPress={[Function]}
+      style={
+        Object {
+          "display": "flex",
+        }
+      }
+    >
+      <Styled(Icon)
+        name="ios-trash"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+            "lineHeight": 25,
+          }
+        }
+      />
+    </Styled(Button)>
+  }
+  rightOpenValue={-75}
+  style={
+    Array [
+      Object {},
+      Object {
+        "backgroundColor": "#007BFF",
+        "width": "100%",
+      },
+    ]
+  }
+  swipeToOpenPercent={50}
+/>
+`;

@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddExercise renders correctly 1`] = `
+<Component
+  enabled={true}
+  keyboardVerticalOffset={0}
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "flex": 1,
+      },
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <Styled(Container)
+    testID="container"
+  >
+    <Styled(Content)
+      padder={true}
+      testID="content"
+    >
+      <Styled(Form)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+          testID="view"
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Description
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              onChangeText={[Function]}
+              placeholder="Enter description here"
+              testID="nameInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Sets
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              keyboardType="numeric"
+              onChangeText={[Function]}
+              placeholder="0"
+              testID="setsInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Reps
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              keyboardType="numeric"
+              onChangeText={[Function]}
+              placeholder="0"
+              testID="repsInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+        <Styled(ViewNB)
+          style={
+            Object {
+              "marginTop": "8%",
+              "paddingLeft": "4%",
+              "paddingRight": "4%",
+            }
+          }
+        >
+          <Styled(Text)
+            style={
+              Object {
+                "fontSize": 20,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Weight in kg (optional)
+          </Styled(Text)>
+          <Styled(Item)>
+            <Styled(Input)
+              keyboardType="numeric"
+              onChangeText={[Function]}
+              placeholder="0"
+              testID="kgInput"
+              value={null}
+            />
+          </Styled(Item)>
+        </Styled(ViewNB)>
+      </Styled(Form)>
+    </Styled(Content)>
+    <Styled(Fab)
+      onPress={[Function]}
+      position="bottomRight"
+      style={
+        Object {
+          "backgroundColor": "#199E59",
+        }
+      }
+      testID="addExerciseButton"
+    >
+      <Styled(Icon)
+        android="md-checkmark"
+        ios="ios-checkmark"
+        style={
+          Object {
+            "fontSize": 50,
+            "lineHeight": 50,
+          }
+        }
+      />
+    </Styled(Fab)>
+  </Styled(Container)>
+</Component>
+`;

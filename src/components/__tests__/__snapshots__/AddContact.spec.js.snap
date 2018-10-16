@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddContact renders correctly 1`] = `
+<Container
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "flex": 1,
+      "height": 1334,
+    }
+  }
+>
+  <Styled(Content)>
+    <Styled(Card)>
+      <Styled(CardItem)
+        bordered={true}
+        button={true}
+        key="0"
+        onPress={[Function]}
+        testID="addContactButton"
+      >
+        <Styled(Text)>
+          Ola Nordmann
+        </Styled(Text)>
+      </Styled(CardItem)>
+      <Styled(CardItem)
+        bordered={true}
+        button={true}
+        key="1"
+        onPress={[Function]}
+        testID="addContactButton"
+      >
+        <Styled(Text)>
+          Kari Nordmann
+        </Styled(Text)>
+      </Styled(CardItem)>
+      <Styled(CardItem)
+        bordered={true}
+        button={true}
+        key="2"
+        onPress={[Function]}
+        testID="addContactButton"
+      >
+        <Styled(Text)>
+          Kristine Hansen
+        </Styled(Text)>
+      </Styled(CardItem)>
+      <Styled(CardItem)
+        bordered={true}
+        button={true}
+        key="3"
+        onPress={[Function]}
+        testID="addContactButton"
+      >
+        <Styled(Text)>
+          Alfrled Bustad
+        </Styled(Text)>
+      </Styled(CardItem)>
+      <Styled(CardItem)
+        bordered={true}
+        button={true}
+        key="4"
+        onPress={[Function]}
+        testID="addContactButton"
+      >
+        <Styled(Text)>
+          Hege Nielsen
+        </Styled(Text)>
+      </Styled(CardItem)>
+    </Styled(Card)>
+  </Styled(Content)>
+</Container>
+`;
