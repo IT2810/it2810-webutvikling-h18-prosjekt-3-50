@@ -9,11 +9,15 @@ var BUTTONS = [
   { text: "10 000", number: 10000},
   { text: "15 000", number: 15000},
   { text: "20 000", number: 20000},
-  { text: "Delete" },
   { text: "Cancel" }
-];
-var DESTRUCTIVE_INDEX = 4;
-var CANCEL_INDEX = 5;
+]
+
+var DESTRUCTIVE_INDEX_BUTTON = [
+  { text: "Delete", text: 'No goal' }
+]
+
+var DESTRUCTIVE_INDEX = 0;
+var CANCEL_INDEX = 4;
 
 
 export default class PedometerSensor extends React.Component {
@@ -116,14 +120,16 @@ render() {
               {
                 options: BUTTONS,
                 cancelButtonIndex: CANCEL_INDEX,
-                destructiveButtonIndex: DESTRUCTIVE_INDEX,
                 title: "Choose target steps"
               },
               buttonIndex => {
-                this.setState({
-                  clicked: BUTTONS[buttonIndex],
-                  target: BUTTONS[buttonIndex].number
-                })
+                if(BUTTONS[buttonIndex] != BUTTONS[CANCEL_INDEX]){
+                  this.setState({
+                    clicked: BUTTONS[buttonIndex],
+                    target: BUTTONS[buttonIndex].number
+                  })
+                }
+                
               }
             )}
           >
@@ -143,7 +149,7 @@ render() {
         right={
           <Button style={{display: 'flex'}} danger onPress={() =>
               this.setState({
-                target: BUTTONS[DESTRUCTIVE_INDEX].number
+                target: DESTRUCTIVE_INDEX_BUTTON[DESTRUCTIVE_INDEX].text
               })
             }
         >
