@@ -17,8 +17,11 @@ export function isSameDay (dateOne, dateTwo) {
 }
 
 export function isToday (date) {
-  date = moment(date).format('YYYY-MM-DD')
-  return moment(date).isSame(moment().format('YYYY-MM-DD'))
+  if (date) {
+    return moment(date).isSame(moment())
+  } else {
+    return false
+  }
 }
 
 export function toISOString (date) {

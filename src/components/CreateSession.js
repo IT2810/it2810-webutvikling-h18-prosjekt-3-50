@@ -51,11 +51,12 @@ export class CreateSession extends Component {
   }
 
   validateSession() {
+    console.log(this.props.exercises.length)
     if (this.state.name != null) {
       if (this.state.date == null) {
         this.showToast('You have to add a date')
         return false
-      } else if (this.state.exercises == null) {
+      } else if (this.props.exercises.length < 1) {
         this.showToast('You have to add minimum 1 exercise')
         return false
       } else {
@@ -224,7 +225,9 @@ export class CreateSession extends Component {
 
 function mapStateToProps(state) {
   return {
-    selectedDate: state.sessions.selectedDate
+    selectedDate: state.sessions.selectedDate,
+    exercises: state.sessions.activeSession.exercises,
+    contacts: state.sessions.activeSession.contacts
   }
 }
 
