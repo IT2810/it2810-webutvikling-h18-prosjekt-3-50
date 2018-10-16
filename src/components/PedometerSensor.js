@@ -138,12 +138,21 @@ render() {
           </Button>
         }
         body={
-         <Text style={styles.stepsText}>
+          <Text style={styles.stepsText}>
+            <Icon 
+              name={Platform.OS === 'ios' ? "ios-arrow-round-back" : "md-arrow-round-back"}
+              style={{fontSize: 25, lineHeight: 25, color: 'white'}}
+            />
+            <Text style={ styles.stepsText}>   </Text>   
             <Icon
               name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
               style={{fontSize: 25, lineHeight: 25, color: 'white'}}
             />
             : {this.state.totalStepCount} /  {this.state.target}  {smile}
+            <Icon 
+              name={Platform.OS === 'ios' ? "ios-arrow-round-forward" : "md-arrow-round-forward"}
+              style={{fontSize: 25, lineHeight: 25, color: 'white'}}
+            />  
           </Text>
         }
         right={
