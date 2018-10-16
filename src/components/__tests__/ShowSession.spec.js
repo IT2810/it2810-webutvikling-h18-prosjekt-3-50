@@ -35,8 +35,9 @@ describe('ShowSession', () => {
     })
 
     it('if there is a session planned for the date', () => {
-      let session = { date: new Date(), contacts: ['contact'], exercises: [] }
+      let session = { date: new Date().toISOString(), contacts: ['contact'], exercises: [] }
 
+      console.log("Test session for today")
       let text = wrapper.instance().getDateText(session)
 
       expect(text).toEqual(

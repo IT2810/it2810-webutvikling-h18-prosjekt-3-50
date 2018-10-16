@@ -12,13 +12,14 @@ import DateTimePicker from 'react-native-modal-datetime-picker'
 describe('CreateSession', () => {
   let wrapper
   let navigateMock
+  let navigation
   let dispatchAddSessionMock
 
   beforeEach(() => {
     navigateMock = jest.fn()
-    const navigation = { navigate: navigateMock, state: { params: {} } }
+    navigation = { navigate: navigateMock, state: { params: {} } }
     dispatchAddSessionMock = jest.fn()
-    wrapper = shallow(<CreateSession navigation={navigation} addSession={dispatchAddSessionMock}/>)
+    wrapper = shallow(<CreateSession navigation={navigation} addSession={dispatchAddSessionMock} exercises={[]} />)
   })
 
   // Date object in DateTimePicker does not update and thereby the test fails
@@ -70,16 +71,17 @@ describe('CreateSession', () => {
     it('returns false if name is not given', () => {
       wrapper.instance().showToast = jest.fn()
       wrapper.state().name = null
-      wrapper.state().exercises = ['Exercise 1', 'Exercise 2']
+      wrapper.props().exercises = ['Exercise 1', 'Exercise 2']
       wrapper.state().date = 'A date'
 
       expect(wrapper.instance().validateSession()).toBeFalsy()
     })
 
     it('returns false if no date', () => {
+      wrapper = shallow(<CreateSession navigation={navigation} addSession={dispatchAddSessionMock} exercises={['Exercise 1', 'Exercise 2']} />)
       wrapper.instance().showToast = jest.fn()
       wrapper.state().name = 'TestName'
-      wrapper.state().exercises = ['Exercise 1', 'Exercise 2']
+
       wrapper.state().date = null
 
       expect(wrapper.instance().validateSession()).toBeFalsy()
@@ -88,17 +90,16 @@ describe('CreateSession', () => {
     it('returns false if no exercises', () => {
       wrapper.instance().showToast = jest.fn()
       wrapper.state().name = 'TestName'
-      wrapper.state().exercises = null
       wrapper.state().date = 'A date'
 
       expect(wrapper.instance().validateSession()).toBeFalsy()
     })
 
-    it('returns true if name and exercises are given', () => {
+    it('returns true if name, date and exercises are given', () => {
+      wrapper = shallow(<CreateSession navigation={navigation} addSession={dispatchAddSessionMock} exercises={['Exercise 1', 'Exercise 2']} />)
       wrapper.instance().showToast = jest.fn()
       wrapper.state().name = 'TestName'
-      wrapper.state().exercises = ['Exercise 1', 'Exercise 2']
-      wrapper.state().date = 'A date'
+      wrapper.state().date = 'testDate'
 
       expect(wrapper.instance().validateSession()).toBeTruthy()
     })

@@ -17,8 +17,15 @@ export function isSameDay (dateOne, dateTwo) {
 }
 
 export function isToday (date) {
+  console.log(date)
+  let momentDate = moment(date)
+  let today = moment()
+  console.log(momentDate)
+  console.log(today)
+  console.log(moment().diff(date, 'days') )
   if (date) {
-    return moment(date).isSame(moment())
+    console.log("Date is something")
+    return moment().diff(date, 'days') == 0
   } else {
     return false
   }

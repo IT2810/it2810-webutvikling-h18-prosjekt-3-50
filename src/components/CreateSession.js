@@ -51,7 +51,6 @@ export class CreateSession extends Component {
   }
 
   validateSession() {
-    console.log(this.props.exercises.length)
     if (this.state.name != null) {
       if (this.state.date == null) {
         this.showToast('You have to add a date')
