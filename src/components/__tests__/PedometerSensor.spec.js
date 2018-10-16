@@ -6,7 +6,6 @@ import { shallow } from 'enzyme'
 import PedometerSensor from '../PedometerSensor'
 import toJson from 'enzyme-to-json'
 import 'native-base'
-import {shallow} from 'enzyme';
 
  describe('PedometerSensor', () => {
     let wrapper
@@ -18,8 +17,8 @@ import {shallow} from 'enzyme';
      it('renders correctly', () => {
       expect(toJson(wrapper.dive())).toMatchSnapshot()
     })
-     test('Check buttons', () => {
-      expect(getButtonsLength()).toBe(6)
+     it('Check buttons', () => {
+      expect(wrapper.instance().getButtonsLength()).toBe(5)
     })
      describe('_change_target', () => {
       it('can change target', () => {
