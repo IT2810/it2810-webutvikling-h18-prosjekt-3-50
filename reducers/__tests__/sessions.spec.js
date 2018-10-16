@@ -6,6 +6,13 @@ import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, ADD_CONTACT, REMOVE_CONTACT, 
 import reducer from '../sessions'
 import initial_state_mock from '../../src/assets/initial_state_mock.js'
 
+const emptySession = {
+  date: null,
+  name: null,
+  exercises: [],
+  contacts: []
+}
+
 describe('session reducers', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual(initial_state_mock)
@@ -17,7 +24,8 @@ describe('session reducers', () => {
         type: ADD_SESSION,
         payload: {name: 'Test session'}
       })).toEqual({
-        sessions: [{name: 'Test session'}] 
+        sessions: [{name: 'Test session'}],
+        activeSession: emptySession 
       })
     })
 
@@ -26,7 +34,8 @@ describe('session reducers', () => {
         type: ADD_SESSION,
         payload: {name: 'Test session'}
       })).toEqual({
-        sessions: [{name: "Another test session"}, {name: "Test session"}]
+        sessions: [{name: "Another test session"}, {name: "Test session"}],
+        activeSession: emptySession
       })
     })
   })

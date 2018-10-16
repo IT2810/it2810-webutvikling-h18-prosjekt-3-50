@@ -21,8 +21,6 @@ export class CreateSession extends Component {
     super(props, context)
     // If navigation prop has params, set the propDate in params as propDate
     let date = this.props.selectedDate != null ? this.props.selectedDate : new Date()
-    console.log("Date in constructor")
-    console.log(date)
     this.state = {
       date: date,
       time: null,
@@ -112,8 +110,6 @@ export class CreateSession extends Component {
   }
 
   _setDate(date) {
-    console.log("Setting date: ")
-    console.log(date)
     this.setState({ 
       date: date,  
     })

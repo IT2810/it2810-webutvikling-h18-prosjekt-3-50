@@ -35,8 +35,6 @@ export class CalendarView extends Component {
     this.setState({ date: date })
     let dateString = date.dateString
 
-    console.log(date)
-
     if (this.props.sessionDates[dateString] != null) {
       this.setState({ markedDates: { [dateString]: { selected: true, marked: true } } })
     } else {

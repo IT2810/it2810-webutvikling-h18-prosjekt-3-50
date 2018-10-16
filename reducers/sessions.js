@@ -10,8 +10,8 @@ const emptySession = {
   name: null,
   exercises: [],
   contacts: []
-
 }
+
 const addSession = (state, session) => {
   // Returnes a new state, doesn't edit the existing one
   return { ...state, sessions: [...state.sessions, session.payload], activeSession: emptySession}
@@ -29,13 +29,9 @@ const createNewSession = (state, action) => {
 }
 
 const selectDate = (state, action) => {
-  console.log("Selecting date")
-  console.log(action.payload)
-  // Needs to substract one month, since month in the Date-object is 0-indexed, 
-  // but the date given from the calendar is 1-indexed
+  // To handle problems regarding Date originally being 0-indexed
   const date = toISOString(action.payload)
-  //const date = action.payload.toISOString()
-
+  
   let activeSession = state.sessions.find(session => isSameDay(session.date, date))
   return { ...state, selectedDate: date, activeSession: activeSession}
 }

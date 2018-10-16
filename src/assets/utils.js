@@ -3,12 +3,9 @@ import moment from 'moment'
 export function getSessionDates (sessions) {
   let markedDates = {}
   var dates = sessions.map(session => {
-    console.log(session.date)
     let date = moment(session.date).format('YYYY-MM-DD')
     markedDates[date] = {marked: true}
   })
-  console.log('SessionDates')
-  console.log(markedDates)
   return markedDates
 }
 

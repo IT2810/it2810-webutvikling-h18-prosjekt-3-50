@@ -11,11 +11,13 @@ import { findByID } from '../../testUtils.js'
 describe('Home', () => {
   let wrapper
   let navigateMock
+  let dispatchCreateNewSessionMock
 
   beforeEach(() => {
     navigateMock = jest.fn()
+    dispatchCreateNewSessionMock = jest.fn()
     const navigation = { navigate: navigateMock }
-    wrapper = shallow(<Home navigation={navigation} />)
+    wrapper = shallow(<Home navigation={navigation} createNewSession={dispatchCreateNewSessionMock} />)
   })
 
   it('renders correctly', () => {
