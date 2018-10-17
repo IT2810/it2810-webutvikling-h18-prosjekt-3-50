@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { SafeAreaView, ScrollView } from 'react-native'
-import  { View, Fab, Icon} from 'native-base'
+import { SafeAreaView, ScrollView, Button } from 'react-native'
+import  { View, Fab, Icon } from 'native-base'
 
 import { connect } from 'react-redux'
 
@@ -46,6 +46,15 @@ export class Home extends Component {
           position="bottomRight"
         >
           <Icon name="add" style={{fontSize: 34, lineHeight: 34}} />
+        </Fab>
+        <Fab
+          testID="addSessionButton"
+          onPress={() => this.props.navigation.navigate('Stats')}
+          //containerStyle={{}}
+          style={{ backgroundColor: '#5067FF' }}
+          position="bottomLeft"
+        >
+          <Icon name="stats" style={{fontSize: 34, lineHeight: 34}} />
         </Fab>
       </SafeAreaView>
     )
