@@ -11,13 +11,7 @@ export class ShowSessionFullScreen extends Component {
   constructor (props, context) {
     super(props, context)
 
-
-    this._edit = this._edit.bind(this)
     this._done = this._done.bind(this)
-  }
-
-  _edit () {
-    //this.props.navigation.navigate('CreateSession')
   }
 
   _done () {
@@ -30,12 +24,6 @@ export class ShowSessionFullScreen extends Component {
         <Container>
           <Content padder scrollEnabled={true}>
             <ShowSessionCard session={this.props.activeSession} />
-            <Button
-              onPress={this._edit}
-            >
-              <Text> Edit </Text>
-            </Button>
-
             <Button
               onPress={this._done}
             >

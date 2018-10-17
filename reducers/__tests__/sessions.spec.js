@@ -8,9 +8,11 @@ import initial_state_mock from '../../src/assets/initial_state_mock.js'
 
 const emptySession = {
   date: null,
+  time: null,
   name: null,
   exercises: [],
-  contacts: []
+  contacts: [],
+  done: false
 }
 
 describe('session reducers', () => {
@@ -55,6 +57,7 @@ describe('session reducers', () => {
       }).activeSession).toEqual({
           id: 0,
           date: new Date(2018, 9, 2, 13, 40),
+          time: new Date(2018, 9, 2, 13, 40),
           name: 'Session one',
           exercises: [
               { name: 'Squat', sets: '4', reps: '12' },
@@ -65,7 +68,8 @@ describe('session reducers', () => {
           contacts: [
               {name: 'Ola Nordmann'},
               {name: 'Kari Hansen'}
-          ]
+          ], 
+          done: true
       })
     })
   })
