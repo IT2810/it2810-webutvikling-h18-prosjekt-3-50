@@ -7,9 +7,11 @@ const INITIAL_STATE = initial_state_mock
 
 const emptySession = {
   date: null,
+  time: null,
   name: null,
   exercises: [],
-  contacts: []
+  contacts: [],
+  done: false
 }
 
 const addSession = (state, session) => {
@@ -64,6 +66,14 @@ const removeExercise = (state, action) => {
   return { ...state, activeSession: activeSession }
 }
 
+const markSessionAsDone = (state, action) => {
+  let activeSession = state.activeSession
+  activeSession.done = true
+  var sessions = state.sessions
+  state.sessions[activeSession.date] = activeSession
+  return { ...state, sessions: sessions}
+}
+
 // If no state is given, state is set to INITIAL_STATE
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -83,6 +93,8 @@ export default function (state = INITIAL_STATE, action) {
       return removeExercise(state, action)
     case 'SELECT_DATE':
       return selectDate(state, action)
+    case 'MARK_SESSION_AS_DONE':
+      return markSessionAsDone(state, action)
     default:
       return state
   }

@@ -26,7 +26,6 @@ export class Home extends Component {
   _createNewSession() {
     this.props.createNewSession()
     this.props.navigation.navigate('CreateSession')
-
   }
 
   render() {
@@ -34,9 +33,9 @@ export class Home extends Component {
       <SafeAreaView>
         <ScrollView style={{height: '100%'}}>
           <View style={{paddingBottom: '25%'}}>
-            <CalendarView navigation={this.props.navigation}/>
+            <CalendarView navigation={this.props.navigation} />
             <PedometerSensor />
-            <ShowSession />
+            <ShowSession navigation={this.props.navigation} />
           </View>
         </ScrollView>
         <Fab

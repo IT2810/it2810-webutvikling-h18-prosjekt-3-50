@@ -3,6 +3,7 @@ export default initial_state = {
     {
       id: 0,
       date: new Date(2018, 9, 2, 13, 40),
+      time: new Date(2018, 9, 2, 13, 40),
       name: 'Session one',
       exercises: [
           { name: 'Squat', sets: '4', reps: '12' },
@@ -13,11 +14,13 @@ export default initial_state = {
       contacts: [
           {name: 'Ola Nordmann'},
           {name: 'Kari Hansen'}
-      ]
+      ], 
+      done: true
     },
     {
       id: 1,
       date: new Date(2018, 9, 15, 16, 30),
+      time: new Date(2018, 9, 15, 16, 30),
       name: 'Session two',
       exercises: [
           { name: 'Squat', sets: '5', reps: '6' },
@@ -28,12 +31,34 @@ export default initial_state = {
       contacts: [
           {name: 'Fredrik Hansen'},
           {name: 'Katrine Olavsen'}
-      ]
+      ],
+      done: false
+    },
+    {
+      id: 2,
+      date: new Date(2018, 9, 29, 8, 30),
+      time: new Date(2018, 9, 29, 8, 30),
+      name: 'Session three',
+      exercises: [
+          { name: 'Squat', sets: '5', reps: '6' },
+          { name: 'Deadlift', sets: '5', reps: '6' },
+          { name: 'Pushup', sets: '5', reps: '6' },
+          { name: 'Bicepscurl', sets: '5', reps: '6' }
+      ],
+      contacts: [
+          {name: 'Ola Nordmann'},
+          {name: 'Katrine Olavsen'}
+      ],
+      done: false
     }
   ],
   selectedDate: new Date(),
   activeSession: {
+    name: null,
+    date: null,
+    time: null,
     contacts: [],
-    exercises: []
+    exercises: [],
+    done: false
   }
 }

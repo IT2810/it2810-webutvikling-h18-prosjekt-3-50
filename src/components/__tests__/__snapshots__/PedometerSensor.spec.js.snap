@@ -16,6 +16,30 @@ exports[`PedometerSensor renders correctly 1`] = `
       }
     >
       <Styled(Icon)
+        name="ios-arrow-round-back"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+            "lineHeight": 25,
+          }
+        }
+      />
+      <Styled(Text)
+        style={
+          Object {
+            "color": "white",
+            "flex": 1,
+            "fontSize": 25,
+            "justifyContent": "center",
+            "lineHeight": 25,
+            "textAlign": "center",
+          }
+        }
+      >
+           
+      </Styled(Text)>
+      <Styled(Icon)
         name="ios-walk"
         style={
           Object {
@@ -30,6 +54,16 @@ exports[`PedometerSensor renders correctly 1`] = `
        /  
       0
         
+      <Styled(Icon)
+        name="ios-arrow-round-forward"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+            "lineHeight": 25,
+          }
+        }
+      />
     </Styled(Text)>
   }
   closeOnRowPress={true}

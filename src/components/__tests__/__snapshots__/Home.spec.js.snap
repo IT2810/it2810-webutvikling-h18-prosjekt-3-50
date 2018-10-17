@@ -23,8 +23,13 @@ exports[`Home renders correctly 1`] = `
           }
         }
       />
-      <PedometerSensor />
-      <Connect(ShowSession) />
+      <Connect(ShowSession)
+        navigation={
+          Object {
+            "navigate": [MockFunction],
+          }
+        }
+      />
     </Styled(ViewNB)>
   </ScrollView>
   <Styled(Fab)
@@ -39,6 +44,26 @@ exports[`Home renders correctly 1`] = `
   >
     <Styled(Icon)
       name="add"
+      style={
+        Object {
+          "fontSize": 34,
+          "lineHeight": 34,
+        }
+      }
+    />
+  </Styled(Fab)>
+  <Styled(Fab)
+    onPress={[Function]}
+    position="bottomLeft"
+    style={
+      Object {
+        "backgroundColor": "#5067FF",
+      }
+    }
+    testID="addSessionButton"
+  >
+    <Styled(Icon)
+      name="stats"
       style={
         Object {
           "fontSize": 34,
