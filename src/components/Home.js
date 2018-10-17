@@ -12,21 +12,15 @@ import PedometerSensor from './PedometerSensor.js'
 
 import { createNewSession } from '../../actions/index'
 
-export class Home extends Component {
-  static navigationOptions = {
-    title: 'Home'
-  }
+class Home extends Component {
+  static navigationOptions = {title: 'Home'}
 
-  constructor(props, context) {
-    super(props, context)
-
-    this._createNewSession = this._createNewSession.bind(this)
-  }
-
-  _createNewSession() {
+  createNewSession = () => {
     this.props.createNewSession()
-    this.props.navigation.navigate('CreateSession')
+    this.props.navigation.navigate('CreateSession', {title: 'Create Session'})
   }
+
+  goToStats = () => this.props.navigation.navigate('Stats')
 
   render() {
     return (
@@ -40,7 +34,7 @@ export class Home extends Component {
         </ScrollView>
         <Fab
           testID="addSessionButton"
-          onPress={() => {this._createNewSession()}}
+          onPress={this.createNewSession}
           style={{ backgroundColor: '#5067FF' }}
           position="bottomRight"
         >
@@ -48,8 +42,7 @@ export class Home extends Component {
         </Fab>
         <Fab
           testID="addSessionButton"
-          onPress={() => this.props.navigation.navigate('Stats')}
-          //containerStyle={{}}
+          onPress={this.goToStats}
           style={{ backgroundColor: '#5067FF' }}
           position="bottomLeft"
         >
@@ -63,6 +56,5 @@ export class Home extends Component {
 const mapDispatchToProps = dispatch => ({
   createNewSession: () => dispatch(createNewSession())
 })
-
 
 export default connect(null, mapDispatchToProps)(Home)

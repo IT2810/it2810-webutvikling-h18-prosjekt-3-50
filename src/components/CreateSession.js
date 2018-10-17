@@ -5,29 +5,38 @@ import { Button, View, Text, Container, Content, Toast, Input, Item, Fab, Icon }
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import { connect } from 'react-redux'
 
-import { addSession } from '../../actions/index'
+import { addSession, updateSession, removeExercise, removeContact } from '../../actions/index'
 
 import ContactList from './ContactList.js'
 import ExerciseList from './ExerciseList.js'
 
 export class CreateSession extends Component {
-  static navigationOptions = {
-    title: 'CreateSession'
-  }
+  static navigationOptions = ({ navigation }) => ({ title: `${navigation.state.params.title}` })
 
   constructor(props, context) {
     super(props, context)
-    // If navigation prop has params, set the propDate in params as propDate
-    let date = this.props.selectedDate != null ? this.props.selectedDate : new Date()
-    this.state = {
-      date: date,
-      time: null,
-      name: null,
-      isDatePickerVisible: false,
-      isTimePickerVisible: false,
-      exercises: [],
-      showToast: false,
-      contacts: null
+
+    if (props.isNewSession) {
+      // If navigation prop has params, set the propDate in params as propDate
+      let date = props.selectedDate != null ? props.selectedDate : new Date()
+      this.state = {
+        date: date,
+        time: null,
+        name: null,
+        isDatePickerVisible: false,
+        isTimePickerVisible: false,
+        exercises: [],
+        showToast: false,
+        contacts: null
+      }
+    } else {
+      const { date, time, name, exercises, contacts } = props.session
+      this.state = {
+        date, time, name, exercises, contacts,
+        isDatePickerVisible: false,
+        isTimePickerVisible: false,
+        showToast: false
+      }
     }
 
     this.saveSession = this.saveSession.bind(this)
@@ -44,9 +53,12 @@ export class CreateSession extends Component {
 
   saveSession() {
     if (this.validateSession()) {
-      this.props.addSession(this.getSessionObject())
-
-      this.props.navigation.navigate('Home')
+      if (this.props.isNewSession) {
+        this.props.addSession(this.getSessionObject())
+      } else {
+        this.props.updateSession(this.getSessionObject())
+      }
+      this.props.navigation.goBack()
     }
   }
 
@@ -108,15 +120,15 @@ export class CreateSession extends Component {
   }
 
   _setDate(date) {
-    this.setState({ 
-      date: date,  
+    this.setState({
+      date: date,
     })
 
     this._hideDatePicker()
   }
 
   _setTime(time) {
-    this.setState({ 
+    this.setState({
       time: time
     })
 
@@ -199,12 +211,20 @@ export class CreateSession extends Component {
             </Item>
 
             <View style={styles.exerciseListContainer}>
-              <ExerciseList navigation={this.props.navigation} />
+              <ExerciseList
+                exercises={this.props.exercises}
+                navigation={this.props.navigation}
+                removeExercise={this.props.removeExercise}
+              />
             </View>
             <View style={styles.contactListContainer}>
-              <ContactList navigation={this.props.navigation} />
+              <ContactList
+                contacts={this.props.contacts}
+                navigation={this.props.navigation}
+                removeContact={this.props.removeContact}
+              />
             </View>
-            
+
           </Content>
 
           <Fab
@@ -223,15 +243,22 @@ export class CreateSession extends Component {
 }
 
 function mapStateToProps(state) {
+  const isNewSession = state.sessions.currentSessionId == -1
+  const session = isNewSession ? state.sessions.temporarySession : state.sessions.sessions.find(session => session.id == state.sessions.currentSessionId)
   return {
+    session,
+    isNewSession,
     selectedDate: state.sessions.selectedDate,
-    exercises: state.sessions.activeSession.exercises,
-    contacts: state.sessions.activeSession.contacts
+    exercises: session.exercises,
+    contacts: session.contacts
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  addSession: session => dispatch(addSession(session))
+  addSession: session => dispatch(addSession(session)),
+  updateSession: session => dispatch(updateSession(session)),
+  removeExercise: exercise => dispatch(removeExercise(exercise)),
+  removeContact: contact => dispatch(removeContact(contact))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateSession)

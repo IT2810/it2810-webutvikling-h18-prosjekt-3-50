@@ -1,3 +1,14 @@
+import { isSameDay } from './utils'
+
+export const emptySession = {
+  date: null,
+  time: null,
+  name: null,
+  exercises: [],
+  contacts: [],
+  done: false
+}
+
 const sessions = [
   {
     id: 0,
@@ -18,8 +29,8 @@ const sessions = [
   },
   {
     id: 1,
-    date: new Date(2018, 9, 17, 16, 30),
-    time: new Date(2018, 9, 17, 16, 30),
+    date: new Date(2018, 9, 17, 18, 30),
+    time: new Date(2018, 9, 17, 18, 30),
     name: 'Session two',
     exercises: [
         { name: 'Squat', sets: '5', reps: '6' },
@@ -31,10 +42,44 @@ const sessions = [
         {name: 'Fredrik Hansen'},
         {name: 'Katrine Olavsen'}
     ],
-    done: false
+    done: true
   },
   {
     id: 2,
+    date: new Date(2018, 9, 17, 16, 30),
+    time: new Date(2018, 9, 17, 16, 30),
+    name: 'Session three',
+    exercises: [
+        { name: 'Squat', sets: '5', reps: '6' },
+        { name: 'Deadlift', sets: '5', reps: '6' },
+        { name: 'Pushup', sets: '5', reps: '6' },
+        { name: 'Bicepscurl', sets: '5', reps: '6' }
+    ],
+    contacts: [
+        {name: 'Ola Nordmann'},
+        {name: 'Katrine Olavsen'}
+    ],
+    done: false
+  },
+  {
+    id: 3,
+    date: new Date(2018, 9, 29, 8, 30),
+    time: new Date(2018, 9, 29, 8, 30),
+    name: 'Session three',
+    exercises: [
+        { name: 'Squat', sets: '5', reps: '6' },
+        { name: 'Deadlift', sets: '5', reps: '6' },
+        { name: 'Pushup', sets: '5', reps: '6' },
+        { name: 'Bicepscurl', sets: '5', reps: '6' }
+    ],
+    contacts: [
+        {name: 'Ola Nordmann'},
+        {name: 'Katrine Olavsen'}
+    ],
+    done: false
+  },
+  {
+    id: 4,
     date: new Date(2018, 9, 29, 8, 30),
     time: new Date(2018, 9, 29, 8, 30),
     name: 'Session three',
@@ -53,28 +98,12 @@ const sessions = [
 ]
 
 const selectedDate = new Date()
-
-let activeSession = {
-  name: null,
-  date: null,
-  time: null,
-  contacts: [],
-  exercises: [],
-  done: false
-}
-
-sessions.forEach(session => {
-  if (
-    selectedDate.getDate() == session.date.getDate()
-    && selectedDate.getMonth() == session.date.getMonth()
-    && selectedDate.getYear() == session.date.getYear()
-  ) {
-    activeSession = session
-  }
-})
+const currentSessionId = -1
+const temporarySession = emptySession
 
 export default initial_state = {
   sessions,
   selectedDate,
-  activeSession
+  currentSessionId,
+  temporarySession
 }

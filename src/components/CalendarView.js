@@ -26,7 +26,7 @@ export class CalendarView extends Component {
   addSession (date) {
     this.props.selectDate(date)
     this.props.createNewSession()
-    this.props.navigation.navigate('CreateSession')
+    this.props.navigation.navigate('CreateSession', {title: 'Create Session'})
   }
 
   selectDate (date) {
