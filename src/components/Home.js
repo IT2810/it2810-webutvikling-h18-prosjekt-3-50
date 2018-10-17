@@ -26,7 +26,6 @@ export class Home extends Component {
   _createNewSession() {
     this.props.createNewSession()
     this.props.navigation.navigate('CreateSession')
-
   }
 
   render() {

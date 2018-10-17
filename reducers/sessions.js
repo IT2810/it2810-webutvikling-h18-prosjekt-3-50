@@ -67,7 +67,6 @@ const removeExercise = (state, action) => {
 }
 
 const markSessionAsDone = (state, action) => {
-  console.log("Updated session to be done")
   let activeSession = state.activeSession
   activeSession.done = true
   var sessions = state.sessions

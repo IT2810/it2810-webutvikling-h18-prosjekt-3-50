@@ -29,7 +29,6 @@ export class ShowSession extends Component {
   }
 
   _showFullScreen() {
-    console.log("ShowFullScreen")
     this.props.navigation.navigate('ShowSessionFullScreen')
   }
 
@@ -39,8 +38,6 @@ export class ShowSession extends Component {
 
     // Since there is always an empty sessionobject, we can't check if session is null. 
     // Instead we check if it has a name, since it's required to give it a name when saving it
-    console.log("Session.name")
-    console.log(session)
     if (session == undefined || session.name == null) {
       return (
         <Card>

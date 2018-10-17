@@ -22,7 +22,6 @@ export function isSameDay (dateOne, dateTwo) {
 
 export function isToday (date) {
   if (date) {
-    console.log("Date is something")
     return moment().diff(date, 'days') == 0
   } else {
     return false
