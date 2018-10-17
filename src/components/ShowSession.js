@@ -31,7 +31,9 @@ export class ShowSession extends Component {
     const date = this.props.date
     let session = this.props.session 
 
-    if (session == null) {
+    // Since there is always an empty sessionobject, we can't check if session is null. 
+    // Instead we check if it has a name, since it's required to give it a name when saving it
+    if (session.name == null) {
       return (
         <Card>
           <CardItem bordered>
