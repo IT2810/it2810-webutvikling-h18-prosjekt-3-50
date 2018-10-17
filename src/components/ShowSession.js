@@ -10,6 +10,7 @@ export class ShowSession extends Component {
     super(props, context)
 
     this.getDateText = this.getDateText.bind(this)
+    this._showFullScreen = this._showFullScreen.bind(this)
   }
 
   getDateText (session) {
@@ -27,13 +28,20 @@ export class ShowSession extends Component {
     }
   }
 
+  _showFullScreen() {
+    console.log("ShowFullScreen")
+    this.props.navigation.navigate('ShowSessionFullScreen')
+  }
+
   render () {
     const date = this.props.date
     let session = this.props.session 
 
     // Since there is always an empty sessionobject, we can't check if session is null. 
     // Instead we check if it has a name, since it's required to give it a name when saving it
-    if (session.name == null) {
+    console.log("Session.name")
+    console.log(session)
+    if (session == undefined || session.name == null) {
       return (
         <Card>
           <CardItem bordered>
@@ -48,7 +56,9 @@ export class ShowSession extends Component {
 
       return (
         <Card>
-          <CardItem header bordered>
+          <CardItem header bordered button
+            onPress={this._showFullScreen}
+          >
             <Body>
               {dateText}
             </Body>

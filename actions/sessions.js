@@ -1,4 +1,4 @@
-import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, CREATE_NEW_SESSION, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE } from './types'
+import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, CREATE_NEW_SESSION, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE, MARK_SESSION_AS_DONE } from './types'
 
 export const addSession = (session) => {
   return {
@@ -51,6 +51,13 @@ export const addExercise = (exercise) => {
 export const removeExercise = (id) => {
   return {
     type: REMOVE_EXERCISE,
+    payload: id
+  }
+}
+
+export const markSessionAsDone = (id) => {
+  return {
+    type: MARK_SESSION_AS_DONE,
     payload: id
   }
 }

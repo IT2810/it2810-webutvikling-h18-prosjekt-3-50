@@ -4,7 +4,11 @@ export function getSessionDates (sessions) {
   let markedDates = {}
   var dates = sessions.map(session => {
     let date = moment(session.date).format('YYYY-MM-DD')
-    markedDates[date] = {marked: true}
+    if (session.done) {
+      markedDates[date] = {marked: true, dotColor: 'green'}
+    } else {
+      markedDates[date] = {marked: true}
+    }
   })
   return markedDates
 }
