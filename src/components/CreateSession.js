@@ -120,6 +120,7 @@ class CreateSession extends Component {
   }
 
   _setDate(date) {
+    console.log('_setDate', date)
     this.setState({
       date: date,
     })
@@ -128,6 +129,7 @@ class CreateSession extends Component {
   }
 
   _setTime(time) {
+    console.log('_setTime', time)
     this.setState({
       time: time
     })

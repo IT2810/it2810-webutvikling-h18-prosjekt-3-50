@@ -4,13 +4,7 @@ exports[`ContactList renders correctly 1`] = `
 <ViewNB
   style={Object {}}
 >
-  <RowNB
-    style={
-      Object {
-        "marginTop": 16,
-      }
-    }
-  >
+  <RowNB>
     <Styled(Left)>
       <Styled(Text)
         style={

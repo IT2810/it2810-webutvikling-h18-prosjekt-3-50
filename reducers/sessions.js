@@ -3,7 +3,7 @@ import initial_state_mock, { emptySession } from '../src/assets/initial_state_mo
 
 import * as types from '../actions/types'
 
-import { toISOString } from '../src/assets/utils'
+import { toISOString, isSameDay } from '../src/assets/utils'
 
 
 
@@ -82,6 +82,37 @@ const updateCurrentSessionId = (state, action) => {
   return { ...state, currentSessionId, temporarySession }
 }
 
+const updateTodaysTarget = (state, action) => {
+  let newState = {...{}, ...state}
+  const today = new Date()
+  const todayStatIndex = newState.stepStats.findIndex(stepStat => isSameDay(new Date(), stepStat.date))
+  if (todayStatIndex == -1) { // add new stat
+    newState.stepStats.push({
+      target: action.payload,
+      result: 0,
+      date: today
+    })
+  } else {
+    newState.stepStats[todayStatIndex].target = action.payload
+  }
+  return newState
+}
+
+const updateTodaysResult = (state, action) => {
+  let newState = {...{}, ...state}
+  const today = new Date()
+  const todayStatIndex = newState.stepStats.findIndex(stepStat => isSameDay(new Date(), stepStat.date))
+  if (todayStatIndex == -1) { // add new stat
+    newState.stepStats.push({
+      target: 0,
+      result: action.payload,
+      date: today
+    })
+  } else {
+    newState.stepStats[todayStatIndex].result = action.payload
+  }
+  return newState
+}
 // If no state is given, state is set to INITIAL_STATE
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -105,6 +136,10 @@ export default function (state = INITIAL_STATE, action) {
       return markSessionAsDone(state, action)
     case types.UPDATE_CURRENT_SESSION_ID:
       return updateCurrentSessionId(state, action)
+    case types.UPDATE_TODAYS_TARGET:
+      return updateTodaysTarget(state, action)
+    case types.UPDATE_TODAYS_RESULT:
+      return updateTodaysResult(state, action)
     default:
       return state
   }

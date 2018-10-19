@@ -26,7 +26,7 @@ export default ShowSessionCard = ({editSession, markSessionAsDone, session}) => 
         <Text>
           <Text>Time: </Text>
           <Moment element={Text} format="HH:mm">
-            {session.date}
+            {session.time}
           </Moment>
         </Text>
     </CardItem>
@@ -43,11 +43,19 @@ export default ShowSessionCard = ({editSession, markSessionAsDone, session}) => 
       </CardItem>
     )}
 
-    <CardItem bordered>
-      <Text>
-        Exercises: {session.exercises.map(exercise => exercise.name).join(', ')}
-      </Text>
-    </CardItem>
+    {session.exercises.length > 0 && (
+      <CardItem bordered>
+        <Body style={{flexDirection: "row", justifyContent: "center"}}>
+          <Card>
+            {session.exercises.map((exercise, index) => (
+              <CardItem bordered key={index}>
+                <Text>{exercise.name} {exercise.sets} x {exercise.reps} {exercise.kg && (exercise.kg + 'kg')}</Text>
+              </CardItem>
+            ))}
+          </Card>
+        </Body>
+      </CardItem>
+    )}
 
     <CardItem bordered>
       <Left>
