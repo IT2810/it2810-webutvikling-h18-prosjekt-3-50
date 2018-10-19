@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Card, Text, CardItem, Body, Right, Left } from 'native-base'
+import { Card, Text, CardItem, Body, Right, Left, Button } from 'native-base'
 import Moment from 'react-moment'
-import { connect } from 'react-redux'
 
-export default ShowSessionCard = ({session}) => (
+export default ShowSessionCard = ({editSession, markSessionAsDone, session}) => (
   <Card>
     <CardItem header bordered>
       <Body>
@@ -36,16 +35,43 @@ export default ShowSessionCard = ({session}) => (
       <Text>Title: {session.name} </Text>
     </CardItem>
 
-    <CardItem bordered>
-      <Text>
-        With: {session.contacts.map(contact => contact.name).join(', ')}
-      </Text>
-    </CardItem>
-    
+    {session.contacts.length > 0 && (
+      <CardItem bordered>
+        <Text>
+          With: {session.contacts.map(contact => contact.name).join(', ')}
+        </Text>
+      </CardItem>
+    )}
+
     <CardItem bordered>
       <Text>
         Exercises: {session.exercises.map(exercise => exercise.name).join(', ')}
       </Text>
+    </CardItem>
+
+    <CardItem bordered>
+      <Left>
+        {
+          session.done
+          ? (
+            <Text style={{color: '#24B36B'}}>
+              Exercise completed
+            </Text>
+            )
+          : (
+            <Button light onPress={() => markSessionAsDone(session.id)}>
+              <Text>
+                Mark exercise as done
+              </Text>
+            </Button>
+            )
+        }
+      </Left>
+      <Right>
+        <Button light onPress={() => editSession(session.id)}>
+          <Text>Edit</Text>
+        </Button>
+      </Right>
     </CardItem>
   </Card>
 )

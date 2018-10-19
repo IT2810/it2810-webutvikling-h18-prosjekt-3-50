@@ -1,4 +1,15 @@
-import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, CREATE_NEW_SESSION, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE, MARK_SESSION_AS_DONE } from './types'
+import {
+  ADD_SESSION,
+  UPDATE_SESSION,
+  SELECT_DATE,
+  CREATE_NEW_SESSION,
+  ADD_CONTACT,
+  REMOVE_CONTACT,
+  ADD_EXERCISE,
+  REMOVE_EXERCISE,
+  MARK_SESSION_AS_DONE,
+  UPDATE_CURRENT_SESSION_ID
+} from './types'
 
 export const addSession = (session) => {
   return {
@@ -7,10 +18,10 @@ export const addSession = (session) => {
   }
 }
 
-export const selectSession = (id) => {
+export const updateSession = (session) => {
   return {
-    type: SELECT_SESSION,
-    payload: id
+    type: UPDATE_SESSION,
+    payload: session
   }
 }
 
@@ -58,6 +69,13 @@ export const removeExercise = (id) => {
 export const markSessionAsDone = (id) => {
   return {
     type: MARK_SESSION_AS_DONE,
+    payload: id
+  }
+}
+
+export const updateCurrentSessionId = id => {
+  return {
+    type: UPDATE_CURRENT_SESSION_ID,
     payload: id
   }
 }

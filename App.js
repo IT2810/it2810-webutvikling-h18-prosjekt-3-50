@@ -57,6 +57,7 @@ const RootStack = createStackNavigator(
   {
     initialRouteName: 'Home',
     navigationOptions: {
+      title: '',
       headerStyle: {
         backgroundColor: '#5BC1F2'
       },
