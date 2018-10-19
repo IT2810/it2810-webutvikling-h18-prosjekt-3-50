@@ -96,7 +96,6 @@ class Stats extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('Stats state', state)
   const today = new Date()
   let oneWeekAgo = new Date()
   oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
@@ -108,7 +107,7 @@ function mapStateToProps(state) {
     const dayIndex = stepStatsLast7Days.findIndex(stepStatLast7Days => isSameDay(day, stepStatLast7Days.date))
     if (dayIndex == -1) { // missing data point, insert fallback
       stepStatsLast7Days.push({
-        result: 0, // fallBackResult
+        result: 1000, // fallBackResult
         target: 5000, // fallBackTarget
         date: day
       })

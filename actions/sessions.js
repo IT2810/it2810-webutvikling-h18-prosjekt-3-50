@@ -8,7 +8,9 @@ import {
   ADD_EXERCISE,
   REMOVE_EXERCISE,
   MARK_SESSION_AS_DONE,
-  UPDATE_CURRENT_SESSION_ID
+  UPDATE_CURRENT_SESSION_ID,
+  UPDATE_TODAYS_TARGET,
+  UPDATE_TODAYS_RESULT
 } from './types'
 
 export const addSession = (session) => {
@@ -77,5 +79,19 @@ export const updateCurrentSessionId = id => {
   return {
     type: UPDATE_CURRENT_SESSION_ID,
     payload: id
+  }
+}
+
+export const updateTodaysTarget = value => {
+  return {
+    type: UPDATE_TODAYS_TARGET,
+    payload: value
+  }
+}
+
+export const updateTodaysResult = value => {
+  return {
+    type: UPDATE_TODAYS_RESULT,
+    payload: value
   }
 }

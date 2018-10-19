@@ -1,5 +1,7 @@
 import Expo from "expo";
 import React from "react";
+import { connect } from 'react-redux'
+import { updateTodaysTarget, updateTodaysResult } from '../../actions/index'
 import { Pedometer } from "expo";
 import { Platform, StyleSheet } from "react-native";
 import { Text, Container, Header, Icon, View, Button, ActionSheet, SwipeRow, Array, Textarea } from 'native-base';
@@ -20,7 +22,7 @@ var DESTRUCTIVE_INDEX = 0;
 var CANCEL_INDEX = 4;
 
 
-export default class PedometerSensor extends React.Component {
+class PedometerSensor extends React.Component {
   constructor(props, context){
     super(props, context)
     this.state = {
@@ -64,6 +66,7 @@ export default class PedometerSensor extends React.Component {
 
   _subscribe = () => {
     this._subscription = Pedometer.watchStepCount(result => {
+      this.props.updateTodaysResult(result.steps)
       this.setState({
         currentStepCount: result.steps,
         totalStepCount: result.steps + this.state.pastStepCount
@@ -89,6 +92,7 @@ export default class PedometerSensor extends React.Component {
   start.setDate(end.getDate() - 1);
   Pedometer.getStepCountAsync(start, end).then(
     result => {
+      this.props.updateTodaysResult(result.steps)
       this.setState({
         pastStepCount: result.steps,
         totalStepCount : this.state.currentStepCount + result.steps
@@ -124,12 +128,14 @@ render() {
               },
               buttonIndex => {
                 if(BUTTONS[buttonIndex] != BUTTONS[CANCEL_INDEX]){
+                  const value = BUTTONS[buttonIndex].number
+                  this.props.updateTodaysTarget(value)
                   this.setState({
                     clicked: BUTTONS[buttonIndex],
-                    target: BUTTONS[buttonIndex].number
+                    target: value
                   })
                 }
-                
+
               }
             )}
           >
@@ -139,28 +145,30 @@ render() {
         }
         body={
           <Text style={styles.stepsText}>
-            <Icon 
+            <Icon
               name={Platform.OS === 'ios' ? "ios-arrow-round-back" : "md-arrow-round-back"}
               style={{fontSize: 25, lineHeight: 25, color: 'white'}}
             />
-            <Text style={ styles.stepsText}>   </Text>   
+            <Text style={ styles.stepsText}>   </Text>
             <Icon
               name={Platform.OS === 'ios' ? "ios-walk" : "md-walk"}
               style={{fontSize: 25, lineHeight: 25, color: 'white'}}
             />
             : {this.state.totalStepCount} /  {this.state.target}  {smile}
-            <Icon 
+            <Icon
               name={Platform.OS === 'ios' ? "ios-arrow-round-forward" : "md-arrow-round-forward"}
               style={{fontSize: 25, lineHeight: 25, color: 'white'}}
-            />  
+            />
           </Text>
         }
         right={
-          <Button style={{display: 'flex'}} danger onPress={() =>
-              this.setState({
-                target: DESTRUCTIVE_INDEX_BUTTON[DESTRUCTIVE_INDEX].text
-              })
-            }
+          <Button style={{display: 'flex'}} danger onPress={() => {
+            this.props.updateTodaysTarget(0)
+            this.setState({
+              target: DESTRUCTIVE_INDEX_BUTTON[DESTRUCTIVE_INDEX].text
+            })
+          }
+        }
         >
         <Icon name={Platform.OS === 'ios' ? "ios-trash" : "md-trash"}
               style={{fontSize: 25, lineHeight: 25, color: 'white'}}/>
@@ -183,17 +191,28 @@ render() {
 }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    updateTodaysTarget: value => dispatch(updateTodaysTarget(value)),
+    updateTodaysResult: value => dispatch(updateTodaysResult(value))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PedometerSensor)
+
+
+
 const styles = StyleSheet.create({
   stepsBar: {
     width: '100%',
     backgroundColor: '#007BFF',
   },
   stepsText: {
-    flex: 1, 
-    justifyContent: 'center', 
-    textAlign: 'center', 
-    fontSize: 25, 
-    lineHeight: 25, 
+    flex: 1,
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontSize: 25,
+    lineHeight: 25,
     color: 'white'
   }
 })

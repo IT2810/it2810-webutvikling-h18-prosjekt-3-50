@@ -4,7 +4,7 @@ import { List, ListItem, Text, Left, Right, Button, View, Row, Picker, Icon, Car
 
 export default ({contacts, navigation, removeContact}) => (
   <View>
-    <Row style={{marginTop: 16}}>
+    <Row>
       <Left>
         <Text style={styles.inputTitle}>Contacts</Text>
       </Left>
