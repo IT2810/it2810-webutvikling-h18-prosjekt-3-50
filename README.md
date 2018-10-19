@@ -3,7 +3,7 @@
 ## The application
 ExerciseMotivator is an app for planning your training sessions. In it, you can create a session that you plan to do, where you add date, time, a title, exercises and contacts. Exercises consists of a name, number of sets, reps and kg (last is optional). By adding contacts, you will (in the future), be able to synchronize sessions with other people, so that they can both track that you have done them, and participate at the planned time.
  
-In addition to planning a session, you can mark it as done (MISSING), and see statistic over how many sessions you have done (MISSING) and how much you have lifted in total (MISSING).
+In addition to planning a session, you can mark it as done, and see statistic over how many sessions you have done.
 
 The app also tracks your step, and shows you if you have reached the goal you have sat, and the statistics regarding your steps.
 
@@ -32,7 +32,7 @@ By using the nagivation props that is added to all its screen components, and ma
 Moment was used in the utils.js to manipulate, validate and handle dates.
 
 ### React Moment
-Rect Moment was used in some of the components that displayed dates and times. By using it, we could format the dates much simplar, and also integrate functions as showing how long before or after the specific date/time it was.  
+Rect Moment was used in some of the components that displayed dates and times. By using it, we could format the dates much simpler, and also integrate functions as showing how long before or after the specific date/time it was.  
 
 ### React Native Calendars
 As a calendar, we used the React Native Calendars. By giving it a map with dates and configuration maps, we could show what dates had a planned session. The user could also click on a date to see it's session, and a long press on a date would navigate the user to the CreateSession screen with the date pressed set as the planned date.
@@ -72,7 +72,7 @@ The focus, as appropriate since jest was used, was unit testing, where the separ
 
 The props from the store was mocked, so that we only tested if a dispatch was called, and not if the state also was changed (which would be closer to integration tests).
 
-It find's the tests in the `__tests__` folders, and runs them when the command `npm test` is given.   After running the tests, it gives a code covereage that shows how much of the code is tested, what lines are missing, and what tests passed. This can be configured.
+Jest find's the tests in the `__tests__` folders, and runs them when the command `npm test` is given.   After running the tests, it gives a code covereage that shows how much of the code is tested, what lines are missing, and what tests passed. This can be configured.
 
 We chose to have the test-folders in the same folder as the code being tested. This resulted in a test folder in root, one in ./actions, one in ./reducers and one in ./src/components.
  
@@ -91,20 +91,24 @@ With expect one can assert if two values are the same, and by using `find()` one
 ### Enzyme
 Enzyme is a testing utility created by the AirBnb team, and offers an API for handling React components during tests. One of the main functionalities used from it, was the `shallow`. Instead of rendering the whole component with all it's children, only the main component is rendered when using `shallow`.
 
-When testing the snapshots, we used `dive()` and `toJson`, the last one from `enzyme-to-json`, to format the snapshot. DOUBLECHECK
+When testing the snapshots, we used `dive()` and `toJson`, the last one from `enzyme-to-json`, to format the snapshot.
  
 ### Android and iOS
 During the development, the app was tested on both Android and iOS. This was done by running the application on Android trough Nox and directly on smartphones, and trough an iOS simulator and on Iphones.  
 
 ### Testing with Redux
-To simplify the testing with redux, in addition to export the connected component as default, the class component was exported as well, and this was used in the tests. We then only needed to mock the props that was set in the connect function and used, for example the dispatch functions and the mapping from state to props.
+To simplify the testing with redux, in addition to export the connected component as default, the class component was exported as well in some cases, and this was used in the tests. We then only needed to mock the props that was set in the connect function and used, for example the dispatch functions and the mapping from state to props. In some cases redux-mock-store which mocks a full redux-store to recreate a completely realistic test situation.
 
 ## Redux
-Redux consists of actions and reducers. Actions are called trough dispatches of the actions, and return the action, which is then used by the reducer in a switch. Based on the action type, the correct function is called which then creates a new state based on the old, alters it appropriatly, and then returns it.
+The essence of redux is to take the state out of the individual components and gather it in one place called the store. When a component needs data from the store, it can get it as a prop from its parent, or by connecting directly to the store itself. For updating data in the store, actions are dispatched by the components, which are then handled by reducers, which update the store. The updated data in the store is then passed down from the top and down to all the child components. This architecture with all data in one place and exclusive downward passing of props makes it a breeze to keep control of state!
 
-Structured it with a subpart ‘sessions’, which has date, time, name, exercises and contacts.
+More in detail: Actions are called trough dispatches of the actions, and return the action, which is then used in a switch statement in the reducer. Based on the action type, the correct function is called which then creates a new state based on the old, alters it appropriatly, and then returns it.
 
-The App component was wrapped in a Provider from react-redux, which had the store. This was so accessed in child components through using connect, where we mapped states from the store to props and dispatch functions from the store to props. By doing this, the props always had the newest state version, so that it implicitly listened for changes in the store.
+In this project we only have one reducer, but the combineReducers is set up and ready to create more for when the sessions reducer becomes too diverse/large.
+
+The App component was wrapped in a Provider from react-redux, which propagates the store. This was then accessed in child components using connect, where we mapped states from the store to props and dispatch functions from the store to props. By doing this, the props always had the newest state version, so that it implicitly listened for changes in the store.
+
+Further more, to persist the state of the application, we used redux-persist. This persists the store using AsyncStorage. The app root component was wrapped in the PersistGate component provided by redux-persist which ensures the app waits for its state to be persisted before rendering.
 
 ## Branches, issues and projects
 The projects was breaken down in smaller tasks at the beginning. These where added as issues in the Projects-table/canban board at github. There they where moved to 'In progress' when they were being worked on. When a PR was waiting for approval with that issue, it was moved to 'In PR', and when merged in to master, to 'Done'. 
@@ -132,7 +136,4 @@ When starting on a new branch, we made it based from master, and before merging 
 -   Decomposed assignment to issues
     
 -   Tested with jest (and enzyme)
-    
--
-
 
