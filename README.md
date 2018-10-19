@@ -11,7 +11,7 @@ In the existing prototype, contacts consists only of a hardcoded list of names.
  
 ## Imported packages
 
-### Expo (PEDER?)
+### Expo
 Expo apps are React Native apps which contain the Expo SDK. The SDK is a native-and-JS library which provides access to the device's system functionality (things like the camera, contacts, local storage, and other hardware). That means you don't need to use Xcode or Android Studio, or write any native code, and it also makes your pure-JS project very portable because it can run in any native environment containing the Expo SDK.
 Expo also provides UI components to handle a variety of use-cases that almost all apps will cover but are not baked into React Native core, e.g. icons, blur views, and more.
 Finally, the Expo SDK provides access to services which typically are a pain to manage but are required by almost every app. Most popular among these: Expo can manage your Assets for you, it can take care of Push Notifications for you, and it can build native binaries which are ready to deploy to the app store.
@@ -37,16 +37,23 @@ Rect Moment was used in some of the components that displayed dates and times. B
 ### React Native Calendars
 As a calendar, we used the React Native Calendars. By giving it a map with dates and configuration maps, we could show what dates had a planned session. The user could also click on a date to see it's session, and a long press on a date would navigate the user to the CreateSession screen with the date pressed set as the planned date.
 
-## Special components used (MARIUS?)
+## Special components used
 
 ### KeyboardAvoidingView
+It is a component to solve the common problem of views that need to move out of the way of the virtual keyboard. It can automatically adjust either its position or bottom padding based on the position of the keyboard.
 
 ### TouchableOpacity
+A wrapper for making views respond properly to touches. On press down, the opacity of the wrapped view is decreased, dimming it.
+
+Opacity is controlled by wrapping the children in an Animated.View, which is added to the view hierarchy. Be aware that this can affect layout.
 
 ### SafeAreaView
+The purpose of SafeAreaView is to render content within the safe area boundaries of a device. It is currently only applicable to iOS devices with iOS version 11 or later.
     
-###ActionSheet
-Native-base’s ActionSheet gives you a modal view of customizable options. In this project it is used when selecting the target number of steps.
+### ActionSheet
+Native-base’s ActionSheet gives you a modal view of different options. In this project it is used when selecting the target number of steps.
+
+Many of these explanations were found on http://facebook.github.io/react-native/
  
 
 ## Structure of the app
@@ -59,7 +66,7 @@ For testing, we used enzyme and jest.
 ### Jest
 Jest is a javascript unit test framework, created and used by Facebook. It is one of the most used unit tests frameworks for javascript.
 
-The tests files was put in `__tests__` folders. One file was made for each component, and the tests was put in a `describe` block with a `beforeEach` that created the wrapper before each tests and mocked navigation etc. Tests for the same method was also put in `describe` block, with their respective tests in separate `it` blocks.
+The test files were put in `__tests__` folders. One file was made for each component, and the tests were put in a `describe` block with a `beforeEach` that created the wrapper before each test and mocked navigation etc. Tests for the same method was also put in `describe` block, with their respective tests in separate `it` blocks.
 
 The focus, as appropriate since jest was used, was unit testing, where the separate functions in components, actions and reducers was tested. Some tests also tested if the correct function was called when pressing a button. To test this, we could have used `simulate()`, but because of problems with it, we ended up rather just calling the prop `onPress()`.
 
@@ -77,7 +84,7 @@ By adding the comment `@jest-environement jsdom`, the tests was run in a fake DO
 
 
 By using Jest, one can mock functions with jest.fn(), and thereby check if the function was called, with what arguments and mock its response. This makes it easier to fake the test environement. 
-Wit expect one can assert if two values are the same, and by using `find()` one can find elements in the page based on normal css syntax. This did not work as it should in our project, probably because of another rendering, and we therefore made our own find function based on testID-props.
+With expect one can assert if two values are the same, and by using `find()` one can find elements in the page based on normal css syntax. This did not work as it should in our project, probably because of another rendering, and we therefore made our own find function based on testID-props.
  
  
 
