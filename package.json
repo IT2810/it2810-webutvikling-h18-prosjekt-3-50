@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "jest",
+    "updateSnapshot": "jest --updateSnapshot",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "eslint-fix": "eslint . --fix"
   },

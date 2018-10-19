@@ -20,51 +20,7 @@ exports[`AddContact renders correctly 1`] = `
         testID="addContactButton"
       >
         <Styled(Text)>
-          Ola Nordmann
-        </Styled(Text)>
-      </Styled(CardItem)>
-      <Styled(CardItem)
-        bordered={true}
-        button={true}
-        key="1"
-        onPress={[Function]}
-        testID="addContactButton"
-      >
-        <Styled(Text)>
-          Kari Nordmann
-        </Styled(Text)>
-      </Styled(CardItem)>
-      <Styled(CardItem)
-        bordered={true}
-        button={true}
-        key="2"
-        onPress={[Function]}
-        testID="addContactButton"
-      >
-        <Styled(Text)>
-          Kristine Hansen
-        </Styled(Text)>
-      </Styled(CardItem)>
-      <Styled(CardItem)
-        bordered={true}
-        button={true}
-        key="3"
-        onPress={[Function]}
-        testID="addContactButton"
-      >
-        <Styled(Text)>
-          Alfrled Bustad
-        </Styled(Text)>
-      </Styled(CardItem)>
-      <Styled(CardItem)
-        bordered={true}
-        button={true}
-        key="4"
-        onPress={[Function]}
-        testID="addContactButton"
-      >
-        <Styled(Text)>
-          Hege Nielsen
+          Test Name
         </Styled(Text)>
       </Styled(CardItem)>
     </Styled(Card)>
