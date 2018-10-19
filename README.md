@@ -99,6 +99,13 @@ Structured it with a subpart ‘sessions’, which has date, time, name, exercis
 
 The App component was wrapped in a Provider from react-redux, which had the store. This was so accessed in child components through using connect, where we mapped states from the store to props and dispatch functions from the store to props. By doing this, the props always had the newest state version, so that it implicitly listened for changes in the store.
 
+## Branches, issues and projects
+The projects was breaken down in smaller tasks at the beginning. These where added as issues in the Projects-table/canban board at github. There they where moved to 'In progress' when they were being worked on. When a PR was waiting for approval with that issue, it was moved to 'In PR', and when merged in to master, to 'Done'. 
+
+We chose to name the branches `<type_of_branch>/#<issue_nr>_name_of_issue`. We found this more clean than having the issues in the commitmessage. The types of branches was mainly feat, design or bug. 
+
+When starting on a new branch, we made it based from master, and before merging it back in, we made a PR that needed to be reviewed and approved by at least one other member. By reviewing the PR's, we could ask questions regarding the different ways people did things, how it worked, why they chose that way etc. We could also reduce the amount of uneccesary or bad code. 
+
 ## Requirements
 
 -   Can add new sessions and exercises
