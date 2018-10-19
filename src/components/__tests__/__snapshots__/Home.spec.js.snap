@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home renders correctly 1`] = `
-<_class>
+<SafeAreaView>
   <ScrollView
     style={
       Object {
@@ -23,6 +23,7 @@ exports[`Home renders correctly 1`] = `
           }
         }
       />
+      <PedometerSensor />
       <Connect(ShowSession)
         navigation={
           Object {
@@ -72,5 +73,5 @@ exports[`Home renders correctly 1`] = `
       }
     />
   </Styled(Fab)>
-</_class>
+</SafeAreaView>
 `;

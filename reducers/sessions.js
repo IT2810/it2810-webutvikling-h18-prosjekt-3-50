@@ -1,4 +1,4 @@
-// const initial_state_mock = require('../src/assets/initial_state_mock.json')
+
 import initial_state_mock, { emptySession } from '../src/assets/initial_state_mock.js'
 
 import * as types from '../actions/types'

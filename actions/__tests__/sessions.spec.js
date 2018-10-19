@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { ADD_SESSION, SELECT_SESSION, SELECT_DATE, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE } from '../types'
+import { ADD_SESSION, SELECT_DATE, ADD_CONTACT, REMOVE_CONTACT, ADD_EXERCISE, REMOVE_EXERCISE } from '../types'
 import { addSession, selectSession, selectDate, addContact, removeContact, addExercise, removeExercise } from '../sessions'
 
 describe('session actions', () => {
@@ -14,17 +14,6 @@ describe('session actions', () => {
     }
 
     expect(addSession(session)).toEqual(expectedAction)
-  })
-
-  it('should create an action to select session', () => {
-    const id = 1
-
-    const expectedAction = {
-      type: SELECT_SESSION,
-      payload: id
-    }
-
-    expect(selectSession(id)).toEqual(expectedAction)
   })
 
   it('should create an action to selectDate', () => {

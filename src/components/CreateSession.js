@@ -10,7 +10,7 @@ import { addSession, updateSession, removeExercise, removeContact } from '../../
 import ContactList from './ContactList.js'
 import ExerciseList from './ExerciseList.js'
 
-export class CreateSession extends Component {
+class CreateSession extends Component {
   static navigationOptions = ({ navigation }) => ({ title: `${navigation.state.params.title}` })
 
   constructor(props, context) {

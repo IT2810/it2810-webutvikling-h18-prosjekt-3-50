@@ -45,6 +45,30 @@ exports[`ContactList renders correctly 1`] = `
         "marginTop": "5%",
       }
     }
-  />
+  >
+    <Styled(ListItem)
+      key="0"
+    >
+      <Styled(Left)>
+        <Styled(Text)>
+           
+          Test Name
+           
+        </Styled(Text)>
+      </Styled(Left)>
+      <Styled(Right)>
+        <Styled(Button)
+          danger={true}
+          onPress={[Function]}
+          testID="removeContactButton"
+        >
+          <Styled(Icon)
+            active={true}
+            name="trash"
+          />
+        </Styled(Button)>
+      </Styled(Right)>
+    </Styled(ListItem)>
+  </Styled(Card)>
 </ViewNB>
 `;
