@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import store from './store'
+import { store, persistor } from './store.js'
+import { PersistGate } from 'redux-persist/integration/react'
 import Expo, { Font } from 'expo'
 
 import CreateSession from './src/components/CreateSession.js'
@@ -34,11 +35,13 @@ export default class App extends Component {
     }
     return (
       <Provider store={store}>
-        <Root id="root">
-          <StyleProvider style={getTheme(material)}>
-            <RootStack />
-          </StyleProvider>
-        </Root>
+        <PersistGate loading={null} persistor={persistor}>
+          <Root id="root">
+            <StyleProvider style={getTheme(material)}>
+              <RootStack />
+            </StyleProvider>
+          </Root>
+        </PersistGate>
       </Provider>
     )
   }

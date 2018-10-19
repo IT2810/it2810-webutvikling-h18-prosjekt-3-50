@@ -96,10 +96,11 @@ class Stats extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('Stats state', state)
   const today = new Date()
   let oneWeekAgo = new Date()
   oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
-  const stepStatsLast7Days = state.sessions.stepStats.filter(stepStat => (stepStat.date <= today && stepStat.date > oneWeekAgo))
+  const stepStatsLast7Days = state.sessions.stepStats.filter(stepStat => (new Date(stepStat.date) <= today && new Date(stepStat.date) > oneWeekAgo))
 
   for (let dayCount=0;dayCount<7;dayCount++) { // fill in for missing data
     let day = new Date()
