@@ -3,8 +3,6 @@ import { View } from 'react-native'
 import { Container, Content, Text, Card, CardItem } from 'native-base';
 import { connect } from 'react-redux'
 
-const savedContacts = require('../assets/contacts.json')
-
 import { addContact } from '../../actions/index'
 
 export class AddContact extends Component {
@@ -14,12 +12,7 @@ export class AddContact extends Component {
 
   constructor(props, context) {
     super(props, context)
-    this.state = {
-      availableContacts: savedContacts.contacts
-    }
-
     this._add = this._add.bind(this)
-    //this.availableContacts = this.availableContacts.bind(this)
   }
 
   _add(contact) {
@@ -27,20 +20,12 @@ export class AddContact extends Component {
     this.props.navigation.goBack()
   }
 
-  // Filter out the contacts allready added, so that they can't be added twice
-  // TODO: needs to be integrated
-  /*
-  availableContacts() {
-    return savedContacts.filter(contact => this.props.contacts.indexOf(contact) === -1)
-  }
-  */
-
   render() {
     return (
       <Container>
         <Content>
           <Card>
-            {this.state.availableContacts.map((contact, index) => (
+            {this.props.availableContacts.map((contact, index) => (
               <CardItem
                 key={index}
                 bordered
@@ -60,8 +45,18 @@ export class AddContact extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  const alreadyAddedContacts = state.sessions.temporarySession.contacts
+  const availableContacts = state.sessions.contacts.filter( // filter out already added contacts
+    contact => -1 == alreadyAddedContacts.findIndex(addedContact => addedContact.name == contact.name)
+  )
+  return {
+    availableContacts
+  }
+}
+
 const mapDispatchToProps = dispatch => ({
   addContact: contact => dispatch(addContact(contact))
 })
 
-export default connect(null, mapDispatchToProps)(AddContact)
+export default connect(mapStateToProps, mapDispatchToProps)(AddContact)

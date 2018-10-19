@@ -41,7 +41,7 @@ export class AddExercise extends Component {
   }
 
   validateExercise() {
-    if (this.state.name != null) {
+    if (this.state.name != null && this.state.name !== '') {
       if (this.state.reps == null || this.state.sets == null) {
         this.showToast('Sets and/or reps must be set', 'danger')
         return false

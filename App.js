@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import store from './store'
+import { store, persistor } from './store.js'
+import { PersistGate } from 'redux-persist/integration/react'
 import Expo, { Font } from 'expo'
 
 import CreateSession from './src/components/CreateSession.js'
@@ -8,7 +9,6 @@ import AddExercise from './src/components/AddExercise.js'
 import AddContact from './src/components/AddContact.js'
 import Home from './src/components/Home.js'
 import Stats from './src/components/Stats.js'
-import ShowSessionFullScreen from './src/components/ShowSessionFullScreen.js'
 
 import { getTheme, material, StyleProvider, Root } from 'native-base'
 
@@ -35,11 +35,13 @@ export default class App extends Component {
     }
     return (
       <Provider store={store}>
-        <Root id="root">
-          <StyleProvider style={getTheme(material)}>
-            <RootStack />
-          </StyleProvider>
-        </Root>
+        <PersistGate loading={null} persistor={persistor}>
+          <Root id="root">
+            <StyleProvider style={getTheme(material)}>
+              <RootStack />
+            </StyleProvider>
+          </Root>
+        </PersistGate>
       </Provider>
     )
   }
@@ -51,8 +53,7 @@ const RootStack = createStackNavigator(
     CreateSession: { screen: CreateSession },
     AddExercise: { screen: AddExercise },
     AddContact: { screen: AddContact },
-    Stats: { screen: Stats },
-    ShowSessionFullScreen: { screen: ShowSessionFullScreen }
+    Stats: { screen: Stats }
   },
   {
     initialRouteName: 'Home',

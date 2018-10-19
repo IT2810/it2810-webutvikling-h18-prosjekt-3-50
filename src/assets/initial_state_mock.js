@@ -1,5 +1,6 @@
 import { isSameDay } from './utils'
 
+
 export const emptySession = {
   date: null,
   time: null,
@@ -29,7 +30,7 @@ const sessions = [
   },
   {
     id: 1,
-    date: new Date(2018, 9, 17, 18, 30),
+    date: new Date(2018, 9, 13, 18, 30),
     time: new Date(2018, 9, 17, 18, 30),
     name: 'Session two',
     exercises: [
@@ -101,9 +102,62 @@ const selectedDate = new Date()
 const currentSessionId = -1
 const temporarySession = emptySession
 
+const stepStats = [  // only one element per date, meaning date is the element key
+  {
+    target: 9500,
+    result: 5143,
+    date: new Date(2018, 9, 12)
+  },
+  {
+    target: 5000,
+    result: 8913,
+    date: new Date(2018, 9, 13)
+  },
+  {
+    target: 5000,
+    result: 2421,
+    date: new Date(2018, 9, 14)
+  },
+  {
+    target: 10000,
+    result: 7916,
+    date: new Date(2018, 9, 15)
+  },
+  {
+    target: 10000,
+    result: 10015,
+    date: new Date(2018, 9, 16)
+  },
+  {
+    target: 15000,
+    result: 10714,
+    date: new Date(2018, 9, 17)
+  },
+  {
+    target: 15000,
+    result: 13104,
+    date: new Date(2018, 9, 18)
+  },
+  {
+    target: 15000,
+    result: 14104,
+    date: new Date(2018, 9, 19)
+  }
+]
+
+const contacts = [
+  {"name": "Ola Nordmann"},
+  {"name": "Kari Nordmann"},
+  {"name": "Kristine Hansen"},
+  {"name": "Alfrled Bustad"},
+  {"name": "Hege Nielsen"}
+]
+
 export default initial_state = {
   sessions,
   selectedDate,
   currentSessionId,
-  temporarySession
+  temporarySession,
+  stepStats,
+  contacts
 }

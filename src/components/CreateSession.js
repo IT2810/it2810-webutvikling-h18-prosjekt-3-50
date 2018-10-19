@@ -63,7 +63,7 @@ export class CreateSession extends Component {
   }
 
   validateSession() {
-    if (this.state.name != null) {
+    if (this.state.name !== null && this.state.name !== '') {
       if (this.state.date == null) {
         this.showToast('You have to add a date')
         return false

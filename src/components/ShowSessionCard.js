@@ -61,7 +61,7 @@ export default ShowSessionCard = ({editSession, markSessionAsDone, session}) => 
           : (
             <Button light onPress={() => markSessionAsDone(session.id)}>
               <Text>
-                Mark exercise as done
+                Mark as done
               </Text>
             </Button>
             )
