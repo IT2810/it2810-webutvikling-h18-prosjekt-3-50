@@ -8,7 +8,6 @@ import AddExercise from './src/components/AddExercise.js'
 import AddContact from './src/components/AddContact.js'
 import Home from './src/components/Home.js'
 import Stats from './src/components/Stats.js'
-import ShowSessionFullScreen from './src/components/ShowSessionFullScreen.js'
 
 import { getTheme, material, StyleProvider, Root } from 'native-base'
 
@@ -51,8 +50,7 @@ const RootStack = createStackNavigator(
     CreateSession: { screen: CreateSession },
     AddExercise: { screen: AddExercise },
     AddContact: { screen: AddContact },
-    Stats: { screen: Stats },
-    ShowSessionFullScreen: { screen: ShowSessionFullScreen }
+    Stats: { screen: Stats }
   },
   {
     initialRouteName: 'Home',

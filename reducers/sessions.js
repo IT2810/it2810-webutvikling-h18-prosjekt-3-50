@@ -14,7 +14,14 @@ const addSession = (state, action) => {
     if (session.id > previousMaxId) previousMaxId = session.id
   })
   const newSession = {...{id: previousMaxId + 1}, ...action.payload}
-  return { ...state, ...{temporarySession: {...{}, ...emptySession}, currentSessionId: -1}, sessions: [...state.sessions, newSession]}
+  return {
+    ...state,
+    ...{
+      temporarySession: {...{}, ...emptySession},
+      currentSessionId: -1
+    },
+    sessions: [...state.sessions, newSession]
+  }
 }
 
 const updateSession = (state, action) => {
@@ -34,8 +41,7 @@ const createNewSession = (state, action) => {
 }
 
 const selectDate = (state, action) => {
-  // To handle problems regarding Date originally being 0-indexed
-  return { ...state, selectedDate: new Date(toISOString(action.payload))}
+  return { ...state, selectedDate: action.payload}
 }
 
 const addContact = (state, action) => {

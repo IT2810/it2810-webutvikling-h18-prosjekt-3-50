@@ -1,5 +1,6 @@
 import { isSameDay } from './utils'
 
+
 export const emptySession = {
   date: null,
   time: null,
@@ -144,10 +145,19 @@ const stepStats = [  // only one element per date, meaning date is the element k
   }
 ]
 
+const contacts = [
+  {"name": "Ola Nordmann"},
+  {"name": "Kari Nordmann"},
+  {"name": "Kristine Hansen"},
+  {"name": "Alfrled Bustad"},
+  {"name": "Hege Nielsen"}
+]
+
 export default initial_state = {
   sessions,
   selectedDate,
   currentSessionId,
   temporarySession,
-  stepStats
+  stepStats,
+  contacts
 }

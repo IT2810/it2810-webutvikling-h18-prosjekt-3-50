@@ -9,49 +9,25 @@ import { getSessionDates } from '../assets/utils.js'
 import { selectDate, createNewSession } from '../../actions/index'
 
 export class CalendarView extends Component {
-  constructor (props, context) {
+  constructor(props, context) {
     super(props, context)
-
-    this.state = {
-      sessions: this.props.sessions,
-      markedDates: {},
-      sessionDates: {},
-      date: new Date()
-    }
-
-    this.selectDate = this.selectDate.bind(this)
     this.addSession = this.addSession.bind(this)
   }
 
-  addSession (date) {
-    this.props.selectDate(date)
+  addSession(date) {
+    this.props.selectDate(date.dateString)
     this.props.createNewSession()
     this.props.navigation.navigate('CreateSession', {title: 'Create Session'})
   }
 
-  selectDate (date) {
-    this.props.selectDate(date)
-
-    this.setState({ date: date })
-    let dateString = date.dateString
-
-    if (this.props.sessionDates[dateString] != null) {
-      this.setState({ markedDates: { [dateString]: { selected: true, marked: true } } })
-    } else {
-      this.setState({ markedDates: { [dateString]: { selected: true } } })
-    }
-  }
-
   render () {
-    //var markedDates = {...getSessionDates(this.props.sessions), ...this.state.markedDates}
-
     return (
       <View style={styles.calendarContainer}>
         <Calendar
           testID={'calendar'}
-          markedDates={{...this.props.sessionDates, ...this.state.markedDates}}
-          onDayLongPress={(date) => { this.addSession(date) }}
-          onDayPress={(date) => this.selectDate(date)}
+          markedDates={{...this.props.sessionDates, ...this.props.markedDates}}
+          onDayLongPress={date => this.addSession(date)}
+          onDayPress={date => this.props.selectDate(date.dateString)}
         />
       </View>
     )
@@ -59,9 +35,18 @@ export class CalendarView extends Component {
 }
 
 function mapStateToProps (state) {
+  const sessionDates = getSessionDates(state.sessions.sessions)
+  const markedDates = {
+    [state.sessions.selectedDate]: {
+      selected: true,
+      marked: (sessionDates[state.sessions.selectedDate] != null)
+    }
+  }
+
   return {
     sessions: state.sessions.sessions,
-    sessionDates: getSessionDates(state.sessions.sessions)
+    sessionDates,
+    markedDates
   }
 }
 
